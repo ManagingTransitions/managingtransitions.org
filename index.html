@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Managing Transitions — Matt Thomson</title>
+<title>Managing Transitions | Matt Thomson</title>
 <meta name="description" content="Specialist systems advisory for aid-dependency exits, health networks & localisation in Sub-Saharan Africa. Led by Matt Thomson.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,7 @@
     font-size:0.72rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
-    color:var(--amber);
+    color:var(--teal);
   }
   a{color:inherit;}
   .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
@@ -64,23 +64,23 @@
     letter-spacing:0.04em;
     font-weight:500;
   }
-  .brand span{color:var(--amber);}
+  .brand span{color:var(--brown);}
   .navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
   .navlinks a{
     font-size:0.85rem; text-decoration:none; color:var(--brown);
     font-weight:500;
   }
-  .navlinks a:hover{color:var(--amber);}
+  .navlinks a:hover{color:var(--teal);}
   @media (max-width:720px){ .navlinks{display:none;} }
 
   /* ---------- HERO ---------- */
   header.hero{
     background:
-      radial-gradient(ellipse at 80% -10%, rgba(228,123,18,0.18), transparent 55%),
+      radial-gradient(ellipse at 80% -10%, rgba(57,44,35,0.35), transparent 55%),
       var(--teal);
     color:#f4efe6;
     padding:88px 0 70px;
-    border-bottom:6px solid var(--amber);
+    border-bottom:6px solid var(--brown);
   }
   header.hero .eyebrow{margin-bottom:18px;}
   header.hero h1{
@@ -110,36 +110,25 @@
     border:1px solid transparent;
     transition:transform .15s ease, background .15s ease;
   }
-  .btn-primary{background:var(--amber); color:#1a1108;}
-  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--brown); color:#f4efe6;}
+  .btn-primary:hover{transform:translateY(-2px); background:#4a3a2d;}
   .btn-ghost{border-color:var(--line-on-dark); color:#f4efe6;}
-  .btn-ghost:hover{border-color:var(--amber); color:var(--amber);}
+  .btn-ghost:hover{border-color:var(--amber); color:#f0c896;}
 
-  /* ---------- Handover meter (signature element) ---------- */
-  .meter{margin-top:56px; max-width:640px;}
-  .meter-labels{
-    display:flex; justify-content:space-between;
+  /* ---------- Field presence strip (signature element) ---------- */
+  .field-strip{margin-top:52px; max-width:640px;}
+  .field-strip .label{
     font-family:'IBM Plex Mono', monospace;
-    font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase;
-    color:#a9bcb5; margin-bottom:8px;
+    font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:#8ea59c; margin-bottom:12px;
   }
-  .meter-track{
-    position:relative;
-    height:10px;
-    background:rgba(255,255,255,0.10);
+  .field-tags{display:flex; flex-wrap:wrap; gap:10px;}
+  .field-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem; letter-spacing:0.04em;
+    padding:7px 13px;
     border:1px solid var(--line-on-dark);
-  }
-  .meter-fill{
-    position:absolute; top:0; left:0; height:100%;
-    width:0%;
-    background:linear-gradient(90deg, var(--amber), #f4efe6);
-    transition:width 1.8s cubic-bezier(.2,.8,.2,1);
-  }
-  .meter-ticks{
-    display:flex; justify-content:space-between;
-    margin-top:8px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.65rem; color:#8ea59c;
+    color:#dbe5e1;
   }
 
   /* ---------- SECTION shells ---------- */
@@ -151,7 +140,6 @@
   .reveal.in{opacity:1; transform:none;}
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1; transform:none; transition:none;}
-    .meter-fill{transition:none;}
   }
 
   /* ---------- Services ---------- */
@@ -162,7 +150,7 @@
   .service{background:var(--paper); padding:34px 30px;}
   .service .code{
     font-family:'IBM Plex Mono', monospace;
-    font-size:0.75rem; color:var(--amber); font-weight:500;
+    font-size:0.75rem; color:var(--brown); font-weight:500;
     letter-spacing:0.06em;
   }
   .service h3{font-size:1.22rem; margin-top:10px; color:var(--teal);}
@@ -171,7 +159,7 @@
 
   /* ---------- Research (brown panel) ---------- */
   .research{background:var(--brown); color:#f1e9df;}
-  .research .eyebrow{color:var(--amber);}
+  .research .eyebrow{color:#d9c3a3;}
   .research h2{color:#ffffff;}
   .research .grid{
     display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:12px;
@@ -182,7 +170,7 @@
     display:inline-block; font-family:'IBM Plex Mono', monospace;
     font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
     border:1px solid var(--line-on-dark); padding:5px 10px; margin:3px 6px 3px 0;
-    color:#e8c9a6;
+    color:#d9c3a3;
   }
   @media (max-width:820px){ .research .grid{grid-template-columns:1fr;} }
 
@@ -215,7 +203,7 @@
     font-size:0.88rem;
     transition:border-color .15s ease, color .15s ease;
   }
-  .chip:hover{border-color:var(--amber); color:var(--amber);}
+  .chip:hover{border-color:#e0b585; color:#e0b585;}
   .foot-base{
     margin-top:64px; padding-top:22px; border-top:1px solid var(--line-on-dark);
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
@@ -241,23 +229,20 @@
   <div class="wrap">
     <p class="eyebrow">Specialist Systems Advisory · Sub-Saharan Africa</p>
     <h1>Matt Thomson</h1>
-    <p class="role">Managing Transitions — Aid-Dependency Exits · Health Networks · Localisation</p>
-    <p class="lede">I design the handover: the frameworks that move regional NGOs and health networks off donor grants and into sovereign, self-sustaining operating models — without breaking the service in the process.</p>
+    <p class="role">Managing Transitions: Aid-Dependency Exits · Health Networks · Localisation</p>
+    <p class="lede">I design the handover. The frameworks that move regional NGOs and health networks off donor grants and into sovereign, self-sustaining operating models, without breaking the service in the process.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="https://wa.me/447447614768">Start a conversation</a>
       <a class="btn btn-ghost" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
     </div>
 
-    <div class="meter">
-      <div class="meter-labels">
-        <span>Donor-Dependent</span>
-        <span>Sovereign Operating Model</span>
-      </div>
-      <div class="meter-track">
-        <div class="meter-fill" id="meterFill"></div>
-      </div>
-      <div class="meter-ticks">
-        <span>Month 0</span><span>Month 12</span><span>Month 24</span>
+    <div class="field-strip">
+      <div class="label">Active field presence</div>
+      <div class="field-tags">
+        <span class="field-tag">The Gambia</span>
+        <span class="field-tag">Uganda</span>
+        <span class="field-tag">Kenya</span>
+        <span class="field-tag">Tanzania</span>
       </div>
     </div>
   </div>
@@ -271,22 +256,22 @@
     </div>
     <div class="services reveal">
       <div class="service">
-        <div class="code">AD — EXIT ARCHITECTURE</div>
+        <div class="code">AD · EXIT ARCHITECTURE</div>
         <h3>Aid-Dependency & Exit Architecture</h3>
-        <p>12-to-24-month handover frameworks that move regional NGOs and healthcare networks off donor grants and into sovereign, self-sustaining operating models — without service disruption.</p>
+        <p>12-to-24-month handover frameworks that move regional NGOs and healthcare networks off donor grants and into sovereign, self-sustaining operating models, with no disruption to service.</p>
       </div>
       <div class="service">
-        <div class="code">HT — LOCALISATION</div>
+        <div class="code">HT · LOCALISATION</div>
         <h3>Health Tech & Supply Chain Localisation</h3>
         <p>Adapting global health hardware, digital tools, and assistive technology (P&O) workflows to run reliably within local Sub-Saharan material and technical constraints.</p>
       </div>
       <div class="service">
-        <div class="code">OC — OUTCOMES</div>
+        <div class="code">OC · OUTCOMES</div>
         <h3>Outcomes Conversion Engine</h3>
-        <p>Translating transactional field outputs into donor-defensible, longitudinal impact metrics — the evidence modern outcome-based funding requires.</p>
+        <p>Translating transactional field outputs into donor-defensible, longitudinal impact metrics: the evidence modern outcome-based funding requires.</p>
       </div>
       <div class="service">
-        <div class="code">PE — POLITICAL ECONOMY</div>
+        <div class="code">PE · POLITICAL ECONOMY</div>
         <h3>Fragile State Political Economy</h3>
         <p>Rapid political economy analysis and governance risk clearance across complex, parallel, or non-state jurisdictions.</p>
       </div>
@@ -303,7 +288,7 @@
     <div class="grid reveal">
       <div>
         <p>My PhD investigates the <strong>politics of localisation</strong> in Sub-Saharan Africa, focused on assistive technology (AT) and prosthetics & orthotics (P&O) networks across East and West Africa.</p>
-        <p>Rather than treating localisation as an ethical promise or a donor checklist, I examine how it functions as <strong>governance-in-practice</strong>. Grounded in critical realism and political economy, the thesis shows how aid frameworks often redistribute administrative labour, reporting burdens, and risk downward — without shifting real financial control or decision-making power.</p>
+        <p>Rather than treating localisation as an ethical promise or a donor checklist, I examine how it functions as <strong>governance-in-practice</strong>. Grounded in critical realism and political economy, the thesis shows how aid frameworks often redistribute administrative labour, reporting burdens, and risk downward, without shifting real financial control or decision-making power.</p>
         <div style="margin-top:20px;">
           <span class="thesis-tag">Critical Realism</span>
           <span class="thesis-tag">Political Economy</span>
@@ -311,8 +296,8 @@
         </div>
       </div>
       <div>
-        <p>Crucially, the work explores how frontline actors exercise genuine agency within these limits — harnessing structural constraints through everyday material adaptations, informal workarounds, and tactical negotiation to sustain care and keep local health systems afloat.</p>
-        <p>I bridge these frameworks with field experience across <strong>The Gambia, Uganda, Kenya, and Tanzania</strong>, translating doctoral research into essays and strategic breakdowns for practitioners, evaluators, and donors — unpacking decolonial policy rhetoric, supply chain realities, and aid-dependency exits.</p>
+        <p>Crucially, the work explores how frontline actors exercise genuine agency within these limits, harnessing structural constraints through everyday material adaptations, informal workarounds, and tactical negotiation to sustain care and keep local health systems afloat.</p>
+        <p>I bridge these frameworks with field experience across <strong>The Gambia, Uganda, Kenya, and Tanzania</strong>, translating doctoral research into essays and strategic breakdowns for practitioners, evaluators, and donors: unpacking decolonial policy rhetoric, supply chain realities, and aid-dependency exits.</p>
         <p style="margin-top:20px; font-size:0.85rem;">Long-form essays and field dispatches are linked below via Substack and LinkedIn.</p>
       </div>
     </div>
@@ -353,7 +338,7 @@
         </div>
         <div class="cred-item">
           <div class="role">Postgraduate Guest Lecturer</div>
-          <p>Bridging international policy with clinical field realities — e.g. University of Southampton MSc Amputation & Prosthetic Rehabilitation.</p>
+          <p>Bridging international policy with clinical field realities, for example the University of Southampton MSc in Amputation & Prosthetic Rehabilitation.</p>
         </div>
         <div class="cred-item">
           <div class="role">MSc Development & Security (Distinction)</div>
@@ -390,13 +375,6 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:0.15});
   reveals.forEach(el=>io.observe(el));
-
-  // handover meter fill on load
-  window.addEventListener('load', ()=>{
-    requestAnimationFrame(()=>{
-      document.getElementById('meterFill').style.width = '62%';
-    });
-  });
 </script>
 
 </body>
