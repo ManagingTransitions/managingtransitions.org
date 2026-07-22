@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Managing Transitions | Matt Thomson</title>
+<meta name="description" content="Independent advisory on aid-dependency exits, outcomes systems, and organisational governance across Sub-Saharan Africa. Led by Matt Thomson.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000000;
+    --teal:#143a33;
+    --brown:#392c23;
+    --amber:#e47b12;
+    --paper:#ffffff;
+    --line: rgba(0,0,0,0.14);
+    --line-on-dark: rgba(255,255,255,0.18);
+    --max: 1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  :focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  .brand{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    letter-spacing:0.04em;
+    font-weight:500;
+  }
+  .brand span{color:var(--brown);}
+  .navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+  .navlinks a{
+    font-size:0.85rem; text-decoration:none; color:var(--brown);
+    font-weight:500;
+  }
+  .navlinks a:hover{color:var(--teal);}
+  @media (max-width:760px){ .navlinks{display:none;} }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    background:var(--teal);
+    color:#f4efe6;
+    padding:84px 0 64px;
+  }
+  header.hero .eyebrow{color:#a9c2bb; margin-bottom:18px;}
+  header.hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.4rem);
+    color:#ffffff;
+    line-height:1.02;
+  }
+  header.hero .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.95rem;
+    color:#c9d8d3;
+    margin-top:14px;
+  }
+  header.hero p.lede{
+    max-width:640px;
+    font-size:1.1rem;
+    color:#dbe5e1;
+    margin-top:22px;
+  }
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:34px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase;
+    text-decoration:none;
+    border:1px solid transparent;
+    transition:transform .15s ease, background .15s ease, color .15s ease;
+  }
+  .btn-primary{background:#f4efe6; color:var(--teal);}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border-color:var(--line-on-dark); color:#f4efe6;}
+  .btn-ghost:hover{border-color:#f4efe6;}
+
+  /* ---------- Field presence (signature element) ---------- */
+  .field-strip{margin-top:50px; max-width:640px; border-top:1px solid var(--line-on-dark); padding-top:16px;}
+  .field-strip .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:#8ea59c; margin-bottom:10px;
+  }
+  .field-tags{display:flex; flex-wrap:wrap; gap:8px 18px;}
+  .field-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem; letter-spacing:0.02em;
+    color:#dbe5e1;
+  }
+  .field-tag::before{content:"· "; color:#5c766e;}
+
+  /* ---------- SECTION shells ---------- */
+  section{padding:80px 0;}
+  .section-head{max-width:640px; margin-bottom:44px;}
+  .section-head .eyebrow{margin-bottom:12px;}
+  .section-head h2{font-size:clamp(1.6rem, 3.2vw, 2.2rem);}
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+  /* ---------- Services (quiet, ledger-style list, no colour blocks) ---------- */
+  .services{border-top:1px solid var(--line);}
+  .service{
+    display:grid; grid-template-columns:140px 1fr; gap:24px;
+    padding:26px 0; border-bottom:1px solid var(--line);
+  }
+  .service .code{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem; color:var(--brown); font-weight:500;
+    letter-spacing:0.06em; padding-top:4px;
+  }
+  .service h3{font-size:1.2rem; color:var(--ink);}
+  .service p{margin-top:8px; font-size:0.96rem; color:#3a3a38; max-width:56ch;}
+  @media (max-width:640px){ .service{grid-template-columns:1fr; gap:6px;} }
+
+  /* ---------- Approach / methodology ---------- */
+  .approach{background:#fafaf8; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:8px;}
+  .step{background:#fafaf8; padding:26px 22px;}
+  .step .num{font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--teal); font-weight:500;}
+  .step h4{font-family:'Fraunces', serif; font-size:1.05rem; font-weight:600; margin-top:10px;}
+  .step p{font-size:0.88rem; color:#4a4a48; margin-top:8px;}
+  .approach-note{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:#6b6b66; margin-top:22px;}
+  @media (max-width:820px){ .steps{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .steps{grid-template-columns:1fr;} }
+
+  /* ---------- Research (annotation rule, not a colour block) ---------- */
+  .research{border-left:3px solid var(--brown); padding-left:28px;}
+  .research .grid{display:grid; grid-template-columns:1fr 1fr; gap:44px; margin-top:8px;}
+  .research p{color:#2b2b28; font-size:0.98rem;}
+  .research strong{color:var(--teal);}
+  .research .thesis-tag{
+    display:inline-block; font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;
+    border:1px solid var(--line); padding:5px 10px; margin:3px 6px 3px 0;
+    color:#5a4636;
+  }
+  @media (max-width:820px){ .research .grid{grid-template-columns:1fr;} .research{padding-left:20px;} }
+
+  /* ---------- Credentials ---------- */
+  .cred-cols{display:grid; grid-template-columns:1fr 1fr; gap:44px;}
+  .cred-col h3{
+    font-family:'IBM Plex Mono', monospace; font-weight:500;
+    font-size:0.85rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--teal); margin-bottom:18px;
+    border-bottom:1px solid var(--line); padding-bottom:10px;
+  }
+  .cred-item{padding:14px 0; border-bottom:1px solid var(--line);}
+  .cred-item:last-child{border-bottom:none;}
+  .cred-item .role{font-weight:600; font-size:0.98rem;}
+  .cred-item .when{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8a8a86; margin-left:8px;}
+  .cred-item p{margin:6px 0 0; font-size:0.9rem; color:#4a4a48;}
+  @media (max-width:820px){ .cred-cols{grid-template-columns:1fr;} }
+
+  /* ---------- Contact / footer ---------- */
+  footer{background:var(--teal); color:#eef4f1; padding:66px 0 34px;}
+  footer h2{color:#fff; font-size:clamp(1.6rem,3.2vw,2.2rem);}
+  footer p.lede{color:#c9d8d3; max-width:520px; margin-top:14px;}
+  .contact-grid{display:flex; flex-wrap:wrap; gap:12px; margin-top:36px;}
+  .chip{
+    display:flex; align-items:center; gap:8px;
+    padding:11px 18px;
+    border:1px solid var(--line-on-dark);
+    text-decoration:none; color:#eef4f1;
+    font-size:0.88rem;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .chip:hover{border-color:#e0b585; color:#e0b585;}
+  .foot-base{
+    margin-top:58px; padding-top:20px; border-top:1px solid var(--line-on-dark);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8ea59c;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">MANAGING <span>/</span> TRANSITIONS</div>
+    <ul class="navlinks">
+      <li><a href="#advisory">Advisory</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Independent Advisory · Sub-Saharan Africa &amp; the Horn of Africa</p>
+    <h1>Matt Thomson</h1>
+    <p class="role">Managing Transitions: aid-dependency exits, outcomes systems, organisational governance</p>
+    <p class="lede">I help NGOs, donors, and health networks move from donor-dependent delivery to accountable, locally led operating models. Current work runs across The Gambia, Uganda, Kenya, and Tanzania, alongside independent evaluation and outcomes-design engagements further afield.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://wa.me/447447614768">Start a conversation</a>
+      <a class="btn btn-ghost" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+    </div>
+
+    <div class="field-strip">
+      <div class="label">Current field presence</div>
+      <div class="field-tags">
+        <span class="field-tag">The Gambia</span>
+        <span class="field-tag">Uganda</span>
+        <span class="field-tag">Kenya</span>
+        <span class="field-tag">Tanzania</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="advisory">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Advisory Services</p>
+      <h2>Four things I'm actually asked to do.</h2>
+    </div>
+    <div class="services reveal">
+      <div class="service">
+        <div class="code">AD · EXIT DESIGN</div>
+        <div>
+          <h3>Aid-Dependency Exit Design</h3>
+          <p>Designing the handover frameworks that move regional NGO and health networks off multi-year donor grants and into locally owned, self-sustaining operating models, without breaking the service in the process. Built from ongoing work leading multi-country transitions across Uganda, Kenya, and Tanzania.</p>
+        </div>
+      </div>
+      <div class="service">
+        <div class="code">OE · OUTCOMES</div>
+        <div>
+          <h3>Outcomes &amp; Evidence Architecture</h3>
+          <p>Turning activity data (consults, sessions, distributions) into longitudinal outcome evidence donors can actually rely on, at both the individual and population level. Grounded in monitoring and evaluation work for EU-funded health and rehabilitation programmes, plus independent outcomes-design engagements for health platforms operating in fragile or divided systems.</p>
+        </div>
+      </div>
+      <div class="service">
+        <div class="code">GA · GOVERNANCE</div>
+        <div>
+          <h3>Organisational &amp; Governance Advisory</h3>
+          <p>Independent evaluation of NGO structures, board governance, and practitioner-researcher partnerships. Delivered as a strategic advisor to the South West International Development Network, working directly with secretariat staff, boards, and member organisations.</p>
+        </div>
+      </div>
+      <div class="service">
+        <div class="code">PE · POLITICAL ECONOMY</div>
+        <div>
+          <h3>Political Economy &amp; Localisation Analysis</h3>
+          <p>Rapid political economy and governance-risk analysis for programmes operating across fragile, parallel, or non-state systems. Grounded in doctoral research into how localisation actually functions on the ground, not how it reads in a policy paper.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="approach" id="approach">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">How I Work</p>
+      <h2>A short, scoped process. Not an open-ended retainer.</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="num">01</div>
+        <h4>Inception &amp; desk review</h4>
+        <p>Kickoff briefing, review of existing strategy and reporting documents, and interview guides built for each stakeholder tier.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h4>Consultation &amp; data gathering</h4>
+        <p>Semi-structured interviews across the organisation, from board members to frontline partners, alongside a systems audit of internal processes.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h4>Synthesis</h4>
+        <p>Interview evidence triangulated against documentary review, so every finding is verified from more than one angle before it's written up.</p>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h4>Delivery</h4>
+        <p>A full report plus a short, non-technical summary suitable for a board briefing or donor audience.</p>
+      </div>
+    </div>
+    <p class="approach-note">Typical engagements run 12 to 20 working days, scoped and quoted before work begins.</p>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Research &amp; Analysis</p>
+      <h2>Doctoral research, University of Bristol (SPAIS)</h2>
+    </div>
+    <div class="research reveal">
+      <div class="grid">
+        <div>
+          <p>My PhD examines the <strong>politics of localisation</strong> in Sub-Saharan Africa, focused on assistive technology and prosthetics and orthotics networks across East and West Africa.</p>
+          <p>Rather than treating localisation as an ethical promise or a donor checklist, I look at how it actually functions as <strong>governance in practice</strong>: a set of everyday administrative tasks, funding rules, and reporting routines that shape who holds real decision-making power, regardless of what the strategy document says.</p>
+          <div style="margin-top:18px;">
+            <span class="thesis-tag">Critical Realism</span>
+            <span class="thesis-tag">Political Economy</span>
+            <span class="thesis-tag">Governance-in-Practice</span>
+          </div>
+        </div>
+        <div>
+          <p>The research traces this across four levels, from global donors and multilateral agencies, through intermediary NGOs and research hubs, down to frontline clinics and the technicians and patients navigating them day to day.</p>
+          <p>I bridge this with field experience across <strong>The Gambia, Uganda, Kenya, and Tanzania</strong>, and translate it into evaluation methodology, outcomes design, and strategic advice for the organisations actually doing this work.</p>
+          <p style="margin-top:18px; font-size:0.85rem; color:#6b6b66;">Long-form essays and field dispatches are linked below via Substack and LinkedIn.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Credentials &amp; Track Record</p>
+      <h2>Operational leadership meets academic depth.</h2>
+    </div>
+    <div class="cred-cols reveal">
+      <div class="cred-col">
+        <h3>Operational Leadership &amp; Governance</h3>
+        <div class="cred-item">
+          <div class="role">Community Partnerships &amp; Research Manager, STAND<span class="when">2022 – present</span></div>
+          <p>Co-manage a multi-year, EU co-financed programme in The Gambia, and lead multi-country transitions across Uganda, Kenya, and Tanzania, moving regional grassroots networks from grant dependency to self-sustaining operating models.</p>
+        </div>
+        <div class="cred-item">
+          <div class="role">Strategic Advisor, South West International Development Network<span class="when">ongoing</span></div>
+          <p>Freelance consultancy helping NGOs evaluate their organisational structures and build effective practitioner-researcher partnerships.</p>
+        </div>
+        <div class="cred-item">
+          <div class="role">Statutory Bid Writing &amp; Institutional Growth</div>
+          <p>Documented success authoring high-value institutional bids and designing strategies that scale smaller NGO operations into larger institutional footprints.</p>
+        </div>
+      </div>
+      <div class="cred-col">
+        <h3>Academic &amp; Institutional Appointments</h3>
+        <div class="cred-item">
+          <div class="role">PhD Researcher &amp; Lecturer (Politics), University of Bristol<span class="when">2024 – present</span></div>
+          <p>School of Sociology, Politics and International Studies (SPAIS), examining power dynamics, capital flows, and the politics of localisation.</p>
+        </div>
+        <div class="cred-item">
+          <div class="role">Exceed Research Network (ERN)</div>
+          <p>Contributor partnering with universities, health ministries, and NGOs to build the evidence base for prosthetics and orthotics services in low-resource settings.</p>
+        </div>
+        <div class="cred-item">
+          <div class="role">Postgraduate Guest Lecturer</div>
+          <p>University of Southampton, MSc in Amputation &amp; Prosthetic Rehabilitation, bridging international policy with clinical field realities.</p>
+        </div>
+        <div class="cred-item">
+          <div class="role">MSc Development &amp; Security (Distinction), University of Bristol<span class="when">2019 – 2020</span></div>
+          <p>Thesis on how small-scale NGOs maximise structural impact through cross-sector partnership design in Uganda.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="eyebrow" style="color:#a9c2bb;">Get In Touch</p>
+    <h2>Ready to plan the exit?</h2>
+    <p class="lede">Reach out directly, or book time to talk through your network's transition.</p>
+    <div class="contact-grid">
+      <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+      <a class="chip" href="https://wa.me/447447614768">WhatsApp</a>
+      <a class="chip" href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
+      <a class="chip" href="https://1drv.ms/b/c/82cbcc7f9a27cb68/IQCsw3sRk2pYTYlP2Is05E7cAbaCtbMCvFCJ1GWfNnYl1Lc">CV</a>
+      <a class="chip" href="https://www.instagram.com/_mattthomson">Instagram</a>
+    </div>
+    <div class="foot-base">
+      <span>MANAGING TRANSITIONS © 2026</span>
+      <span>managingtransitions.org</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  reveals.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
