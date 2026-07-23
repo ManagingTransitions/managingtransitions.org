@@ -124,6 +124,17 @@
   footer p{
     font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:#8a8a86; margin:0;
   }
+
+  .floating-footer{
+    position:fixed; bottom:0; left:0; right:0; z-index:200;
+    background:var(--brown); color:#f4efe6;
+    padding:12px 20px; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    box-shadow:0 -3px 14px rgba(0,0,0,0.2);
+  }
+  .floating-footer a{color:var(--sand); text-decoration:none; border-bottom:1px solid var(--sand); margin-left:6px;}
+  .floating-footer a:hover{color:#f4efe6; border-color:#f4efe6;}
+  body{padding-bottom:56px;}
 </style>
 </head>
 <body>
@@ -285,6 +296,10 @@
     <p>Matt Thomson · matt@managingtransitions.org · +44 7447 614768 · Private &amp; Confidential</p>
   </div>
 </footer>
+
+<div class="floating-footer">
+  This is the concept note.<a href="ts-outcomes-mockup.html">See the interactive mockup →</a>
+</div>
 
 <script>
   const reveals = document.querySelectorAll('.reveal');
