@@ -25,6 +25,13 @@
   .disclaimer{background:#3a1f10; color:#f6ddc0; padding:14px 0; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:0.76rem; letter-spacing:0.02em; border-bottom:3px solid var(--sand);}
   .disclaimer strong{color:#fff;}
 
+  .back-link-row{background:#fafaf8; border-bottom:1px solid var(--line); padding:8px 0; text-align:center;}
+  .back-link-row a{
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:var(--teal);
+    text-decoration:none; border-bottom:1px solid var(--line);
+  }
+  .back-link-row a:hover{border-color:var(--teal);}
+
   header.hero{background:var(--teal); color:#f4efe6; padding:40px 0 34px;}
   header.hero .eyebrow{color:#a9c2bb; margin-bottom:10px;}
   header.hero h1{font-size:clamp(1.6rem, 4vw, 2.2rem); color:#fff;}
@@ -187,6 +194,8 @@
   .tile-detail{padding:0 18px 18px; font-size:0.86rem; color:#3a3a38;}
   .tile-detail p{margin-top:10px;}
   .tile-link{display:inline-block; margin-top:8px; font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--teal); text-decoration:underline;}
+  .chart-legend-mini{display:flex; gap:14px; font-size:0.72rem; color:#4a4a48; margin-bottom:6px;}
+  .chart-legend-mini .dot{width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:5px;}
 
   .floating-footer{
     position:fixed; bottom:0; left:0; right:0; z-index:200;
@@ -207,6 +216,10 @@
 <body>
 
 <div class="disclaimer"><strong>Illustrative mockup, not live data.</strong> Every figure, name, and record on this page is fabricated for design purposes only.</div>
+
+<div class="back-link-row">
+  <a href="https://managingtransitions.org" target="_blank" rel="noopener">← managingtransitions.org (opens in a new tab)</a>
+</div>
 
 <header class="hero">
   <div class="wrap">
@@ -459,7 +472,7 @@
     </section>
 
     <section>
-      <div class="section-head"><p class="eyebrow">Status Tiles</p><h2>Tap any tile for the detail behind it.</h2></div>
+      <div class="section-head"><p class="eyebrow">Status Tiles</p><h2>Tap any tile for the chart behind it.</h2></div>
       <div class="tile-grid">
 
         <details class="tile tile-good">
@@ -469,11 +482,11 @@
             <span class="tile-note">30-day rate, up from 58%</span>
           </summary>
           <div class="tile-detail">
-            <svg class="svg-chart" viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
-              <polyline points="10,60 88,52 166,42 244,34 322,27 390,24" fill="none" stroke="#0c231f" stroke-width="2.5"/>
-              <polyline points="10,80 88,74 166,68 244,62 322,56 390,52" fill="none" stroke="#c9a877" stroke-width="2.5"/>
-            </svg>
-            <p>30-day: 58% → 71%. 90-day: 42% → 58%. Both rising, but 90-day still lags 30-day by 13 points, worth asking whether the second follow-up call is the one slipping.</p>
+            <div class="chart-legend-mini">
+              <span><span class="dot" style="background:#0c231f;"></span>30-day</span>
+              <span><span class="dot" style="background:#c9a877;"></span>90-day</span>
+            </div>
+            <svg id="tileChartFollowup" class="svg-chart" viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg"></svg>
           </div>
         </details>
 
@@ -484,10 +497,9 @@
             <span class="tile-note">Referred → outcome recorded</span>
           </summary>
           <div class="tile-detail">
-            <div class="bar-row"><div class="bar-label">Referred</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div><div class="bar-value">953</div></div>
-            <div class="bar-row"><div class="bar-label">Attended</div><div class="bar-track"><div class="bar-fill" style="width:72%;"></div></div><div class="bar-value">687</div></div>
-            <div class="bar-row"><div class="bar-label">Outcome recorded</div><div class="bar-track"><div class="bar-fill alt" style="width:57%;"></div></div><div class="bar-value">540</div></div>
-            <p>72% attend. Of those, only 79% get an outcome actually logged, the second drop-off, not the first, is where the loss concentrates.</p>
+            <div class="bar-row"><div class="bar-label">Referred</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div><div class="bar-value">953 (100%)</div></div>
+            <div class="bar-row"><div class="bar-label">Attended</div><div class="bar-track"><div class="bar-fill" style="width:72%;"></div></div><div class="bar-value">687 (72%)</div></div>
+            <div class="bar-row"><div class="bar-label">Outcome recorded</div><div class="bar-track"><div class="bar-fill alt" style="width:57%;"></div></div><div class="bar-value">540 (57%)</div></div>
           </div>
         </details>
 
@@ -498,11 +510,11 @@
             <span class="tile-note">Full EQ-5D sets captured</span>
           </summary>
           <div class="tile-detail">
-            <svg class="svg-chart" viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
-              <polyline points="10,68 88,58 166,48 244,38 322,26 390,14" fill="none" stroke="#0c231f" stroke-width="2.5"/>
-              <polyline points="10,76 88,66 166,56 244,44 322,32 390,20" fill="none" stroke="#c9a877" stroke-width="2.5"/>
-            </svg>
-            <p>Full EQ-5D capture: 61% → 83%. Duplicate shared-phone ID resolution: 52% → 80%. Both improving, which matters because a rising wellbeing score means less if it's rising from a shrinking, low base.</p>
+            <div class="chart-legend-mini">
+              <span><span class="dot" style="background:#0c231f;"></span>Full EQ-5D captured</span>
+              <span><span class="dot" style="background:#c9a877;"></span>Duplicate IDs resolved</span>
+            </div>
+            <svg id="tileChartCompleteness" class="svg-chart" viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg"></svg>
           </div>
         </details>
 
@@ -510,13 +522,14 @@
           <summary>
             <span class="tile-label">Coverage Gap</span>
             <span class="tile-value">19%</span>
-            <span class="tile-note">Worst segment, still a third of average</span>
+            <span class="tile-note">Worst segment vs. system average</span>
           </summary>
           <div class="tile-detail">
-            <svg class="svg-chart" viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
-              <polyline points="10,74 88,71 166,65 244,61 322,50 390,38" fill="none" stroke="#c9a877" stroke-width="2.5"/>
-            </svg>
-            <p>Women 65+, rural, out of work: 11% → 19% over six periods. Narrowing, slowly, still a third of the system-wide average. Full explorer below.</p>
+            <div class="chart-legend-mini">
+              <span><span class="dot" style="background:#0c231f;"></span>System-wide average</span>
+              <span><span class="dot" style="background:#c9a877;"></span>Women 65+, rural, out of work</span>
+            </div>
+            <svg id="tileChartCoverage" class="svg-chart" viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg"></svg>
             <a href="#coverageExplorer" class="tile-link">Open the coverage explorer ↓</a>
           </div>
         </details>
@@ -528,11 +541,25 @@
             <span class="tile-note">Gap between platforms, narrowing</span>
           </summary>
           <div class="tile-detail">
-            <svg class="svg-chart" viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
-              <polyline points="10,58 88,48 166,36 244,26 322,17 390,10" fill="none" stroke="#0c231f" stroke-width="2.5"/>
-              <polyline points="10,42 88,34 166,27 244,19 322,12 390,6" fill="none" stroke="#c9a877" stroke-width="2.5"/>
-            </svg>
-            <p>Wellbeing index gap between the two platforms narrowed from 0.07 to 0.04 over six periods. Converging, not diverging, worth re-checking once volumes are larger before calling it settled.</p>
+            <div class="chart-legend-mini">
+              <span><span class="dot" style="background:#0c231f;"></span>Somalia · EVC-Plus</span>
+              <span><span class="dot" style="background:#c9a877;"></span>Somaliland · ZAAD</span>
+            </div>
+            <svg id="tileChartConvergence" class="svg-chart" viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg"></svg>
+          </div>
+        </details>
+
+        <details class="tile tile-good">
+          <summary>
+            <span class="tile-label">Overall Wellbeing</span>
+            <span class="tile-value">0.67 <span class="tile-arrow">↑</span></span>
+            <span class="tile-note">Blended index, up from 0.50</span>
+          </summary>
+          <div class="tile-detail">
+            <div class="chart-legend-mini">
+              <span><span class="dot" style="background:#0c231f;"></span>Blended wellbeing index</span>
+            </div>
+            <svg id="tileChartWellbeing" class="svg-chart" viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg"></svg>
           </div>
         </details>
 
@@ -593,7 +620,7 @@
 
 <div class="floating-footer" id="floatingFooter">
   <span>This mockup follows up on the July 2026 concept note for Baano &amp; Shaafi.</span>
-  <span><a href="ts-briefing.html">View full proposal →</a> <button id="ffClose" aria-label="Dismiss">×</button></span>
+  <span><a href="ts-briefing.html">View full proposal →</a></span>
 </div>
 
 <div class="wrap">
@@ -804,8 +831,78 @@
   });
   renderTrendChart();
 
+  /* ---------- Reusable axis chart for status tiles ---------- */
+  function drawAxisChart(svgId, series, opts){
+    const svg = document.getElementById(svgId);
+    if(!svg) return;
+    svg.innerHTML = '';
+    const {min, max, fmt} = opts;
+    const left = 40, right = 392, top = 12, bottom = 96;
+    const ns = 'http://www.w3.org/2000/svg';
+    function el(tag, attrs){
+      const e = document.createElementNS(ns, tag);
+      Object.keys(attrs).forEach(k=>e.setAttribute(k, attrs[k]));
+      return e;
+    }
+    // gridlines + y-axis labels (3 levels)
+    [1, 0.5, 0].forEach(frac=>{
+      const y = top + (1-frac)*(bottom-top);
+      const val = min + frac*(max-min);
+      svg.appendChild(el('line', {x1:left, y1:y, x2:right, y2:y, stroke: frac===0 ? '#dedad2' : '#eef1ef', 'stroke-width':1}));
+      const t = el('text', {x:left-6, y:y+3, 'font-family':'IBM Plex Mono, monospace', 'font-size':9, fill:'#8a8a86', 'text-anchor':'end'});
+      t.textContent = fmt(val);
+      svg.appendChild(t);
+    });
+    // x-axis period labels
+    const xs = [left, left+(right-left)*0.2, left+(right-left)*0.4, left+(right-left)*0.6, left+(right-left)*0.8, right];
+    ['P1','P2','P3','P4','P5','P6'].forEach((lab,i)=>{
+      const t = el('text', {x:xs[i], y:114, 'font-family':'IBM Plex Mono, monospace', 'font-size':9, fill:'#8a8a86', 'text-anchor': i===0 ? 'start' : (i===5 ? 'end' : 'middle')});
+      t.textContent = lab;
+      svg.appendChild(t);
+    });
+    // series lines + start/end value labels
+    series.forEach(s=>{
+      const yFor = v => top + (1 - (v-min)/(max-min)) * (bottom-top);
+      const points = s.vals.map((v,i)=> `${xs[i].toFixed(1)},${yFor(v).toFixed(1)}`).join(' ');
+      const poly = el('polyline', {points, fill:'none', stroke:s.color, 'stroke-width':2.5});
+      if(s.dash) poly.setAttribute('stroke-dasharray','6,4');
+      svg.appendChild(poly);
+      const startLabel = el('text', {x:xs[0], y:yFor(s.vals[0])-6, 'font-family':'IBM Plex Mono, monospace', 'font-size':10, fill:s.color, 'font-weight':600, 'text-anchor':'start'});
+      startLabel.textContent = fmt(s.vals[0]);
+      svg.appendChild(startLabel);
+      const endLabel = el('text', {x:xs[5], y:yFor(s.vals[5])-6, 'font-family':'IBM Plex Mono, monospace', 'font-size':10, fill:s.color, 'font-weight':600, 'text-anchor':'end'});
+      endLabel.textContent = fmt(s.vals[5]);
+      svg.appendChild(endLabel);
+    });
+  }
 
-  /* ---------- EQ-5D patient table ---------- */
+  const pctFmt = v => Math.round(v) + '%';
+  const idxFmt = v => v.toFixed(2);
+
+  drawAxisChart('tileChartFollowup', [
+    {vals:[58,61,65,68,70,71], color:'#0c231f', dash:false},
+    {vals:[42,46,50,53,56,58], color:'#c9a877', dash:false}
+  ], {min:0, max:100, fmt:pctFmt});
+
+  drawAxisChart('tileChartCompleteness', [
+    {vals:[61,66,70,74,79,83], color:'#0c231f', dash:false},
+    {vals:[52,58,63,69,74,80], color:'#c9a877', dash:false}
+  ], {min:0, max:100, fmt:pctFmt});
+
+  drawAxisChart('tileChartCoverage', [
+    {vals:[55,57,59,61,63,64], color:'#0c231f', dash:false},
+    {vals:[11,12,14,15,17,19], color:'#c9a877', dash:false}
+  ], {min:0, max:100, fmt:pctFmt});
+
+  drawAxisChart('tileChartConvergence', [
+    {vals:[0.48,0.51,0.55,0.58,0.61,0.64], color:'#0c231f', dash:false},
+    {vals:[0.55,0.58,0.60,0.62,0.65,0.68], color:'#c9a877', dash:false}
+  ], {min:0.3, max:0.8, fmt:idxFmt});
+
+  drawAxisChart('tileChartWellbeing', [
+    {vals:[0.50,0.54,0.58,0.61,0.64,0.67], color:'#0c231f', dash:false}
+  ], {min:0.3, max:0.8, fmt:idxFmt});
+
   const eq5d = {
     'Mobility':            [3,2,4,3,2],
     'Self-care':           [1,1,2,2,2],
@@ -890,15 +987,6 @@
       `<tr><td>${r.label}</td><td class="center">${r.rate.toFixed(0)}%</td></tr>`
     ).join('');
   })();
-
-  /* ---------- floating footer dismiss ---------- */
-  const ffClose = document.getElementById('ffClose');
-  if(ffClose){
-    ffClose.addEventListener('click', ()=>{
-      document.getElementById('floatingFooter').style.display = 'none';
-      document.body.style.paddingBottom = '0';
-    });
-  }
 </script>
 
 </body>
