@@ -10,13 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#000000;
-    --teal:#0c231f;
-    --brown:#392c23;
-    --sand:#c9a877;
-    --paper:#ffffff;
-    --line: rgba(0,0,0,0.14);
-    --line-on-dark: rgba(255,255,255,0.18);
+    --ink:#000000; --teal:#0c231f; --brown:#392c23; --sand:#c9a877;
+    --paper:#ffffff; --line: rgba(0,0,0,0.14); --line-on-dark: rgba(255,255,255,0.18);
     --max: 880px;
   }
   *{box-sizing:border-box;}
@@ -57,89 +52,73 @@
     border-top:1px solid var(--line-on-dark); padding-top:18px;
   }
 
-  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  section{padding:52px 0; border-bottom:1px solid var(--line);}
   section:last-of-type{border-bottom:none;}
   .section-head{margin-bottom:20px;}
-  .section-head h2{font-size:clamp(1.3rem, 2.6vw, 1.7rem); margin-top:8px;}
+  .section-head h2{font-size:clamp(1.25rem, 2.5vw, 1.6rem); margin-top:8px;}
   p{color:#2b2b28; font-size:1rem;}
 
   .callout{
-    border-left:3px solid var(--sand); background:#fbf7f1; padding:18px 22px;
-    font-size:0.98rem; color:#3a2f22;
+    border-left:3px solid var(--sand); background:#fbf7f1; padding:16px 20px;
+    font-size:0.96rem; color:#3a2f22;
   }
 
-  /* ---------- Pillars (expandable) ---------- */
-  .pillar{border:1px solid var(--line); margin-bottom:-1px;}
-  .pillar summary{
-    list-style:none; cursor:pointer; padding:20px 22px;
+  /* ---------- Approach parts (expandable) ---------- */
+  .part{border:1px solid var(--line); margin-bottom:-1px;}
+  .part summary{
+    list-style:none; cursor:pointer; padding:18px 20px;
     display:flex; align-items:center; justify-content:space-between; gap:16px;
   }
-  .pillar summary::-webkit-details-marker{display:none;}
-  .pillar .num{font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--teal); font-weight:500; min-width:26px;}
-  .pillar h3{font-size:1.05rem; flex:1;}
-  .pillar .chev{font-family:'IBM Plex Mono', monospace; font-size:0.8rem; color:#8a8a86; transition:transform .2s ease;}
-  .pillar[open] .chev{transform:rotate(45deg);}
-  .pillar .body{padding:0 22px 22px 66px; font-size:0.96rem; color:#3a3a38;}
+  .part summary::-webkit-details-marker{display:none;}
+  .part .num{font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--teal); font-weight:500; min-width:22px;}
+  .part h3{font-size:1.03rem; flex:1;}
+  .part .chev{font-family:'IBM Plex Mono', monospace; font-size:0.8rem; color:#8a8a86; transition:transform .2s ease;}
+  .part[open] .chev{transform:rotate(45deg);}
+  .part .body{padding:0 20px 20px 62px; font-size:0.95rem; color:#3a3a38;}
 
   /* ---------- Dual export toggle ---------- */
-  .toggle-wrap{margin-top:18px;}
+  .toggle-wrap{margin-top:16px;}
   .toggle-btns{display:flex; gap:1px; background:var(--line); border:1px solid var(--line); width:fit-content;}
   .toggle-btn{
-    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.03em;
-    padding:10px 18px; background:#fff; border:none; cursor:pointer; color:#4a4a48;
+    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; letter-spacing:0.02em;
+    padding:9px 16px; background:#fff; border:none; cursor:pointer; color:#4a4a48;
     transition:background .18s ease, color .18s ease;
   }
   .toggle-btn.active{background:var(--teal); color:#fff;}
-  .toggle-panel{display:none; border:1px solid var(--line); border-top:none; padding:22px;}
+  .toggle-panel{display:none; border:1px solid var(--line); border-top:none; padding:18px 20px;}
   .toggle-panel.active{display:block;}
   .toggle-panel dl{margin:0;}
-  .toggle-panel dt{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--teal); margin-top:14px;}
+  .toggle-panel dt{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--teal); margin-top:12px;}
   .toggle-panel dt:first-child{margin-top:0;}
-  .toggle-panel dd{margin:4px 0 0; font-size:0.95rem; color:#3a3a38;}
+  .toggle-panel dd{margin:4px 0 0; font-size:0.94rem; color:#3a3a38;}
+
+  /* ---------- Deliverables / list ---------- */
+  .list-plain{list-style:none; padding:0; margin:16px 0 0;}
+  .list-plain li{
+    padding:12px 0 12px 26px; border-bottom:1px solid var(--line);
+    position:relative; font-size:0.96rem; color:#2b2b28;
+  }
+  .list-plain li::before{content:"–"; position:absolute; left:0; color:var(--sand); font-family:'IBM Plex Mono', monospace;}
+  .list-plain li:last-child{border-bottom:none;}
 
   /* ---------- Timeline ---------- */
-  .timeline{border-left:2px solid var(--line); margin-left:6px; margin-top:20px;}
-  .tl-item{position:relative; padding:0 0 28px 26px;}
+  .timeline{border-left:2px solid var(--line); margin-left:6px; margin-top:18px;}
+  .tl-item{position:relative; padding:0 0 24px 24px;}
   .tl-item:last-child{padding-bottom:0;}
   .tl-item::before{
     content:""; position:absolute; left:-7px; top:2px; width:12px; height:12px;
     border-radius:50%; background:var(--sand); border:2px solid var(--teal);
   }
-  .tl-item .label{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--teal);}
-  .tl-item h4{font-size:1.02rem; margin-top:6px;}
-  .tl-item p{font-size:0.92rem; margin-top:6px;}
+  .tl-item .label{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--teal);}
+  .tl-item p{font-size:0.94rem; margin-top:6px;}
 
-  /* ---------- Deliverables ---------- */
-  .deliverables{list-style:none; padding:0; margin:18px 0 0;}
-  .deliverables li{
-    padding:12px 0 12px 30px; border-bottom:1px solid var(--line);
-    position:relative; font-size:0.96rem; color:#2b2b28;
-  }
-  .deliverables li::before{content:"—"; position:absolute; left:0; color:var(--sand); font-family:'IBM Plex Mono', monospace;}
-  .deliverables li:last-child{border-bottom:none;}
-
-  /* ---------- Stat ---------- */
-  .stat-row{display:flex; gap:36px; flex-wrap:wrap; margin-top:18px;}
-  .stat{font-family:'IBM Plex Mono', monospace;}
-  .stat .num{font-size:1.5rem; color:var(--teal); font-weight:500;}
-  .stat .label{font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:#6b6b66; margin-top:2px;}
-
-  /* ---------- The Ask / CTA ---------- */
-  .ask{background:var(--teal); color:#f4efe6; padding:56px 0; border-radius:0;}
-  .ask h2{color:#fff; font-size:clamp(1.4rem,3vw,1.9rem);}
-  .ask p{color:#dbe5e1;}
-  .ask .date-flag{
-    display:inline-flex; align-items:center; gap:8px; margin-top:18px;
-    font-family:'IBM Plex Mono', monospace; font-size:0.82rem; color:#e0c9a3;
-    border:1px solid var(--line-on-dark); padding:9px 16px;
-  }
-  .btn{
-    display:inline-flex; align-items:center; gap:8px; margin-top:28px;
+  a.btn{
+    display:inline-flex; align-items:center; gap:8px; margin-top:8px;
     padding:14px 24px; font-family:'IBM Plex Mono', monospace; font-size:0.82rem;
     letter-spacing:0.04em; text-transform:uppercase; text-decoration:none;
-    background:#f4efe6; color:var(--teal); transition:transform .18s ease, box-shadow .18s ease;
+    background:var(--teal); color:#fff; transition:transform .18s ease, box-shadow .18s ease;
   }
-  .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,0.22);}
+  a.btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,0.22);}
 
   footer{padding:36px 0; text-align:center;}
   footer p{
@@ -154,7 +133,7 @@
     <span class="confidential">Concept Note · Private &amp; Confidential</span>
     <p class="eyebrow">Prepared for Professor Eric Herring &amp; Transparency Solutions</p>
     <h1>Capturing Outcomes in an Emerging, Parallel Health System</h1>
-    <p class="subtitle">Baano (Somalia) &amp; Shaafi (Somaliland): From Transactional Outputs to Longitudinal Impact</p>
+    <p class="subtitle">Baano (Somalia) and Shaafi (Somaliland): moving from outputs to outcomes</p>
     <div class="meta-row">
       <span>Prepared by Matt Thomson</span>
       <span>PhD Researcher, Politics of Localisation, University of Bristol</span>
@@ -166,13 +145,13 @@
 <section>
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">The Opportunity</p>
-      <h2>Two platforms, hundreds of thousands of patients, no outcomes evidence yet.</h2>
+      <p class="eyebrow">Gap Analysis</p>
+      <h2>Activity is measured. Outcomes aren't, yet.</h2>
     </div>
     <div class="reveal">
-      <p>Baano and Shaafi ride the Horn of Africa's most resilient infrastructure, Hormuud's EVC-Plus in Mogadishu and Telesom's ZAAD in Hargeisa, reaching patients across a sovereignty divide that few institutions can bridge. But both platforms currently measure activity, not impact: calls completed, consults booked, prescriptions issued.</p>
-      <p style="margin-top:14px;">For corporate health partners, Ministries of Health, and donors increasingly funding outcomes rather than outputs, this gap limits the platforms' commercial defensibility and undersells the asset Transparency Solutions has already built.</p>
-      <p style="margin-top:14px;">This note proposes a Somali-led <strong>Outcomes Conversion Engine</strong>: a logical framework and technical specification that converts a single IVR call or EVC-Plus consult into longitudinal, trustworthy evidence of patient wellbeing, without requiring Somalia and Somaliland to become the same system.</p>
+      <p>Baano and Shaafi sit on top of the region's most reliable infrastructure: Hormuud's EVC-Plus in Mogadishu, and Telesom's ZAAD in Hargeisa. Between them, the two platforms already reach hundreds of thousands of patients across a divide that most institutions struggle to operate across at all. What neither platform yet does is measure what happens after the call ends. Both track activity, such as consults booked or prescriptions issued. Neither currently tracks whether a patient's wellbeing has improved, or the population's health has changed.</p>
+      <p style="margin-top:14px;">That gap matters in macro terms as much as on an individual basis. Corporate partners, Ministries of Health, and third-party stakeholders increasingly ask health practitioners to justify budgets against outcomes rather than activity, and every month this goes unmeasured is a month Baano and Shaafi under-sell what has already been built.</p>
+      <p style="margin-top:14px;">This note sets out a proposed design sprint: the logical framework and technical specification for an outcomes engine that converts a single IVR call or EVC-Plus consult into a longitudinal record of patient wellbeing, without forcing Somalia's and Somaliland's different systems into one shape.</p>
     </div>
   </div>
 </section>
@@ -180,67 +159,55 @@
 <section>
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">The Risk of Standing Still</p>
-    </div>
-    <div class="callout reveal">
-      Every month spent output-only leaves Baano and Shaafi's strongest asset, proof of impact, unmeasured and unmonetised, weakening their position with the corporate and donor partners who will fund the platforms' next phase of growth only against outcomes they can trust.
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Three Pillars of the Design Sprint</p>
-      <h2>Tap each pillar for the detail.</h2>
+      <p class="eyebrow">Proposed Approach</p>
+      <h2>Three linked parts.</h2>
     </div>
     <div class="reveal">
-      <details class="pillar" open>
+      <details class="part" open>
         <summary>
           <span class="num">01</span>
-          <h3>Population-Level Outcomes Architecture</h3>
+          <h3>Population-Level Outcomes Layer</h3>
           <span class="chev">+</span>
         </summary>
-        <div class="body">An aggregate outcomes layer, distinct from either platform's patient management system, built for disaggregation by gender, age, geography, and displacement status (IDP vs. host community). Designed for DHIS2-compatible export, so the engine strengthens Ministry of Health reporting rather than competing with it.</div>
+        <div class="body">A layer separate from either platform's existing patient management system. This is where aggregate metrics live: prevalence and general health outcomes, disaggregated by gender, age, geography, and displacement status. Built with a DHIS2-compatible export in mind, so it feeds Ministry of Health reporting rather than competing with it. Sampled properly, this layer can show value for money on specific interventions, map where conditions cluster geographically, and expose the platform's own blind spots: data collected only from people who use the service will always skew toward those with access to it, and the model needs to say so rather than hide it.</div>
       </details>
-      <details class="pillar">
+      <details class="part">
         <summary>
           <span class="num">02</span>
-          <h3>Patient-Level Longitudinal Integration</h3>
+          <h3>Patient-Level Tracking Over Time</h3>
           <span class="chev">+</span>
         </summary>
-        <div class="body">A unique patient-ID architecture (resolving the shared-phone problem) tracking wellbeing at 30/60/90-day, or longer, intervals. Built on contribution, not attribution: a patient who also consults a traditional healer or elder is a data point, not a dropout, reflecting how care is genuinely sought across Somalia and Somaliland.</div>
+        <div class="body">Each patient needs an identifier that holds up across a shared phone and across different providers, whether that's a mobile health worker in the village or a doctor in the city, plus a way of checking in at 30, 90, and 180 days, or longer, depending on the condition. The harder design question is what counts as a good outcome when a patient also sees a traditional healer, takes black seed and honey, or simply stops calling because they've recovered. My instinct is to build a model that treats this as an ordinary part of how care is sought, rather than one that quietly records it as a platform failure.</div>
       </details>
-      <details class="pillar">
+      <details class="part">
         <summary>
           <span class="num">03</span>
-          <h3>Technical Brief &amp; Dual-Export Specification</h3>
+          <h3>The Technical Brief</h3>
           <span class="chev">+</span>
         </summary>
         <div class="body">
-          A "Single Core, Dual Export" model that treats Somalia's app-first/EVC-Plus environment and Somaliland's IVR-first/ZAAD environment as genuinely distinct regulatory and technical contexts. Includes a brief for a locally co-produced outcome measure (a Somali-language equivalent to EQ-5D, developed rather than imported) and mobile-money-linked micro-compensation for completed follow-ups.
+          One underlying logic with two separate exports: one built around Somalia's Baano, one around Somaliland's Shaafi. This includes a brief for a Somali-language outcome measure built from scratch, rather than a translated EQ-5D, and a proposal for using mobile money to pay small, direct compensation for completed follow-up calls, in keeping with how Transparency Solutions already compensates research participants.
           <div class="toggle-wrap">
             <div class="toggle-btns">
-              <button class="toggle-btn active" data-target="somalia">Somalia · EVC-Plus</button>
-              <button class="toggle-btn" data-target="somaliland">Somaliland · ZAAD</button>
+              <button class="toggle-btn active" data-target="somalia">Somalia · Baano</button>
+              <button class="toggle-btn" data-target="somaliland">Somaliland · Shaafi</button>
             </div>
             <div class="toggle-panel active" id="somalia">
               <dl>
-                <dt>Environment</dt><dd>App-first, EVC-Plus mobile money rail</dd>
-                <dt>Entry point</dt><dd>In-app consult or EVC-Plus transaction trigger</dd>
+                <dt>Platform</dt><dd>Baano, on Hormuud's EVC-Plus</dd>
                 <dt>Regulatory context</dt><dd>Distinct Ministry of Health reporting lines</dd>
                 <dt>Export</dt><dd>DHIS2-compatible, Somalia instance</dd>
               </dl>
             </div>
             <div class="toggle-panel" id="somaliland">
               <dl>
-                <dt>Environment</dt><dd>IVR-first, ZAAD mobile money rail</dd>
-                <dt>Entry point</dt><dd>Interactive voice call, no app requirement</dd>
+                <dt>Platform</dt><dd>Shaafi, on Telesom's ZAAD</dd>
                 <dt>Regulatory context</dt><dd>Distinct Ministry of Health reporting lines</dd>
                 <dt>Export</dt><dd>DHIS2-compatible, Somaliland instance</dd>
               </dl>
             </div>
           </div>
+          <p style="margin-top:18px;">None of this works if it's made in the UK. TS's own Somali field staff would run every piece of community consultation and codesign, in conversation with the 4.5 clan principals and both health ministries. My role is to synthesise what comes back into system design, not to run the consultation myself. Ownership of the resulting data stays with TS and the patients it serves; consent is sought fresh at every stage, not assumed from the last conversation, to avoid extraction.</p>
         </div>
       </details>
     </div>
@@ -250,25 +217,15 @@
 <section>
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">Grounded in Somali First Principles</p>
+      <p class="eyebrow">Deliverables</p>
+      <h2>By the end of Phase 1, Transparency Solutions would receive:</h2>
     </div>
-    <div class="callout reveal">
-      All outcome data remains Somali-owned. Longitudinal re-contact requires its own explicit consent, never assumed from a one-off consult. The framework is designed for Maxaa, Maay, and Bravanese from the outset, and all community consultation and codesign is led by Transparency Solutions' Somali field teams, not by external consultants.
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Phase 1 Deliverables</p>
-    </div>
-    <ul class="deliverables reveal">
-      <li>Outcomes Conversion Matrix, covering both population- and patient-level metrics</li>
-      <li>Dual-Export Technical Specification for Somalia/EVC-Plus and Somaliland/ZAAD</li>
-      <li>Localised Outcome Measure design brief (Somali-language, co-produced)</li>
-      <li>Data Governance &amp; Consent Framework</li>
-      <li>Stakeholder Engagement Plan (ministries, hospitals, pharmacy distributors, community health workers)</li>
+    <ul class="list-plain reveal">
+      <li>An output-to-outcomes conversion matrix, covering population- and patient-level metrics</li>
+      <li>A dual-export technical specification, one for Somalia, one for Somaliland</li>
+      <li>A design brief for a locally built outcome-measuring system</li>
+      <li>A data governance and consent framework</li>
+      <li>A stakeholder engagement plan covering ministries, hospitals, distributors, and health workers</li>
     </ul>
   </div>
 </section>
@@ -276,73 +233,56 @@
 <section>
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">Delivery Model</p>
+      <p class="eyebrow">Timeline</p>
       <h2>12 to 18 days of scoped work, delivered over 8 to 12 weeks.</h2>
     </div>
     <div class="timeline reveal">
       <div class="tl-item">
-        <div class="label">Initiation</div>
-        <h4>Systems audit &amp; consultation on priorities</h4>
+        <div class="label">Pace</div>
+        <p>Given my PhD commitments and work at STAND, implementing a similar outcomes-based transition, I can deliver this over roughly eight to twelve weeks rather than as a single block.</p>
       </div>
       <div class="tl-item">
-        <div class="label">Systems Design</div>
-        <h4>Population-level model, patient-level integration, technical brief and SOPs</h4>
+        <div class="label">Cadence</div>
+        <p>TS's field teams would lead consultation on their own schedule. I'd take their reporting each Thursday, ahead of Friday's rest day, and turn it into synthesis and design work through the following week.</p>
       </div>
       <div class="tl-item">
-        <div class="label">Review</div>
-        <h4>Consultation with health ministries, frontline health workers, and relevant community and clan groups</h4>
+        <div class="label">Later phases</div>
+        <p>Phase 2 (build, pilot, rollout) and Phase 3 (handover and ongoing review) would be scoped separately, once the Phase 1 architecture is agreed.</p>
       </div>
     </div>
-    <p class="reveal" style="margin-top:22px; font-size:0.92rem;">Distributed co-design: Transparency Solutions' Somali field teams lead all community consultation at the pace the context requires. Weekly synthesis is delivered against TS's Thursday reporting cycle, respecting Friday as a day of rest, cadence, not just content, reflecting Somali First values.</p>
-    <p class="reveal" style="margin-top:14px; font-size:0.92rem; color:#6b6b66;">Optional Phase 2 (Implementation) and Phase 3 (Management) are scoped separately once Phase 1 architecture is agreed.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">Why This Architect</p>
+      <p class="eyebrow">About Me</p>
     </div>
-    <p class="reveal">Matt Thomson brings a cross-context systems and politics lens, not health-tech domain expertise, which Transparency Solutions and Professor Herring already hold in depth. Currently completing a PhD in the Politics of Localisation at the University of Bristol, with an operational track record transitioning aid-dependent NGO networks (Uganda, The Gambia, Kenya, Tanzania) into locally owned, sustainable operating models. The value on offer is architecture and translation between academic rigour and field deployment, not code.</p>
+    <div class="reveal">
+      <p>I'm not a platform developer or a Somalia specialist, that expertise already sits with Transparency Solutions. What I bring is a health-systems and localisation lens, built through several years managing that shift in practice rather than just writing about it.</p>
+      <p style="margin-top:14px;">At STAND, I lead multi-country partnerships across Uganda, The Gambia, Kenya, and Tanzania, including a multi-year EU co-financed programme in The Gambia. Much of that work is a smaller version of what this proposal describes: I run systems audits and focus groups for monitoring and evaluation, and the networks I manage have spent the past few years moving away from aid dependency and toward locally owned reporting, rather than metrics designed and owned externally.</p>
+      <p style="margin-top:14px;">Separately, through a research consortium of universities, health ministries, and NGOs, I help build academically and clinically evidenced outcome bases for prosthetics and orthotics services in low-resource settings, work that runs into the same problem Baano and Shaafi have: plenty of activity data, very little proof that people's lives actually improved. My PhD research, on how power and expertise move through the development sector, sits behind all of this rather than in front of it.</p>
+      <p style="margin-top:14px;">My job here is turning that field reality into a specification your engineering team can build from, not writing any of the code myself.</p>
+    </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">The Commercial Case</p>
+      <p class="eyebrow">Commercial Terms &amp; Next Steps</p>
     </div>
-    <p class="reveal">This is a private, capital-funded engagement, not a grant application. Positioned correctly, this Design Sprint de-risks CapEx before it is committed to platform development, and produces a defensible, exportable outcomes model, a packageable asset for scaling beyond Somalia and Somaliland.</p>
-    <div class="stat-row reveal">
-      <div class="stat">
-        <div class="num">£1,500–£2,500</div>
-        <div class="label">Typical day rate, comparable systems &amp; M&amp;E design</div>
-      </div>
-      <div class="stat">
-        <div class="num">12–18</div>
-        <div class="label">Scoped working days, Phase 1</div>
-      </div>
-      <div class="stat">
-        <div class="num">8–12</div>
-        <div class="label">Weeks to delivery</div>
-      </div>
+    <div class="reveal">
+      <p>Phase 1 is 12 to 18 days of work, at a day rate agreed directly between us. This note and any materials arising from it are shared in confidence, for evaluation purposes only.</p>
+      <div class="callout" style="margin-top:18px;">If this is of interest, I'd be happy to begin as soon as possible, with more capacity over the summer.</div>
+      <a class="btn" href="mailto:matt@managingtransitions.org?subject=Baano%20%2F%20Shaafi%20-%20Concept%20Note">Get in touch</a>
     </div>
-  </div>
-</section>
-
-<section class="ask">
-  <div class="wrap">
-    <p class="eyebrow" style="color:#a9c2bb;">The Ask</p>
-    <h2>Approve mobilisation to begin Phase 1.</h2>
-    <p>Ahead of Professor Herring's travel on 31 July 2026, securing a full working week to align scope with Transparency Solutions' Somali field teams before departure.</p>
-    <div class="date-flag">Target start: before 31 July 2026</div><br>
-    <a class="btn" href="mailto:mattthomson123@hotmail.com?subject=Baano%20%2F%20Shaafi%20-%20Phase%201%20Mobilisation">Confirm by email</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p>Matt Thomson · mattthomson123@hotmail.com · +44 7447 614768 · Private &amp; Confidential</p>
+    <p>Matt Thomson · matt@managingtransitions.org · +44 7447 614768 · Private &amp; Confidential</p>
   </div>
 </footer>
 
