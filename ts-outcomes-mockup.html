@@ -97,6 +97,11 @@
 
   /* ---------- Patient record ---------- */
   .patient-header{border:1px solid var(--line); padding:20px 22px; margin-bottom:20px;}
+  .qual-flag{
+    margin-top:16px; padding-top:14px; border-top:1px dashed var(--line);
+    font-size:0.82rem; color:#5a4636; display:flex; align-items:center; gap:8px;
+  }
+  .qual-dot{width:9px; height:9px; border-radius:50%; background:var(--sand); flex-shrink:0; display:inline-block;}
   .patient-id{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--teal);}
   .patient-demo{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px;}
   .demo-item .k{font-family:'IBM Plex Mono', monospace; font-size:0.64rem; text-transform:uppercase; letter-spacing:0.04em; color:#8a8a86;}
@@ -143,6 +148,45 @@
   @media (max-width:820px){ .stake-grid{grid-template-columns:1fr;} }
 
   footer{background:var(--teal); color:#c9d8d3; padding:30px 0; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:0.72rem;}
+
+  /* ---------- M&E control panel ---------- */
+  .headline-stat{
+    background:var(--teal); color:#fff; padding:24px 26px; margin:20px 0 22px;
+    display:flex; align-items:center; gap:24px; flex-wrap:wrap;
+  }
+  .headline-num{font-family:'IBM Plex Mono', monospace; font-size:2.6rem; font-weight:500; color:var(--sand); flex-shrink:0;}
+  .headline-text{font-size:0.92rem; color:#dbe5e1; max-width:56ch;}
+
+  .story-row{display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .story-item{background:#fff; padding:16px 18px; font-size:0.86rem; color:#2b2b28;}
+  .story-label{
+    display:block; font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase;
+    letter-spacing:0.05em; margin-bottom:6px; font-weight:600;
+  }
+  .story-win .story-label{color:#2f5c4d;}
+  .story-watch .story-label{color:#8a6f56;}
+  .story-action .story-label{color:var(--brown);}
+  @media (max-width:820px){ .story-row{grid-template-columns:1fr;} }
+
+  .tile-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:760px){ .tile-grid{grid-template-columns:1fr;} }
+  .tile{background:#fff; border-left:4px solid var(--line);}
+  .tile-good{border-left-color:#2f5c4d;}
+  .tile-watch{border-left-color:var(--sand);}
+  .tile-bad{border-left-color:var(--brown);}
+  .tile summary{
+    list-style:none; cursor:pointer; padding:16px 18px; display:flex; flex-direction:column; gap:2px;
+  }
+  .tile summary::-webkit-details-marker{display:none;}
+  .tile-label{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em; color:#8a8a86;}
+  .tile-value{font-family:'IBM Plex Mono', monospace; font-size:1.5rem; font-weight:600; color:var(--ink);}
+  .tile-arrow{font-size:1rem;}
+  .tile-good .tile-arrow{color:#2f5c4d;}
+  .tile-bad .tile-arrow, .tile-watch .tile-arrow{color:var(--brown);}
+  .tile-note{font-size:0.78rem; color:#6b6b66;}
+  .tile-detail{padding:0 18px 18px; font-size:0.86rem; color:#3a3a38;}
+  .tile-detail p{margin-top:10px;}
+  .tile-link{display:inline-block; margin-top:8px; font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--teal); text-decoration:underline;}
 
   .floating-footer{
     position:fixed; bottom:0; left:0; right:0; z-index:200;
@@ -238,20 +282,39 @@
 
     <section>
       <div class="section-head">
-        <p class="eyebrow">Amalgamated Outcomes Over Time</p>
-        <h2>Four measures, one shared timeline.</h2>
+        <p class="eyebrow">Outcomes Over Time</p>
+        <h2>Responds to the region selected above.</h2>
       </div>
+      <p class="lede">Six measures for the region currently selected in the Cross-Filter Explorer: the five EQ-5D dimensions (share of people reporting a problem, lower is better) plus economic activity (share engaged in income-generating work, higher is better). Switch region above and this redraws.</p>
       <div class="series-toggles" id="seriesToggles">
-        <button class="series-chip" data-series="wellbeing"><span class="dot" style="background:#0c231f;"></span>Wellbeing score</button>
-        <button class="series-chip" data-series="generalHealth"><span class="dot" style="background:#392c23;"></span>Self-rated general health</button>
-        <button class="series-chip" data-series="economicActivity"><span class="dot" style="background:#c9a877;"></span>Economic activity</button>
-        <button class="series-chip" data-series="infantMortality"><span class="dot" style="background:#6b6b66;"></span>Infant mortality (lower is better)</button>
+        <button class="series-chip" data-series="mobility"><span class="dot" style="background:#0c231f;"></span>Mobility, problem rate</button>
+        <button class="series-chip" data-series="selfCare"><span class="dot" style="background:#392c23;"></span>Self-care, problem rate</button>
+        <button class="series-chip" data-series="usualActivities"><span class="dot" style="background:#c9a877;"></span>Usual activities, problem rate</button>
+        <button class="series-chip" data-series="painDiscomfort"><span class="dot dashed" style="background:#0c231f;"></span>Pain / discomfort, problem rate</button>
+        <button class="series-chip" data-series="anxietyDepression"><span class="dot dashed" style="background:#392c23;"></span>Anxiety / depression, problem rate</button>
+        <button class="series-chip" data-series="economicActivity"><span class="dot dashed" style="background:#c9a877;"></span>Economic activity (higher is better)</button>
       </div>
-      <svg class="svg-chart" id="trendSvg" viewBox="0 0 620 220" xmlns="http://www.w3.org/2000/svg">
-        <line x1="30" y1="10" x2="30" y2="190" stroke="#dedad2" stroke-width="1"/>
-        <line x1="30" y1="190" x2="600" y2="190" stroke="#dedad2" stroke-width="1"/>
-      </svg>
-      <div class="chart-caption">Each series is normalised to its own range so all four are visible on one chart, actual values shown in the toggle chips' tooltip on hover. Shape of the trend matters here, not shared units.</div>
+      <div style="display:flex; gap:8px;">
+        <svg width="34" height="200" viewBox="0 0 34 200" style="flex-shrink:0;">
+          <text x="30" y="16" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86" text-anchor="end">60%</text>
+          <text x="30" y="68" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86" text-anchor="end">40%</text>
+          <text x="30" y="120" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86" text-anchor="end">20%</text>
+          <text x="30" y="172" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86" text-anchor="end">0%</text>
+        </svg>
+        <svg class="svg-chart" id="trendSvg" viewBox="0 0 620 200" xmlns="http://www.w3.org/2000/svg" style="flex:1;">
+          <line x1="4" y1="10" x2="600" y2="10" stroke="#eef1ef" stroke-width="1"/>
+          <line x1="4" y1="62" x2="600" y2="62" stroke="#eef1ef" stroke-width="1"/>
+          <line x1="4" y1="114" x2="600" y2="114" stroke="#eef1ef" stroke-width="1"/>
+          <line x1="4" y1="166" x2="600" y2="166" stroke="#dedad2" stroke-width="1"/>
+          <text x="4" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P1</text>
+          <text x="122" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P2</text>
+          <text x="240" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P3</text>
+          <text x="358" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P4</text>
+          <text x="476" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P5</text>
+          <text x="580" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P6</text>
+        </svg>
+      </div>
+      <div class="chart-caption" id="trendCaption">Y-axis: share of population reporting a problem on that dimension (0–60%), except economic activity, which is share engaged in income-generating work. Currently showing: system-wide.</div>
     </section>
 
     <section>
@@ -289,10 +352,19 @@
         <div class="patient-demo">
           <div class="demo-item"><div class="k">Age band / gender</div><div class="v">40–50, Female</div></div>
           <div class="demo-item"><div class="k">Preferred language</div><div class="v">Maay</div></div>
+          <div class="demo-item"><div class="k">Preferred contact mode</div><div class="v">Voice call (IVR), not SMS</div></div>
           <div class="demo-item"><div class="k">Primary contact</div><div class="v">+252 •• ••• 118 (shared household line)</div></div>
+          <div class="demo-item"><div class="k">Shared phone with</div><div class="v">Husband (primary registrant); son (secondary)</div></div>
           <div class="demo-item"><div class="k">Emergency contact</div><div class="v">+252 •• ••• 902 (adult son, separate line)</div></div>
           <div class="demo-item"><div class="k">Location history</div><div class="v">Baidoa (2024) → Mogadishu (2025) → Baidoa, rural (2026)</div></div>
+          <div class="demo-item"><div class="k">Clan / sub-clan family</div><div class="v">Digil-Mirifle (self-reported, optional, equity monitoring only, not used for eligibility)</div></div>
           <div class="demo-item"><div class="k">Comorbidities</div><div class="v">Hypertension (2024); chronic respiratory symptoms (2025, monitored)</div></div>
+          <div class="demo-item"><div class="k">Access route</div><div class="v">Mobile app (EVC-Plus); one visit via toll-free helpline, agent-assisted</div></div>
+          <div class="demo-item"><div class="k">Consultations seen</div><div class="v">General medicine, cardiovascular specialist (referral)</div></div>
+          <div class="demo-item"><div class="k">Prescriptions &amp; history</div><div class="v">3 e-prescriptions on file, PDF history last generated Feb 2026</div></div>
+        </div>
+        <div class="qual-flag">
+          <span class="qual-dot"></span> Flagged for qualitative deep-dive sample (random selection, Period 5). Top-level data still feeds population aggregate as normal.
         </div>
       </div>
 
@@ -371,51 +443,104 @@
     <section style="padding-top:28px; border-top:none;">
       <div class="section-head">
         <p class="eyebrow">Monitoring &amp; Evaluation Dashboard</p>
-        <h2>Is the programme being delivered well, and can the data be trusted.</h2>
+        <h2>One screen: what's working, what needs attention, what to do next.</h2>
       </div>
-      <p class="lede">Five things worth tracking at programme-management level, distinct from population health outcomes: delivery fidelity, referral conversion, data quality, whether coverage gaps are closing, and whether the two platforms are converging or diverging.</p>
-    </section>
 
-    <section>
-      <div class="section-head"><p class="eyebrow">1 · Follow-Up Completion Over Time</p><h2>Is the rate improving as the programme matures.</h2></div>
-      <div class="series-toggles">
-        <span class="series-chip" style="cursor:default;"><span class="dot" style="background:#0c231f;"></span>30-day completion</span>
-        <span class="series-chip" style="cursor:default;"><span class="dot" style="background:#c9a877;"></span>90-day completion</span>
+      <div class="headline-stat">
+        <div class="headline-num">+0.15</div>
+        <div class="headline-text">Average wellbeing improvement across both platforms, programme to date. 953 referrals issued and 7,877 people reached in the last 90 days.</div>
       </div>
-      <svg class="svg-chart" viewBox="0 0 620 160" xmlns="http://www.w3.org/2000/svg">
-        <line x1="30" y1="10" x2="30" y2="140" stroke="#dedad2" stroke-width="1"/>
-        <line x1="30" y1="140" x2="600" y2="140" stroke="#dedad2" stroke-width="1"/>
-        <polyline points="30,86 144,74 258,60 372,48 486,38 600,34" fill="none" stroke="#0c231f" stroke-width="2.5"/>
-        <polyline points="30,120 144,110 258,100 372,90 486,80 600,74" fill="none" stroke="#c9a877" stroke-width="2.5"/>
-      </svg>
-      <div class="chart-caption">30-day: 58% → 71% across six periods. 90-day: 42% → 58%. Both rising, 90-day still lagging 30-day by a wide margin.</div>
-    </section>
 
-    <section>
-      <div class="section-head"><p class="eyebrow">2 · Referral Conversion</p><h2>Where people fall out of the pathway itself.</h2></div>
-      <div class="bar-row"><div class="bar-label">Referred</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div><div class="bar-value">953</div></div>
-      <div class="bar-row"><div class="bar-label">Attended</div><div class="bar-track"><div class="bar-fill" style="width:72%;"></div></div><div class="bar-value">687</div></div>
-      <div class="bar-row"><div class="bar-label">Outcome recorded</div><div class="bar-track"><div class="bar-fill alt" style="width:57%;"></div></div><div class="bar-value">540</div></div>
-      <div class="chart-caption">72% of referrals result in an attended visit. Of those, 79% get an outcome actually recorded, the second drop-off, not the first, is where most of the loss happens.</div>
-    </section>
-
-    <section>
-      <div class="section-head"><p class="eyebrow">3 · Data Completeness &amp; Quality</p><h2>Whether the data itself is getting more reliable.</h2></div>
-      <div class="series-toggles">
-        <span class="series-chip" style="cursor:default;"><span class="dot" style="background:#0c231f;"></span>Full EQ-5D set recorded</span>
-        <span class="series-chip" style="cursor:default;"><span class="dot" style="background:#c9a877;"></span>Duplicate shared-phone IDs resolved</span>
+      <div class="story-row">
+        <div class="story-item story-win"><span class="story-label">Win</span>Follow-up completion is up 13 points since Period 1, and data completeness is rising with it, so the gain is real, not just better counting.</div>
+        <div class="story-item story-watch"><span class="story-label">Watch</span>Only 57% of referrals end in a recorded outcome. People are attending; the record-keeping after the visit is where most of the loss happens.</div>
+        <div class="story-item story-action"><span class="story-label">Action</span>Prioritise community health worker home visits over SMS reminders next quarter, they cost more per contact but move wellbeing roughly ten times as much.</div>
       </div>
-      <svg class="svg-chart" viewBox="0 0 620 160" xmlns="http://www.w3.org/2000/svg">
-        <line x1="30" y1="10" x2="30" y2="140" stroke="#dedad2" stroke-width="1"/>
-        <line x1="30" y1="140" x2="600" y2="140" stroke="#dedad2" stroke-width="1"/>
-        <polyline points="30,100 144,86 258,72 372,58 486,42 600,28" fill="none" stroke="#0c231f" stroke-width="2.5"/>
-        <polyline points="30,116 144,102 258,88 372,72 486,56 600,38" fill="none" stroke="#c9a877" stroke-width="2.5"/>
-      </svg>
-      <div class="chart-caption">Full EQ-5D capture: 61% → 83%. Duplicate ID resolution: 52% → 80%. Both improving, worth watching rather than assuming, since a rising wellbeing score means less if completeness is also rising from a low base.</div>
     </section>
 
     <section>
-      <div class="section-head"><p class="eyebrow">4 · Coverage Gap, Trended</p><h2>Who isn't showing up, and whether that's closing.</h2></div>
+      <div class="section-head"><p class="eyebrow">Status Tiles</p><h2>Tap any tile for the detail behind it.</h2></div>
+      <div class="tile-grid">
+
+        <details class="tile tile-good">
+          <summary>
+            <span class="tile-label">Follow-Up Completion</span>
+            <span class="tile-value">71% <span class="tile-arrow">↑</span></span>
+            <span class="tile-note">30-day rate, up from 58%</span>
+          </summary>
+          <div class="tile-detail">
+            <svg class="svg-chart" viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="10,60 88,52 166,42 244,34 322,27 390,24" fill="none" stroke="#0c231f" stroke-width="2.5"/>
+              <polyline points="10,80 88,74 166,68 244,62 322,56 390,52" fill="none" stroke="#c9a877" stroke-width="2.5"/>
+            </svg>
+            <p>30-day: 58% → 71%. 90-day: 42% → 58%. Both rising, but 90-day still lags 30-day by 13 points, worth asking whether the second follow-up call is the one slipping.</p>
+          </div>
+        </details>
+
+        <details class="tile tile-watch">
+          <summary>
+            <span class="tile-label">Referral Conversion</span>
+            <span class="tile-value">57%</span>
+            <span class="tile-note">Referred → outcome recorded</span>
+          </summary>
+          <div class="tile-detail">
+            <div class="bar-row"><div class="bar-label">Referred</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div><div class="bar-value">953</div></div>
+            <div class="bar-row"><div class="bar-label">Attended</div><div class="bar-track"><div class="bar-fill" style="width:72%;"></div></div><div class="bar-value">687</div></div>
+            <div class="bar-row"><div class="bar-label">Outcome recorded</div><div class="bar-track"><div class="bar-fill alt" style="width:57%;"></div></div><div class="bar-value">540</div></div>
+            <p>72% attend. Of those, only 79% get an outcome actually logged, the second drop-off, not the first, is where the loss concentrates.</p>
+          </div>
+        </details>
+
+        <details class="tile tile-good">
+          <summary>
+            <span class="tile-label">Data Completeness</span>
+            <span class="tile-value">83% <span class="tile-arrow">↑</span></span>
+            <span class="tile-note">Full EQ-5D sets captured</span>
+          </summary>
+          <div class="tile-detail">
+            <svg class="svg-chart" viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="10,68 88,58 166,48 244,38 322,26 390,14" fill="none" stroke="#0c231f" stroke-width="2.5"/>
+              <polyline points="10,76 88,66 166,56 244,44 322,32 390,20" fill="none" stroke="#c9a877" stroke-width="2.5"/>
+            </svg>
+            <p>Full EQ-5D capture: 61% → 83%. Duplicate shared-phone ID resolution: 52% → 80%. Both improving, which matters because a rising wellbeing score means less if it's rising from a shrinking, low base.</p>
+          </div>
+        </details>
+
+        <details class="tile tile-bad" id="coverageTile">
+          <summary>
+            <span class="tile-label">Coverage Gap</span>
+            <span class="tile-value">19%</span>
+            <span class="tile-note">Worst segment, still a third of average</span>
+          </summary>
+          <div class="tile-detail">
+            <svg class="svg-chart" viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="10,74 88,71 166,65 244,61 322,50 390,38" fill="none" stroke="#c9a877" stroke-width="2.5"/>
+            </svg>
+            <p>Women 65+, rural, out of work: 11% → 19% over six periods. Narrowing, slowly, still a third of the system-wide average. Full explorer below.</p>
+            <a href="#coverageExplorer" class="tile-link">Open the coverage explorer ↓</a>
+          </div>
+        </details>
+
+        <details class="tile tile-good">
+          <summary>
+            <span class="tile-label">Somalia / Somaliland</span>
+            <span class="tile-value">0.04 <span class="tile-arrow">↓</span></span>
+            <span class="tile-note">Gap between platforms, narrowing</span>
+          </summary>
+          <div class="tile-detail">
+            <svg class="svg-chart" viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="10,58 88,48 166,36 244,26 322,17 390,10" fill="none" stroke="#0c231f" stroke-width="2.5"/>
+              <polyline points="10,42 88,34 166,27 244,19 322,12 390,6" fill="none" stroke="#c9a877" stroke-width="2.5"/>
+            </svg>
+            <p>Wellbeing index gap between the two platforms narrowed from 0.07 to 0.04 over six periods. Converging, not diverging, worth re-checking once volumes are larger before calling it settled.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section id="coverageExplorer">
+      <div class="section-head"><p class="eyebrow">Coverage Gap Explorer</p><h2>Who isn't showing up, drilled down.</h2></div>
       <div class="filter-row">
         <span class="filter-row-label">Gender</span>
         <button class="fbtn active" data-cov="gender" data-val="all">All</button>
@@ -462,29 +587,6 @@
         <thead><tr><th>Segment</th><th>Clinic contact rate</th></tr></thead>
         <tbody id="covLeaderboard"></tbody>
       </table>
-
-      <div class="result-title" style="margin-top:10px;">Worst segment, trended: women 65+, rural, out of work</div>
-      <svg class="svg-chart" viewBox="0 0 620 140" xmlns="http://www.w3.org/2000/svg">
-        <line x1="30" y1="10" x2="30" y2="120" stroke="#dedad2" stroke-width="1"/>
-        <line x1="30" y1="120" x2="600" y2="120" stroke="#dedad2" stroke-width="1"/>
-        <polyline points="30,110 144,106 258,100 372,96 486,88 600,80" fill="none" stroke="#c9a877" stroke-width="2.5"/>
-      </svg>
-      <div class="chart-caption">11% → 19% across six periods. Narrowing, slowly, and still a third of the system-wide average. Worth watching, not yet worth calling solved.</div>
-    </section>
-
-    <section>
-      <div class="section-head"><p class="eyebrow">5 · Somalia / Somaliland Convergence</p><h2>Whether the dual-export design is holding up evenly.</h2></div>
-      <div class="series-toggles">
-        <span class="series-chip" style="cursor:default;"><span class="dot" style="background:#0c231f;"></span>Somalia · EVC-Plus</span>
-        <span class="series-chip" style="cursor:default;"><span class="dot" style="background:#c9a877;"></span>Somaliland · ZAAD</span>
-      </div>
-      <svg class="svg-chart" viewBox="0 0 620 160" xmlns="http://www.w3.org/2000/svg">
-        <line x1="30" y1="10" x2="30" y2="140" stroke="#dedad2" stroke-width="1"/>
-        <line x1="30" y1="140" x2="600" y2="140" stroke="#dedad2" stroke-width="1"/>
-        <polyline points="30,116 144,104 258,90 372,76 486,62 600,50" fill="none" stroke="#0c231f" stroke-width="2.5"/>
-        <polyline points="30,96 144,86 258,78 372,68 486,58 600,44" fill="none" stroke="#c9a877" stroke-width="2.5"/>
-      </svg>
-      <div class="chart-caption">Wellbeing index, both platforms. Somaliland started ahead; the gap has narrowed from 0.07 to 0.04 over six periods. Converging, not diverging, worth re-checking once volumes are larger.</div>
     </section>
   </div>
 </div>
@@ -558,6 +660,7 @@
       document.querySelector('.fbtn[data-dim="region"][data-val="all"]').classList.add('active');
       sel.region = 'all';
       renderCrossFilter();
+      if(typeof renderTrendChart === 'function') renderTrendChart();
     }
   }
 
@@ -638,50 +741,69 @@
       btn.classList.add('active');
       sel[dim] = btn.dataset.val;
       renderCrossFilter();
+      if(dim === 'region') renderTrendChart();
     });
   });
   filterRegionsByCountry('somalia');
   renderCrossFilter();
 
-  /* ---------- Amalgamated outcomes trend chart ---------- */
-  const trendSeries = {
-    wellbeing:        {vals:[0.52,0.55,0.58,0.61,0.64,0.67], color:'#0c231f'},
-    generalHealth:    {vals:[48,51,55,58,61,65], color:'#392c23'},
-    economicActivity: {vals:[39,41,44,47,50,54], color:'#c9a877'},
-    infantMortality:  {vals:[62,59,55,51,48,44], color:'#6b6b66'}
+  /* ---------- Outcomes-over-time, tied to the cross-filter region ---------- */
+  const outcomeBase = {
+    mobility:          {vals:[42,38,35,31,28,24], color:'#0c231f', dash:false},
+    selfCare:          {vals:[22,20,19,18,17,16], color:'#392c23', dash:false},
+    usualActivities:   {vals:[39,36,33,29,26,23], color:'#c9a877', dash:false},
+    painDiscomfort:    {vals:[51,48,46,43,40,37], color:'#0c231f', dash:true},
+    anxietyDepression: {vals:[35,32,30,27,25,22], color:'#392c23', dash:true},
+    economicActivity:  {vals:[39,41,44,47,50,54], color:'#c9a877', dash:true}
   };
-  const activeSeries = new Set(Object.keys(trendSeries));
+  const regionOutcomeMult = {
+    all:            {problem:1.0, econ:1.0},
+    banaadir:       {problem:0.85, econ:1.15},
+    lowerShabelle:  {problem:1.0,  econ:1.0},
+    bay:            {problem:1.15, econ:0.85},
+    bakool:         {problem:1.3,  econ:0.7},
+    woqooyiGalbeed: {problem:0.8,  econ:1.2},
+    sahil:          {problem:0.95, econ:1.05},
+    togdheer:       {problem:1.0,  econ:1.0}
+  };
+  const activeOutcomeSeries = new Set(Object.keys(outcomeBase));
 
   function renderTrendChart(){
     const svg = document.getElementById('trendSvg');
     svg.querySelectorAll('polyline').forEach(p=>p.remove());
-    const xs = [30,144,258,372,486,600];
-    Object.keys(trendSeries).forEach(key=>{
-      if(!activeSeries.has(key)) return;
-      const s = trendSeries[key];
-      const min = Math.min(...s.vals), max = Math.max(...s.vals);
-      const points = s.vals.map((v,i)=>{
-        const norm = (v-min)/((max-min)||1);
-        const y = 190 - norm*170;
-        return `${xs[i]},${y.toFixed(1)}`;
-      }).join(' ');
+    const region = sel.region;
+    const mult = regionOutcomeMult[region] || regionOutcomeMult.all;
+    const xs = [4,122,240,358,476,594];
+    const yFor = (pct)=> 166 - Math.min(pct,60)/60*156;
+
+    Object.keys(outcomeBase).forEach(key=>{
+      if(!activeOutcomeSeries.has(key)) return;
+      const s = outcomeBase[key];
+      const factor = key === 'economicActivity' ? mult.econ : mult.problem;
+      const points = s.vals.map((v,i)=> `${xs[i]},${yFor(Math.max(2,Math.min(58,v*factor))).toFixed(1)}`).join(' ');
       const poly = document.createElementNS('http://www.w3.org/2000/svg','polyline');
       poly.setAttribute('points', points);
       poly.setAttribute('fill','none');
       poly.setAttribute('stroke', s.color);
       poly.setAttribute('stroke-width','2.5');
+      if(s.dash) poly.setAttribute('stroke-dasharray','6,4');
       svg.appendChild(poly);
     });
+
+    const label = region==='all' ? 'system-wide' : regionNames[region];
+    document.getElementById('trendCaption').textContent =
+      `Y-axis: share of population reporting a problem on that dimension (0–60%), except economic activity, which is share engaged in income-generating work. Currently showing: ${label}.`;
   }
-  document.querySelectorAll('.series-chip').forEach(chip=>{
+  document.querySelectorAll('#seriesToggles .series-chip').forEach(chip=>{
     chip.addEventListener('click', ()=>{
       const key = chip.dataset.series;
-      if(activeSeries.has(key)){ activeSeries.delete(key); chip.classList.add('off'); }
-      else { activeSeries.add(key); chip.classList.remove('off'); }
+      if(activeOutcomeSeries.has(key)){ activeOutcomeSeries.delete(key); chip.classList.add('off'); }
+      else { activeOutcomeSeries.add(key); chip.classList.remove('off'); }
       renderTrendChart();
     });
   });
   renderTrendChart();
+
 
   /* ---------- EQ-5D patient table ---------- */
   const eq5d = {
