@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Page not found | Managing Transitions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000000; --teal:#0c231f; --brown:#392c23; --sand:#c9a877; --paper:#ffffff;
+    --line: rgba(0,0,0,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6;
+    padding:28px;
+  }
+  .card{max-width:480px; text-align:center;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--teal);
+  }
+  h1{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(2rem,6vw,2.8rem);
+    margin:16px 0 0; color:var(--ink);
+  }
+  p{color:#4a4a48; font-size:1rem; margin-top:16px;}
+  .divider{width:48px; height:2px; background:var(--sand); margin:26px auto;}
+  .quote{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:#8a8a86; font-style:italic; margin-top:22px;}
+  .links{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:8px;}
+  a.btn{
+    display:inline-flex; align-items:center; gap:8px; padding:12px 20px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.8rem; letter-spacing:0.03em;
+    text-transform:uppercase; text-decoration:none; color:#fff; background:var(--teal);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  a.btn:hover{transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,0.18);}
+  a.btn-ghost{background:transparent; color:var(--teal); border:1px solid var(--line);}
+  a.btn-ghost:hover{border-color:var(--teal);}
+</style>
+</head>
+<body>
+  <div class="card">
+    <p class="eyebrow">Managing Transitions</p>
+    <h1>This page doesn't exist.</h1>
+    <p>Either the link's out of date, or the address was mistyped. Whatever you were looking for, it isn't here.</p>
+    <div class="divider"></div>
+    <p class="quote">"Pessimism of the structure, optimism of the agency."</p>
+    <div class="links">
+      <a class="btn" href="/">Back to the homepage</a>
+      <a class="btn btn-ghost" href="mailto:mattthomson123@hotmail.com">Email me</a>
+    </div>
+  </div>
+</body>
+</html>
