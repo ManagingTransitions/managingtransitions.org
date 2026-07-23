@@ -225,7 +225,7 @@
   <div class="wrap">
     <p class="eyebrow">Follow-up · Outcomes Conversion Engine</p>
     <h1>Interface Concept: Baano &amp; Shaafi</h1>
-    <p>Three levels, matching the Phase 1 scope: an interactive population-level explorer, a patient-level EQ-5D dashboard, and a trends and equity view with anomaly flags. Built directly from the design sprint's assumptions.</p>
+    <p>Three levels, matching the Phase 1 scope: an interactive population-level explorer, a patient-level EQ-5D dashboard, and a one-screen M&amp;E dashboard. Built directly from the design sprint's assumptions.</p>
   </div>
 </header>
 
@@ -243,8 +243,8 @@
 
     <section style="padding-top:28px; border-top:none;">
       <div class="country-toggle">
-        <button class="country-btn active" data-country="somalia">Somalia · EVC-Plus</button>
-        <button class="country-btn" data-country="somaliland">Somaliland · ZAAD</button>
+        <button class="country-btn active" data-country="somalia">Somalia · Baano (EVC-Plus)</button>
+        <button class="country-btn" data-country="somaliland">Somaliland · Shaafi (ZAAD)</button>
       </div>
       <div class="stat-grid">
         <div class="stat-card"><div class="num" id="stat1">4,812</div><div class="label">Patients registered, rolling 90 days</div></div>
@@ -444,7 +444,8 @@
       </details>
 
       <div class="note-card" style="margin-top:20px;">
-        The dashboard, not the log, is the point: it shows mobility and usual activities recovering well, self-care quietly getting slightly worse over the same period, and pain lingering after the rest has improved. A single averaged score would hide all three of those stories.
+        <span class="eyebrow" style="color:#8a8a86; display:block; margin-bottom:6px;">Annotation, not a live feature</span>
+        The dashboard, not the log, is the point: it shows mobility and usual activities recovering well, self-care quietly getting slightly worse over the same period, and pain lingering after the rest has improved. A single averaged score would hide all three of those stories. A real system would show the table above; a person reviewing it would write an observation like this one periodically, it wouldn't appear automatically.
       </div>
     </section>
   </div>
@@ -464,6 +465,7 @@
         <div class="headline-text">Average wellbeing improvement across both platforms, programme to date. 953 referrals issued and 7,877 people reached in the last 90 days.</div>
       </div>
 
+      <p class="eyebrow" style="color:#8a8a86; margin-bottom:8px;">Example of the reporting layer a person would write periodically, not something the dashboard generates live</p>
       <div class="story-row">
         <div class="story-item story-win"><span class="story-label">Win</span>Follow-up completion is up 13 points since Period 1, and data completeness is rising with it, so the gain is real, not just better counting.</div>
         <div class="story-item story-watch"><span class="story-label">Watch</span>Only 57% of referrals end in a recorded outcome. People are attending; the record-keeping after the visit is where most of the loss happens.</div>
@@ -542,8 +544,8 @@
           </summary>
           <div class="tile-detail">
             <div class="chart-legend-mini">
-              <span><span class="dot" style="background:#0c231f;"></span>Somalia · EVC-Plus</span>
-              <span><span class="dot" style="background:#c9a877;"></span>Somaliland · ZAAD</span>
+              <span><span class="dot" style="background:#0c231f;"></span>Somalia · Baano (EVC-Plus)</span>
+              <span><span class="dot" style="background:#c9a877;"></span>Somaliland · Shaafi (ZAAD)</span>
             </div>
             <svg id="tileChartConvergence" class="svg-chart" viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg"></svg>
           </div>
