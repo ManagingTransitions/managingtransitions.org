@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Outcomes Conversion Engine: Interface Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000000; --teal:#0c231f; --brown:#392c23; --sand:#c9a877;
+    --paper:#ffffff; --line: rgba(0,0,0,0.14); --line-on-dark: rgba(255,255,255,0.18);
+    --max: 980px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6;}
+  ::selection{background:var(--sand); color:var(--teal);}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; margin:0; letter-spacing:-0.01em;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal);}
+
+  /* ---------- Disclaimer banner ---------- */
+  .disclaimer{
+    background:#3a1f10; color:#f6ddc0; padding:14px 0; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.02em;
+    border-bottom:3px solid var(--sand);
+  }
+  .disclaimer strong{color:#fff;}
+
+  header.hero{background:var(--teal); color:#f4efe6; padding:44px 0 38px;}
+  header.hero .eyebrow{color:#a9c2bb; margin-bottom:12px;}
+  header.hero h1{font-size:clamp(1.7rem, 4vw, 2.4rem); color:#fff;}
+  header.hero p{color:#c9d8d3; margin-top:12px; font-size:0.96rem; max-width:70ch;}
+
+  /* ---------- View tabs ---------- */
+  .view-tabs{
+    display:flex; gap:1px; background:var(--line); border:1px solid var(--line);
+    width:fit-content; margin:26px auto 0;
+  }
+  .view-tab{
+    font-family:'IBM Plex Mono', monospace; font-size:0.8rem; letter-spacing:0.03em;
+    padding:12px 22px; background:#fafaf8; border:none; cursor:pointer; color:#4a4a48;
+    transition:background .18s ease, color .18s ease;
+  }
+  .view-tab.active{background:var(--teal); color:#fff;}
+  .view-panel{display:none;}
+  .view-panel.active{display:block;}
+
+  section{padding:44px 0;}
+  .section-head{margin-bottom:22px;}
+  .section-head h2{font-size:clamp(1.25rem, 2.6vw, 1.55rem); margin-top:6px;}
+
+  /* ---------- Country toggle ---------- */
+  .country-toggle{display:flex; gap:1px; background:var(--line); border:1px solid var(--line); width:fit-content; margin-bottom:26px;}
+  .country-btn{
+    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; padding:9px 16px;
+    background:#fff; border:none; cursor:pointer; color:#4a4a48;
+    transition:background .18s ease, color .18s ease;
+  }
+  .country-btn.active{background:var(--brown); color:#f4efe6;}
+
+  /* ---------- Filter bar ---------- */
+  .filter-bar{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px;}
+  .filter-chip{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.02em;
+    padding:7px 13px; border:1px solid var(--line); color:#4a4a48; background:#fafaf8;
+  }
+  .filter-chip.on{border-color:var(--teal); color:var(--teal); background:#eef1ef;}
+
+  /* ---------- Stat cards ---------- */
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:32px;}
+  .stat-card{background:#fff; padding:20px 18px;}
+  .stat-card .num{font-family:'IBM Plex Mono', monospace; font-size:1.5rem; color:var(--teal); font-weight:500;}
+  .stat-card .label{font-size:0.76rem; color:#6b6b66; margin-top:4px;}
+  @media (max-width:720px){ .stat-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:420px){ .stat-grid{grid-template-columns:1fr;} }
+
+  /* ---------- Bar chart (pure CSS) ---------- */
+  .chart-block{margin-bottom:32px;}
+  .chart-title{font-size:0.85rem; font-weight:600; margin-bottom:14px;}
+  .bar-row{display:flex; align-items:center; gap:12px; margin-bottom:10px;}
+  .bar-label{width:120px; font-size:0.78rem; color:#4a4a48; flex-shrink:0;}
+  .bar-track{flex:1; background:#eef1ef; height:20px; position:relative;}
+  .bar-fill{background:var(--teal); height:100%; transition:width .5s ease;}
+  .bar-value{width:48px; text-align:right; font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--teal);}
+
+  /* ---------- Disaggregation table ---------- */
+  table{width:100%; border-collapse:collapse; margin-bottom:32px; font-size:0.86rem;}
+  th{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase;
+    letter-spacing:0.05em; color:var(--teal); text-align:left; padding:10px 8px;
+    border-bottom:2px solid var(--line);
+  }
+  td{padding:10px 8px; border-bottom:1px solid var(--line); color:#2b2b28;}
+
+  .note-card{border-left:3px solid var(--sand); padding:16px 20px; background:#fbf7f1; font-size:0.9rem; color:#3a2f22; margin-bottom:20px;}
+
+  /* ---------- Patient timeline ---------- */
+  .patient-card{border:1px solid var(--line); padding:20px 22px; margin-bottom:28px;}
+  .patient-id{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--teal);}
+  .patient-meta{font-size:0.82rem; color:#6b6b66; margin-top:4px;}
+  .timeline{border-left:2px solid var(--line); margin:22px 0 0 8px;}
+  .tl-item{position:relative; padding:0 0 22px 24px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:""; position:absolute; left:-6px; top:2px; width:10px; height:10px; border-radius:50%; background:#fff; border:2px solid var(--teal);}
+  .tl-item.alt::before{background:var(--sand); border-color:var(--sand);}
+  .tl-day{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--teal); text-transform:uppercase;}
+  .tl-desc{font-size:0.92rem; color:#2b2b28; margin-top:3px;}
+  .tl-tag{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:0.66rem;
+    text-transform:uppercase; letter-spacing:0.04em; border:1px solid var(--sand); color:#8a6f56;
+    padding:2px 8px; margin-top:6px;
+  }
+
+  /* ---------- Stakeholder cards ---------- */
+  .stake-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .stake-card{background:#fff; padding:20px;}
+  .stake-card .role{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--teal);}
+  .stake-card h4{font-size:1rem; margin-top:8px;}
+  .stake-card p{font-size:0.85rem; color:#4a4a48; margin-top:8px;}
+  @media (max-width:820px){ .stake-grid{grid-template-columns:1fr;} }
+
+  footer{background:var(--teal); color:#c9d8d3; padding:34px 0; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:0.74rem;}
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  <strong>Illustrative mockup, not live data.</strong> Every figure, name, and record on this page is fabricated for design purposes only.
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Follow-up · Outcomes Conversion Engine</p>
+    <h1>Interface Concept: Baano &amp; Shaafi</h1>
+    <p>A working sketch of what the population-level outcomes layer and the patient-level record could actually look like, built directly from the Phase 1 design sprint scope. Two views below: what a Ministry of Health or district coordinator sees in aggregate, and what a single de-identified patient record looks like over time.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="view-tabs">
+    <button class="view-tab active" data-view="population">Population View</button>
+    <button class="view-tab" data-view="patient">Patient View</button>
+  </div>
+</div>
+
+<div class="view-panel active" id="population">
+  <div class="wrap">
+    <section style="padding-top:32px;">
+      <div class="country-toggle">
+        <button class="country-btn active" data-country="somalia">Somalia · EVC-Plus</button>
+        <button class="country-btn" data-country="somaliland">Somaliland · ZAAD</button>
+      </div>
+
+      <div class="filter-bar">
+        <span class="filter-chip on">All regions</span>
+        <span class="filter-chip">Gender: All</span>
+        <span class="filter-chip">Age: All</span>
+        <span class="filter-chip">IDP vs. host community</span>
+        <span class="filter-chip">Clan / displacement status</span>
+      </div>
+
+      <div class="stat-grid" id="statGrid">
+        <div class="stat-card"><div class="num" id="stat1">4,812</div><div class="label">Patients registered, rolling 90 days</div></div>
+        <div class="stat-card"><div class="num" id="stat2">71%</div><div class="label">30-day follow-up completion</div></div>
+        <div class="stat-card"><div class="num" id="stat3">58%</div><div class="label">90-day follow-up completion</div></div>
+        <div class="stat-card"><div class="num" id="stat4">34%</div><div class="label">Also consulted a traditional healer, logged not penalised</div></div>
+      </div>
+
+      <div class="chart-block">
+        <div class="chart-title">Reported wellbeing improvement by region, 90-day mark</div>
+        <div id="chartBars">
+          <div class="bar-row"><div class="bar-label">Mogadishu urban</div><div class="bar-track"><div class="bar-fill" style="width:78%;"></div></div><div class="bar-value">78%</div></div>
+          <div class="bar-row"><div class="bar-label">Lower Shabelle</div><div class="bar-track"><div class="bar-fill" style="width:61%;"></div></div><div class="bar-value">61%</div></div>
+          <div class="bar-row"><div class="bar-label">IDP settlements</div><div class="bar-track"><div class="bar-fill" style="width:47%;"></div></div><div class="bar-value">47%</div></div>
+          <div class="bar-row"><div class="bar-label">Rural / upriver</div><div class="bar-track"><div class="bar-fill" style="width:39%;"></div></div><div class="bar-value">39%</div></div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Disaggregation</th><th>Sample</th><th>Wellbeing improvement</th><th>Follow-up rate</th></tr>
+        </thead>
+        <tbody id="disaggTable">
+          <tr><td>Female, 18–35</td><td>1,204</td><td>66%</td><td>74%</td></tr>
+          <tr><td>Male, 18–35</td><td>988</td><td>59%</td><td>68%</td></tr>
+          <tr><td>IDP status</td><td>1,540</td><td>44%</td><td>52%</td></tr>
+          <tr><td>Host community</td><td>3,272</td><td>63%</td><td>70%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="note-card">
+        This layer is built for DHIS2-compatible export, so it strengthens Ministry of Health reporting rather than sitting outside it. Displacement status is tracked as a first-class field, not folded into a generic "vulnerable" category, since IDP and host-community outcomes diverge sharply, as the table above shows.
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="view-panel" id="patient">
+  <div class="wrap">
+    <section style="padding-top:32px;">
+      <div class="section-head">
+        <p class="eyebrow">Patient-Level Record</p>
+        <h2>One de-identified journey, tracked over 90 days.</h2>
+      </div>
+
+      <div class="patient-card">
+        <div class="patient-id">PATIENT ID · SL-04471-B (anonymised, unique across shared-phone households)</div>
+        <div class="patient-meta">Registered via EVC-Plus consult · Lower Shabelle · Female, 30–40 band</div>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-day">Day 0</div>
+            <div class="tl-desc">Initial consult logged via EVC-Plus. Baseline wellbeing measure recorded.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-day">Day 30</div>
+            <div class="tl-desc">Follow-up call completed. Reported improvement against baseline.</div>
+          </div>
+          <div class="tl-item alt">
+            <div class="tl-day">Day 41</div>
+            <div class="tl-desc">Also consulted a traditional healer in the same period.</div>
+            <div class="tl-tag">Logged as parallel care, not a dropout</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-day">Day 60</div>
+            <div class="tl-desc">Follow-up call completed. Continued improvement recorded.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-day">Day 90</div>
+            <div class="tl-desc">Final scheduled follow-up. Outcome marked stable. Micro-compensation issued via mobile money for completed follow-up sequence.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-card">
+        This is the core design decision from the concept note made visible: a patient who also sees a traditional healer or elder is recorded as a data point about how care is actually sought, not quietly counted as a failure of the platform. The record stays useful whether the patient followed one care path or several.
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <div class="section-head">
+      <p class="eyebrow">Who Sees What</p>
+      <h2>The same underlying data, three different interfaces.</h2>
+    </div>
+    <div class="stake-grid">
+      <div class="stake-card">
+        <div class="role">District Coordinator</div>
+        <h4>Resource allocation view</h4>
+        <p>Outbreak and early-warning clustering, DHIS2-format export, and a "who's falling behind on follow-up" queue, built for someone managing supply and staffing across multiple facilities, not for reading individual records.</p>
+      </div>
+      <div class="stake-card">
+        <div class="role">Rural Health Worker</div>
+        <h4>Audio-first, minimal text</h4>
+        <p>A simplified mobile view built around short voice prompts ("How is the baby?") rather than forms, for context where literacy, connectivity, and available time are all constrained. Complexity is hidden, not removed.</p>
+      </div>
+      <div class="stake-card">
+        <div class="role">Ministry of Health</div>
+        <h4>Auditable, SDG-aligned</h4>
+        <p>A credibility-first view: aggregate indicators mapped against SDG and WHO reporting categories, structured so it can be independently audited rather than taken on trust.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  Matt Thomson · mattthomson123@hotmail.com · Illustrative mockup, prepared as a follow-up to the July 2026 concept note · Private &amp; Confidential
+</footer>
+
+<script>
+  document.querySelectorAll('.view-tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      document.querySelectorAll('.view-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.view-panel').forEach(p=>p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.view).classList.add('active');
+    });
+  });
+
+  const data = {
+    somalia: {
+      stats: ['4,812','71%','58%','34%'],
+      bars: [78,61,47,39],
+      rows: [
+        ['Female, 18–35','1,204','66%','74%'],
+        ['Male, 18–35','988','59%','68%'],
+        ['IDP status','1,540','44%','52%'],
+        ['Host community','3,272','63%','70%']
+      ]
+    },
+    somaliland: {
+      stats: ['3,065','76%','64%','41%'],
+      bars: [82,69,53,44],
+      rows: [
+        ['Female, 18–35','842','70%','79%'],
+        ['Male, 18–35','701','64%','73%'],
+        ['IDP status','918','49%','58%'],
+        ['Host community','2,147','68%','75%']
+      ]
+    }
+  };
+
+  document.querySelectorAll('.country-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.country-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const d = data[btn.dataset.country];
+      ['stat1','stat2','stat3','stat4'].forEach((id,i)=>{ document.getElementById(id).textContent = d.stats[i]; });
+      document.querySelectorAll('#chartBars .bar-fill').forEach((el,i)=>{ el.style.width = d.bars[i] + '%'; });
+      document.querySelectorAll('#chartBars .bar-value').forEach((el,i)=>{ el.textContent = d.bars[i] + '%'; });
+      const rows = document.querySelectorAll('#disaggTable tr');
+      rows.forEach((row,i)=>{
+        const cells = row.querySelectorAll('td');
+        d.rows[i].forEach((val,j)=>{ cells[j].textContent = val; });
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
