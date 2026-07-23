@@ -87,28 +87,21 @@
   .note-card{border-left:3px solid var(--sand); padding:14px 18px; background:#fbf7f1; font-size:0.88rem; color:#3a2f22; margin-bottom:22px;}
   .alert-card{border-left:3px solid var(--brown); padding:14px 18px; background:#fbf7f1; font-size:0.88rem; color:#3a2f22; margin-bottom:22px;}
 
-  /* ---------- Outbreak map ---------- */
-  .map-frame{
-    position:relative; background:#eef1ef; border:1px solid var(--line);
-    height:340px; margin-bottom:14px; overflow:hidden;
+  /* ---------- Region/disease matrix ---------- */
+  .matrix-tabs{display:flex; align-items:center; gap:1px; flex-wrap:wrap;}
+  .matrix-tab-label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.66rem; text-transform:uppercase;
+    letter-spacing:0.05em; color:#8a8a86; margin-right:10px;
   }
-  .map-caption{font-size:0.72rem; color:#8a8a86; margin-bottom:22px; font-family:'IBM Plex Mono', monospace;}
-  .map-point{
-    position:absolute; border-radius:50%; background:var(--teal);
-    display:flex; align-items:center; justify-content:center; transform:translate(-50%,-50%);
+  .matrix-tab{
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem; padding:8px 14px;
+    background:#fafaf8; border:1px solid var(--line); cursor:pointer; color:#4a4a48;
+    transition:background .18s ease, color .18s ease;
   }
-  .map-point .dot-label{
-    position:absolute; top:100%; left:50%; transform:translateX(-50%);
-    font-family:'IBM Plex Mono', monospace; font-size:0.62rem; color:#3a3a38; white-space:nowrap; margin-top:4px;
-  }
-  .map-point.hotspot{background:var(--brown);}
-  .map-point.hotspot::after{
-    content:""; position:absolute; inset:-6px; border-radius:50%; border:2px solid var(--sand);
-    animation:pulse 1.8s ease-out infinite;
-  }
-  @keyframes pulse{ 0%{transform:scale(0.85); opacity:0.9;} 100%{transform:scale(1.7); opacity:0;} }
+  .matrix-tab.active{background:var(--teal); color:#fff; border-color:var(--teal);}
+  .mval{font-family:'IBM Plex Mono', monospace; font-weight:500; text-align:right;}
   .map-legend{display:flex; gap:18px; flex-wrap:wrap; font-size:0.74rem; color:#4a4a48; align-items:center;}
-  .map-legend .swatch{display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:6px; vertical-align:middle;}
+  .map-legend .swatch{display:inline-block; width:12px; height:12px; margin-right:6px; vertical-align:middle;}
 
   /* ---------- Results chain ---------- */
   .chain{display:flex; gap:2px; overflow-x:auto; margin-bottom:14px; padding-bottom:4px;}
@@ -234,44 +227,47 @@
 
     <section>
       <div class="section-head">
-        <p class="eyebrow">Outbreak Surveillance</p>
-        <h2>Acute watery diarrhoea, suspected cholera, syndromic hotspots</h2>
+        <p class="eyebrow">Regional Breakdown</p>
+        <h2>Administrative region by urban/rural, disease category, and metric.</h2>
       </div>
-      <div class="map-frame" id="mapFrame">
-        <!-- points positioned by percentage -->
-        <div class="map-point" style="left:18%; top:22%; width:22px; height:22px;">
-          <span class="dot-label">Hargeisa (12)</span>
-        </div>
-        <div class="map-point" style="left:34%; top:14%; width:18px; height:18px;">
-          <span class="dot-label">Berbera (8)</span>
-        </div>
-        <div class="map-point" style="left:60%; top:10%; width:24px; height:24px;">
-          <span class="dot-label">Bosaso (15)</span>
-        </div>
-        <div class="map-point" style="left:57%; top:32%; width:28px; height:28px;">
-          <span class="dot-label">Garowe (22)</span>
-        </div>
-        <div class="map-point" style="left:38%; top:53%; width:44px; height:44px;">
-          <span class="dot-label">Baidoa (61)</span>
-        </div>
-        <div class="map-point" style="left:52%; top:70%; width:32px; height:32px;">
-          <span class="dot-label">Mogadishu (34)</span>
-        </div>
-        <div class="map-point hotspot" style="left:43%; top:78%; width:52px; height:52px;">
-          <span class="dot-label">Lower Shabelle IDP sites (89)</span>
-        </div>
-        <div class="map-point" style="left:33%; top:90%; width:20px; height:20px;">
-          <span class="dot-label">Kismayo (19)</span>
-        </div>
+      <p style="font-size:0.88rem; color:#4a4a48; margin-bottom:16px;">Two independent toggles: pick a disease category, then pick whether the table shows output volume or outcome change. Cell shade is relative to the values currently shown.</p>
+
+      <div class="matrix-tabs">
+        <span class="matrix-tab-label">Category</span>
+        <button class="matrix-tab active" data-disease="infectious">Infectious</button>
+        <button class="matrix-tab" data-disease="ncd">Non-Communicable</button>
+        <button class="matrix-tab" data-disease="maternal">Maternal &amp; Child</button>
       </div>
-      <div class="map-caption">Schematic placement, illustrative only, not to scale. Circle size and shade reflect case count over the trailing 14 days.</div>
+      <div class="matrix-tabs" style="margin-top:8px;">
+        <span class="matrix-tab-label">Metric</span>
+        <button class="matrix-tab active" data-metric="output">Output Numbers</button>
+        <button class="matrix-tab" data-metric="outcome">Outcome Change</button>
+      </div>
+
+      <table id="matrixTable" style="margin-top:20px;">
+        <thead><tr><th>Region</th><th>Setting</th><th id="matrixColHead">Consultations linked</th></tr></thead>
+        <tbody>
+          <tr><td>Banaadir (Mogadishu)</td><td>Urban</td><td class="mval"></td></tr>
+          <tr><td>Banaadir (Mogadishu)</td><td>Rural</td><td class="mval"></td></tr>
+          <tr><td>Lower Shabelle</td><td>Urban</td><td class="mval"></td></tr>
+          <tr><td>Lower Shabelle</td><td>Rural</td><td class="mval"></td></tr>
+          <tr><td>Bay (Baidoa)</td><td>Urban</td><td class="mval"></td></tr>
+          <tr><td>Bay (Baidoa)</td><td>Rural</td><td class="mval"></td></tr>
+          <tr><td>Bakool</td><td>Urban</td><td class="mval"></td></tr>
+          <tr><td>Bakool</td><td>Rural</td><td class="mval"></td></tr>
+          <tr><td>Woqooyi Galbeed (Hargeisa)</td><td>Urban</td><td class="mval"></td></tr>
+          <tr><td>Woqooyi Galbeed (Hargeisa)</td><td>Rural</td><td class="mval"></td></tr>
+          <tr><td>Sahil (Berbera)</td><td>Urban</td><td class="mval"></td></tr>
+          <tr><td>Sahil (Berbera)</td><td>Rural</td><td class="mval"></td></tr>
+        </tbody>
+      </table>
       <div class="map-legend" style="margin-bottom:22px;">
-        <span><span class="swatch" style="background:var(--teal); opacity:0.5;"></span>Low</span>
-        <span><span class="swatch" style="background:var(--teal);"></span>Rising</span>
-        <span><span class="swatch" style="background:var(--brown);"></span>Alert threshold, pulsing ring</span>
+        <span><span class="swatch" style="background:var(--sand); border-radius:2px;"></span>Low / limited change</span>
+        <span><span class="swatch" style="background:var(--teal); opacity:0.5; border-radius:2px;"></span>Moderate</span>
+        <span><span class="swatch" style="background:var(--teal); border-radius:2px;"></span>High</span>
       </div>
-      <div class="alert-card">
-        Lower Shabelle IDP sites crossed the alert threshold three days ago. This is exactly the kind of signal EWARN-style syndromic surveillance is built to catch early, a spike concentrated in settlements with known water and sanitation strain, visible before it shows up in hospital admission data.
+      <div class="note-card">
+        The pattern holds across all three categories: rural settings consistently show lower output volume, fewer people are being reached, but larger outcome change per consultation once someone actually is. That's the same story the intervention table below tells in a different way: reach and effectiveness aren't the same variable, and this table is built so nobody can average the two together by accident.
       </div>
     </section>
 
@@ -554,6 +550,72 @@
       panel.classList.toggle('open');
     });
   });
+
+  /* ---------- Region / disease / metric matrix ---------- */
+  const matrixData = {
+    infectious: {
+      output:  [340,96, 210,74, 180,52, 140,31, 265,88, 150,45],
+      outcome: [0.09,0.14, 0.08,0.17, 0.07,0.19, 0.06,0.21, 0.10,0.13, 0.09,0.15]
+    },
+    ncd: {
+      output:  [410,62, 260,48, 190,29, 130,18, 300,55, 175,33],
+      outcome: [0.06,0.08, 0.05,0.09, 0.04,0.11, 0.03,0.12, 0.07,0.07, 0.05,0.08]
+    },
+    maternal: {
+      output:  [380,120, 240,95, 205,70, 150,42, 290,110, 165,58],
+      outcome: [0.12,0.18, 0.11,0.20, 0.10,0.23, 0.08,0.25, 0.13,0.17, 0.11,0.19]
+    }
+  };
+  const colHeadings = {
+    output: 'Consultations linked',
+    outcome: 'Avg. wellbeing change'
+  };
+
+  let activeDisease = 'infectious';
+  let activeMetric = 'output';
+
+  function hexToRgb(hex){
+    const v = hex.replace('#','');
+    return [parseInt(v.substr(0,2),16), parseInt(v.substr(2,2),16), parseInt(v.substr(4,2),16)];
+  }
+  const TEAL = hexToRgb('0c231f');
+  const SAND = hexToRgb('c9a877');
+
+  function renderMatrix(){
+    const values = matrixData[activeDisease][activeMetric];
+    const maxVal = Math.max(...values);
+    const minVal = Math.min(...values);
+    document.getElementById('matrixColHead').textContent = colHeadings[activeMetric];
+    document.querySelectorAll('#matrixTable .mval').forEach((cell, i)=>{
+      const v = values[i];
+      const isOutput = activeMetric === 'output';
+      const display = isOutput ? v.toLocaleString() : (v>=0 ? '+'+v.toFixed(2) : v.toFixed(2));
+      cell.textContent = display;
+      const intensity = (v - minVal) / (maxVal - minVal || 1);
+      const base = (!isOutput && v < 0.09) ? SAND : TEAL;
+      const alpha = 0.18 + intensity * 0.72;
+      cell.style.background = `rgba(${base[0]},${base[1]},${base[2]},${alpha.toFixed(2)})`;
+      cell.style.color = alpha > 0.55 ? '#fff' : '#2b2b28';
+    });
+  }
+
+  document.querySelectorAll('.matrix-tab[data-disease]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.matrix-tab[data-disease]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      activeDisease = btn.dataset.disease;
+      renderMatrix();
+    });
+  });
+  document.querySelectorAll('.matrix-tab[data-metric]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.matrix-tab[data-metric]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      activeMetric = btn.dataset.metric;
+      renderMatrix();
+    });
+  });
+  renderMatrix();
 </script>
 
 </body>
