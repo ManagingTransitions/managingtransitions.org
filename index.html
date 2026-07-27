@@ -248,17 +248,28 @@
   /* ---------- Writing / Substack ---------- */
   .writing{margin-top:44px;}
   .writing-list{border-top:1px solid var(--line); margin-top:14px;}
-  .writing-item{padding:16px 0; border-bottom:1px solid var(--line);}
-  .writing-item a{
-    text-decoration:none; font-weight:600; font-size:1rem; color:var(--ink);
+  .writing-item{
+    display:grid; grid-template-columns:200px 1fr; gap:22px; align-items:start;
+    padding:22px 0; border-bottom:1px solid var(--line);
+  }
+  .writing-item.no-image{grid-template-columns:1fr;}
+  .writing-thumb{
+    display:block; width:100%; aspect-ratio:16 / 9; object-fit:cover;
+    border:1px solid var(--line); background:#eef1ef;
+  }
+  .writing-title{
+    display:inline-block;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.08rem; line-height:1.25;
+    color:var(--ink); text-decoration:none;
     border-bottom:1px solid transparent;
     transition:color .2s ease, border-color .2s ease;
   }
-  .writing-item a:hover{color:var(--teal); border-bottom-color:var(--sand);}
-  .writing-item .when{
-    display:block; margin-top:5px;
+  .writing-title:hover{color:var(--teal); border-bottom-color:var(--sand);}
+  .writing-body .when{
+    display:block; margin-top:6px;
     font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8a8a86;
   }
+  .writing-body .excerpt{margin:10px 0 0; font-size:0.9rem; color:#4a4a48; max-width:60ch;}
   .writing-status{
     font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
     color:#6b6b66; padding:16px 0;
@@ -266,6 +277,7 @@
   .writing-status a{color:var(--teal);}
   .writing-sub{margin-top:28px; max-width:480px;}
   .writing-sub iframe{width:100%; border:1px solid var(--line); background:var(--paper);}
+  @media (max-width:640px){ .writing-item{grid-template-columns:1fr; gap:14px;} }
 
   /* ---------- Credentials ---------- */
   .cred-cols{display:grid; grid-template-columns:1fr 1fr; gap:44px;}
@@ -616,7 +628,7 @@
 <footer id="contact">
   <div class="wrap">
     <p class="eyebrow">Get In Touch</p>
-    <h2>Ready to transition?</h2>
+    <h2>Ready to plan the transition?</h2>
     <p class="lede">Reach out directly, or book time to talk through your network's transition.</p>
     <div class="contact-grid">
       <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
@@ -642,36 +654,83 @@
     var list = document.getElementById('writing-list');
     if(!list) return;
 
+    var SUBSTACK = 'https://thomsonmatt.substack.com';
+    var FEED = 'https://rss.app/feeds/v1.1/ACspy4XDT6dpPh5R.json';
+
     function fallback(){
       list.textContent = '';
       var row = document.createElement('div');
       row.className = 'writing-status';
       row.textContent = 'Recent posts are on Substack: ';
       var a = document.createElement('a');
-      a.href = 'https://thomsonmatt.substack.com';
-      a.target = '_blank';
-      a.rel = 'noopener';
+      a.href = SUBSTACK; a.target = '_blank'; a.rel = 'noopener';
       a.textContent = 'thomsonmatt.substack.com';
       row.appendChild(a);
       list.appendChild(row);
     }
 
-    fetch('https://rss.app/feeds/v1.1/ACspy4XDT6dpPh5R.json')
+    function excerptFrom(item){
+      var text = item.content_text || '';
+      if(!text && item.content_html){
+        try{
+          var doc = new DOMParser().parseFromString(item.content_html, 'text/html');
+          text = doc.body.textContent || '';
+        }catch(e){ text = ''; }
+      }
+      text = text.replace(/\s+/g, ' ').trim();
+      if(text.length <= 200) return text;
+      var cut = text.slice(0, 200);
+      var space = cut.lastIndexOf(' ');
+      if(space > 120){ cut = cut.slice(0, space); }
+      return cut + '\u2026';
+    }
+
+    function usableImage(item){
+      var src = item.image || (item.attachments && item.attachments[0] && item.attachments[0].url) || '';
+      // Substack auto-generates a share card with the headline baked into the image.
+      // Showing that beside the headline prints it twice, so skip it.
+      if(!src || src.indexOf('post_preview') !== -1){ return ''; }
+      return src;
+    }
+
+    fetch(FEED)
       .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
       .then(function(data){
         var items = (data.items || []).slice(0, 4);
         if(!items.length){ fallback(); return; }
         list.textContent = '';
-        items.forEach(function(item){
-          var row = document.createElement('div');
-          row.className = 'writing-item';
 
-          var a = document.createElement('a');
-          a.href = item.url || 'https://thomsonmatt.substack.com';
-          a.target = '_blank';
-          a.rel = 'noopener';
-          a.textContent = item.title || 'Untitled';
-          row.appendChild(a);
+        items.forEach(function(item){
+          var url = item.url || SUBSTACK;
+          var img = usableImage(item);
+
+          var row = document.createElement('div');
+          row.className = 'writing-item' + (img ? '' : ' no-image');
+
+          if(img){
+            var thumbLink = document.createElement('a');
+            thumbLink.href = url; thumbLink.target = '_blank'; thumbLink.rel = 'noopener';
+            var pic = document.createElement('img');
+            pic.className = 'writing-thumb';
+            pic.src = img;
+            pic.alt = '';
+            pic.loading = 'lazy';
+            pic.onerror = function(){
+              row.classList.add('no-image');
+              if(thumbLink.parentNode){ thumbLink.parentNode.removeChild(thumbLink); }
+            };
+            thumbLink.appendChild(pic);
+            row.appendChild(thumbLink);
+          }
+
+          var body = document.createElement('div');
+          body.className = 'writing-body';
+
+          var title = document.createElement('a');
+          title.className = 'writing-title';
+          title.href = url; title.target = '_blank'; title.rel = 'noopener';
+          title.textContent = item.title || 'Untitled';
+          body.appendChild(title);
 
           if(item.date_published){
             var d = new Date(item.date_published);
@@ -679,9 +738,19 @@
               var when = document.createElement('span');
               when.className = 'when';
               when.textContent = d.toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
-              row.appendChild(when);
+              body.appendChild(when);
             }
           }
+
+          var ex = excerptFrom(item);
+          if(ex){
+            var p = document.createElement('p');
+            p.className = 'excerpt';
+            p.textContent = ex;
+            body.appendChild(p);
+          }
+
+          row.appendChild(body);
           list.appendChild(row);
         });
       })
