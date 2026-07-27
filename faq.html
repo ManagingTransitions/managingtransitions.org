@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Questions | Managing Transitions</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Questions worth asking before hiring an independent adviser on aid-dependency exits and outcomes systems, plus definitions of the terms used across this site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000000;
+    --teal:#0c231f;
+    --brown:#392c23;
+    --amber:#e47b12;
+    --sand:#c9a877;
+    --paper:#ffffff;
+    --line: rgba(0,0,0,0.14);
+    --line-on-dark: rgba(255,255,255,0.18);
+    --max: 1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--sand); color:var(--teal);}
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  :focus-visible{outline:2px solid var(--sand); outline-offset:3px;}
+
+  @keyframes heroUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;} }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  .brand{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    letter-spacing:0.04em;
+    font-weight:500;
+    text-decoration:none;
+  }
+  .brand span{color:var(--teal);}
+  .navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+  .navlinks li{position:relative;}
+  .navlinks a{
+    position:relative;
+    font-size:0.85rem; text-decoration:none; color:var(--brown);
+    font-weight:500; padding-bottom:2px;
+  }
+  .navlinks a::after{
+    content:""; position:absolute; left:0; bottom:-2px; width:100%; height:1px;
+    background:var(--sand); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .navlinks a:hover{color:var(--teal);}
+  .navlinks a:hover::after{transform:scaleX(1);}
+  .navlinks a.current{color:var(--teal);}
+  .navlinks a.current::after{transform:scaleX(1);}
+  @media (max-width:760px){ .navlinks{display:none;} }
+
+  /* ---------- PAGE HEAD ---------- */
+  header.page-head{
+    background:var(--teal);
+    color:#f4efe6;
+    padding:66px 0 54px;
+    overflow:hidden;
+  }
+  header.page-head .wrap > *{ animation:heroUp .7s ease both; }
+  header.page-head .wrap > *:nth-child(1){animation-delay:.02s;}
+  header.page-head .wrap > *:nth-child(2){animation-delay:.10s;}
+  header.page-head .wrap > *:nth-child(3){animation-delay:.18s;}
+  header.page-head .eyebrow{color:#a9c2bb; margin-bottom:16px;}
+  header.page-head h1{
+    font-size:clamp(2.1rem, 4.8vw, 3.2rem);
+    color:#ffffff;
+    line-height:1.05;
+  }
+  header.page-head p.lede{
+    max-width:580px;
+    font-size:1.05rem;
+    color:#dbe5e1;
+    margin-top:20px;
+  }
+
+  /* ---------- SECTION shells ---------- */
+  section{padding:76px 0;}
+  .section-head{max-width:640px; margin-bottom:32px;}
+  .section-head .eyebrow{margin-bottom:0;}
+  .section-head h2{font-size:clamp(1.5rem, 3vw, 2rem); margin-top:12px;}
+  .section-head p{font-size:0.96rem; color:#4a4a48; margin-top:14px;}
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    header.page-head .wrap > *{animation:none; opacity:1; transform:none;}
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq{border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    list-style:none;
+    cursor:pointer;
+    display:grid; grid-template-columns:1fr auto; gap:20px; align-items:start;
+    padding:22px 0;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-q{
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:1.08rem; line-height:1.32; color:var(--ink);
+    max-width:60ch;
+  }
+  .faq-item summary:hover .faq-q{color:var(--teal);}
+  .faq-item summary::after{
+    content:"+";
+    font-family:'IBM Plex Mono', monospace;
+    font-size:1.15rem; line-height:1.32; color:var(--teal);
+  }
+  .faq-item[open] summary::after{content:"\2212";}
+  .faq-a{padding:2px 0 28px; max-width:66ch;}
+  .faq-a p{margin:0 0 14px; font-size:0.98rem; color:#2b2b28;}
+  .faq-a p:last-child{margin-bottom:0;}
+
+  /* ---------- Glossary ---------- */
+  .glossary{background:#eef1ef; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .glossary-list{border-top:1px solid var(--line);}
+  .glossary-item{padding:20px 0; border-bottom:1px solid var(--line);}
+  .glossary-term{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    text-transform:uppercase; letter-spacing:0.05em; color:var(--teal); font-weight:500;
+  }
+  .glossary-def{margin-top:8px; font-size:0.95rem; color:#2b2b28; max-width:70ch;}
+  .glossary-note{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    color:#6b6b66; margin-top:24px;
+  }
+  .glossary-note a{color:var(--teal);}
+
+  /* ---------- Contact / footer ---------- */
+  footer{background:var(--teal); color:#eef4f1; padding:66px 0 34px;}
+  footer .eyebrow{color:#a9c2bb;}
+  footer h2{color:#fff; font-size:clamp(1.6rem,3.2vw,2.2rem);}
+  footer p.lede{color:#c9d8d3; max-width:520px; margin-top:14px;}
+  .contact-grid{display:flex; flex-wrap:wrap; gap:12px; margin-top:36px;}
+  .chip{
+    display:flex; align-items:center; gap:8px;
+    padding:11px 18px;
+    border:1px solid var(--line-on-dark);
+    text-decoration:none; color:#eef4f1;
+    font-size:0.88rem;
+    transition:border-color .18s ease, color .18s ease, transform .18s ease;
+  }
+  .chip:hover{border-color:var(--sand); color:var(--sand); transform:translateY(-2px);}
+  .foot-base{
+    margin-top:58px; padding-top:20px; border-top:1px solid var(--line-on-dark);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8ea59c;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">MANAGING <span>/</span> TRANSITIONS</a>
+    <ul class="navlinks">
+      <li><a href="index.html#philosophy">Philosophy</a></li>
+      <li><a href="index.html#advisory">Advisory</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="index.html#credentials">Credentials</a></li>
+      <li><a href="faq.html" class="current">Questions</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Managing Transitions</p>
+    <h1>Questions</h1>
+    <p class="lede">The things worth asking before hiring someone like me, answered properly rather than briefly. Definitions of the terms I use are at the bottom of the page.</p>
+  </div>
+</header>
+
+<section id="questions">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Before You Get In Touch</p>
+      <h2>Eight questions, answered straight.</h2>
+    </div>
+
+    <div class="faq reveal">
+
+      <details class="faq-item">
+        <summary><span class="faq-q">You haven't finished the PhD. Why hire you now rather than waiting eighteen months?</span></summary>
+        <div class="faq-a">
+          <p>Because right now I have a foot in both worlds at once, and that stops being true when the thesis does.</p>
+          <p>On one side I'm inside the academic machinery: methodology, ethics review, what the current research actually says rather than what got cited five years ago. I'm still learning it, which means I'm not reaching for the same method every time.</p>
+          <p>On the other, I work full time for an international NGO. I co-manage an EU co-financed programme and run the relationships across it, from community-based organisations through to government ministries, donors, and the comms people who have to make it all sound like something.</p>
+          <p>I'm at the tail end of interview data collection, so the fieldwork is nearly done and the write-up is next.</p>
+          <p>There's also the plain version: I'll cost less now than I will afterwards.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="faq-q">Why a solo consultant instead of a firm with a team behind it?</span></summary>
+        <div class="faq-a">
+          <p>Because the thing I study and the thing I'm selling are the same thing: how people build enough trust to work together inside constraints they didn't choose.</p>
+          <p>That runs on relationships, and relationships don't survive being handed down an org chart. It matters that I can sit and have a coffee with the nurse. It matters that I can send a WhatsApp message and the whole team at the other end answers, because they know who I am and they know I'll still be there in six months. A firm sells you a partner and delivers you an associate.</p>
+          <p>There's also nothing sitting between you and the answer. No internal review, no account manager, no version that has to be run past someone first.</p>
+          <p>I take on few engagements and keep them small, so nothing is being handled in the background while I'm with you.</p>
+          <p>Where a firm beats me is anything needing a bench. A financial audit, a software build, translation: different skill sets, and I'd tell you to hire for them rather than stretch to cover them. What I can do is scope and source the right people to work alongside me, or slot into a team you already have. What I'm not offering is a firm.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="faq-q">You're a British consultant advising on localisation. Isn't that exactly the problem you describe?</span></summary>
+        <div class="faq-a">
+          <p>I occupy the position I'm critiquing. That's the honest starting point, and I'd rather work with it in view than pretend to stand outside it.</p>
+          <p>What I don't believe in is the unmediated version, where localisation means handing everything to local staff and stepping back. And then what? That isn't where the funding sits and it isn't where the power sits. While the money comes from Brussels or Geneva, someone translates between what a donor requires and what the work actually needs. Pretending that role doesn't exist doesn't remove it, it just leaves it unexamined, which is how it ends up being done badly by someone who never had to think about it.</p>
+          <p>So I'm not selling contextual expertise. A Gambian or Ugandan colleague will read the political and cultural specifics better than I will, every time. I'm selling a method.</p>
+          <p>There's probably a gatekeeping question underneath all of this, about whose knowledge gets counted as knowledge and who decides. I don't think it resolves cleanly. I'd be wary of anyone selling a version where it does, including me.</p>
+          <p>If the donor checklist just gets passed downward, two things follow. Local actors carry the compliance burden on top of the work they were already doing. And it becomes their job to explain to the Global North how the Global North should reform, which it shouldn't be.</p>
+          <p>My side of it is listening to local actors and changing how donors, policymakers and academics work. Not the reverse.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="faq-q">Isn't "aid dependency exit" just a polite way of managing budget cuts?</span></summary>
+        <div class="faq-a">
+          <p>Partly, yes. Worth saying that plainly rather than dressing it up.</p>
+          <p>US aid has been cut and FCDO budgets are down across the board. A lot of what's replacing them is corporate CSR and philanthropic money, which tends to arrive with outcomes-based or results-based financing attached. The ground has shifted under everyone, and a fair amount of transition work happening right now is a budget line being managed backwards.</p>
+          <p>But the principle didn't arrive with the cuts. Any decent programme should be trying to put itself out of business, and so should the NGO running it. Sustainability has been written into ODA programming for years.</p>
+          <p>The problem is what happens to it in practice. GEDSI and localisation get treated the way sustainability does, as a box to tick. A funder marks it "reduces dependency," and what actually happens is withdrawal: the budget drops each year and the local partner is told to diversify its income, with no plan for how and nothing transferred that would make it possible.</p>
+          <p>That isn't a transition, it's a withdrawal with a sustainability section. The difference between the two is whether anything moves other than the money.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="faq-q">What kinds of work do you turn down?</span></summary>
+        <div class="faq-a">
+          <p>The main one is the engagement where the conclusion is already written and what's wanted is someone with the right letters after their name to sign it. An evaluation commissioned to confirm a decision that's already been made. A localisation review scoped tightly enough that the answer is fixed before the first interview. This happens more than the sector admits.</p>
+          <p>I'd also be uncomfortable with work where the local partners haven't been told it's happening, or where they won't be allowed to see what comes out of it.</p>
+          <p>The clearest case I have predates the consultancy. I reached a final-round interview at a corporate intelligence firm, and the CEO put a scenario to me: a client operating a mine, children dead on site, workers protesting, and information suggesting equipment might be damaged. Where did I stand?</p>
+          <p>I told him I thought I knew which answer he wanted and that I wasn't going to give it. That ended the process, which was the right outcome.</p>
+          <p>Being straight about it: as a consultant I'm early enough that the list of things I've declined is short. Stating a red line is easier than proving one. What I can say is that I'd rather tell you at scoping that you don't need the work you're asking for than take it and write around the problem.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="faq-q">Do you hand over a report and leave, or stay through implementation?</span></summary>
+        <div class="faq-a">
+          <p>Either, depending on how the work is scoped. Some engagements are genuinely short-term advisory: come in, do the piece, hand it over, go. Others carry on as a retainer through whatever the findings turn out to require.</p>
+          <p>What I try to avoid is the usual fate of a report. One internal meeting, then a drawer, then it gets pulled out eighteen months later because a donor asked whether anyone had looked at the problem. Nothing moved in between.</p>
+          <p>So I treat the report as the first stage rather than the deliverable. The honest position is that you can't scope the second stage until the first one is done, because until the interviews are finished nobody knows what they're dealing with. I'd rather say that up front than sell you an implementation phase I've priced before I know what's wrong.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="faq-q">What if your honest finding is that the programme should close, or that the donor's premise is wrong?</span></summary>
+        <div class="faq-a">
+          <p>Then I say so. That's most of the reason to bring someone in from outside. I don't have years invested in the programme, and I don't have the internal relationships that make saying it expensive.</p>
+          <p>It's an uncomfortable thing to hear. But if the point of the programme is the people it serves, then stopping something that isn't working is a good outcome rather than a failure. Carrying on once you already know is the harder position to defend.</p>
+          <p>In practice: if I'm scoped for twenty-one days and it's obvious by day two, I don't spend the remaining nineteen writing the report I was hired for. We talk then. If it makes sense, we repoint the work at what a wind-down would actually involve.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="faq-q">How do you scope a piece of work, and how is it priced?</span></summary>
+        <div class="faq-a">
+          <p>Scoping is usually three conversations.</p>
+          <p>The first is free. You set out the problem and I ask questions.</p>
+          <p>After that we agree a small fixed fee, normally half a day, credited against the engagement if you go ahead. I take the problem away, work out how I'd approach it, and write down every assumption I'm making that could turn out to be wrong.</p>
+          <p>The second conversation covers the approach and the assumptions underneath it. You'll spot the ones that don't hold straight away, because you know the organisation and I don't yet. This is usually where the problem shifts shape.</p>
+          <p>The third is where I come back with a plan built on what survived.</p>
+          <p>Delivery is priced per day or per piece of work, whichever suits how you buy. If it turns out bigger than we scoped, we work that out together as it happens. Every engagement is different and I'd rather talk it through than hide behind a clause. Nothing gets billed that we haven't agreed first.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<section class="glossary" id="glossary">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Glossary</p>
+      <h2>Terms I use, and what I mean by them.</h2>
+      <p>Some of these are borrowed and credited. Others are mine, and are working definitions rather than settled ones.</p>
+    </div>
+
+    <div class="glossary-list reveal">
+      <div class="glossary-item">
+        <div class="glossary-term">Localisation Theatre</div>
+        <div class="glossary-def">Following Femke Mulder: the performance of participation, consultation, and local sign-off, staged to satisfy donor compliance, while the funding, the timeline, and the real decisions stay exactly where they were.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Governance-in-Practice</div>
+        <div class="glossary-def">Localisation understood not as a policy commitment but as the accumulation of ordinary administrative tasks, funding rules, and reporting routines that quietly decide who actually holds power.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Harnessing Constraint</div>
+        <div class="glossary-def">The small, repeated adaptations through which local actors work inside donor-imposed limits: reinterpreting a brief, adjusting an imported part, building the workaround that keeps a clinic open.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Project Logic vs. Systemic Coherence</div>
+        <div class="glossary-def">The gap between individual interventions that each look successful in isolation, and a wider system that never stabilises, because funding cycles, leadership, and reporting requirements don't talk to one another.</div>
+      </div>
+    </div>
+
+    <p class="glossary-note reveal">Where these come from, and the research behind them, is set out on the <a href="index.html#research">Research</a> section of the homepage.</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Get In Touch</p>
+    <h2>Still got a question?</h2>
+    <p class="lede">Ask it directly, or book time to talk it through.</p>
+    <div class="contact-grid">
+      <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+      <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
+      <a class="chip" href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
+      <a class="chip" href="index.html">Back to homepage</a>
+    </div>
+    <div class="foot-base">
+      <span>MANAGING TRANSITIONS &copy; 2026</span>
+      <span>managingtransitions.org</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  reveals.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
