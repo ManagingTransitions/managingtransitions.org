@@ -220,6 +220,17 @@
   .lineage-item:last-child{border-bottom:none;}
   .lineage-name{font-weight:600; color:var(--ink);}
 
+  /* ---------- Reading & Listening ---------- */
+  .reading{margin-top:44px;}
+  .reading-list{margin-top:12px;}
+  .reading-item{
+    padding:14px 0; border-bottom:1px solid var(--line);
+    font-size:0.92rem; color:#2b2b28; max-width:72ch;
+  }
+  .reading-item:last-child{border-bottom:none;}
+  .reading-title{font-weight:600; color:var(--ink);}
+  .reading-author{color:#6b6b66;}
+
   /* ---------- Field note ---------- */
   .field-note{margin-top:40px; border-left:3px solid var(--sand); padding-left:24px;}
   .field-note p{font-size:0.98rem; color:#2b2b28;}
@@ -233,6 +244,28 @@
     font-size:0.68rem; color:var(--teal); margin-bottom:8px; display:block;
   }
   @media (max-width:700px){ .fact-pair{grid-template-columns:1fr;} }
+
+  /* ---------- Writing / Substack ---------- */
+  .writing{margin-top:44px;}
+  .writing-list{border-top:1px solid var(--line); margin-top:14px;}
+  .writing-item{padding:16px 0; border-bottom:1px solid var(--line);}
+  .writing-item a{
+    text-decoration:none; font-weight:600; font-size:1rem; color:var(--ink);
+    border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .writing-item a:hover{color:var(--teal); border-bottom-color:var(--sand);}
+  .writing-item .when{
+    display:block; margin-top:5px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8a8a86;
+  }
+  .writing-status{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    color:#6b6b66; padding:16px 0;
+  }
+  .writing-status a{color:var(--teal);}
+  .writing-sub{margin-top:28px; max-width:480px;}
+  .writing-sub iframe{width:100%; border:1px solid var(--line); background:var(--paper);}
 
   /* ---------- Credentials ---------- */
   .cred-cols{display:grid; grid-template-columns:1fr 1fr; gap:44px;}
@@ -248,6 +281,26 @@
   .cred-item .when{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8a8a86; margin-left:8px;}
   .cred-item p{margin:6px 0 0; font-size:0.9rem; color:#4a4a48;}
   @media (max-width:820px){ .cred-cols{grid-template-columns:1fr;} }
+
+  /* ---------- Speaking ---------- */
+  .speaking{margin-top:56px;}
+  .speaking h3{
+    font-family:'IBM Plex Mono', monospace; font-weight:500;
+    font-size:0.85rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--teal); margin-bottom:18px;
+    border-bottom:1px solid var(--line); padding-bottom:10px;
+  }
+  .speaking-item{padding:16px 0; border-bottom:1px solid var(--line);}
+  .speaking-item .title{font-weight:600; font-size:0.98rem;}
+  .speaking-item .meta{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    color:#8a8a86; margin-top:5px;
+  }
+  .speaking-item p{margin:8px 0 0; font-size:0.9rem; color:#4a4a48; max-width:64ch;}
+  .speaking-note{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    color:#6b6b66; margin-top:20px;
+  }
 
   /* ---------- Contact / footer ---------- */
   footer{background:var(--teal); color:#eef4f1; padding:66px 0 34px;}
@@ -289,7 +342,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">Independent Advisory · East and West Africa &amp;Localisation, Global Health, Assistive Technology </p>
+    <p class="eyebrow">Independent Advisory · East and West Africa &amp; Localisation, Global Health, Assistive Technology</p>
     <h1>Matt Thomson</h1>
     <p class="role">Managing Transitions: aid-dependency exits, outcomes systems, organisational governance</p>
     <p class="lede">I help NGOs, donors, and health networks move from donor-dependent delivery to accountable, locally led operating models. Specialist depth in assistive technology and localisation across East and West Africa, with wider experience spanning the MENA region.</p>
@@ -411,7 +464,6 @@
         <div>
           <p>The research traces this across four levels, from global donors and multilateral agencies, through intermediary NGOs and research hubs, down to frontline clinics and the technicians and patients navigating them day to day.</p>
           <p>I bridge this with field experience across <strong>The Gambia, Uganda, Kenya, and Tanzania</strong>, and translate it into evaluation methodology, outcomes design, and strategic advice for the organisations actually doing this work.</p>
-          <p style="margin-top:18px; font-size:0.85rem; color:#6b6b66;">Long-form essays and field dispatches are linked below via Substack and LinkedIn.</p>
         </div>
       </div>
 
@@ -443,6 +495,19 @@
         </div>
       </div>
 
+      <div class="reading">
+        <p class="eyebrow" style="margin-bottom:14px;">Reading &amp; Listening</p>
+        <div class="reading-list">
+          <div class="reading-item"><span class="reading-title">Frontlines of Peace</span>, <span class="reading-author">Séverine Autesserre</span>. Already in the lineage above. Worth reading for the cases rather than the theory. The chapter on Idjwi is the clearest argument I know for why outside intervention often works best when it does less.</div>
+          <div class="reading-item"><span class="reading-title">How to Lose a Country</span>, <span class="reading-author">Ece Temelkuran</span>. Written from Turkey, on democratic collapse as a sequence of unremarkable procedural steps rather than a single event. The procedural part is what programme design usually fails to see coming.</div>
+          <div class="reading-item"><span class="reading-title">Shadowplay</span>, <span class="reading-author">Tim Marshall</span>. I've read most of his geopolitics books. Fun, and more deterministic than they let on. This one is the outlier. He was Sky's diplomatic editor and spent the 1999 Kosovo crisis in Belgrade, so it's first-hand rather than an argument drawn on a map.</div>
+          <div class="reading-item"><span class="reading-title">The Horn</span>, <span class="reading-author">International Crisis Group</span>. Podcast. Keeps the regional reading current rather than three years out of date.</div>
+          <div class="reading-item"><span class="reading-title">The Timbuktu School for Nomads</span>, <span class="reading-author">Nicholas Jubber</span>. Travel writing across the Sahara, read with the usual reservations about the form. Good on the practical knowledge pastoralist life actually runs on, which rarely survives contact with a logframe.</div>
+          <div class="reading-item"><span class="reading-title">AIL Español, B1</span>. Classes twice a week. Still slow.</div>
+          <div class="reading-item"><span class="reading-title">Jupiter's Travels</span>, <span class="reading-author">Ted Simon</span>. Ted Simon rode a Triumph around the world for four years in the 1970s. All this does is feed the plan to ride from the UK down to South Africa.</div>
+        </div>
+      </div>
+
       <div class="field-note">
         <p class="eyebrow" style="margin-bottom:10px;">Field Note</p>
         <p>A new prosthetics and orthotics clinic in Bansang, The Gambia, opened with proper ramps and wide doors, exactly what accessible design guidance asks for. The path leading to it was steep, rocky, and unpaved. The hospital CEO explained that the funding covered the building itself; the ramps and the clinic were in scope, the path wasn't.</p>
@@ -458,6 +523,16 @@
         <div class="fact-card">
           <span class="label">The Workaround</span>
           Some of the most durable solutions never touch that pipeline at all. In Ghana, Dr Eric Gaba has developed prosthetic socket liners from pineapple leaf fibre, a renewable local material that sidesteps imported supply chains entirely.
+        </div>
+      </div>
+
+      <div class="writing">
+        <p class="eyebrow" style="margin-bottom:0;">Writing</p>
+        <div class="writing-list" id="writing-list">
+          <div class="writing-status">Loading recent posts.</div>
+        </div>
+        <div class="writing-sub">
+          <iframe src="https://thomsonmatt.substack.com/embed" height="150" frameborder="0" scrolling="no" title="Subscribe on Substack"></iframe>
         </div>
       </div>
     </div>
@@ -506,6 +581,35 @@
         </div>
       </div>
     </div>
+
+    <div class="speaking reveal">
+      <h3>Speaking &amp; Public Engagement</h3>
+      <div class="speaking-item">
+        <div class="title">Television interview, disability rights and advocacy</div>
+        <div class="meta">The Fatu Network, The Gambia · June 2026</div>
+      </div>
+      <div class="speaking-item">
+        <div class="title">Guest lecture, MSc Amputation and Prosthetic Rehabilitation</div>
+        <div class="meta">University of Southampton · March 2026</div>
+        <p>Running prosthetics clinics in low-resource settings, and how clinical decisions get shaped by structures well upstream of the clinic.</p>
+      </div>
+      <div class="speaking-item">
+        <div class="title">Sustainable service provision: device sourcing and local production</div>
+        <div class="meta">Exceed Research Network 10th anniversary · January 2026</div>
+        <p>Recorded presentation, part of a wider series.</p>
+      </div>
+      <div class="speaking-item">
+        <div class="title">Panellist, academic and practice partnerships in international development</div>
+        <div class="meta">SWIDN and University of Bristol · July 2024</div>
+        <p>On what holds practitioner-researcher partnerships together, and where they usually stall.</p>
+      </div>
+      <div class="speaking-item">
+        <div class="title">Assistive technology in low- and middle-income countries</div>
+        <div class="meta">OTWorld, Leipzig · May 2024</div>
+        <p>Side session at the international trade show and world congress. The case for building prosthetics capacity across the sector internationally, rather than concentrating investment at the engineering high end.</p>
+      </div>
+      <p class="speaking-note">Occasional talks in UK schools on international development and disability.</p>
+    </div>
   </div>
 </section>
 
@@ -533,6 +637,56 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:0.12});
   reveals.forEach(el=>io.observe(el));
+
+  (function(){
+    var list = document.getElementById('writing-list');
+    if(!list) return;
+
+    function fallback(){
+      list.textContent = '';
+      var row = document.createElement('div');
+      row.className = 'writing-status';
+      row.textContent = 'Recent posts are on Substack: ';
+      var a = document.createElement('a');
+      a.href = 'https://thomsonmatt.substack.com';
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = 'thomsonmatt.substack.com';
+      row.appendChild(a);
+      list.appendChild(row);
+    }
+
+    fetch('https://rss.app/feeds/v1.1/ACspy4XDT6dpPh5R.json')
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(function(data){
+        var items = (data.items || []).slice(0, 4);
+        if(!items.length){ fallback(); return; }
+        list.textContent = '';
+        items.forEach(function(item){
+          var row = document.createElement('div');
+          row.className = 'writing-item';
+
+          var a = document.createElement('a');
+          a.href = item.url || 'https://thomsonmatt.substack.com';
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.textContent = item.title || 'Untitled';
+          row.appendChild(a);
+
+          if(item.date_published){
+            var d = new Date(item.date_published);
+            if(!isNaN(d.getTime())){
+              var when = document.createElement('span');
+              when.className = 'when';
+              when.textContent = d.toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
+              row.appendChild(when);
+            }
+          }
+          list.appendChild(row);
+        });
+      })
+      .catch(fallback);
+  })();
 </script>
 
 </body>
