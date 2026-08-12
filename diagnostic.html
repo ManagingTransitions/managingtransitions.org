@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transition Diagnostic | Managing Transitions</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://managingtransitions.org/diagnostic.html">
+<meta name="description" content="Twelve questions placing one programme on two axes: where authority actually sits, and how much of the room it does control is being recognised and used.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Managing Transitions">
+<meta property="og:title" content="Transition Diagnostic | Managing Transitions">
+<meta property="og:description" content="Twelve questions on where authority sits, how much of the available room is being used, and what was designed to continue.">
+<meta property="og:url" content="https://managingtransitions.org/diagnostic.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Transition Diagnostic | Managing Transitions">
+<meta name="twitter:description" content="Twelve questions on where authority sits, how much of the available room is being used, and what was designed to continue.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c231f'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23c9a877'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000000;
+    --teal:#0c231f;
+    --brown:#392c23;
+    --sand:#c9a877;
+    --paper:#ffffff;
+    --line: rgba(0,0,0,0.14);
+    --line-on-dark: rgba(255,255,255,0.18);
+    --max: 1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--sand); color:var(--teal);}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; margin:0; letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--teal);
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  .narrow{max-width:820px;}
+  :focus-visible{outline:2px solid var(--sand); outline-offset:3px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px;}
+  .brand{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem; letter-spacing:0.04em; font-weight:500; text-decoration:none;
+  }
+  .brand span{color:var(--teal);}
+  .navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+  .navlinks li{position:relative;}
+  .navlinks a{
+    position:relative; font-size:0.85rem; text-decoration:none;
+    color:var(--brown); font-weight:500; padding-bottom:2px;
+  }
+  .navlinks a::after{
+    content:""; position:absolute; left:0; bottom:-2px; width:100%; height:1px;
+    background:var(--sand); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .navlinks a:hover{color:var(--teal);}
+  .navlinks a:hover::after{transform:scaleX(1);}
+  .navlinks a.current{color:var(--teal);}
+  .navlinks a.current::after{transform:scaleX(1);}
+
+  .mobnav{display:none; position:relative;}
+  .mobnav summary{
+    list-style:none; cursor:pointer;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--teal);
+    border:1px solid var(--line); padding:7px 13px;
+  }
+  .mobnav summary::-webkit-details-marker{display:none;}
+  .mobnav[open] summary{border-color:var(--sand);}
+  .mobnav ul{
+    position:absolute; right:0; top:calc(100% + 10px);
+    min-width:190px; margin:0; padding:6px 0; list-style:none;
+    background:var(--paper); border:1px solid var(--line);
+    box-shadow:0 14px 30px rgba(0,0,0,0.10);
+  }
+  .mobnav li a{display:block; padding:10px 18px; font-size:0.9rem; text-decoration:none; color:var(--brown);}
+  .mobnav li a:hover{background:#eef1ef; color:var(--teal);}
+  @media (max-width:760px){
+    .navlinks{display:none;}
+    .mobnav{display:block;}
+  }
+
+  /* ---------- HEADER ---------- */
+  header.page-head{background:var(--teal); color:#f4efe6; padding:70px 0 58px;}
+  header.page-head .eyebrow{color:#a9c2bb; margin-bottom:16px;}
+  header.page-head h1{font-size:clamp(2rem,4.6vw,3.1rem); color:#fff; line-height:1.06;}
+  header.page-head p{max-width:660px; font-size:1.03rem; color:#dbe5e1; margin:18px 0 0;}
+  header.page-head .caveat{
+    margin-top:28px; padding-top:16px; border-top:1px solid var(--line-on-dark);
+    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:#a9c2bb; max-width:660px;
+  }
+
+  section{padding:64px 0;}
+  .section-head{max-width:700px; margin-bottom:30px;}
+  .section-head h2{font-size:clamp(1.4rem,2.8vw,1.9rem); margin-top:10px;}
+  .section-head p{font-size:0.96rem; color:#4a4a48; margin-top:14px;}
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- Axes explainer ---------- */
+  .axes{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:26px;}
+  .axis-card{background:#eef1ef; padding:22px 24px;}
+  .axis-card .label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--teal); display:block; margin-bottom:8px;
+  }
+  .axis-card h3{font-size:1.05rem; margin-bottom:8px;}
+  .axis-card p{font-size:0.9rem; color:#3a3a38; margin:0 0 10px;}
+  .axis-card p:last-child{margin-bottom:0;}
+  @media (max-width:760px){ .axes{grid-template-columns:1fr;} }
+
+  .third{margin-top:26px; border-left:3px solid var(--teal); padding-left:22px; max-width:72ch;}
+  .third p{font-size:0.94rem; color:#2b2b28; margin:0 0 10px;}
+  .third p:last-child{margin-bottom:0;}
+
+  /* ---------- Context block ---------- */
+  .ctx{border:1px solid var(--line); padding:26px 26px 22px; margin-top:6px;}
+  .ctx-row{margin-bottom:22px;}
+  .ctx-row:last-child{margin-bottom:0;}
+  .ctx-label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.07em;
+    text-transform:uppercase; color:var(--teal); display:block; margin-bottom:4px;
+  }
+  .ctx-help{font-size:0.86rem; color:#6b6b66; margin:0 0 10px;}
+  .ctx-opts{display:flex; flex-wrap:wrap; gap:8px;}
+  .ctx-opt{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid var(--line); padding:9px 14px; cursor:pointer;
+    font-size:0.9rem; color:#2b2b28;
+    transition:border-color .18s ease, background .18s ease;
+  }
+  .ctx-opt:hover{border-color:var(--sand); background:#f7f5f1;}
+  .ctx-opt.sel{border-color:var(--teal); background:#eef1ef;}
+  .ctx-opt input{margin:0; accent-color:var(--teal);}
+  .ctx input[type=text]{
+    width:100%; max-width:560px; padding:11px 13px;
+    border:1px solid var(--line); background:var(--paper);
+    font-family:'Inter', sans-serif; font-size:0.94rem; color:var(--ink);
+  }
+  .ctx input[type=text]:hover{border-color:var(--sand);}
+
+  /* ---------- Questions ---------- */
+  .qwrap{border-top:1px solid var(--line);}
+  .q{padding:30px 0; border-bottom:1px solid var(--line);}
+  .qnum{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8a8a86; letter-spacing:0.08em;}
+  .qtext{font-family:'Fraunces', serif; font-weight:600; font-size:1.16rem; line-height:1.3; margin-top:8px; max-width:60ch;}
+  .qtags{margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.66rem; letter-spacing:0.05em;
+    text-transform:uppercase; border:1px solid var(--line); padding:3px 8px; color:#3a4f4a;
+  }
+  .opts{margin-top:16px; display:flex; flex-direction:column; gap:8px; max-width:64ch;}
+  .opt{
+    display:flex; gap:12px; align-items:flex-start; padding:12px 15px;
+    border:1px solid var(--line); cursor:pointer;
+    transition:border-color .18s ease, background .18s ease;
+  }
+  .opt:hover{border-color:var(--sand); background:#f7f5f1;}
+  .opt input{margin:5px 0 0; accent-color:var(--teal); flex:0 0 auto;}
+  .opt.sel{border-color:var(--teal); background:#eef1ef;}
+  .opt span{font-size:0.94rem; color:#2b2b28;}
+
+  .flagrow{
+    margin-top:14px; max-width:64ch;
+    display:flex; gap:10px; align-items:flex-start;
+    padding:11px 14px; border:1px dashed var(--line); cursor:pointer;
+    transition:border-color .18s ease, background .18s ease;
+  }
+  .flagrow:hover{border-color:var(--sand); background:#f7f5f1;}
+  .flagrow.on{border-style:solid; border-color:var(--teal); background:#eef1ef;}
+  .flagrow input{margin:4px 0 0; accent-color:var(--teal); flex:0 0 auto;}
+  .flagrow span{font-size:0.86rem; color:#3a3a38;}
+  .flagrow b{font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); display:block; margin-bottom:2px;}
+
+  details.info{margin-top:16px; border-left:2px solid var(--line); padding-left:18px; transition:border-color .2s ease;}
+  details.info:hover, details.info[open]{border-left-color:var(--sand);}
+  details.info summary{
+    list-style:none; cursor:pointer;
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--teal);
+  }
+  details.info summary::-webkit-details-marker{display:none;}
+  details.info summary::before{content:"+ ";}
+  details.info[open] summary::before{content:"\2212 ";}
+  .info-body{padding-top:14px; max-width:70ch;}
+  .info-body p{font-size:0.9rem; color:#2b2b28; margin:0 0 10px;}
+  .case{background:#eef1ef; padding:14px 16px; margin-top:14px;}
+  .case .flag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.64rem; letter-spacing:0.07em;
+    text-transform:uppercase; color:var(--teal); display:block; margin-bottom:6px;
+  }
+  .case p{margin:0;}
+
+  .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:34px; align-items:center;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:0.8rem; letter-spacing:0.05em;
+    text-transform:uppercase; padding:13px 24px;
+    border:1px solid var(--teal); background:var(--teal); color:#f4efe6; cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, color .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(0,0,0,0.16);}
+  .btn.ghost{background:transparent; color:var(--teal);}
+  .btn.ghost:hover{border-color:var(--sand); color:var(--brown);}
+  .progress{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:#6b6b66;}
+
+  /* ---------- Results ---------- */
+  .results{background:#eef1ef; border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:none;}
+  .results.on{display:block;}
+  .rgrid{display:grid; grid-template-columns:minmax(0,470px) 1fr; gap:44px; align-items:start;}
+  @media (max-width:900px){ .rgrid{grid-template-columns:1fr;} }
+  .compass{width:100%; height:auto; background:var(--paper); border:1px solid var(--line);}
+  .readagainst{
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:#4a4a48;
+    margin-top:14px; line-height:1.7;
+  }
+  .verdict h3{font-size:1.5rem; color:var(--teal);}
+  .verdict .coords{font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:#6b6b66; margin-top:10px; line-height:1.9;}
+  .verdict p{font-size:0.96rem; color:#2b2b28; margin-top:14px;}
+  .blocklabel{
+    font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--teal); margin-top:30px;
+  }
+  .bar{height:9px; background:#dfe4e1; margin-top:8px; position:relative;}
+  .bar i{display:block; height:100%; background:var(--teal); width:0; transition:width .8s ease;}
+  .bar-note{font-size:0.9rem; color:#2b2b28; margin-top:10px;}
+  .constraintbox{border:1px solid var(--line); background:var(--paper); padding:18px 20px; margin-top:12px;}
+  .constraintbox p{font-size:0.92rem; color:#2b2b28; margin:0 0 10px;}
+  .constraintbox p:last-child{margin-bottom:0;}
+  .splitcols{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:16px;}
+  @media (max-width:620px){ .splitcols{grid-template-columns:1fr;} }
+  .splitcols h5{
+    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.68rem;
+    letter-spacing:0.07em; text-transform:uppercase; color:var(--teal); margin:0 0 8px;
+  }
+  .splitcols ul{margin:0; padding-left:16px;}
+  .splitcols li{font-size:0.88rem; color:#3a3a38; margin-bottom:5px;}
+  .splitcols .none{font-size:0.88rem; color:#6b6b66; margin:0;}
+  .flagbox{border:1px solid var(--line); background:var(--paper); padding:16px 18px; margin-top:26px;}
+  .flagbox .flag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.07em;
+    text-transform:uppercase; color:var(--teal); display:block; margin-bottom:6px;
+  }
+  .flagbox p{font-size:0.9rem; color:#2b2b28; margin:0;}
+  .mostroom{font-size:0.94rem; color:#2b2b28; margin-top:26px; border-top:1px solid var(--line); padding-top:20px;}
+  .next{margin-top:26px;}
+  .next h4{
+    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.74rem;
+    letter-spacing:0.07em; text-transform:uppercase; color:var(--teal); margin:0 0 12px;
+  }
+  .next li{font-size:0.94rem; color:#2b2b28; margin-bottom:10px;}
+
+  /* ---------- Method ---------- */
+  .methods{border-top:1px solid var(--line); margin-top:22px;}
+  .method{padding:16px 0; border-bottom:1px solid var(--line); font-size:0.9rem; color:#2b2b28; max-width:78ch;}
+  .method b{color:var(--ink);}
+  .method .note{display:block; margin-top:5px; color:#4a4a48;}
+
+  /* ---------- Footer ---------- */
+    .mt-offer{
+    margin-top:34px; padding:26px 28px;
+    background:#ffffff; border:1px solid var(--line); border-left:3px solid #e47b12;
+  }
+  .mt-offer p{font-size:0.94rem; color:#2b2b28; margin:0 0 12px;}
+  .mt-offer .mt-offer-lead{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; color:var(--teal);
+  }
+  .mt-offer .mt-offer-terms{
+    font-family:'IBM Plex Mono', monospace; font-size:0.8rem; letter-spacing:0.04em;
+    color:#392c23; margin-top:16px;
+  }
+  .mt-offer-links{display:flex; flex-wrap:wrap; gap:18px; margin-top:16px;}
+  .mt-offer-links a{
+    font-family:'IBM Plex Mono', monospace; font-size:0.8rem; letter-spacing:0.03em;
+    color:var(--teal); text-decoration:none; border-bottom:1px solid #c9a877; padding-bottom:3px;
+  }
+  .mt-offer-links a:hover{color:#e47b12; border-bottom-color:#e47b12;}
+  footer{background:var(--teal); color:#eef4f1; padding:62px 0 32px;}
+  footer .eyebrow{color:#a9c2bb;}
+  footer h2{color:#fff; font-size:clamp(1.5rem,3vw,2rem);}
+  footer p{color:#c9d8d3; max-width:560px; margin-top:14px;}
+  .contact-grid{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px;}
+  .chip{
+    padding:11px 18px; border:1px solid var(--line-on-dark);
+    text-decoration:none; color:#eef4f1; font-size:0.88rem;
+    transition:border-color .18s ease, color .18s ease, transform .18s ease;
+  }
+  .chip:hover{border-color:var(--sand); color:var(--sand); transform:translateY(-2px);}
+  .foot-base{
+    margin-top:50px; padding-top:18px; border-top:1px solid var(--line-on-dark);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8ea59c;
+  }
+</style>
+<noscript><style>.reveal{opacity:1 !important; transform:none !important;}</style></noscript>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">MANAGING <span>/</span> TRANSITIONS</a>
+    <ul class="navlinks">
+      <li><a href="index.html#review">Review</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="index.html#advisory">Advisory</a></li>
+      <li><a href="diagnostic.html" class="current">Diagnostic</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="faq.html">Questions</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <details class="mobnav">
+      <summary>Menu</summary>
+      <ul>
+        <li><a href="index.html#review">Review</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="index.html#advisory">Advisory</a></li>
+        <li><a href="diagnostic.html">Diagnostic</a></li>
+        <li><a href="index.html#approach">Approach</a></li>
+        <li><a href="faq.html">Questions</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </details>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Transition Diagnostic</p>
+    <h1>How much of the room are you using?</h1>
+    <p>Twelve questions about one programme. Every question has a box to tick if the answer is fixed by someone other than you. What comes out is two positions on the same plot: where the programme sits inside the room it actually controls, and where it sits in absolute terms. The distance between them is the constraint. Roughly twelve minutes.</p>
+    <p class="caveat">This is a thinking tool, not a validated instrument. The weightings are mine and they are arguable. Nothing is stored, nothing is sent anywhere, and refreshing the page clears it.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap narrow">
+    <div class="section-head reveal">
+      <p class="eyebrow">What It Measures</p>
+      <h2>Two axes, and a constraint flag on every answer.</h2>
+      <p>The first version of this scored programmes down for things they did not control: donor due diligence rules, registration requirements in the jurisdiction, headquarters pay bands. That is the same move I criticise capacity assessment tools for making, so this version takes it out at the structural level rather than apologising for it in a footnote.</p>
+    </div>
+    <div class="axes reveal">
+      <div class="axis-card">
+        <span class="label">Horizontal axis</span>
+        <h3>Theatre to authority transfer</h3>
+        <p>Who holds the contract, the budget discretion, the veto, the donor relationship, the relationships with government. Not who is consulted.</p>
+        <p>Trust sits here too, as a question rather than a separate dimension. Authority handed to a partner you do not fully trust tends to come back inside a year, and it rarely comes back openly. It comes back as a capacity concern.</p>
+      </div>
+      <div class="axis-card">
+        <span class="label">Vertical axis</span>
+        <h3>Agency recognition, as a ratio</h3>
+        <p>Not how much agency exists. How much of the available room is recognised and used.</p>
+        <p>A programme boxed in by donor rules that uses every inch of what it has scores high here. A programme with wide latitude that ignores what its own staff have already worked out scores low. Nothing is marked down for a constraint it does not hold.</p>
+      </div>
+    </div>
+    <div class="third reveal">
+      <p><b>A third reading, reported separately: projectification to continuity.</b></p>
+      <p>Not how long a programme survives. Whether it was designed with an end date and a closure plan, or as a component of something that carries on without it. An eighteen month emergency response scoring high on continuity is fine and slightly unusual. A twelve year health programme scoring high is the finding, which is why the result reads this against the context you set below rather than against a single standard.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap narrow">
+    <div class="section-head reveal">
+      <p class="eyebrow">Context</p>
+      <h2>Set this first. The output reads against it.</h2>
+      <p>Answer for one programme rather than for your organisation as a whole.</p>
+    </div>
+    <div class="ctx reveal">
+      <div class="ctx-row">
+        <span class="ctx-label">Programme type</span>
+        <p class="ctx-help">Closest fit. If it started as one and became another, pick what it is now.</p>
+        <div class="ctx-opts" id="ctxType"></div>
+      </div>
+      <div class="ctx-row">
+        <span class="ctx-label">Roughly how long it has been running</span>
+        <p class="ctx-help">Including predecessor phases under a different grant number.</p>
+        <div class="ctx-opts" id="ctxDur"></div>
+      </div>
+      <div class="ctx-row">
+        <span class="ctx-label">What the programme states it is for</span>
+        <p class="ctx-help">In its own words, from the proposal or the strategy document. Optional, and it is only echoed back to you.</p>
+        <input type="text" id="ctxPurpose" maxlength="180" placeholder="For example: strengthening district level rehabilitation services">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:44px;">
+  <div class="wrap narrow">
+    <div class="section-head reveal">
+      <p class="eyebrow">The Questions</p>
+      <h2>Pick the closest option, then decide whether it was yours to decide.</h2>
+      <p>None of the options will fit exactly. Pick the nearest and move on. The notes under each question cover where the measure comes from and where I have run into trouble with it.</p>
+    </div>
+    <div class="qwrap" id="qwrap"></div>
+    <div class="actions">
+      <button class="btn" id="scoreBtn">See the result</button>
+      <button class="btn ghost" id="resetBtn">Reset</button>
+      <span class="progress" id="prog">0 of 12 answered</span>
+    </div>
+  </div>
+</section>
+
+<section class="results" id="results">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Result</p>
+      <h2>Two positions, one line.</h2>
+    </div>
+    <div class="rgrid">
+      <div>
+        <svg class="compass" id="compass" viewBox="0 0 420 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="compassTitle compassDesc">
+          <title id="compassTitle">Authority transfer plotted against agency recognition</title>
+          <desc id="compassDesc">A solid dot marks the position within the room the programme controls. A hollow dot marks the position in absolute terms. The line between them is the recorded structural constraint.</desc>
+          <rect x="20" y="20" width="180" height="180" fill="#f2ede4"/>
+          <rect x="220" y="20" width="180" height="180" fill="#e6ece9"/>
+          <rect x="20" y="220" width="180" height="180" fill="#f4f2ee"/>
+          <rect x="220" y="220" width="180" height="180" fill="#efeae1"/>
+          <g stroke="rgba(0,0,0,0.10)" stroke-width="1">
+            <line x1="110" y1="20" x2="110" y2="400"/><line x1="310" y1="20" x2="310" y2="400"/>
+            <line x1="20" y1="110" x2="400" y2="110"/><line x1="20" y1="310" x2="400" y2="310"/>
+          </g>
+          <g stroke="#0c231f" stroke-width="1.4">
+            <line x1="210" y1="20" x2="210" y2="400"/><line x1="20" y1="210" x2="400" y2="210"/>
+          </g>
+          <rect x="20" y="20" width="380" height="380" fill="none" stroke="rgba(0,0,0,0.14)"/>
+          <g font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="#0c231f" letter-spacing="0.5">
+            <text x="30" y="38">HARNESSING CONSTRAINT</text>
+            <text x="390" y="38" text-anchor="end">TRANSFERRED</text>
+            <text x="30" y="392">MANAGED DELIVERY</text>
+            <text x="390" y="392" text-anchor="end">DEVOLVED BURDEN</text>
+          </g>
+          <g font-family="'IBM Plex Mono',monospace" font-size="8" fill="#8a8a86">
+            <text x="210" y="14" text-anchor="middle">AGENCY RECOGNISED</text>
+            <text x="210" y="414" text-anchor="middle">AGENCY INVISIBLE</text>
+            <text x="16" y="213" text-anchor="middle" transform="rotate(-90 16 213)">AUTHORITY RETAINED</text>
+            <text x="412" y="213" text-anchor="middle" transform="rotate(90 412 213)">AUTHORITY TRANSFERRED</text>
+          </g>
+          <line id="constraintLine" x1="210" y1="210" x2="210" y2="210" stroke="#0c231f" stroke-width="1.6" stroke-dasharray="4 3"/>
+          <circle id="dotAbs" cx="210" cy="210" r="8.5" fill="#ffffff" stroke="#0c231f" stroke-width="2"/>
+          <circle id="dotRoom" cx="210" cy="210" r="8.5" fill="#0c231f" stroke="#0c231f" stroke-width="2"/>
+          <g font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="#3a3a38">
+            <circle cx="30" cy="437" r="6" fill="#0c231f" stroke="#0c231f" stroke-width="1.6"/>
+            <text x="44" y="440">WITHIN THE ROOM YOU CONTROL</text>
+            <circle cx="30" cy="459" r="6" fill="#ffffff" stroke="#0c231f" stroke-width="1.6"/>
+            <text x="44" y="462">IN ABSOLUTE TERMS</text>
+          </g>
+        </svg>
+        <div class="readagainst" id="readAgainst"></div>
+      </div>
+      <div class="verdict">
+        <h3 id="quadName">Position</h3>
+        <div class="coords" id="coords"></div>
+        <p id="quadText"></p>
+        <p id="quadShift" style="display:none;"></p>
+
+        <div class="blocklabel">The constraint</div>
+        <div class="constraintbox">
+          <p id="constraintText"></p>
+          <div class="splitcols">
+            <div>
+              <h5>Yours to move</h5>
+              <ul id="listOpen"></ul>
+              <p class="none" id="noneOpen" style="display:none;">Every question was flagged as fixed.</p>
+            </div>
+            <div>
+              <h5>Recorded as fixed</h5>
+              <ul id="listFixed"></ul>
+              <p class="none" id="noneFixed" style="display:none;">Nothing was flagged.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="blocklabel">Projectification to continuity</div>
+        <div class="bar"><i id="contBar"></i></div>
+        <div class="bar-note" id="contText"></div>
+
+        <div class="flagbox" id="theatreBox" style="display:none;">
+          <span class="flag">The distance between claim and authority</span>
+          <p id="theatreText"></p>
+        </div>
+
+        <div class="mostroom" id="mostRoom"></div>
+
+        <div class="next">
+          <h4>Where the room is</h4>
+          <ul id="nextList"></ul>
+        </div>
+
+        <div class="mt-offer">
+          <p class="mt-offer-lead">This is a thinking tool. It reads what you tell it.</p>
+          <p>A Transition Exposure Review reads your actual documents: grant agreements, partner contracts, the operating model, the risk register. It tells you which of the constraints you have just flagged are real and which are habits.</p>
+          <p class="mt-offer-terms">Two weeks. &pound;1,200. Written findings and a ninety-minute session.</p>
+          <div class="mt-offer-links">
+            <a href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+            <a href="research.html">Read the 2026 study</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <div class="section-head reveal">
+      <p class="eyebrow">Method</p>
+      <h2>Fifteen frameworks, and where each one took me.</h2>
+      <p>The questions above are drawn from these and reweighted. Several of them are better than the tool built on top of them, and I have said so where that is the case.</p>
+    </div>
+    <div class="methods reveal">
+      <div class="method"><b>1. Grand Bargain localisation workstream (IASC, 2016).</b> Commits signatories to channel 25 per cent of humanitarian funding as directly as possible to local and national responders.<span class="note">It did the hard thing first, which was to put a number on something the sector had only ever discussed as a principle. A number can be missed in public, and it has been. What I keep running into is that it counts arrival rather than conditions. Money can land in a local account with the spending plan already written somewhere else.</span></div>
+      <div class="method"><b>2. IASC Localisation Marker Working Group.</b> Codes funding flows by how many intermediaries sit between donor and local actor.<span class="note">The only serious attempt I know of to make the money question auditable rather than declarative, and counting hops is real measurement. When I tried to apply it to a programme I was managing, one hop with total conditionality scored better than two hops with genuine discretion, and I could not get the marker to say the thing I could see.</span></div>
+      <div class="method"><b>3. Charter for Change (2015).</b> Eight commitments, self-reported annually by INGO signatories.<span class="note">Worth taking seriously as a public statement by organisations who did not have to sign anything. As evidence it is the actor measuring itself. I have written one of these returns, so I know how the sentence gets chosen.</span></div>
+      <div class="method"><b>4. NEAR Network Localisation Performance Measurement Framework (2019).</b> Seven dimensions covering partnership, funding, capacity, coordination, policy influence and participation.<span class="note">The best in this list, and the only one built from a Southern network outward rather than a donor inward. I have borrowed most heavily from the policy influence dimension, which comes closer than anything else to asking whether a local actor can change something rather than receive something. Capacity still travels one way in the framing, and that is the assumption I bump into when I use it.</span></div>
+      <div class="method"><b>5. Start Network, Shifting the Power (2015 to 2017).</b> Measured influence in coordination structures alongside organisational capacity.<span class="note">It identified correctly that a seat at a table is not influence over it. Then it found, as this tool finds, that the difference is far easier to name than to measure.</span></div>
+      <div class="method"><b>6. OECD DAC evaluation criteria, revised 2019.</b> Relevance, coherence, effectiveness, efficiency, impact, sustainability.<span class="note">Durable enough that most donor templates are downstream of it, which is reason enough to know it well. Sustainability sits sixth, and in the evaluations I have read and contributed to it gets written last, shortest, with the least evidence behind it. It asks whether benefits continue, which is a different question from whether authority moved.</span></div>
+      <div class="method"><b>7. Core Humanitarian Standard on Quality and Accountability (2014, revised 2024).</b> Nine commitments with third party verification schemes.<span class="note">External verification is a genuine advance and the reason I trust a CHS result more than any self-reported return here. It is built around accountability to affected populations, so it catches consultation failures well. It was not designed to catch a partner who gets consulted properly and still cannot move a budget line.</span></div>
+      <div class="method"><b>8. USAID Local Capacity Strengthening Policy (2022).</b> Reframed capacity as relational rather than a deficit to be filled.<span class="note">Conceptually the strongest US document on this, and now largely of historical interest. Worth reading alongside what happened afterwards, which turned the whole question into a live test nobody designed.</span></div>
+      <div class="method"><b>9. USAID Journey to Self-Reliance country roadmaps (2018 to 2021).</b> Seventeen third party metrics scoring national commitment and capacity.<span class="note">Using third party data rather than self-report was the right instinct and I wish more frameworks did it. It measures countries. A country can move up the roadmap while every clinic inside it stays exactly as dependent as it was.</span></div>
+      <div class="method"><b>10. Gavi eligibility and transition policy.</b> Gross national income thresholds trigger co-financing steps and eventual graduation.<span class="note">The clearest worked example of transition as a schedule, and predictability is undersold by its critics. A partner can plan against a schedule and cannot plan against a mood. The schedule is set by national income, and I have not found the point in it where anyone asks whether the delivery system underneath can absorb the step.</span></div>
+      <div class="method"><b>11. Global Fund sustainability, transition and co-financing policy (2016).</b> Transition readiness assessments before funding steps down.<span class="note">Assessing readiness before withdrawal rather than after is the best single idea in this list and question eleven borrows it wholesale. Where I have watched it strain is services delivered by civil society rather than by the state, where a graduation schedule arrives at an organisation the state has no plan to fund.</span></div>
+      <div class="method"><b>12. WHO health system building blocks (2007).</b> Six blocks: service delivery, workforce, information, medicines, financing, governance.<span class="note">Still the fastest way to work out which part of a system fails first, and I reach for it as a checklist more often than anything else here. Governance is one block of six. In the interviews I have been doing, governance is not a block. It is what decides the state of the other five.</span></div>
+      <div class="method"><b>13. Organisational capacity assessment tools (OCAT, Pact OCA and similar).</b> Domain scoring of partner organisations, usually self-administered with a facilitator.<span class="note">The facilitated version can be a genuinely good conversation, and I have seen partners use the output to win internal arguments they had been losing for years. The scoring measures a partner against a template of a well run INGO and marks down informal process, which is frequently the reason anything works at all. This tool exists partly because of that, which is why there is a flag on every question.</span></div>
+      <div class="method"><b>14. Outcome Harvesting (Wilson-Grau and Britt, 2012).</b> Works backwards from observed change to what plausibly caused it.<span class="note">One of the few methods that can register an unplanned local workaround as an outcome rather than as noise, and questions seven and eight are built on its logic. Labour intensive, which is why it appears in proposals more often than in budgets.</span></div>
+      <div class="method"><b>15. Most Significant Change (Davies and Dart, 2005).</b> Structured collection and selection of participant narratives.<span class="note">Surfaces things no indicator was watching for, which is exactly what you want early. I have also seen it arrive at the end of a process as a box of quotes decorating findings that were settled months earlier. The method did not do that. The timing did.</span></div>
+    </div>
+    <p style="font-size:0.9rem;color:#4a4a48;margin-top:22px;max-width:74ch;">Read together, the centre of gravity across all fifteen is funding directness and organisational capacity measured against an external template, mostly assessed before the handover happens. Very little of it asks whether a local actor can say no, and almost none of it separates a constraint the programme chose from one it inherited. That second absence is where the weighting here departs from the field.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="eyebrow">Get In Touch</p>
+    <h2>Want to argue with the weightings?</h2>
+    <p>Reasonable. They are contestable and the disagreement is usually the useful part. Send me the result and tell me where it is wrong.</p>
+    <div class="contact-grid">
+      <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
+      <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+      <a class="chip" href="faq.html">Questions</a>
+      <a class="chip" href="index.html">Homepage</a>
+    </div>
+    <div class="foot-base"><span>MANAGING TRANSITIONS &copy; 2026</span><span>managingtransitions.org</span></div>
+  </div>
+</footer>
+
+<script>
+var TYPES = [
+  ["emergency","Emergency response"],
+  ["transitional","Transitional or recovery"],
+  ["longrun","Long-run development"]
+];
+var DURS = [
+  ["u2","Under 2 years"],
+  ["2to5","2 to 5 years"],
+  ["5to10","5 to 10 years"],
+  ["o10","Over 10 years"]
+];
+
+var Q = [
+{
+ w:{x:10}, name:"who holds the contract",
+ q:"Who holds the contract with the donor?",
+ o:[["International organisation, local partner is a subgrantee",-1],
+    ["International lead, with a consortium agreement naming the local partner",-0.3],
+    ["Local organisation, with an international fiscal sponsor",0.4],
+    ["Local organisation, directly",1]],
+ notes:[
+  "Weighted 10. The contract decides who is liable and who is in the room when the terms get written, and most of the rest of this list sits downstream of it. The Grand Bargain 25 per cent target is essentially a target about this one question.",
+  "Fiscal sponsorship is the part I find hardest to score. Sometimes it is scaffolding while registration and audit capacity get built, with a date on removing it. Sometimes it is a way of reporting a local contract while keeping every control. On paper the two look identical. If yours is the first kind, what is the date?"
+ ],
+ caseFlag:"Documented",
+ caseText:"The Green Climate Fund and the Adaptation Fund both run direct access windows, built specifically so that national and regional entities can receive climate finance without an international intermediary in the chain. Getting accredited means demonstrating fiduciary standards, environmental and social safeguards and gender policy to the fund's satisfaction, which is a substantial institutional undertaking, and many entities have used international support to get through it. The accreditation requirement is not a flaw in the design. It is the finding. The route to holding the contract directly runs through meeting standards written by the people who currently hold it."
+},
+{
+ w:{x:10}, name:"budget discretion",
+ q:"Who signs off a reallocation between budget lines mid-year?",
+ o:[["The donor, in writing, every time",-1],
+    ["The international partner, who then informs the donor",-0.4],
+    ["The local partner, within an agreed threshold",0.5],
+    ["The local partner, without a threshold",1]],
+ notes:[
+  "Weighted 10. Budget discretion is the least performative measure available. A consultation can be staged. A signature on a reallocation cannot.",
+  "The threshold is the whole question. A partner with a five hundred pound ceiling on a two hundred thousand pound grant is not holding a budget. What is the largest thing your partner has moved between lines without asking?"
+ ],
+ caseFlag:"Hypothetical",
+ caseText:"A cash transfer programme budgeted for mobile money fees at a rate agreed eighteen months earlier. The rate goes up. Absorbing it means shifting a small sum between two lines. Nobody at country level can authorise that, so the transfer value drops for two months while the amendment moves through the system, and the people it drops for are the ones the programme exists to reach."
+},
+{
+ w:{x:12}, name:"the right of refusal",
+ q:"Can the local partner refuse a donor requirement and still have a programme afterwards?",
+ o:[["No, and everyone understands that",-1],
+    ["In theory, but nobody has tried it",-0.5],
+    ["Yes, and it has happened at least once",0.6],
+    ["Yes, and the requirement changed as a result",1]],
+ notes:[
+  "The heaviest weighting here, at 12. This is the working definition of ownership I use and I have not found a better one. Almost nothing in the sector measures it directly. The policy influence dimension in NEAR's framework comes closest, and Shifting the Power named the gap without closing it.",
+  "I have been on the wrong side of this. I have written the email that made a requirement sound non-negotiable when it was only inconvenient to change, because renegotiating it would have cost me a fortnight I did not have.",
+  "Refusals leave traces. An amended logframe, an awkward thread, a deadline that moved. If the traces are hard to find, that is worth sitting with before you answer."
+ ],
+ caseFlag:"Hypothetical",
+ caseText:"A national disabled people's organisation is told to collect disaggregated data using categories that do not match how disability is understood or recorded locally. It refuses, and proposes its own. If the donor accepts and the framework changes, authority moved. If the organisation complies upward while quietly keeping a second set of records that are actually useful to it, nothing moved on this axis, and what happened instead gets picked up two questions further down."
+},
+{
+ w:{x:8}, name:"coordination representation",
+ q:"Who represents the programme in the coordination structures that matter?",
+ o:[["The international partner only",-1],
+    ["The international partner leads, the local partner attends",-0.3],
+    ["Both, and the local partner is in rooms the international partner is not",0.5],
+    ["The local partner represents it, and briefs the international partner afterwards",1]],
+ notes:[
+  "Weighted 8. Coordination is where the terms of a response get set, and attendance and influence are not the same thing. Shifting the Power was built around exactly this distinction.",
+  "The practical version of the question is smaller than the principle. What language does the meeting run in, what time does it start, and who is expected to have read the sixty page annex beforehand."
+ ],
+ caseFlag:"Documented",
+ caseText:"Evaluations of the Rohingya response in Cox's Bazar repeatedly found Bangladeshi national organisations present inside the coordination architecture and constrained within it. Meetings ran in English, were scheduled around international agency rosters, and were organised into clusters whose entry expectations assumed international standard systems. Presence was recorded and reported. Influence was much harder to evidence, which is the gap this question is trying to get at."
+},
+{
+ w:{x:6,s:10}, name:"government relationships",
+ q:"Who holds the relationships with the health ministry, the district authority, and other funders?",
+ o:[["The international partner, entirely",-1],
+    ["The international partner, with the local partner introduced but not leading",-0.3],
+    ["The local partner holds some, the international partner holds the rest",0.5],
+    ["The local partner holds them, and the international partner is not in the chain",1]],
+ notes:[
+  "Weighted 6 on authority and 10 on continuity, because a relationship with a ministry is the asset that determines whether a partner can still operate after the grant number changes.",
+  "Introductions are the cheapest transfer available and among the rarest. Holding the ministry relationship is how an intermediary stays necessary, and I do not think that is usually cynical. It is that nobody's job description includes making their own role redundant, and nobody's appraisal rewards it either.",
+  "Who at the ministry has your partner's number rather than yours?"
+ ],
+ caseFlag:"Hypothetical",
+ caseText:"After eight years a partner has a trained team, a functioning service and a reputation that gets it into rooms. Every conversation with the health ministry over those eight years has run through the international partner's country representative, who is good at it and enjoys it. The grant ends. Nobody at the ministry knows who to call, and the partner does not know which of the four people in that department actually decides anything."
+},
+{
+ w:{x:8}, name:"whether a decision stands",
+ q:"When the local partner makes a decision inside its agreed remit that the international partner disagrees with, what happens?",
+ o:[["It gets reversed",-1],
+    ["It stands, and a capacity concern is raised somewhere afterwards",-0.4],
+    ["It stands, and the disagreement gets had openly",0.5],
+    ["It stands, and the decision rule itself gets revisited",1]],
+ notes:[
+  "Weighted 8. This is where trust sits, and it belongs on the authority axis rather than in a category of its own. Authority handed to a partner you do not fully trust comes back inside about a year, and it almost never comes back as a withdrawal of authority. It comes back as a new sign-off step added after an incident, or a reporting requirement that was not there before.",
+  "I have added the sign-off step. It felt proportionate at the time and it was still a reversal."
+ ],
+ caseFlag:"Hypothetical",
+ caseText:"A partner makes a procurement decision inside its agreed threshold and buys a different make of equipment than the international partner would have chosen. Nothing goes wrong. At the next quarterly review a pre-approval step appears in the process, described as alignment. The threshold is still there on paper, and the number in it has not changed."
+},
+{
+ w:{y:12}, name:"how blockages get unblocked",
+ q:"When a procedure fails or a supply chain stalls, what usually unblocks it?",
+ o:[["Nothing, the activity is dropped or delayed indefinitely",-1],
+    ["Someone calls someone they know, informally and unrecorded",-0.2],
+    ["The formal escalation process, eventually",0.1],
+    ["A known relationship route that is documented, funded and accepted",1]],
+ notes:[
+  "Weighted 12, the heaviest on the agency axis, and the options here are deliberately not a ladder. The informal call scores below the formal process, and the formal process scores barely above zero.",
+  "The call is what keeps programmes running. It is also unfunded, unrecorded, and it dies with whoever holds the number. The top answer is not more formality. It is the relationship route being treated as infrastructure: named, resourced, and permitted to exist inside the process document rather than underneath it.",
+  "Outcome Harvesting is one of the few methods that can register this as causation at all. Capacity assessments tend to score it as a control weakness."
+ ],
+ caseFlag:"Documented",
+ caseText:"A pilot in The Gambia ran short of specialised silicone liners. The formal route meant a grant amendment, justification forms and a stalled timeline. Instead I phoned a supplier chief executive I had met once at a conference two years earlier. He committed the liners inside a minute and added a quarter more as a buffer. That call appears in no process document anywhere, including the ones I wrote."
+},
+{
+ w:{y:12}, name:"documentation of adaptations",
+ q:"Are the adaptations local staff make to keep things working written down anywhere?",
+ o:[["No, and raising them would be treated as non-compliance",-1],
+    ["No, but everyone knows they happen",-0.4],
+    ["Informally, in handover notes or team knowledge",0.4],
+    ["Yes, and some are funded as line items",1]],
+ notes:[
+  "Weighted 12. The gap between what the manual says and what people actually do is where the operating model lives. Most Significant Change and Outcome Harvesting can surface it. No compliance framework I have used has a field to record it, which is part of why it stays where it is.",
+  "When an adaptation gets a budget line, something has happened that is hard to reverse. The organisation has written down that its design was wrong and the person doing the work was right. I have watched that change a relationship permanently, in both directions."
+ ],
+ caseFlag:"Hypothetical",
+ caseText:"Technicians at a prosthetics workshop have spent years modifying imported components to survive local heat, dust and repair conditions. None of it appears in a report, because the modification technically voids the specification and writing it down would create a problem for someone. When it finally gets documented during a handover, it turns out to be the most valuable technical knowledge the programme holds, and it belongs to four people, three of whom are on annual contracts."
+},
+{
+ w:{x:6,y:6}, name:"indicator selection",
+ q:"Who chose the indicators the programme reports against?",
+ o:[["Donor template, adopted unchanged",-1],
+    ["International partner, reviewed with the local partner",-0.4],
+    ["Co-designed, with real changes made",0.5],
+    ["Local partner proposed them, donor accepted",1]],
+ notes:[
+  "Split 6 and 6. Choosing the indicator is authority. Whether a locally proposed indicator survives the draft is recognition.",
+  "Indicators decide what counts as success and therefore what work is worth doing. OECD DAC criteria shape most donor templates, and Outcome Harvesting and Most Significant Change exist largely because indicator sets get fixed before anyone has visited the site."
+ ],
+ caseFlag:"Documented",
+ caseText:"Education linked cash transfer programmes are commonly measured on enrolment and attendance. Both are countable at low cost and defensible to a donor. Learning is measured less often and less well, and the distance between the two has been a running argument in the evaluation literature for years. Where the targeting criteria are also set centrally, teachers and community committees routinely identify children the criteria miss, and there is usually nowhere in the reporting format to put that."
+},
+{
+ w:{y:10}, name:"what happens to the frontline read",
+ q:"When frontline staff say the design is wrong, what happens to that?",
+ o:[["It does not reach the design at all",-1],
+    ["It gets logged as a risk or an issue and monitored",-0.3],
+    ["It reaches the design at the next revision",0.5],
+    ["It changed the design inside the current cycle",1]],
+ notes:[
+  "Weighted 10, and deliberately about speed rather than sentiment. Most systems can receive the information. The question is whether it arrives while the design can still change, or after the next proposal has been submitted.",
+  "This is the ratio in its clearest form. A programme with almost no latitude that still turns a frontline observation into a change inside the cycle is using everything it has."
+ ],
+ caseFlag:"Hypothetical",
+ caseText:"Community health workers report that the recommended follow-up interval does not fit the market day cycle, so attendance clusters on the wrong days and the no-show rate looks like a demand problem. The observation is logged as a risk and monitored for four quarters. The interval eventually changes, because the next funding round rewrote the protocol anyway."
+},
+{
+ w:{s:20}, name:"continuity of design",
+ q:"Was the programme designed with an end date and a closure plan, or as a component of something that continues?",
+ o:[["Designed with an end date, no closure plan and no named successor",0],
+    ["End date with a closure plan on paper, successor not identified",0.35],
+    ["Designed as a component of a system, successor identified, funding uncertain",0.7],
+    ["Designed as a component of a system, and the successor already carries part of it",1]],
+ notes:[
+  "Weighted 20 and reported on its own, away from the two axes. This replaces the withdrawal survivability question I used in the first version, which punished emergency response for being time-bound and rewarded long programmes for having had longer.",
+  "The question is not how long it lasts. An eighteen month response scoring high on continuity is fine and slightly unusual. A twelve year programme scoring low is the finding, and it is why the result reads this against the programme type you set at the top rather than against a single line.",
+  "Borrowed directly from Global Fund transition readiness assessments, which ask before the step-down rather than after."
+ ],
+ caseFlag:"Documented",
+ caseText:"Rural water point functionality after handover is one of the better documented failure literatures in development. Studies across Sub-Saharan Africa have repeatedly found a substantial share of handpumps non-functional within a few years of installation, and the common factor is rarely the hardware. It is that at the moment the pump broke, nobody had the money, the mandate and the spare part at the same time. Construction was a project. Maintenance was a system nobody had been funded to build."
+},
+{
+ w:{claim:true}, name:"the public claim",
+ q:"What does the programme say publicly about local ownership?",
+ o:[["Little or nothing",0],
+    ["That it works in partnership with local organisations",0.35],
+    ["That it is locally led",0.7],
+    ["That it is locally owned, and this is a headline claim",1]],
+ notes:[
+  "This scores nothing on either axis. It gets compared against the authority reading to produce a distance, and it cannot be gamed in either direction. Claiming more moves the distance one way, transferring less moves it the other.",
+  "Following Mulder, that distance is what I mean by localisation theatre. A programme that claims little and transfers little is coherent. A programme claiming a great deal while transferring little is running a distance that partners can see from where they are standing, usually well before a donor can."
+ ],
+ caseFlag:"Documented",
+ caseText:"Roepstorff (2020) describes localisation as performance, the staging of participation without a shift in power. Boateng (2021) argues that localisation without epistemic redistribution reproduces the same hierarchies under new labels. I cited both in a piece I wrote after the ISPO congress in Stockholm, and I was describing programmes I was managing at the time."
+}
+];
+
+var answers = {};
+var flags = {};
+var ctx = {type:"", dur:"", purpose:""};
+
+function el(t,c,x){ var e=document.createElement(t); if(c) e.className=c; if(x!==undefined) e.textContent=x; return e; }
+
+function buildCtx(){
+  var tWrap = document.getElementById("ctxType");
+  TYPES.forEach(function(t){
+    var lab = el("label","ctx-opt");
+    var inp = document.createElement("input");
+    inp.type="radio"; inp.name="ctxtype"; inp.value=t[0];
+    inp.addEventListener("change", function(){
+      ctx.type=t[0];
+      Array.prototype.forEach.call(tWrap.children,function(c){c.classList.remove("sel");});
+      lab.classList.add("sel");
+    });
+    lab.appendChild(inp); lab.appendChild(el("span",null,t[1]));
+    tWrap.appendChild(lab);
+  });
+  var dWrap = document.getElementById("ctxDur");
+  DURS.forEach(function(d){
+    var lab = el("label","ctx-opt");
+    var inp = document.createElement("input");
+    inp.type="radio"; inp.name="ctxdur"; inp.value=d[0];
+    inp.addEventListener("change", function(){
+      ctx.dur=d[0];
+      Array.prototype.forEach.call(dWrap.children,function(c){c.classList.remove("sel");});
+      lab.classList.add("sel");
+    });
+    lab.appendChild(inp); lab.appendChild(el("span",null,d[1]));
+    dWrap.appendChild(lab);
+  });
+  document.getElementById("ctxPurpose").addEventListener("input", function(e){ ctx.purpose = e.target.value; });
+}
+
+function render(){
+  var w = document.getElementById("qwrap");
+  Q.forEach(function(item,i){
+    var d = el("div","q"); d.id="q"+i;
+    d.appendChild(el("div","qnum","Question "+(i+1)+" of "+Q.length));
+    d.appendChild(el("div","qtext",item.q));
+
+    var tags = el("div","qtags");
+    if(item.w.x) tags.appendChild(el("span","tag","Authority "+item.w.x));
+    if(item.w.y) tags.appendChild(el("span","tag","Agency "+item.w.y));
+    if(item.w.s) tags.appendChild(el("span","tag","Continuity "+item.w.s));
+    if(item.w.claim) tags.appendChild(el("span","tag","Compared, not scored"));
+    d.appendChild(tags);
+
+    var opts = el("div","opts");
+    item.o.forEach(function(o,j){
+      var lab = el("label","opt");
+      var input = document.createElement("input");
+      input.type="radio"; input.name="q"+i; input.value=j;
+      input.addEventListener("change", function(){
+        answers[i]=o[1];
+        Array.prototype.forEach.call(opts.children,function(c){c.classList.remove("sel");});
+        lab.classList.add("sel");
+        updateProgress();
+      });
+      lab.appendChild(input);
+      lab.appendChild(el("span",null,o[0]));
+      opts.appendChild(lab);
+    });
+    d.appendChild(opts);
+
+    if(!item.w.claim){
+      var fr = el("label","flagrow");
+      var fi = document.createElement("input");
+      fi.type="checkbox";
+      fi.addEventListener("change", function(){
+        flags[i] = fi.checked;
+        if(fi.checked){ fr.classList.add("on"); } else { fr.classList.remove("on"); }
+      });
+      var fs = document.createElement("span");
+      var fb = document.createElement("b");
+      fb.textContent = "Constraint flag";
+      fs.appendChild(fb);
+      fs.appendChild(document.createTextNode("This answer is fixed by the donor, by law, or by the operating context. Not something this programme can change."));
+      fr.appendChild(fi); fr.appendChild(fs);
+      d.appendChild(fr);
+    }
+
+    var det = el("details","info");
+    var sum = document.createElement("summary");
+    sum.textContent = "Notes on this question";
+    det.appendChild(sum);
+    var b = el("div","info-body");
+    item.notes.forEach(function(n){ b.appendChild(el("p",null,n)); });
+    var cs = el("div","case");
+    cs.appendChild(el("span","flag", item.caseFlag==="Documented" ? "Documented case" : "Hypothetical case"));
+    cs.appendChild(el("p",null,item.caseText));
+    b.appendChild(cs);
+    det.appendChild(b);
+    d.appendChild(det);
+
+    w.appendChild(d);
+  });
+}
+
+function updateProgress(){
+  document.getElementById("prog").textContent = Object.keys(answers).length + " of " + Q.length + " answered";
+}
+
+var QUAD = {
+  transferred:{n:"Transferred", t:"Inside the room you described, authority sits with the local partner and the system can see the adaptations people are already making. This is the rarest of the four positions. It is worth checking against the refusal answer and the government relationships answer specifically, because a position built on good consultation rather than on a veto reads identically from here."},
+  harness:{n:"Harnessing Constraint", t:"Formal authority sits elsewhere, and the system works with what local actors are already doing rather than around it. In my experience this is where most functioning programmes actually are. It holds together, and it can hold together for years without anything moving, which is the part worth watching. Turning recognised agency into formal authority is slower and more contested than it sounds, and it usually needs someone to want it enough to spend something on it."},
+  managed:{n:"Managed Delivery", t:"Authority is retained and local adaptation is not visible to the system. If that is what the programme says it is, the position is at least coherent. What tends to sit underneath it is a set of undocumented workarounds holding things together, which puts the operational risk somewhere the compliance reporting is not looking."},
+  devolved:{n:"Devolved Burden", t:"Authority has moved on paper and the system still cannot see how the work gets done. Responsibility and compliance load shifted without the recognition or the resourcing that would make them survivable. This position often scores well on donor localisation reporting, which is part of why it persists."}
+};
+
+function quadFor(x,y){
+  return x>=0 ? (y>=0?QUAD.transferred:QUAD.devolved) : (y>=0?QUAD.harness:QUAD.managed);
+}
+
+var NEXT = {
+  "Transferred":[
+    "The refusal answer is the one to stress test. There is usually a specific instance behind a high score there, and if nobody can name it, the reading is aspirational rather than wrong.",
+    "What happens to the data and to the government relationships if the partnership ends is rarely written down at this position, because it stops feeling urgent once things are working."
+  ],
+  "Harnessing Constraint":[
+    "One workaround already keeping things running could have a budget line this cycle. It is the cheapest available evidence that the design can learn from the people running it.",
+    "A threshold for local budget discretion, with a date on raising it, is a smaller move than it sounds and it changes the answer to question two.",
+    "Worth being honest internally about whether anyone actually intends authority to move, or whether this position is the destination. Both are defensible. Only one of them should be described as a transition."
+  ],
+  "Managed Delivery":[
+    "The undocumented workarounds are the operational risk here, and by definition the compliance reporting cannot see them. Mapping them costs about a week.",
+    "Whether the public claim matches this position is worth checking. At this reading an accurate claim is the strongest thing available.",
+    "Data ownership and report authorship are usually the least contested places to start, partly because they cost the international partner the least."
+  ],
+  "Devolved Burden":[
+    "Auditing what moved against what did not usually puts reporting and compliance on one side, and budget, contract and relationships on the other.",
+    "Asking the local partner directly what they would need in order to refuse something tends to produce a work plan. It is also an uncomfortable question, which is most of the reason it does not get asked."
+  ]
+};
+
+function typeLabel(k){ for(var i=0;i<TYPES.length;i++){ if(TYPES[i][0]===k) return TYPES[i][1]; } return ""; }
+function durLabel(k){ for(var i=0;i<DURS.length;i++){ if(DURS[i][0]===k) return DURS[i][1]; } return ""; }
+
+function continuityText(S){
+  var t = ctx.type, d = ctx.dur;
+  var longish = (d==="5to10" || d==="o10");
+  if(t==="emergency"){
+    if(S<40) return "For a response of this kind a low continuity reading is close to what the design intends, and it is not by itself a finding. The question that matters is where the handover point is and who is standing on the other side of it.";
+    if(S<70) return "A partial continuity design in an emergency response is more than most manage. Whether the successor can absorb it is a separate question from whether it was named.";
+    return "A response designed as a component of something continuing is unusual. Worth writing up, because most are not, and the sector has more opinions about this than examples.";
+  }
+  if(t==="transitional"){
+    if(S<40) return "This is the reading that matters most for transitional programming, because the whole category is defined by handing something over. An end date without a named successor is a withdrawal with a sustainability section attached.";
+    if(S<70) return "A closure plan exists and the successor is at least partly identified. The usual failure point from here is funding: the successor is named and nobody has worked out what it costs them.";
+    return "Designed to continue, with something already carrying part of the load. Check that the part being carried is the expensive part rather than the visible one.";
+  }
+  if(t==="longrun"){
+    if(S<40) return "Here is the finding. A long-run programme that was still designed with an end date and no successor has duration without continuity, and the two get confused constantly in sustainability sections." + (longish ? " On the duration you gave, this has had time to build a successor and has not." : "");
+    if(S<70) return "Partial continuity in a long-run programme. The closure plan exists on paper, which puts it ahead of most, and the successor has not yet been funded to take anything." + (longish ? " Given how long this has been running, the funding question is the one to put a date on." : "");
+    return "Designed as a component of a system rather than as a project with a deadline. Worth verifying against the government relationships answer, because continuity claims at this level usually rest on a relationship rather than on a contract.";
+  }
+  return "";
+}
+
+function score(){
+  if(!ctx.type || !ctx.dur){
+    document.getElementById("prog").textContent = "Set the programme type and duration at the top first.";
+    document.querySelector(".ctx").scrollIntoView({behavior:"smooth", block:"center"});
+    return;
+  }
+  if(Object.keys(answers).length < Q.length){
+    var first=-1;
+    for(var i=0;i<Q.length;i++){ if(answers[i]===undefined){ first=i; break; } }
+    document.getElementById("prog").textContent = "Question "+(first+1)+" is still blank.";
+    document.getElementById("q"+first).scrollIntoView({behavior:"smooth", block:"center"});
+    return;
+  }
+
+  var xsA=0,xwA=0,xsR=0,xwR=0,ysA=0,ywA=0,ysR=0,ywR=0,ssA=0,sMin=0,sMax=0,claim=0;
+  var openList=[], fixedList=[], flaggedCont=0;
+
+  Q.forEach(function(item,i){
+    var v = answers[i];
+    if(item.w.claim){ claim=v; return; }
+    var f = !!flags[i];
+    if(f){ fixedList.push(item.name); } else { openList.push(item.name); }
+    if(item.w.x){ xsA+=v*item.w.x; xwA+=item.w.x; if(!f){ xsR+=v*item.w.x; xwR+=item.w.x; } }
+    if(item.w.y){ ysA+=v*item.w.y; ywA+=item.w.y; if(!f){ ysR+=v*item.w.y; ywR+=item.w.y; } }
+    if(item.w.s){
+      ssA += v*item.w.s;
+      var lo=item.o[0][1], hi=item.o[0][1];
+      item.o.forEach(function(o){ if(o[1]<lo) lo=o[1]; if(o[1]>hi) hi=o[1]; });
+      sMin += lo*item.w.s; sMax += hi*item.w.s;
+      if(f){ flaggedCont++; }
+    }
+  });
+
+  var Xabs = Math.round((xsA/xwA)*100);
+  var Yabs = Math.round((ysA/ywA)*100);
+  var Xroom = xwR>0 ? Math.round((xsR/xwR)*100) : null;
+  var Yroom = ywR>0 ? Math.round((ysR/ywR)*100) : null;
+  var S = (sMax>sMin) ? Math.round(((ssA-sMin)/(sMax-sMin))*100) : 0;
+
+  var xr = (Xroom===null) ? Xabs : Xroom;
+  var yr = (Yroom===null) ? Yabs : Yroom;
+
+  var qRoom = quadFor(xr,yr);
+  var qAbs  = quadFor(Xabs,Yabs);
+
+  document.getElementById("quadName").textContent = qRoom.n;
+  document.getElementById("quadText").textContent = qRoom.t;
+
+  var shift = document.getElementById("quadShift");
+  if(qAbs.n !== qRoom.n){
+    shift.style.display = "block";
+    shift.textContent = "In absolute terms the same answers put the programme in " + qAbs.n + ". Both readings are true. The first describes what the people running it are doing with what they hold, the second describes what it looks like from outside, and the argument about which one counts is usually the argument worth having.";
+  } else {
+    shift.style.display = "none";
+  }
+
+  document.getElementById("coords").textContent =
+    "Within the room: authority " + (xr>0?"+":"") + xr + ", agency " + (yr>0?"+":"") + yr +
+    "   /   Absolute: authority " + (Xabs>0?"+":"") + Xabs + ", agency " + (Yabs>0?"+":"") + Yabs;
+
+  var pa = document.getElementById("readAgainst");
+  pa.textContent = "Read against: " + typeLabel(ctx.type).toLowerCase() + ", " + durLabel(ctx.dur).toLowerCase() +
+    (ctx.purpose ? ". Stated purpose: " + ctx.purpose : "");
+
+  var cxA = 210 + (Xabs/100)*190, cyA = 210 - (Yabs/100)*190;
+  var cxR = 210 + (xr/100)*190,  cyR = 210 - (yr/100)*190;
+  document.getElementById("dotAbs").setAttribute("cx", cxA);
+  document.getElementById("dotAbs").setAttribute("cy", cyA);
+  document.getElementById("dotRoom").setAttribute("cx", cxR);
+  document.getElementById("dotRoom").setAttribute("cy", cyR);
+  var ln = document.getElementById("constraintLine");
+  ln.setAttribute("x1", cxR); ln.setAttribute("y1", cyR);
+  ln.setAttribute("x2", cxA); ln.setAttribute("y2", cyA);
+
+  var dist = Math.round(Math.sqrt(Math.pow(xr-Xabs,2) + Math.pow(yr-Yabs,2)));
+  var nFixed = fixedList.length;
+  var ct = document.getElementById("constraintText");
+  if(nFixed===0){
+    ct.textContent = "Nothing was flagged as fixed, so the two readings are identical and there is no line to draw. That is either accurate or it means the constraints have stopped being visible from inside the programme. Worth a second pass through the twelve before taking it at face value.";
+  } else if(Xroom===null || Yroom===null){
+    ct.textContent = "Every question on one of the two axes was flagged as fixed, so there is no within-room position to calculate on that axis and the plot falls back to the absolute reading for it. If a whole axis is genuinely outside the programme's control, that is the finding and it belongs in the next donor conversation rather than in this tool.";
+  } else {
+    ct.textContent = "The line on the plot is " + dist + " points long. That is the distance between where this programme sits inside the room it controls and where it sits in absolute terms, and it is made entirely of the " + nFixed + " answer" + (nFixed===1?"":"s") + " flagged as fixed by the donor, by law, or by the operating context. Most programmes I have run this with find the real constraint is smaller than they assumed.";
+  }
+
+  function fillList(id,noneId,arr){
+    var ul = document.getElementById(id); ul.textContent="";
+    var none = document.getElementById(noneId);
+    if(arr.length===0){ none.style.display="block"; return; }
+    none.style.display="none";
+    arr.forEach(function(n){ ul.appendChild(el("li",null,n)); });
+  }
+  fillList("listOpen","noneOpen",openList);
+  fillList("listFixed","noneFixed",fixedList);
+
+  document.getElementById("contBar").style.width = Math.max(S,2) + "%";
+  document.getElementById("contText").textContent = S + " of 100. " + continuityText(S) +
+    (flaggedCont>0 ? " One of the two questions behind this reading was flagged as fixed, so treat the number as partial." : "");
+
+  var xNorm = (Xabs+100)/200;
+  var gap = claim - xNorm;
+  var tb = document.getElementById("theatreBox");
+  if(gap > 0.28){
+    tb.style.display = "block";
+    document.getElementById("theatreText").textContent = "The public claim about local ownership sits well ahead of the authority reading. That distance is what Mulder calls localisation theatre. The thing about it is that partners can see it from where they are standing, usually earlier than donors can. It closes from either end, and choosing which end is the actual decision.";
+  } else if(gap < -0.28){
+    tb.style.display = "block";
+    document.getElementById("theatreText").textContent = "The programme is transferring more authority than it says publicly. That is an honest position, and it gives up ground in every funding conversation where localisation is being assessed, at no internal cost. Understatement is not always modesty. Sometimes it is nobody having written it down.";
+  } else {
+    tb.style.display = "none";
+  }
+
+  var mostName="", mv=2, found=false;
+  for(var k=0;k<Q.length;k++){
+    if(Q[k].w.claim) continue;
+    if(flags[k]) continue;
+    if(answers[k] < mv){ mv = answers[k]; mostName = Q[k].name; found=true; }
+  }
+  var mr = document.getElementById("mostRoom");
+  if(found){
+    mr.textContent = "Most room: " + mostName + ". Of the answers you did not flag as fixed, that is the one sitting furthest from the top of its scale.";
+  } else {
+    mr.textContent = "Most room: nothing to report, because every scored question was flagged as fixed.";
+  }
+
+  var ul = document.getElementById("nextList"); ul.textContent="";
+  NEXT[qRoom.n].forEach(function(t){ ul.appendChild(el("li",null,t)); });
+
+  var r = document.getElementById("results");
+  r.classList.add("on");
+  r.scrollIntoView({behavior:"smooth", block:"start"});
+  updateProgress();
+}
+
+buildCtx();
+render();
+
+document.getElementById("scoreBtn").addEventListener("click", score);
+document.getElementById("resetBtn").addEventListener("click", function(){
+  answers = {}; flags = {}; ctx = {type:"", dur:"", purpose:""};
+  document.getElementById("results").classList.remove("on");
+  Array.prototype.forEach.call(document.querySelectorAll(".opt, .ctx-opt"), function(o){ o.classList.remove("sel"); });
+  Array.prototype.forEach.call(document.querySelectorAll(".flagrow"), function(o){ o.classList.remove("on"); });
+  Array.prototype.forEach.call(document.querySelectorAll("input[type=radio], input[type=checkbox]"), function(i){ i.checked=false; });
+  document.getElementById("ctxPurpose").value = "";
+  updateProgress();
+  window.scrollTo({top:0, behavior:"smooth"});
+});
+
+document.addEventListener("click", function(ev){
+  var m = document.querySelector(".mobnav[open]");
+  if(m && !m.contains(ev.target)){ m.removeAttribute("open"); }
+});
+
+var reveals = document.querySelectorAll(".reveal");
+if("IntersectionObserver" in window){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  Array.prototype.forEach.call(reveals, function(elm){ io.observe(elm); });
+} else {
+  Array.prototype.forEach.call(reveals, function(elm){ elm.classList.add("in"); });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fifteen Weeks | A study of UK INGO transition documents | Managing Transitions</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://managingtransitions.org/research.html">
+<meta name="description" content="A study of 23 UK international NGOs' published transition documents: what they commit to when they hand programmes over, and what they leave unwritten.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Managing Transitions">
+<meta property="og:title" content="Fifteen Weeks: what UK international NGOs write down when they hand their work over">
+<meta property="og:description" content="A study of 23 UK international NGOs' published transition documents: what they commit to when they hand programmes over, and what they leave unwritten.">
+<meta property="og:image" content="https://managingtransitions.org/img/fig1.png">
+<meta property="og:url" content="https://managingtransitions.org/research.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fifteen Weeks | Managing Transitions">
+<meta name="twitter:description" content="A study of 23 UK international NGOs' published transition documents: what they commit to when they hand programmes over, and what they leave unwritten.">
+<meta name="twitter:image" content="https://managingtransitions.org/img/fig1.png">
+<meta name="citation_title" content="Fifteen Weeks: what UK international NGOs write down when they hand their work over">
+<meta name="citation_author" content="Thomson, Matt">
+<meta name="citation_publication_date" content="2026/09/22">
+<meta name="citation_pdf_url" content="https://managingtransitions.org/Thomson-2026-Transition-Exposure-UK-INGOs.pdf">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c231f'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23c9a877'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000000;
+    --teal:#0c231f;
+    --brown:#392c23;
+    --amber:#e47b12;
+    --sand:#c9a877;
+    --paper:#ffffff;
+    --line: rgba(0,0,0,0.14);
+    --line-on-dark: rgba(255,255,255,0.18);
+    --max: 1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Inter', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--sand); color:var(--teal);}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; margin:0; letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--teal);}
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  :focus-visible{outline:2px solid var(--sand); outline-offset:3px;}
+  @keyframes heroUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;} }
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;}
+  .brand{font-family:'IBM Plex Mono', monospace; font-size:0.85rem; letter-spacing:0.04em;
+    font-weight:500; text-decoration:none;}
+  .brand span{color:var(--teal);}
+  .navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+  .navlinks a{position:relative; font-size:0.85rem; text-decoration:none; color:var(--brown);
+    font-weight:500; padding-bottom:2px;}
+  .navlinks a::after{content:""; position:absolute; left:0; bottom:-2px; width:100%; height:1px;
+    background:var(--sand); transform:scaleX(0); transform-origin:left; transition:transform .25s ease;}
+  .navlinks a:hover{color:var(--teal);}
+  .navlinks a:hover::after{transform:scaleX(1);}
+  .navlinks a.current{color:var(--teal);}
+  .navlinks a.current::after{transform:scaleX(1);}
+  @media (max-width:860px){ .navlinks{display:none;} }
+
+  header.page-head{background:var(--teal); color:#f4efe6; padding:70px 0 58px; overflow:hidden;}
+  header.page-head .wrap > *{ animation:heroUp .7s ease both; }
+  header.page-head .eyebrow{color:#a9c2bb; margin-bottom:18px;}
+  header.page-head h1{font-size:clamp(2.6rem, 6vw, 4.2rem); color:#fff; line-height:1.0;}
+  header.page-head .sub{font-family:'Fraunces', serif; font-size:clamp(1.1rem,2.2vw,1.4rem);
+    color:#dbe5e1; margin-top:18px; max-width:640px; line-height:1.35;}
+  header.page-head .byline{font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    color:#8ea59c; margin-top:26px; letter-spacing:0.03em;}
+
+  .keynums{background:#f7f5f2; border-bottom:1px solid var(--line); padding:44px 0;}
+  .keynums .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);}
+  .keynums .cell{background:#fff; padding:24px 22px;}
+  .keynums .n{font-family:'Fraunces',serif; font-weight:600; font-size:2.3rem; line-height:1; color:var(--teal);}
+  .keynums .n em{font-style:normal; color:var(--amber);}
+  .keynums .l{margin-top:11px; font-size:0.9rem; color:#3a3a38;}
+  @media (max-width:760px){ .keynums .grid{grid-template-columns:1fr;} }
+
+  .downloads{border-bottom:1px solid var(--line); padding:44px 0;}
+  .dl-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px;}
+  .dl{display:block; padding:20px 22px; border:1px solid var(--line); text-decoration:none;
+    transition:border-color .2s ease, transform .2s ease, background .2s ease;}
+  .dl:hover{border-color:var(--amber); transform:translateY(-2px); background:#fdfaf6;}
+  .dl .k{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--amber);}
+  .dl .t{font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; margin-top:9px; color:var(--ink);}
+  .dl .d{font-size:0.85rem; color:#4a4a48; margin-top:6px;}
+  .licence{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:#6b6b66; margin-top:20px;}
+  .licence a{color:var(--teal);}
+  @media (max-width:760px){ .dl-grid{grid-template-columns:1fr;} }
+
+  .reportsec{padding:64px 0 20px;}
+
+  /* ---------- report typography ---------- */
+  .report{max-width:720px; margin:0 auto; padding:0 28px;}
+  .report p{font-size:1.02rem; line-height:1.72; color:#22221f; margin:0 0 1.15em;}
+  .report p.lead-term strong{
+    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.86rem;
+    letter-spacing:0.02em; text-transform:uppercase; color:var(--teal);
+  }
+  .report h2.sec{margin:56px 0 26px; display:flex; align-items:center; gap:16px;}
+  .report h2.sec .secnum{
+    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.82rem;
+    letter-spacing:0.14em; color:var(--amber);
+    border:1px solid var(--line); border-left:2px solid var(--amber);
+    padding:7px 13px; line-height:1;
+  }
+  .report h2.sec::after{content:""; flex:1; height:1px; background:var(--line);}
+  .report h2.annex{
+    margin:72px 0 26px; padding-top:28px; border-top:2px solid var(--teal);
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .report h2.annex .annexkey{
+    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.76rem;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--amber);
+  }
+  .report h2.annex .annextitle{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.45rem; color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .report hr.rule{border:none; height:1px; background:var(--line); margin:44px 0;}
+  .report .fig{margin:44px 0; padding:0;}
+  .report .fig img{width:100%; height:auto; display:block; border:1px solid var(--line);}
+  .report .fig figcaption{
+    margin-top:12px; font-size:0.85rem; color:#6b6b66; line-height:1.5;
+  }
+  .report .fig .fignum{
+    font-family:'IBM Plex Mono', monospace; font-size:0.75rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--teal); margin-right:8px;
+  }
+  .report ol.checklist{margin:0 0 1.2em; padding-left:1.2em;}
+  .report ol.checklist li{font-size:1.02rem; line-height:1.7; color:#22221f; margin-bottom:0.7em;}
+
+  .tablewrap{margin:34px 0; overflow-x:auto;}
+  table.scores{border-collapse:collapse; width:100%; font-size:0.88rem;}
+  table.scores th{
+    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.7rem;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--teal);
+    text-align:left; padding:0 10px 9px; border-bottom:1px solid var(--teal);
+    white-space:nowrap;
+  }
+  table.scores th.num, table.scores td.num{text-align:right; font-variant-numeric:tabular-nums;}
+  table.scores td{padding:8px 10px; border-bottom:1px solid var(--line); color:#22221f;}
+  table.scores td.num{font-family:'IBM Plex Mono', monospace; font-size:0.84rem;}
+  table.scores tr.ded td{background:#f4f8f6;}
+  table.scores tr.ded td.org{font-weight:600;}
+
+
+  .rightofreply{background:#eef1ef; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:52px 0; margin-top:64px;}
+  .rightofreply .inner{max-width:720px; margin:0 auto; padding:0 28px;}
+  .rightofreply h3{font-family:'Fraunces',serif; font-size:1.3rem; margin-bottom:14px;}
+  .rightofreply p{font-size:0.95rem; color:#2b2b28; margin:0 0 12px;}
+
+  footer{background:var(--teal); color:#eef4f1; padding:62px 0 32px;}
+  footer .eyebrow{color:#a9c2bb;}
+  footer h2{color:#fff; font-size:clamp(1.5rem,3vw,2rem);}
+  footer p.lede{color:#c9d8d3; max-width:560px; margin-top:14px;}
+  .contact-grid{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px;}
+  .chip{display:flex; align-items:center; gap:8px; padding:11px 18px;
+    border:1px solid var(--line-on-dark); text-decoration:none; color:#eef4f1; font-size:0.88rem;
+    transition:border-color .18s ease, color .18s ease, transform .18s ease;}
+  .chip:hover{border-color:var(--sand); color:var(--sand); transform:translateY(-2px);}
+  .adviser-note{margin-top:36px; padding-top:20px; border-top:1px solid var(--line-on-dark);
+    font-size:0.85rem; color:#a9c2bb; max-width:640px;}
+  .foot-base{margin-top:34px; padding-top:20px; border-top:1px solid var(--line-on-dark);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8ea59c;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">MANAGING <span>/</span> TRANSITIONS</a>
+    <ul class="navlinks">
+      <li><a href="index.html#review">Review</a></li>
+      <li><a href="research.html" class="current">Research</a></li>
+      <li><a href="index.html#advisory">Advisory</a></li>
+      <li><a href="diagnostic.html">Diagnostic</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="index.html#philosophy">Philosophy</a></li>
+      <li><a href="faq.html">Questions</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Published research &middot; September 2026</p>
+    <h1>Fifteen Weeks</h1>
+    <p class="sub">What UK international NGOs write down when they hand their work over</p>
+    <p class="byline">Matt Thomson &nbsp;&middot;&nbsp; 23 organisations &nbsp;&middot;&nbsp; 13 codes &nbsp;&middot;&nbsp; coded from published documents &nbsp;&middot;&nbsp; CC BY 4.0</p>
+  </div>
+</header>
+
+<section class="keynums">
+  <div class="wrap">
+    <div class="grid">
+      <div class="cell"><div class="n"><em>5</em> of 23</div><div class="l">put a figure against money moving to partners</div></div>
+      <div class="cell"><div class="n"><em>6</em> of 23</div><div class="l">give a handover timetable separate from their redundancy timetable</div></div>
+      <div class="cell"><div class="n"><em>4</em> of 23</div><div class="l">state any measure of whether the transition worked</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="downloads">
+  <div class="wrap">
+    <p class="eyebrow">Download</p>
+    <div class="dl-grid">
+      <a class="dl" href="Thomson-2026-Transition-Exposure-UK-INGOs.pdf">
+        <div class="k">PDF</div><div class="t">The report</div>
+        <div class="d">Full text, three figures, four annexes</div>
+      </a>
+      <a class="dl" href="data/transition_exposure_dataset.csv">
+        <div class="k">CSV</div><div class="t">The dataset</div>
+        <div class="d">23 organisations, 13 codes, every score</div>
+      </a>
+      <a class="dl" href="data/codebook.md">
+        <div class="k">Markdown</div><div class="t">The codebook</div>
+        <div class="d">Every code, its scale, and the rule applied</div>
+      </a>
+    </div>
+    <p class="licence">Published under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Use it, check it, tell me where I am wrong. &nbsp;&middot;&nbsp; <a href="data/CORRECTIONS.md">Corrections log</a></p>
+  </div>
+</section>
+
+<section class="reportsec">
+  <article class="report">
+<h2 class="sec" id="s1"><span class="secnum">1</span></h2>
+
+<p>The trustees of Motivation approved their annual report on 15 September 2025. It runs to forty-nine pages and it is, by the standards of small charity reporting, a careful document. It sets out a new strategy for 2025 to 2030, arrived at after consultation with teams in Kenya, India, Malawi, Uganda and the UK. It notes that the India board has been strengthened, that a new Managing Trustee has taken over, that she is the organisation&rsquo;s first female chair. It records that the Indian social enterprise sold 1,169 wheelchairs, up twenty-nine per cent on the year before. The chair&rsquo;s introduction describes a strategic approach &ldquo;focusing on disabled people&rsquo;s empowerment through decentralisation of decision-making and leadership.&rdquo; Having reviewed forecasts to the end of 2026, the trustees concluded that the charity had &ldquo;a reasonable expectation that there are adequate resources to continue in operational existence for the foreseeable future.&rdquo;</p>
+
+<p>Fifteen weeks later, on 30 December 2025, a general meeting held at quarter past ten on Microsoft Teams resolved that the company be wound up voluntarily. Joint liquidators were appointed from a firm on Broad Quay, a mile from Motivation&rsquo;s office in Bedminster. The trading arm that made the wheelchairs went the same day. In April the liquidator filed a notice of disclaimer.</p>
+
+<p>The website now carries one sentence: &ldquo;Motivation is proud to announce that our programme work is now entirely led and delivered by Motivation Africa and Motivation India.&rdquo; No date, no figures, no account of what moved or how. If you wanted to know what happened to thirty-five years of wheelchair design work, the public record offers you a sentence and a filing history.</p>
+
+<p>I live in Bristol and work on assistive technology, and I found out about this the way anyone would, which is to say late and sideways. That gap between what an organisation is doing and what its documents say it is doing is what this study turned out to be about. I had expected to find organisations describing their cuts precisely and their handovers vaguely. What I found instead was more interesting and, I think, more forgivable.</p>
+
+<hr class="rule">
+
+<h2 class="sec" id="s2"><span class="secnum">2</span></h2>
+
+<p>I read the published documents of twenty-three UK international NGOs and coded them against thirteen questions about how they describe organisational transition. The documents are annual reports, trustees&rsquo; reports, strategies, press statements and, where an organisation had one, a document written specifically about the transition itself. Journalism was used to find the documents and never to score them. Every score above zero required a quotation from the organisation&rsquo;s own material.</p>
+
+<p>The questions divide into four groups. Does the organisation say how many people and how much money are going, and by when. Does it say what work is moving, to whom, with what resource, on what timetable. Does it say what it keeps, and what it leaves behind in the form of employment, safeguarding, in-country registration, equipment, records and grant contracts. And does it say how anyone would know whether the thing worked.</p>
+
+<p>Twenty of the twenty-three disclose a restructuring, closure or transition in their own accounts. Three do not, and two of those three turn out to matter more than I expected.</p>
+
+<p>The full codebook, the scores and the sources are in the annexes. The rest of this is what the documents actually say.</p>
+
+<hr class="rule">
+
+<h2 class="sec" id="s3"><span class="secnum">3</span></h2>
+
+<p>Save the Children International&rsquo;s 2024 trustees&rsquo; report tells you that the organisation&rsquo;s headcount fell by seventeen per cent. It tells you this in the section on greenhouse gas emissions.</p>
+
+<p>The passage reads: &ldquo;Our emissions intensity is calculated globally on a per-employee basis and totals 3.26 tCO2e/FTE for the reporting period, compared to 2.77 tCO2e/FTE in 2023, which reflects a reduction in headcount by 17% compared to 2023.&rdquo; Emissions intensity requires a denominator. The denominator is people. The regulation that governs streamlined energy and carbon reporting obliged someone to divide one by the other, and in doing so obliged them to explain why the ratio had moved.</p>
+
+<p>I do not think anyone hid anything. The figure is also in the notes, where average headcount is given as 16,153 against 19,548 the year before, and termination payments of USD 3.2 million against USD 395,000. But the place where the reduction is narrated, where a reader is told what it means, is a paragraph about carbon. Elsewhere in the same report the restructure appears as &ldquo;our Fit for Future global and regional restructure process saw us restructure our teams to become more agile and efficient,&rdquo; which is a sentence that tells you the shape of the thing and nothing about its size.</p>
+
+<p>This is not an isolated trick of layout. Tearfund&rsquo;s 2024/25 accounts disclose the cost of its restructure twice: once as &ldquo;redundancy and severance costs of £179,000 (2023/24: £1,611,000)&rdquo; in the employee note, and once in a paragraph explaining that &ldquo;the total number of employees earning over £60,000 has decreased from the prior year due to the restructure carried out in 2023/24.&rdquo; The million and a half pounds is real and it is stated plainly. It appears because an accounting standard requires it to, attached to a question about senior pay.</p>
+
+<p>Marilyn Strathern, writing about audit in British universities, put the problem in a line that has since been detached from her and stuck to Goodhart: when a measure becomes a target it ceases to be a good measure. What the emissions footnote suggests is a quieter cousin of that. Numbers surface where a rule requires them, and the rules that require them were written for other purposes. Carbon reporting produced a headcount figure. Senior pay disclosure produced a restructuring cost. Neither rule was interested in transition, and so the transition is visible only in the shadow it casts across measures designed for something else.</p>
+
+<p>None of that is anyone&rsquo;s fault. It is what happens when the instrument doing the reporting was built to answer a different question.</p>
+
+<hr class="rule">
+
+<h2 class="sec" id="s4"><span class="secnum">4</span></h2>
+
+<p>Three things almost never appear.</p>
+
+<p>The first is money moving to partners. Five organisations out of twenty-three put a figure or a percentage against it. Christian Aid reports that forty-five per cent of charitable expenditure was shared with partners, up from thirty-seven, and that indirect cost recovery is split fifty-fifty with implementing partners. Save the Children International reports partner spend rising from sixteen to twenty per cent and an additional $57.5 million passing to local actors compared with 2022. ActionAid, CAFOD and Plan International give figures of their own. The other eighteen describe responsibility shifting toward partners without saying what resource travels with it.</p>
+
+<p>Plan International&rsquo;s own Pledge for Change self-report is the most candid document in the sample on exactly this point, and it is candid because it was written to be. It states that &ldquo;Plan International&rsquo;s current cost recovery policy is focusing on Plan International National Organisations sharing ICR fairly with Country Offices. Partners are currently not included in the policy, but we know that some National Organisations have started doing so when required from the donor.&rdquo; An organisation reporting against its own commitment says plainly that partners sit outside the cost recovery policy. That sentence is worth more than any score in this study, and it exists because somebody built a document whose job was to ask the question.</p>
+
+<p>The second thing is dates. Six organisations give a timetable for the handover that is separate from the timetable for their own redundancy or closure process. Save the Children International&rsquo;s statement on withdrawing from UN pooled funds is the clearest: &ldquo;we have taken a strategic and principled decision to progressively withdraw from UN-OCHA Country-Based Pooled Funds (CBPFs) starting in January 2026 and finishing by the end of 2027.&rdquo; Two years, a start, an end. Almost everywhere else, the only dates in the document belong to the reduction. The consultation has a timetable. The transfer does not.</p>
+
+<p>The third is any measure of whether it worked. Four organisations state one. Programme indicators are everywhere, and there are a great many of them, but a count of children reached tells you nothing about whether a handover held. Christian Aid commits to repeating its partner survey in two years so that the direction of travel can be checked. Almost nobody else sets themselves a way of being wrong.</p>
+
+<p>I want to be careful about what that absence means. A transition has no natural reporting home. There is no line in the SORP for it, no regulator asking, no donor template requiring it. Everything an organisation is obliged to publish about a year of upheaval concerns its own solvency, its own staff and its own governance. The handover falls between the reporting categories, and things that fall between reporting categories do not get written down. That is a design feature of the system rather than a failure of the people inside it.</p>
+
+<hr class="rule">
+
+<figure class="fig">
+  <img src="img/fig3.png" alt="What almost nobody writes down">
+  <figcaption><span class="fignum">Figure 3</span> Share of organisations whose own documents meet each code.</figcaption>
+</figure>
+
+<hr class="rule">
+
+<h2 class="sec" id="s5"><span class="secnum">5</span></h2>
+
+<p>The strongest pattern in the data is also the least surprising once you see it. What predicts whether a transition is specified is whether somebody wrote a document about the transition.</p>
+
+<p>Three organisations published a standalone document of that kind. Christian Aid&rsquo;s <em>Shifting Power in Aid</em> came out in December 2025. Plan International publishes an annual self-report against Pledge for Change. Save the Children International published its statement on pooled funds. Across the transfer, residual and accountability questions those three score 89, 59 and 89 out of 100. The other twenty score 36, 33 and 17. Widen the definition to include two organisations that embed a named and dated transition programme inside their trustees&rsquo; report, STIR Education and HelpAge International, and the gap holds: 83 against 31 on transfer, 87 against 9 on accountability.</p>
+
+<p>The obvious objection is that this is circular. Organisations that had a plan were the ones able to write it down, and the document is a symptom rather than a cause. I think that is largely right, and it makes the finding smaller and more useful than it first looks. Christian Aid&rsquo;s own annual report scores considerably worse than its dedicated report. The forty-five per cent staff reduction that defines that organisation in the trade press appears in neither; the annual report says only that it is undertaking &ldquo;a careful transition to a smaller staff.&rdquo; The same organisation, the same year, two documents, two very different levels of specificity. What differs is not intention. It is the question the document was built to answer.</p>
+
+<p>Which leaves the practical point. From the outside, the document is all there is. A partner deciding whether to accept a handover, a trustee asking whether the board has a plan, a funder writing a condition into a grant, all of them are working from published material. If an organisation cannot produce a document about its transition, nobody outside it can tell a transition from a subtraction. That is a claim about visibility rather than virtue, and it is smaller than a scorecard would make.</p>
+
+<hr class="rule">
+
+<figure class="fig">
+  <img src="img/fig1.png" alt="A dedicated transition document is the difference">
+  <figcaption><span class="fignum">Figure 1</span> Organisations that published a document specifically about transition or partnership, against those reporting only through an annual report or press release.</figcaption>
+</figure>
+
+<hr class="rule">
+
+<h2 class="sec" id="s6"><span class="secnum">6</span></h2>
+
+<p>I built the sample from press coverage, which is how anybody would build it, and the sample was wrong.</p>
+
+<p>Fifteen organisations went in because a restructuring had been reported. Eight went in as a comparison group, most of them chosen because they held a public localisation commitment and nothing had been written about them. Five of those eight disclose a restructuring in their own accounts.</p>
+
+<p>CARE International UK reports cutting a fifth of its roles. War Child UK reports a completed restructure into an Alliance Foundation model, with the UK entity narrowed to &ldquo;fundraising, communications and UK advocacy to contribute funds to the Alliance Foundation.&rdquo; HelpAge International reports eleven country office transitions with named successor entities and dated go-live points, which is the most operationally specific description of a handover anywhere in this study. CAFOD reports a cost reduction programme and warns that &ldquo;further streamlining is required,&rdquo; which &ldquo;may mean reducing the number of partners and programmes we work with and on.&rdquo; None of that made the news.</p>
+
+<p>On every measure the comparison group scores higher than the reported group: 60 against 33 on transfer, 42 against 33 on residual, 38 against 20 on accountability. I am not going to claim that press attention causes bad documentation, because the two groups differ in more than one way and the comparison cannot carry that weight. What it does establish is simpler. The organisations doing the most legible handover work are largely invisible, and the ones we have all been reading about are describing cuts rather than transfers. Coverage selects for the drama of the reduction. Nobody files copy about a well-drafted go-live date.</p>
+
+<p>That includes me. I had HelpAge in the sample as a control, and it turned out to be the best-documented transition in it.</p>
+
+<hr class="rule">
+
+<h2 class="sec" id="s7"><span class="secnum">7</span></h2>
+
+<p>Eleven organisations address at least one of the six residual liabilities I looked for. One addresses four. Nobody addresses more.</p>
+
+<p>Look at which ones get written down and a pattern appears that is worth sitting with rather than scoring. Employment comes up repeatedly, because redundancy is a legal process with its own machinery and because organisations write about their own staff. Save the Children UK notes that it aimed &ldquo;to be transparent, work in partnership with colleagues wherever possible and respond to feedback quickly,&rdquo; and that it supported equality impact assessments through the restructure. Concern Worldwide records that sixty-nine affected staff attended job search workshops run in English, French and Arabic. These are people looking after people, and they are recorded because somebody thought they mattered.</p>
+
+<p>Leonard Cheshire is the one organisation that documents in-country registration in detail. &ldquo;During 2022/23, the Charity made the decision to close its regional offices in India, Kenya, Zambia, and Thailand following on from the strategic withdrawal of international program delivery. The closure and deregistration process will be completed in 2023/24.&rdquo; Four countries, named, with a completion date. Across three consecutive annual reports covering a full withdrawal from international work after twenty years in the field, it never names a single organisation that took the work on, saying only that delivery was passed &ldquo;to other organisations where possible.&rdquo;</p>
+
+<p>I do not read that as indifference. A trustees&rsquo; report exists to tell a regulator and a donor how the charity discharged its own duties, and deregistering four subsidiaries is squarely one of those duties. The liabilities that get documented are the ones that sit on the departing organisation&rsquo;s own balance sheet. The liabilities that travel outward, the equipment a partner inherits with no maintenance budget, the beneficiary records that need a lawful basis to move, the grant that has to be novated or lost, belong to nobody&rsquo;s reporting duty once they have left. They are real, and there is no form for them.</p>
+
+<p>Concern Worldwide shows what that produces. Its 2025 report is precise about the reduction: &ldquo;the severe humanitarian funding crisis, which led to a reduction of 879 staff members in 2025 and the planned closure of three country offices,&rdquo; and it names them, North Korea, Lebanon and Rwanda. An organisation that can count sixty-nine workshop attendees is not one that lacks reporting discipline. What its documents do not contain, anywhere I could find, is what happens to the work in those three countries. The discipline is real. It is pointed at the organisation&rsquo;s own account of itself, which is what the instrument asks for.</p>
+
+<hr class="rule">
+
+<h2 class="sec" id="s8"><span class="secnum">8</span></h2>
+
+<p>The best sentence in the whole study is in a going concern note.</p>
+
+<p>Amref Health Africa UK is a small thing, twenty staff, a fundraising and programme office in London attached to an organisation headquartered in Nairobi. Its 2025 trustees&rsquo; report is published as a scan with no text layer, which is why it defeated my first attempt to read it and why I ended up running it through optical character recognition on a Tuesday afternoon. Buried in the reserves and going concern section, between a paragraph about a ninety-five day notice account and one about related party transactions, is this:</p>
+
+<p>&ldquo;In the unlikely event of Amref UK no longer operating, any ongoing programmes would be transferred to Amref HQ. and Country Offices ensuring that Amref UK&rsquo;s charitable objects continued to be met.&rdquo;</p>
+
+<p>Nothing had gone wrong. Free reserves were within target at £1.27 million, staff had grown from eighteen to twenty, and the trustees were satisfied on going concern. In that condition, with no pressure to say anything at all, they wrote down where the work would go if they stopped. It is one sentence, it is not a plan, and it names a destination. Twenty-two other organisations in this sample, several of them in the middle of an actual handover, do not manage the equivalent.</p>
+
+<p>It is worth noticing which organisation this is. The entity that specifies a successor is the one whose centre of gravity already sits in Nairobi, and for which &ldquo;transferred to Amref HQ&rdquo; describes a movement toward the middle of the organisation rather than away from it. When the headquarters is in Nairobi, the handover is not an exit. That may be the whole thing in miniature, though I would not want to build too much on one sentence in one small charity&rsquo;s accounts.</p>
+
+<hr class="rule">
+
+<h2 class="sec" id="s9"><span class="secnum">9</span></h2>
+
+<p>Fifteen of the twenty-three hold a public commitment to localisation, either through Charter for Change, Pledge for Change or their own published strategy. Six reference it in the material describing their restructuring. Nine do not.</p>
+
+<p>Some of the misses are narrow enough to be worth stating precisely. Concern names Charter for Change in the same annual report that reports 879 redundancies and three country closures, in a partnerships section, with nothing connecting the two. Oxfam GB names its own Decolonial Partnerships Strategy in the same trustees&rsquo; report that reports its restructure. World Vision UK writes about localisation and equitable partnership in its Afghanistan programme pages and not at all in the pages about its own reorganisation. Read permissively, all three would score. I used the strict reading and applied it to everyone.</p>
+
+<p>What produces the separation is not hypocrisy. A localisation commitment lives in the partnerships section, written by the partnerships team for peers and for signatory reporting. A restructure lives in the financial review, written by finance and HR for the regulator and the auditor. They are different authors writing for different readers, and there is no editorial process that would ever bring them into the same paragraph. The commitment and the event that most tests it appear in the same PDF and never meet.</p>
+
+<p>CARE International UK holds both Charter for Change and Pledge for Change. Its 2024/25 report says: &ldquo;In the face of funding reductions we protected the proportion of funding for local partners and women-led organisations in CARE International UK projects.&rdquo; The same document reports cutting a fifth of its roles. I believe the protection happened. Neither the proportion nor the protection is quantified, so from outside there is no way to check, and the sentence has to be taken on trust. Most of the sector is currently asking to be taken on trust, and most of the sector is currently asking its partners to accept a great deal on the same basis.</p>
+
+<hr class="rule">
+
+<figure class="fig">
+  <img src="img/fig2.png" alt="Every organisation, every code">
+  <figcaption><span class="fignum">Figure 2</span> Every organisation against every code. Darker is more specific.</figcaption>
+</figure>
+
+<hr class="rule">
+
+<h2 class="sec" id="s10"><span class="secnum">10</span></h2>
+
+<p>Three things I had wrong, and one thing the method got wrong.</p>
+
+<p>I began with the hypothesis that reductions are costed precisely and transfers described vaguely. Across the sample the reduction is specified about fourteen points more precisely than the transfer, which is a real difference and too small to lead with. Both are usually thin. A handful of organisations specify both.</p>
+
+<p>I believed Tearfund had published a strategy committing it to &ldquo;locally led influencing,&rdquo; and that this drove its 2024 restructure. The document containing that language belongs to Tearfund Canada, a separate legal entity. The phrase appears nowhere in Tearfund UK&rsquo;s own reporting, which frames the same period as closing global-level advocacy and refocusing on &ldquo;supporting advocacy through local churches and church networks.&rdquo; Tearfund UK does use the language of its own accord, describing an objective to &ldquo;advance globalisation/localisation by being intentional about becoming a global organisation that reflects the communities we serve,&rdquo; but it sits in the people and culture section, not in the account of the restructure.</p>
+
+<p>I had Sense International down as a restructuring case with fifty redundancies. Its own separate accounts for 2024/25 show income rising from £3.13 million to £3.60 million and unrestricted reserves rising from two weeks&rsquo; expenditure to four months&rsquo;. The redundancies belong to Sense, the UK parent, and not to the international entity I was coding. Sense International&rsquo;s own document instead sets out an intention to &ldquo;become more locally led as an organisation with a view to ensuring that power, agency and ownership of the work we do sits with local people and communities,&rdquo; with consultations planned for 2025/26 and a strategy from 2027-28. That is intent without disruption, which is a different case and belongs in a different group.</p>
+
+<p>And the method failed its own test. I set a rule that if a second coder disagreed with the first on more than one code in five, the codebook was at fault. I recoded five organisations directly from source text after obtaining documents that the first pass could not read, and the two rounds agreed on 77 per cent of codes. Fifteen disagreements out of sixty-five, which is worse than the threshold I set myself.</p>
+
+<p>The disagreements are informative. Six of the fifteen are Amref, where the first pass could not read the document at all and scored an absence that was a scan rather than a silence. Five are Sense, where the first pass had been reading the wrong entity&rsquo;s accounts. The remaining four are all cases where a figure existed in a note that the first pass had not reached. Not one disagreement came from two readers interpreting the same sentence differently. Every one came from what could be read. Access, in this exercise, mattered far more than judgement, and the codebook survived a test that the retrieval did not.</p>
+
+<p>I am reporting the failed threshold rather than quietly adjusting it, because the alternative would be the kind of thing this study is about.</p>
+
+<hr class="rule">
+
+<h2 class="sec" id="s11"><span class="secnum">11</span></h2>
+
+<p>Here is what I keep coming back to.</p>
+
+<p>None of these organisations is run on its annual report. The report is written months after the year it covers, by people who were not in most of the rooms, for readers who mostly will not open it, under a framework designed to establish that money was spent as intended. Motivation&rsquo;s trustees signed a going concern statement in September on the basis of the position in December, and by the time the ink was dry the organisation had a different future. That is not a lie. It is a lag, and every organisation in this sample has one.</p>
+
+<p>Somewhere behind each of these documents there are people making difficult calls quickly and mostly well. There will be handovers in this sample that were done with real care, over months, with long conversations and side agreements and personal favours, that appear in the record as one sentence about partners or as nothing at all. There will be programme managers who spent a year making sure a clinic kept running and never had time to write it up, because writing it up was the twentieth thing on a list during a redundancy consultation. I have been that person on a much smaller scale and I know which twenty things get done.</p>
+
+<p>So what I have measured is not how well the sector hands work over. It is what the sector is able to say about handing work over, in the places where saying things is required. Those are different, and the gap between them is where most of the actual work lives.</p>
+
+<p>The reason to measure the sayable anyway is that the sayable is what travels. It is what a partner in Kampala can read before agreeing to take something on, what a trustee can hold a chief executive to, what a funder can enforce. Care that is never written down protects the people who were in the room and nobody after them. Every organisation in this sample will lose the staff who ran its transition within about three years, and what will remain is the document.</p>
+
+<p>I should say where I am standing. My doctoral work argues that localisation in this sector operates as a shared administrative vocabulary, one that lets very different institutions demonstrate accountability to one another while the underlying distribution of authority stays roughly where it was. Producing a scored assessment of other people&rsquo;s accountability documents is that vocabulary, and I have just added to it. There is something faintly absurd about answering a question about audit culture by conducting an audit, and I noticed it most acutely somewhere around the fortieth page of a trustees&rsquo; report, looking for a sentence that would let me put a one rather than a zero in a cell.</p>
+
+<p>I do not think that invalidates the exercise, but it does bound it. Thirteen codes cannot tell you whether power moved. Several organisations here describe handing delivery to partners while retaining authority over what gets delivered, and are open about it: Christian Aid states both that local actors decide in the first instance what happens in a community and that it is &ldquo;not exclusively &rsquo;partner-led&rsquo; in what we work on, and how.&rdquo; Both sentences are honest. Whether that is a transfer of power or a redistribution of administrative labour is the question I spend my days on, and reading twenty-three annual reports has not settled it. It has made me more sympathetic to the people writing them.</p>
+
+<hr class="rule">
+
+<h2 class="sec" id="s12"><span class="secnum">12</span></h2>
+
+<p>For funders writing transition conditions, the three sparse questions are the whole test. What money moves to partners, on what timetable, and how will anyone know whether it held. All three can be asked when the condition is drafted, they cost nothing, and the answers are checkable later. Twenty-two per cent, twenty-six per cent and seventeen per cent of this sample answer them respectively, which suggests they are not currently being asked.</p>
+
+<p>For organisations in the middle of one of these, the finding in section five is the one to act on. Write the document. Not for the regulator, which has no place to put it, and not as a communications exercise. Write it because it is the only part of a handover that survives the people who arranged it, and because a partner accepting a transfer has no other way to know what they are accepting.</p>
+
+<p>For the rest of us, the finding in section six is the awkward one. The organisations doing the most careful handover work were reported nowhere. The accounts are duller than the coverage and they are considerably more informative.</p>
+
+<p>I am conscious that this study asks people to produce more documentation at the exact moment they have fewest people to produce it. That is a real cost and I would not pretend otherwise. The counterweight is Motivation&rsquo;s one sentence, and Amref&rsquo;s one sentence, and the difference between them. One was written afterwards, by an organisation that no longer existed, about work whose destination nobody had recorded. The other was written in advance, by an organisation with no reason to write it, and it names where the work would go. Both are a single sentence long.</p>
+
+<hr class="rule">
+
+<h2 class="annex" id="annex-a"><span class="annexkey">Annex A</span><span class="annextitle">how this was done</span></h2>
+
+<p class="lead-term"><strong>Sample.</strong> Twenty-three UK-registered or UK-entity international NGOs. Fifteen entered because a restructuring, closure or transition was publicly reported between January 2024 and August 2026. Eight entered as a comparison group, selected for holding a public localisation commitment with no reported restructuring; five of those eight turned out to disclose one. Three organisations disclose no restructuring at all: Sense International, Amref Health Africa UK and Islamic Relief Worldwide.</p>
+
+<p class="lead-term"><strong>Sources.</strong> For each organisation: the most recent annual report and accounts; any published strategy, operating model or transition document; the organisation&rsquo;s own statements and releases. Charter for Change and Pledge for Change signatory registers were checked for each. Trade press was used only to locate documents and confirm that an event occurred.</p>
+
+<p class="lead-term"><strong>Coding.</strong> Thirteen codes in four domains, set out in full in Annex B. Domain A covers the reduction, B the transfer, C what is left behind, D accountability. Each domain is expressed as a percentage of its maximum. A code with no supporting evidence scores zero. Where a document could not be obtained the code is recorded as not applicable rather than scored zero, which is why the reduction domain has twenty observations and the others twenty-three.</p>
+
+<p class="lead-term"><strong>Evidence standard.</strong> Every score above zero required a quotation from the organisation&rsquo;s own document with a source and a section reference.</p>
+
+<p class="lead-term"><strong>Documents obtained directly.</strong> Eleven documents were read as source files rather than through automated retrieval, including four that had defeated the first pass: Amref Health Africa UK&rsquo;s 2025 trustees&rsquo; report, which required optical character recognition; Sense International&rsquo;s 2024/25 accounts; Motivation&rsquo;s 2024 trustees&rsquo; report and the two Companies House filings recording its winding up; Save the Children International&rsquo;s 2024 trustees&rsquo; report and addendum, Save the Children UK&rsquo;s 2025 annual report, and the statement on withdrawal from country-based pooled funds; and Tearfund&rsquo;s 2024/25 accounts.</p>
+
+<p class="lead-term"><strong>Reliability.</strong> Five organisations were coded twice, first through automated retrieval and then from source text. The two rounds agreed on 50 of 65 codes, or 77 per cent, below the 80 per cent threshold set in advance. Eleven of the fifteen disagreements are attributable to documents the first round could not read or to the wrong legal entity being read. None arose from two readers reading the same sentence differently.</p>
+
+<p class="lead-term"><strong>Contestable codes.</strong> Where a document gives dates for developing a future strategy rather than for moving a function, the timetable code is not met. Where an organisation names a localisation commitment somewhere in a report but not in the material describing its restructuring, the commitment code is not met. Both rules were applied to every organisation, and both suppress scores for several organisations that would score on a permissive reading.</p>
+
+<p class="lead-term"><strong>What this does not measure.</strong> Whether transitions were handled well. Whether power moved. Whether partners were satisfied. It measures what organisations published, in documents written for other purposes, some months after the events they describe.</p>
+
+<hr class="rule">
+
+<h2 class="annex" id="annex-b"><span class="annexkey">Annex B</span><span class="annextitle">the codebook</span></h2>
+
+<p class="lead-term"><strong>A, reduction.</strong> A1 headcount change quantified in the organisation&rsquo;s own document. A2 a financial figure for saving, deficit, restructuring cost or quantified funding loss. A3 a completion date, naming a month, quarter or year. Each scores 0 or 1.</p>
+
+<p class="lead-term"><strong>B, transfer.</strong> B1 transferred functions named: 0 none, 1 general categories, 2 itemised functions such as contracting, grant management, monitoring, safeguarding, finance or technical assurance. B2 receiving partners identified: 0 not mentioned, 1 generic, 2 named organisations or a defined class with stated selection criteria. B3 resourcing to partners quantified, 0 or 1. B4 a transfer timetable distinct from the redundancy or closure timetable, 0 or 1.</p>
+
+<p class="lead-term"><strong>C, residual.</strong> C1 the retained role stated, 0 or 1. C2 count of residual liabilities addressed, 0 to 6, from: employment and staff transfer; safeguarding; in-country legal entity and registration; assets and equipment; data and records; donor contract novation. Routine reporting unconnected to the transition does not count. C3 decision-making authority distinguished from delivery, 0 or 1.</p>
+
+<p class="lead-term"><strong>D, accountability.</strong> D1 success measures specific to the transition, with a baseline or target; general programme indicators score zero. D2 a review or reporting point. D3 the organisation&rsquo;s own public localisation commitment referenced in the transition material; blank where no commitment is held.</p>
+
+<p>Reduction = sum(A)/3. Transfer = sum(B)/6. Residual = (C1 + C2/6 + C3)/3. Accountability = mean of scored D codes.</p>
+
+<hr class="rule">
+
+<h2 class="annex" id="annex-c"><span class="annexkey">Annex C</span><span class="annextitle">the sample</span></h2>
+
+<p>Ordered by the sum of transfer, residual and accountability. ◆ marks a dedicated transition or partnership document.</p>
+
+<div class="tablewrap"><table class="scores">
+<thead><tr>
+<th>Organisation</th>
+<th class="num">Reduction</th>
+<th class="num">Transfer</th>
+<th class="num">Residual</th>
+<th class="num">Account.</th>
+</tr></thead><tbody>
+<tr class="ded">
+<td class="org">Christian Aid ◆</td>
+<td class="num">67</td>
+<td class="num">100</td>
+<td class="num">72</td>
+<td class="num">100</td>
+</tr>
+<tr class="ded">
+<td class="org">Plan International UK ◆</td>
+<td class="num">67</td>
+<td class="num">83</td>
+<td class="num">67</td>
+<td class="num">100</td>
+</tr>
+<tr class="ded">
+<td class="org">STIR Education ◆</td>
+<td class="num">100</td>
+<td class="num">67</td>
+<td class="num">78</td>
+<td class="num">100</td>
+</tr>
+<tr class="ded">
+<td class="org">HelpAge International ◆</td>
+<td class="num">67</td>
+<td class="num">83</td>
+<td class="num">72</td>
+<td class="num">67</td>
+</tr>
+<tr class="ded">
+<td class="org">Save the Children International ◆</td>
+<td class="num">100</td>
+<td class="num">83</td>
+<td class="num">39</td>
+<td class="num">67</td>
+</tr>
+<tr class="">
+<td class="org">ActionAid</td>
+<td class="num">67</td>
+<td class="num">83</td>
+<td class="num">78</td>
+<td class="num">33</td>
+</tr>
+<tr class="">
+<td class="org">War Child UK</td>
+<td class="num">67</td>
+<td class="num">67</td>
+<td class="num">89</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">Islamic Relief Worldwide</td>
+<td class="num">n/a</td>
+<td class="num">50</td>
+<td class="num">33</td>
+<td class="num">67</td>
+</tr>
+<tr class="">
+<td class="org">CAFOD</td>
+<td class="num">67</td>
+<td class="num">67</td>
+<td class="num">33</td>
+<td class="num">33</td>
+</tr>
+<tr class="">
+<td class="org">CARE International UK</td>
+<td class="num">100</td>
+<td class="num">50</td>
+<td class="num">6</td>
+<td class="num">33</td>
+</tr>
+<tr class="">
+<td class="org">Amref Health Africa UK</td>
+<td class="num">n/a</td>
+<td class="num">50</td>
+<td class="num">33</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">Save the Children UK</td>
+<td class="num">100</td>
+<td class="num">33</td>
+<td class="num">39</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">Leonard Cheshire</td>
+<td class="num">100</td>
+<td class="num">33</td>
+<td class="num">39</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">International Rescue Committee UK</td>
+<td class="num">33</td>
+<td class="num">0</td>
+<td class="num">72</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">Tearfund</td>
+<td class="num">67</td>
+<td class="num">33</td>
+<td class="num">33</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">Motivation</td>
+<td class="num">33</td>
+<td class="num">50</td>
+<td class="num">0</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">Concern Worldwide</td>
+<td class="num">67</td>
+<td class="num">0</td>
+<td class="num">39</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">Sense International</td>
+<td class="num">n/a</td>
+<td class="num">33</td>
+<td class="num">0</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">Oxfam GB</td>
+<td class="num">0</td>
+<td class="num">17</td>
+<td class="num">6</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">World Vision UK</td>
+<td class="num">33</td>
+<td class="num">0</td>
+<td class="num">0</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">VSO</td>
+<td class="num">0</td>
+<td class="num">0</td>
+<td class="num">0</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">Crown Agents</td>
+<td class="num">0</td>
+<td class="num">0</td>
+<td class="num">0</td>
+<td class="num">0</td>
+</tr>
+<tr class="">
+<td class="org">Mercy Corps Europe</td>
+<td class="num">0</td>
+<td class="num">0</td>
+<td class="num">0</td>
+<td class="num">0</td>
+</tr>
+</tbody></table></div>
+
+<p>Means across all twenty-three: reduction 57, transfer 43, residual 36, accountability 26.</p>
+
+<p>Two organisations remain coded on partial evidence and should be revisited. Oxfam GB&rsquo;s annual report covering its restructure is not yet published. Mercy Corps Europe&rsquo;s financial review sits in a Companies House filing that could not be obtained. VSO&rsquo;s four annual reports contain no account of the country withdrawals reported elsewhere; that silence is robust across the four documents, and what it is silence about is not established here.</p>
+
+<hr class="rule">
+
+
+<h2 class="annex" id="annex-d"><span class="annexkey">Annex D</span><span class="annextitle">corrections and right of reply</span></h2>
+
+<p>Every organisation in this study was sent its coded row, the evidence behind each
+score and the quotations attributed to it, and was given four weeks to correct the
+record before publication. The letter asked two questions about factual accuracy and
+carried nothing else. Corrections received are marked in the published dataset with
+the date they were made and the code they changed.</p>
+
+<p>Every quotation in this report has been checked by eye against the source file it
+came from. Where an organisation&rsquo;s document could not be obtained, the code is
+recorded as not applicable rather than scored zero, and the affected organisations are
+named in Annex C.</p>
+
+<p>The dataset and codebook are published alongside this report under a Creative
+Commons Attribution 4.0 licence. Use them, check them, and tell me where I am wrong.
+Corrections after publication will be logged on the same page as the data.</p>
+
+  </article>
+</section>
+
+<section class="rightofreply">
+  <div class="inner">
+    <h3>Right of reply</h3>
+    <p>Every organisation in this study was sent its coded row and given four weeks to correct the record before publication. Corrections received are marked in the dataset.</p>
+    <p>If you work for an organisation in the sample and something here is wrong, write to <a href="mailto:matt@managingtransitions.org">matt@managingtransitions.org</a> and it will be corrected on this page with the date of the change.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:#6b6b66; margin-top:20px;">
+      Cite as: Thomson, M. (2026) <em>Fifteen Weeks: what UK international NGOs write down when they hand their work over.</em> Managing Transitions, Bristol.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="eyebrow">Get In Touch</p>
+    <h2>Argue with it.</h2>
+    <p class="lede">The codebook is contestable and the disagreement is usually the useful part. If your organisation is in the sample and the row is wrong, say so and it gets changed.</p>
+    <div class="contact-grid">
+      <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
+      <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+      <a class="chip" href="index.html#review">Transition Exposure Review</a>
+      <a class="chip" href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
+      <a class="chip" href="https://thomsonmatt.substack.com">Substack</a>
+    </div>
+    <p class="adviser-note">Matt Thomson is an independent adviser working on programme handover and transition, and a doctoral researcher at the University of Bristol. managingtransitions.org</p>
+    <div class="foot-base">
+      <span>MANAGING TRANSITIONS &copy; 2026</span>
+      <span>managingtransitions.org</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
