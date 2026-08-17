@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codebook | Fifteen Weeks | Managing Transitions</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://managingtransitions.org/codebook.html">
+<meta name="description" content="The codebook for Fifteen Weeks: thirteen codes across four domains, the evidence standard, the two contestable rules, and the reliability result.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Managing Transitions">
+<meta property="og:title" content="Codebook | Fifteen Weeks">
+<meta property="og:description" content="Thirteen codes, four domains, the evidence standard and the reliability result. Published under CC BY 4.0.">
+<meta property="og:url" content="https://managingtransitions.org/codebook.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c231f'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23c9a877'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000000; --teal:#0c231f; --brown:#392c23; --amber:#e47b12;
+    --sand:#c9a877; --paper:#ffffff; --line: rgba(0,0,0,0.14);
+    --line-on-dark: rgba(255,255,255,0.18); --max:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--sand); color:var(--teal);}
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  :focus-visible{outline:2px solid var(--sand); outline-offset:3px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--teal);}
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;}
+  .brand{font-family:'IBM Plex Mono',monospace; font-size:0.85rem; letter-spacing:0.04em;
+    font-weight:500; text-decoration:none;}
+  .brand span{color:var(--teal);}
+  .navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+  .navlinks a{position:relative; font-size:0.85rem; text-decoration:none; color:var(--brown);
+    font-weight:500; padding-bottom:2px;}
+  .navlinks a::after{content:""; position:absolute; left:0; bottom:-2px; width:100%; height:1px;
+    background:var(--sand); transform:scaleX(0); transform-origin:left; transition:transform .25s ease;}
+  .navlinks a:hover::after{transform:scaleX(1);}
+  .navlinks a.current{color:var(--teal);} .navlinks a.current::after{transform:scaleX(1);}
+  @media (max-width:860px){ .navlinks{display:none;} }
+
+  header.page-head{background:var(--teal); color:#f4efe6; padding:64px 0 52px;}
+  header.page-head .eyebrow{color:#a9c2bb; margin-bottom:16px;}
+  header.page-head h1{font-family:'Fraunces',serif; font-weight:600; margin:0;
+    font-size:clamp(2.2rem,5vw,3.4rem); color:#fff; line-height:1.02; letter-spacing:-0.01em;}
+  header.page-head .sub{font-family:'Fraunces',serif; font-size:clamp(1rem,2vw,1.25rem);
+    color:#dbe5e1; margin-top:16px; max-width:620px; line-height:1.35;}
+  header.page-head .byline{font-family:'IBM Plex Mono',monospace; font-size:0.78rem;
+    color:#8ea59c; margin-top:22px;}
+
+  main{max-width:780px; margin:0 auto; padding:56px 28px 20px;}
+  main h2{font-family:'Fraunces',serif; font-weight:600; font-size:1.5rem;
+    margin:54px 0 16px; padding-top:26px; border-top:2px solid var(--teal); letter-spacing:-0.01em;}
+  main h2:first-of-type{margin-top:0;}
+  main h3{font-family:'Fraunces',serif; font-weight:600; font-size:1.12rem; margin:32px 0 12px;}
+  main p{font-size:1rem; line-height:1.7; color:#22221f; margin:0 0 1.1em;}
+  main ul, main ol{padding-left:1.3em; margin:0 0 1.2em;}
+  main li{font-size:1rem; line-height:1.65; color:#22221f; margin-bottom:0.45em;}
+  main strong{font-weight:600;}
+  main code{font-family:'IBM Plex Mono',monospace; font-size:0.86em;
+    background:#f2f4f3; padding:2px 5px; border:1px solid var(--line);}
+  main hr{border:none; height:1px; background:var(--line); margin:44px 0;}
+  main table{border-collapse:collapse; width:100%; margin:24px 0; font-size:0.92rem;}
+  main th{font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:0.7rem;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--teal);
+    text-align:left; padding:0 10px 9px; border-bottom:1px solid var(--teal); vertical-align:bottom;}
+  main td{padding:9px 10px; border-bottom:1px solid var(--line); color:#22221f; vertical-align:top;}
+  main td:first-child{white-space:nowrap;}
+  main blockquote{margin:0 0 1.2em; padding-left:20px; border-left:3px solid var(--amber); color:#3d3a35;}
+  .backlink{font-family:'IBM Plex Mono',monospace; font-size:0.82rem; color:var(--teal);
+    text-decoration:none; border-bottom:1px solid var(--sand); padding-bottom:3px;}
+  .backlink:hover{color:var(--amber); border-bottom-color:var(--amber);}
+  .dlrow{display:flex; flex-wrap:wrap; gap:14px; margin:36px 0 8px;}
+  .dlrow a{display:block; padding:16px 20px; border:1px solid var(--line); text-decoration:none;
+    transition:border-color .2s ease, background .2s ease;}
+  .dlrow a:hover{border-color:var(--amber); background:#fdfaf6;}
+  .dlrow .k{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--amber);}
+  .dlrow .t{font-family:'Fraunces',serif; font-weight:600; font-size:0.98rem; margin-top:6px;}
+
+  footer{background:var(--teal); color:#eef4f1; padding:56px 0 30px; margin-top:64px;}
+  footer .eyebrow{color:#a9c2bb;}
+  footer h2{font-family:'Fraunces',serif; font-weight:600; color:#fff;
+    font-size:clamp(1.4rem,3vw,1.9rem); margin:10px 0 0;}
+  footer p{color:#c9d8d3; max-width:560px; margin-top:14px;}
+  .contact-grid{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px;}
+  .chip{display:flex; align-items:center; gap:8px; padding:11px 18px;
+    border:1px solid var(--line-on-dark); text-decoration:none; color:#eef4f1; font-size:0.88rem;
+    transition:border-color .18s ease, color .18s ease, transform .18s ease;}
+  .chip:hover{border-color:var(--sand); color:var(--sand); transform:translateY(-2px);}
+  .foot-base{margin-top:40px; padding-top:20px; border-top:1px solid var(--line-on-dark);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:#8ea59c;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">MANAGING <span>/</span> TRANSITIONS</a>
+    <ul class="navlinks">
+      <li><a href="index.html#review">Review</a></li>
+      <li><a href="research.html" class="current">Research</a></li>
+      <li><a href="index.html#advisory">Advisory</a></li>
+      <li><a href="diagnostic.html">Diagnostic</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="faq.html">Questions</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Fifteen Weeks &middot; Open data</p>
+    <h1>Codebook</h1>
+    <p class="sub">Every code, its scale, the evidence standard behind it, and the two rules that suppress scores a permissive reading would allow.</p>
+    <p class="byline">Matt Thomson &middot; September 2026 &middot; CC BY 4.0</p>
+  </div>
+</header>
+
+<main>
+  <a class="backlink" href="research.html">&larr; Back to the study</a>
+
+  <div class="dlrow">
+    <a href="transition_exposure_dataset.csv"><div class="k">CSV</div><div class="t">The dataset</div></a>
+    <a href="Thomson-2026-Transition-Exposure-UK-INGOs.pdf"><div class="k">PDF</div><div class="t">The report</div></a>
+  </div>
+
+
+<hr />
+<h2 id="what-is-being-coded">What is being coded</h2>
+<p>Each organisation's own published documents, read for what they
+commit to when they describe a restructuring, closure or transition. Not
+what the organisation did. What it wrote down.</p>
+<p>Documents in scope, per organisation:</p>
+<ul>
+<li>the most recent annual report and accounts, and earlier years where
+the transition spans them</li>
+<li>any published strategy, operating model or transition document</li>
+<li>the organisation's own statements, press releases and website
+copy</li>
+<li>Charter for Change and Pledge for Change signatory returns where
+held</li>
+</ul>
+<p>Trade press was used only to locate documents and to confirm that an
+event occurred. No score above zero rests on journalism.</p>
+<hr />
+<h2 id="evidence-standard">Evidence standard</h2>
+<p>Every score above zero requires a quotation from the organisation's
+own document, with a source and a section or page reference. No
+quotation means the code scores zero.</p>
+<p>Where a document could not be obtained at all, the code is recorded
+as <strong>not applicable</strong> (blank in the CSV) rather than scored
+zero. This is why the reduction domain has twenty observations and the
+other three have twenty-three. A blank means "not established here". A
+zero means "read the document, it is not in there".</p>
+<hr />
+<h2 id="the-thirteen-codes">The thirteen codes</h2>
+<h3 id="domain-a--reduction">Domain A — Reduction</h3>
+<p>What the organisation says is going.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Question</th>
+<th>Scale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A1</strong></td>
+<td>Is the headcount change quantified in the organisation's own
+document?</td>
+<td>0 / 1</td>
+</tr>
+<tr class="even">
+<td><strong>A2</strong></td>
+<td>Is there a financial figure for the saving, deficit, restructuring
+cost or quantified funding loss?</td>
+<td>0 / 1</td>
+</tr>
+<tr class="odd">
+<td><strong>A3</strong></td>
+<td>Is a completion date given, naming a month, quarter or year?</td>
+<td>0 / 1</td>
+</tr>
+</tbody>
+</table>
+<p><code>Reduction % = sum(A) / 3 × 100</code></p>
+<h3 id="domain-b--transfer">Domain B — Transfer</h3>
+<p>What the organisation says is moving, to whom, with what, and by
+when.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Question</th>
+<th>Scale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>B1</strong></td>
+<td>Are the transferred functions named?</td>
+<td>0 none · 1 general categories · 2 itemised functions (contracting,
+grant management, monitoring, safeguarding, finance, technical
+assurance)</td>
+</tr>
+<tr class="even">
+<td><strong>B2</strong></td>
+<td>Are the receiving partners identified?</td>
+<td>0 not mentioned · 1 generic · 2 named organisations, or a defined
+class with stated selection criteria</td>
+</tr>
+<tr class="odd">
+<td><strong>B3</strong></td>
+<td>Is the resourcing going to partners quantified?</td>
+<td>0 / 1</td>
+</tr>
+<tr class="even">
+<td><strong>B4</strong></td>
+<td>Is there a transfer timetable distinct from the redundancy or
+closure timetable?</td>
+<td>0 / 1</td>
+</tr>
+</tbody>
+</table>
+<p><code>Transfer % = sum(B) / 6 × 100</code></p>
+<h3 id="domain-c--residual">Domain C — Residual</h3>
+<p>What is kept, and what is left behind.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Question</th>
+<th>Scale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>C1</strong></td>
+<td>Is the retained role stated?</td>
+<td>0 / 1</td>
+</tr>
+<tr class="even">
+<td><strong>C2</strong></td>
+<td>How many residual liabilities are addressed?</td>
+<td>0 to 6</td>
+</tr>
+<tr class="odd">
+<td><strong>C3</strong></td>
+<td>Is decision-making authority distinguished from delivery?</td>
+<td>0 / 1</td>
+</tr>
+</tbody>
+</table>
+<p>C2 counts across six liabilities, one point each:</p>
+<ol type="1">
+<li>employment and staff transfer</li>
+<li>safeguarding</li>
+<li>in-country legal entity and registration</li>
+<li>assets and equipment</li>
+<li>data and records</li>
+<li>donor contract novation</li>
+</ol>
+<p>Routine reporting unconnected to the transition does not count. A
+safeguarding policy statement in the governance section scores nothing;
+a statement about what happens to safeguarding responsibility on
+handover scores one.</p>
+<p><code>Residual % = (C1 + C2/6 + C3) / 3 × 100</code></p>
+<h3 id="domain-d--accountability">Domain D — Accountability</h3>
+<p>Whether anyone could tell if it worked.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Question</th>
+<th>Scale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>D1</strong></td>
+<td>Are there success measures specific to the transition, with a
+baseline or target?</td>
+<td>0 / 1</td>
+</tr>
+<tr class="even">
+<td><strong>D2</strong></td>
+<td>Is a review or reporting point stated?</td>
+<td>0 / 1</td>
+</tr>
+<tr class="odd">
+<td><strong>D3</strong></td>
+<td>Is the organisation's own public localisation commitment referenced
+in the transition material?</td>
+<td>0 / 1, blank where no commitment is held</td>
+</tr>
+</tbody>
+</table>
+<p>General programme indicators score zero on D1. A count of children
+reached says nothing about whether a handover held.</p>
+<p><code>Accountability % = mean of the scored D codes × 100</code></p>
+<hr />
+<h2 id="two-contestable-rules">Two contestable rules</h2>
+<p>Both were set before coding and applied to every organisation. Both
+suppress scores that a permissive reading would allow, and both are
+stated here so that anyone can recode against the opposite rule.</p>
+<p><strong>Dates for developing a strategy are not dates for moving a
+function.</strong> Where a document gives a timetable for producing a
+future strategy rather than for transferring work, B4 is not met.</p>
+<p><strong>A commitment named elsewhere in the report is not a
+commitment referenced in the transition.</strong> Where an organisation
+names Charter for Change, Pledge for Change or its own localisation
+strategy in a partnerships section, but not in the material describing
+its restructuring, D3 is not met. Three organisations would score on a
+permissive reading: Concern Worldwide, Oxfam GB and World Vision UK.</p>
+<hr />
+<h2 id="reliability">Reliability</h2>
+<p>Five organisations were coded twice: once through automated
+retrieval, once from source text after the documents were obtained
+directly. The two rounds agreed on 50 of 65 codes, or 77 per cent,
+against an 80 per cent threshold set in advance. <strong>The method
+failed its own test.</strong></p>
+<p>Eleven of the fifteen disagreements are attributable to documents the
+first round could not read, or to the wrong legal entity being read. The
+remaining four are figures held in notes the first pass had not reached.
+None arose from two readers interpreting the same sentence
+differently.</p>
+<p>Access, not judgement, is the binding constraint on this method.</p>
+<hr />
+<h2 id="fields-in-the-csv">Fields in the CSV</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>organisation</code></td>
+<td>Legal or commonly used entity name as coded</td>
+</tr>
+<tr class="even">
+<td><code>short_name</code></td>
+<td>Label used in the figures</td>
+</tr>
+<tr class="odd">
+<td><code>A1</code>–<code>D3</code></td>
+<td>Raw code scores. Blank = not applicable, document not obtained</td>
+</tr>
+<tr class="even">
+<td><code>reduction_pct</code>, <code>transfer_pct</code>,
+<code>residual_pct</code>, <code>accountability_pct</code></td>
+<td>Domain scores, 0–100</td>
+</tr>
+<tr class="odd">
+<td><code>dedicated_document</code></td>
+<td>Whether a standalone transition or partnership document was
+published</td>
+</tr>
+<tr class="even">
+<td><code>group</code></td>
+<td><code>announced</code> (restructuring publicly reported) or
+<code>comparison</code> (localisation commitment held, nothing
+reported)</td>
+</tr>
+<tr class="odd">
+<td><code>coding_confidence</code></td>
+<td><code>medium-high</code> or <code>low</code>. Low means retrieval
+was limited</td>
+</tr>
+<tr class="even">
+<td><code>note</code></td>
+<td>One line on what the entry turns on</td>
+</tr>
+<tr class="odd">
+<td><code>correction_note</code></td>
+<td>Populated after publication where an organisation corrected the
+record. Blank means no correction received</td>
+</tr>
+<tr class="even">
+<td><code>correction_date</code></td>
+<td>Date a correction was applied</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="known-limits">Known limits</h2>
+<p>Three organisations should be revisited rather than relied on:</p>
+<ul>
+<li><strong>Oxfam GB.</strong> The annual report covering the
+restructure was not published at the time of coding.</li>
+<li><strong>Mercy Corps Europe.</strong> The financial review sits in a
+Companies House filing that could not be obtained.</li>
+<li><strong>VSO.</strong> Four annual reports contain no account of the
+country withdrawals reported elsewhere. That silence is robust across
+all four documents. What it is silence about is not established
+here.</li>
+</ul>
+<p><strong>Crown Agents</strong> has three separate entities in
+liquidation. The entity coded is the one filing under the Crown Agents
+name with no post-2022 accounts.</p>
+<p>This dataset measures what organisations published, in documents
+written for other purposes, some months after the events they describe.
+It does not measure whether transitions were handled well, whether power
+moved, or whether partners were satisfied.</p>
+<hr />
+<h2 id="corrections">Corrections</h2>
+<p>Every organisation was sent its coded row and given four weeks to
+correct the record before publication. Corrections received are marked
+in the <code>correction_note</code> and <code>correction_date</code>
+columns.</p>
+<p>Corrections after publication are logged in
+<code>CORRECTIONS.md</code> in this folder and applied to the CSV, with
+the date of the change. Write to <a
+href="mailto:matt@managingtransitions.org">matt@managingtransitions.org</a>.</p>
+<hr />
+<h2 id="citation">Citation</h2>
+<p>Thomson, M. (2026) <em>Fifteen Weeks: what UK international NGOs
+write down when they hand their work over.</em> Managing Transitions,
+Bristol. Dataset published under CC BY 4.0.</p>
+
+
+  <h2 id="corrections">Corrections log</h2>
+
+<p><strong>Fifteen Weeks</strong> — corrections received and
+applied.</p>
+<p>Every organisation in the sample was sent its coded row, the evidence
+behind each score, and the quotations attributed to it, four weeks
+before publication. This file logs every change made to the dataset or
+the report after that letter went out, whether the correction came from
+the organisation or from a reader.</p>
+<p>Each entry records the date, the organisation, the code or claim
+affected, what changed, and who raised it. Nothing is removed from this
+file.</p>
+<hr />
+<h2 id="before-publication">Before publication</h2>
+<p><em>No corrections logged yet. Entries go here as right-of-reply
+replies come in.</em></p>
+<!--
+Template, one line per change:
+
+**2026-09-04 · Organisation name · B3**
+Was 0, now 1. The organisation pointed to a figure in note 14 of the 2024/25 accounts that the first read had missed. Report text in section 4 updated accordingly.
+Raised by: the organisation.
+-->
+
+<hr />
+<h2 id="after-publication">After publication</h2>
+<p><em>No corrections logged yet.</em></p>
+<hr />
+<p>Corrections to <a
+href="mailto:matt@managingtransitions.org">matt@managingtransitions.org</a>.
+If a score is wrong it gets changed, and the change is recorded here
+with the date.</p>
+
+
+  <p style="margin-top:40px;"><a class="backlink" href="research.html">&larr; Back to the study</a></p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="eyebrow">Get In Touch</p>
+    <h2>Argue with it.</h2>
+    <p>The codebook is contestable and the disagreement is usually the useful part. If your organisation is in the sample and the row is wrong, say so and it gets changed.</p>
+    <div class="contact-grid">
+      <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
+      <a class="chip" href="research.html">The study</a>
+      <a class="chip" href="index.html#review">Transition Exposure Review</a>
+      <a class="chip" href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
+    </div>
+    <div class="foot-base">
+      <span>MANAGING TRANSITIONS &copy; 2026</span>
+      <span>managingtransitions.org</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
