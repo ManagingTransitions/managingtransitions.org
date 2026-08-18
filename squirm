@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Squirm - Character Sheet</title>
+
+<style>
+:root{
+    --bg:#111;
+    --card:#1d1d1d;
+    --text:#f2f2f2;
+    --accent:#76e39d;
+    --danger:#ff6b6b;
+    --gold:#ffc857;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:system-ui,sans-serif;
+    padding:12px;
+}
+
+h1{
+    text-align:center;
+    margin:4px 0;
+}
+
+.subtitle{
+    text-align:center;
+    color:#aaa;
+    margin-bottom:16px;
+}
+
+.card{
+    background:var(--card);
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:12px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.stat{
+    text-align:center;
+    padding:10px;
+    background:#262626;
+    border-radius:8px;
+}
+
+.stat-value{
+    font-size:1.5rem;
+    font-weight:bold;
+}
+
+button{
+    border:none;
+    border-radius:8px;
+    padding:10px;
+    margin:3px;
+    cursor:pointer;
+    font-size:1rem;
+}
+
+.action{
+    width:100%;
+    background:var(--accent);
+    color:black;
+    font-weight:bold;
+}
+
+.mini{
+    background:#333;
+    color:white;
+}
+
+.hp-controls{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.slot{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--accent);
+    display:inline-block;
+    margin:4px;
+}
+
+.used{
+    background:#555;
+}
+
+.result{
+    margin-top:10px;
+    text-align:center;
+    font-size:1.3rem;
+    font-weight:bold;
+}
+
+details{
+    margin-bottom:10px;
+    background:#262626;
+    border-radius:8px;
+    padding:8px;
+}
+
+summary{
+    cursor:pointer;
+    font-weight:bold;
+}
+
+label{
+    display:block;
+    margin:8px 0;
+}
+
+textarea{
+    width:100%;
+    min-height:120px;
+    background:#222;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:10px;
+}
+
+#wormState{
+    text-align:center;
+    font-size:1.1rem;
+    margin-top:6px;
+}
+
+.roll-grid{
+    display:grid;
+    gap:6px;
+}
+
+.spell{
+    padding:8px;
+    border-bottom:1px solid #444;
+}
+
+.spell:last-child{
+    border-bottom:none;
+}
+</style>
+</head>
+<body>
+
+<h1>SQUIRM</h1>
+
+<div class="subtitle">
+26,000 WORMS • PLASMOID • ILLUSION WIZARD 4
+</div>
+
+<div class="card">
+
+<h2>HP</h2>
+
+<div style="text-align:center;font-size:2rem;" id="hpDisplay">
+26 / 26
+</div>
+
+<div id="wormState">
+🟢 MEDIUM
+</div>
+
+<div class="hp-controls">
+<button class="mini" onclick="changeHP(-5)">-5</button>
+<button class="mini" onclick="changeHP(-1)">-1</button>
+<button class="mini" onclick="changeHP(1)">+1</button>
+<button class="mini" onclick="changeHP(5)">+5</button>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Quick Stats</h2>
+
+<div class="grid">
+
+<div class="stat">
+<div>AC</div>
+<div class="stat-value">12</div>
+</div>
+
+<div class="stat">
+<div>Mage Armor</div>
+<div class="stat-value">15</div>
+</div>
+
+<div class="stat">
+<div>Initiative</div>
+<div class="stat-value">+2</div>
+</div>
+
+<div class="stat">
+<div>Spell DC</div>
+<div class="stat-value">14</div>
+</div>
+
+<div class="stat">
+<div>Spell Attack</div>
+<div class="stat-value">+6</div>
+</div>
+
+<div class="stat">
+<div>Speed</div>
+<div class="stat-value">30</div>
+</div>
+
+</div>
+
+<button class="action" onclick="rollInitiative()">
+🎲 Roll Initiative
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Combat</h2>
+
+<div class="roll-grid">
+
+<button class="action" onclick="rollAttack('Fire Bolt',6)">
+🔥 Fire Bolt (+6)
+</button>
+
+<button class="action" onclick="rollSaveSpell('Mind Sliver','INT',14)">
+🧠 Mind Sliver
+</button>
+
+<button class="action" onclick="rollSaveSpell('Toll the Dead','WIS',14)">
+💀 Toll the Dead
+</button>
+
+<button class="action" onclick="rollAttack('Dagger',4)">
+🗡 Dagger (+4)
+</button>
+
+<button class="action" onclick="rollAttack('Athletics',-1)">
+🪱 Grapple/Shove (-1)
+</button>
+
+</div>
+
+<div class="result" id="result">
+Ready.
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Spell Slots</h2>
+
+<h3>Level 1</h3>
+
+<div>
+<span class="slot l1"></span>
+<span class="slot l1"></span>
+<span class="slot l1"></span>
+<span class="slot l1"></span>
+</div>
+
+<h3>Level 2</h3>
+
+<div>
+<span class="slot l2"></span>
+<span class="slot l2"></span>
+<span class="slot l2"></span>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Resources</h2>
+
+<label>
+<input id="concentration" type="checkbox">
+ Concentrating
+</label>
+
+<label>
+<input id="misty" type="checkbox">
+ Free Misty Step Used
+</label>
+
+<label>
+<input id="barbs" type="checkbox">
+ Free Silvery Barbs Used
+</label>
+
+</div>
+
+<details open>
+<summary>Cantrips</summary>
+
+<div class="spell">
+<b>Minor Illusion</b><br>
+Image and sound simultaneously.
+</div>
+
+<div class="spell">
+<b>Fire Bolt</b><br>
++6 to hit • 1d10 Fire
+</div>
+
+<div class="spell">
+<b>Mind Sliver</b><br>
+INT Save DC 14 • 1d6 Psychic • Next save -1d4
+</div>
+
+<div class="spell">
+<b>Toll The Dead</b><br>
+WIS Save DC 14 • 1d8/1d12 Necrotic
+</div>
+
+</details>
+
+<details>
+<summary>1st Level Spells</summary>
+
+<div class="spell">
+<b>Mage Armor</b><br>
+AC becomes 15 for 8 hours.
+</div>
+
+<div class="spell">
+<b>Silent Image</b><br>
+Concentration.
+</div>
+
+<div class="spell">
+<b>Grease</b><br>
+Area control.
+</div>
+
+<div class="spell">
+<b>Silvery Barbs</b><br>
+Reaction. Force reroll.
+</div>
+
+</details>
+
+<details>
+<summary>2nd Level Spells</summary>
+
+<div class="spell">
+<b>Mirror Image</b><br>
+3 duplicates.
+</div>
+
+<div class="spell">
+<b>Misty Step</b><br>
+Bonus Action teleport.
+</div>
+
+<div class="spell">
+<b>Phantasmal Force</b><br>
+INT Save DC 14.
+</div>
+
+</details>
+
+<details>
+<summary>Mirror Image Quick Reference</summary>
+
+<p>
+3 duplicates → 6+ redirects attack
+</p>
+
+<p>
+2 duplicates → 8+ redirects attack
+</p>
+
+<p>
+1 duplicate → 11+ redirects attack
+</p>
+
+<p>
+Duplicate AC = 12
+</p>
+
+</details>
+
+<details>
+<summary>Features</summary>
+
+<ul>
+<li>Amorphous</li>
+<li>Shape Self</li>
+<li>Arcane Recovery</li>
+<li>Improved Minor Illusion</li>
+<li>Illusion Savant</li>
+<li>Fey Touched</li>
+</ul>
+
+</details>
+
+<details>
+<summary>Equipment</summary>
+
+<ul>
+<li>Golden Ticket</li>
+<li>Arcane Focus</li>
+<li>Spellbook</li>
+<li>Alchemist's Supplies</li>
+<li>Scholar's Pack</li>
+<li>10 gp</li>
+</ul>
+
+</details>
+
+<details>
+<summary>Notes</summary>
+
+<textarea id="notes"></textarea>
+
+</details>
+
+<script>
+
+let hp =
+parseInt(localStorage.getItem('hp')) || 26;
+
+const maxHP = 26;
+
+function save(){
+    localStorage.setItem("hp",hp);
+    localStorage.setItem(
+        "notes",
+        document.getElementById("notes").value
+    );
+}
+
+function updateHP(){
+
+    document.getElementById("hpDisplay")
+      .innerText = hp + " / " + maxHP;
+
+    let state;
+
+    if(hp >= 18){
+        state =
+        "🟢 MEDIUM • ~26,000 - 18,000 worms";
+    }
+    else if(hp >= 9){
+        state =
+        "🟡 SMALL • ~17,000 - 9,000 worms";
+    }
+    else if(hp > 0){
+        state =
+        "🔴 TINY • ~8,000 - 1,000 worms";
+    }
+    else{
+        state =
+        "☠️ INCAPACITATED";
+    }
+
+    document.getElementById("wormState")
+      .innerText = state;
+
+    save();
+}
+
+function changeHP(amount){
+
+    hp+=amount;
+
+    if(hp<0) hp=0;
+    if(hp>26) hp=26;
+
+    updateHP();
+}
+
+function d20(){
+    return Math.floor(Math.random()*20)+1;
+}
+
+function rollInitiative(){
+
+    const r=d20();
+
+    document.getElementById("result")
+      .innerHTML =
+      "🎲 Initiative: <b>" +
+      (r+2) +
+      "</b> (" + r + "+2)";
+}
+
+function rollAttack(name,mod){
+
+    const r=d20();
+
+    const total=r+mod;
+
+    document.getElementById("result")
+      .innerHTML =
+      "🎲 " + name +
+      ": <b>" +
+      total +
+      "</b> (" +
+      r +
+      (mod>=0?"+":"") +
+      mod +
+      ")";
+}
+
+function rollSaveSpell(name,save,dc){
+
+    document.getElementById("result")
+      .innerHTML =
+      "✨ " +
+      name +
+      "<br>" +
+      save +
+      " Save DC " +
+      dc;
+}
+
+document.querySelectorAll('.slot')
+.forEach(slot=>{
+
+    slot.addEventListener(
+        'click',
+        ()=>{
+            slot.classList.toggle('used');
+        }
+    );
+
+});
+
+document.getElementById("notes").value =
+localStorage.getItem("notes") || "";
+
+document
+.getElementById("notes")
+.addEventListener("input",save);
+
+updateHP();
+
+</script>
+
+</body>
+</html>
