@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding Workbench | Transition Diagnostic</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23143a33'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23c9a877'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000000; --teal:#143a33; --brown:#392c23; --sand:#c9a877; --orange:#e47b12;
+    --paper:#ffffff; --wash:#eef1ef; --line:rgba(0,0,0,0.14); --line-dark:rgba(255,255,255,0.18);
+    --ok:#1c6b4a; --warn:#e47b12; --bad:#a8321a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; font-size:15px;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif; font-weight:600; margin:0; letter-spacing:-0.01em;}
+  a{color:var(--teal);}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal);}
+  :focus-visible{outline:2px solid var(--sand); outline-offset:2px;}
+
+  /* ---- top bar ---- */
+  .topbar{position:sticky; top:0; z-index:60; background:var(--teal); color:#eef4f1; border-bottom:1px solid var(--line-dark);}
+  .topbar .inner{max-width:1500px; margin:0 auto; padding:12px 20px; display:flex; flex-wrap:wrap; gap:14px; align-items:center;}
+  .topbar h1{font-size:1rem; color:#fff; margin-right:6px;}
+  .topbar .sub{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:#a9c2bb;}
+  .spacer{flex:1 1 auto;}
+  .conn{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.05em; padding:5px 10px; border:1px solid var(--line-dark); color:#c9d8d3;}
+  .conn.live{border-color:var(--sand); color:var(--sand);}
+  .conn.dirty{border-color:var(--orange); color:#f0b877;}
+
+  button{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase; cursor:pointer; border:1px solid var(--teal); background:var(--teal); color:#f4efe6; padding:9px 15px; transition:background .15s, color .15s, border-color .15s;}
+  button:hover{background:#1d5044;}
+  button.ghost{background:transparent; color:var(--teal); border-color:var(--line);}
+  button.ghost:hover{background:var(--wash); border-color:var(--sand);}
+  button.onteal{background:transparent; color:#eef4f1; border-color:var(--line-dark);}
+  button.onteal:hover{border-color:var(--sand); color:var(--sand); background:transparent;}
+  button.warnbtn{background:var(--orange); border-color:var(--orange); color:#fff;}
+  button.warnbtn:hover{background:#c96a0c;}
+  button:disabled{opacity:0.4; cursor:not-allowed;}
+  button.sm{padding:5px 10px; font-size:0.66rem;}
+
+  /* ---- tabs ---- */
+  .tabs{background:var(--wash); border-bottom:1px solid var(--line); position:sticky; top:52px; z-index:55;}
+  .tabs .inner{max-width:1500px; margin:0 auto; padding:0 20px; display:flex; gap:2px;}
+  .tab{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; padding:12px 18px; border:none; background:transparent; color:var(--brown); border-bottom:2px solid transparent;}
+  .tab:hover{background:transparent; color:var(--teal);}
+  .tab.on{color:var(--teal); border-bottom-color:var(--orange); background:transparent;}
+  .tab .badge{background:var(--teal); color:#fff; border-radius:9px; padding:1px 7px; margin-left:6px; font-size:0.62rem;}
+
+  .page{max-width:1500px; margin:0 auto; padding:22px 20px 80px;}
+  .panel{display:none;}
+  .panel.on{display:block;}
+
+  /* ---- score layout ---- */
+  .scorewrap{display:grid; grid-template-columns:minmax(0,1fr) 380px; gap:30px; align-items:start;}
+  @media (max-width:1150px){ .scorewrap{grid-template-columns:1fr;} }
+
+  fieldset{border:1px solid var(--line); padding:18px 20px; margin:0 0 22px;}
+  legend{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); padding:0 8px;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;}
+  @media (max-width:700px){ .grid2,.grid3{grid-template-columns:1fr;} }
+  label.fld{display:block; font-size:0.82rem; color:var(--brown); margin-bottom:5px;}
+  label.fld .req{color:var(--orange);}
+  input[type=text], input[type=date], select, textarea{
+    width:100%; padding:9px 11px; border:1px solid var(--line); background:var(--paper);
+    font-family:'Inter',sans-serif; font-size:0.9rem; color:var(--ink);
+  }
+  textarea{resize:vertical; min-height:64px; line-height:1.5;}
+  input:focus, select:focus, textarea:focus{border-color:var(--sand);}
+  .hint{font-size:0.76rem; color:#6b6b66; margin-top:4px;}
+  .charcount{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:#8a8a86;}
+  .charcount.short{color:var(--bad);}
+
+  /* ---- item cards ---- */
+  .item{border:1px solid var(--line); margin-bottom:18px;}
+  .item.done{border-left:3px solid var(--ok);}
+  .item.ins{border-left:3px solid var(--sand);}
+  .item.err{border-left:3px solid var(--bad);}
+  .item > .head{padding:14px 18px; background:var(--wash); display:flex; flex-wrap:wrap; gap:10px; align-items:baseline; cursor:pointer;}
+  .item > .head .code{font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--orange); font-weight:500;}
+  .item > .head .nm{font-family:'Fraunces',serif; font-weight:600; font-size:0.95rem;}
+  .item > .head .w{font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.05em; text-transform:uppercase; border:1px solid var(--line); padding:2px 7px; color:#3a4f4a; background:var(--paper);}
+  .item > .head .state{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; margin-left:auto; color:#6b6b66;}
+  .item > .head .state.ok{color:var(--ok);}
+  .item > .head .state.no{color:var(--bad);}
+  .item > .body{padding:18px; display:none;}
+  .item.open > .body{display:block;}
+  .item .qtext{font-family:'Fraunces',serif; font-weight:600; font-size:1.02rem; line-height:1.32; max-width:62ch; margin-bottom:14px;}
+
+  .lvls{display:flex; flex-direction:column; gap:7px; margin-bottom:6px;}
+  .lvl{display:flex; gap:11px; align-items:flex-start; padding:11px 13px; border:1px solid var(--line); cursor:pointer;}
+  .lvl:hover{border-color:var(--sand); background:#faf8f5;}
+  .lvl.sel{border-color:var(--teal); background:var(--wash);}
+  .lvl input{margin:4px 0 0; accent-color:var(--teal); flex:0 0 auto;}
+  .lvl .lt{font-size:0.88rem; color:#2b2b28;}
+  .lvl .ln{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); display:block; margin-bottom:3px;}
+  .lvl.insopt{border-style:dashed;}
+  .lvl.insopt.sel{border-style:solid; border-color:var(--sand); background:#faf6ee;}
+
+  .rules{margin-top:12px; font-size:0.8rem;}
+  .rules details{border-left:2px solid var(--line); padding-left:13px; margin-bottom:7px;}
+  .rules summary{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--teal); cursor:pointer; list-style:none;}
+  .rules summary::-webkit-details-marker{display:none;}
+  .rules summary::before{content:"+ ";}
+  .rules details[open] summary::before{content:"\2212 ";}
+  .rules p{margin:7px 0 0; color:#3a3a38; max-width:80ch;}
+
+  .gate{display:flex; gap:10px; align-items:flex-start; padding:11px 13px; border:1px solid var(--orange); background:#fdf6ee; margin-top:11px;}
+  .gate input{margin:3px 0 0; accent-color:var(--orange); flex:0 0 auto;}
+  .gate .gt{font-size:0.83rem; color:#3a2c1c;}
+  .gate .gk{font-family:'IBM Plex Mono',monospace; font-size:0.64rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:3px;}
+
+  .evid{margin-top:16px; padding-top:16px; border-top:1px solid var(--line);}
+  .flagbox2{display:flex; gap:10px; align-items:flex-start; padding:11px 13px; border:1px dashed var(--line); margin-top:12px;}
+  .flagbox2.on{border-style:solid; border-color:var(--teal); background:var(--wash);}
+  .flagbox2 input[type=checkbox]{margin:3px 0 0; accent-color:var(--teal); flex:0 0 auto;}
+  .flagbox2 .ft{font-size:0.83rem;}
+  .flagbox2 .fk{font-family:'IBM Plex Mono',monospace; font-size:0.64rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); display:block; margin-bottom:3px;}
+
+  .itemerr{margin-top:11px; padding:9px 12px; background:#fdefec; border-left:3px solid var(--bad); font-size:0.82rem; color:#7a2413; display:none;}
+  .itemerr.on{display:block;}
+  .itemerr ul{margin:4px 0 0; padding-left:18px;}
+
+  /* ---- live panel ---- */
+  .live{position:sticky; top:106px; border:1px solid var(--line); padding:18px; background:var(--paper);}
+  .live h3{font-size:1rem; margin-bottom:4px;}
+  .live .compass{width:100%; height:auto; border:1px solid var(--line); background:var(--paper); margin-top:12px;}
+  .metric{display:flex; justify-content:space-between; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:0.74rem; padding:6px 0; border-bottom:1px solid var(--line);}
+  .metric b{font-weight:500;}
+  .metric .v{color:var(--teal);}
+  .metric .v.dim{color:#a0a09c;}
+  .cov{margin-top:12px;}
+  .covrow{margin-bottom:9px;}
+  .covrow .lab{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:#4a4a48; margin-bottom:3px;}
+  .covbar{height:7px; background:#dfe4e1; position:relative;}
+  .covbar i{display:block; height:100%; background:var(--teal); width:0; transition:width .3s;}
+  .covbar i.low{background:var(--bad);}
+  .covbar .thresh{position:absolute; top:-2px; bottom:-2px; width:1px; background:var(--brown); left:60%;}
+  .verdictbox{margin-top:14px; padding:12px 14px; background:var(--wash); font-size:0.86rem;}
+  .verdictbox .qn{font-family:'Fraunces',serif; font-weight:600; font-size:1rem; color:var(--teal); display:block; margin-bottom:4px;}
+  .theatre{margin-top:12px; padding:12px 14px; border-left:3px solid var(--orange); background:#fdf6ee; font-size:0.84rem;}
+  .theatre .tk{font-family:'IBM Plex Mono',monospace; font-size:0.64rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:4px;}
+  .blockers{margin-top:14px; padding:12px 14px; background:#fdefec; border-left:3px solid var(--bad); font-size:0.82rem; color:#7a2413;}
+  .blockers.clear{background:#eef6f1; border-left-color:var(--ok); color:#14512f;}
+  .blockers ul{margin:5px 0 0; padding-left:18px;}
+  .liveactions{margin-top:16px; display:flex; flex-direction:column; gap:8px;}
+
+  /* ---- tables ---- */
+  table{width:100%; border-collapse:collapse; font-size:0.82rem;}
+  th,td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:0.64rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); border-bottom:1px solid var(--teal); white-space:nowrap;}
+  tbody tr:hover{background:#faf8f5;}
+  td.num{font-family:'IBM Plex Mono',monospace; white-space:nowrap;}
+  .pill{font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.04em; text-transform:uppercase; padding:2px 7px; border:1px solid var(--line);}
+  .pill.theatre{border-color:var(--orange); color:#b3600d; background:#fdf6ee;}
+  .pill.coherent{border-color:var(--line); color:#4a4a48;}
+  .pill.under{border-color:var(--teal); color:var(--teal);}
+  .pill.overc{border-color:var(--brown); color:var(--brown);}
+  .pill.pass{border-color:var(--ok); color:var(--ok);}
+  .pill.tent{border-color:var(--orange); color:#b3600d;}
+  .pill.fail{border-color:var(--bad); color:var(--bad);}
+  .tablewrap{overflow-x:auto; border:1px solid var(--line);}
+  .empty{padding:34px 20px; text-align:center; color:#6b6b66; font-size:0.88rem;}
+
+  .note{border-left:3px solid var(--teal); padding-left:18px; margin:18px 0; max-width:84ch;}
+  .note p{font-size:0.88rem; color:#3a3a38; margin:0 0 9px;}
+  .note p:last-child{margin-bottom:0;}
+  .warnnote{border:1px solid var(--line); border-left:3px solid var(--orange); padding:16px 20px; margin:18px 0; max-width:84ch;}
+  .warnnote p{font-size:0.88rem; margin:0 0 9px;}
+  .warnnote p:last-child{margin-bottom:0;}
+  .warnnote .k{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.07em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:8px;}
+
+  .statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin:18px 0;}
+  .stat{border:1px solid var(--line); padding:14px 16px;}
+  .stat .n{font-family:'Fraunces',serif; font-weight:600; font-size:1.7rem; color:var(--teal); line-height:1;}
+  .stat .l{font-family:'IBM Plex Mono',monospace; font-size:0.64rem; letter-spacing:0.06em; text-transform:uppercase; color:#6b6b66; margin-top:6px;}
+
+  .toast{position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(90px); background:var(--teal); color:#f4efe6; padding:13px 22px; font-family:'IBM Plex Mono',monospace; font-size:0.76rem; z-index:200; transition:transform .28s; box-shadow:0 8px 24px rgba(0,0,0,0.2);}
+  .toast.on{transform:translateX(-50%) translateY(0);}
+  .toast.bad{background:var(--bad);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="inner">
+    <h1>Coding Workbench</h1>
+    <span class="sub">Transition Diagnostic v1.0</span>
+    <span class="spacer"></span>
+    <span class="conn" id="connState">Not connected</span>
+    <button class="onteal" id="btnConnect">Connect folder</button>
+    <button class="onteal" id="btnImport">Import CSVs</button>
+    <button class="onteal" id="btnExport">Export CSVs</button>
+    <input type="file" id="fileImport" accept=".csv" multiple style="display:none;">
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="inner">
+    <button class="tab on" data-panel="pScore">Score an entry</button>
+    <button class="tab" data-panel="pData">Dataset <span class="badge" id="badgeData">0</span></button>
+    <button class="tab" data-panel="pRel">Reliability</button>
+    <button class="tab" data-panel="pLog">Decision log <span class="badge" id="badgeLog">0</span></button>
+    <button class="tab" data-panel="pHelp">How this works</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ============ SCORE ============ -->
+  <div class="panel on" id="pScore">
+    <div class="scorewrap">
+      <div>
+        <fieldset>
+          <legend>Entry</legend>
+          <div class="grid3">
+            <div>
+              <label class="fld">Organisation <span class="req">*</span></label>
+              <input type="text" id="fOrg" placeholder="Legal or common entity name">
+            </div>
+            <div>
+              <label class="fld">Short name</label>
+              <input type="text" id="fShort" placeholder="Figure label">
+            </div>
+            <div>
+              <label class="fld">Coder <span class="req">*</span></label>
+              <input type="text" id="fCoder" placeholder="Initials, e.g. MT">
+            </div>
+          </div>
+          <div class="grid2" style="margin-top:14px;">
+            <div>
+              <label class="fld">Anchor programme, transition or closure <span class="req">*</span></label>
+              <input type="text" id="fProg" placeholder="The named case every score is defensible against">
+              <p class="hint">Required. Without an anchor case the authority items have no referent and consistency drifts.</p>
+            </div>
+            <div>
+              <label class="fld">Country</label>
+              <input type="text" id="fCountry" placeholder="Primary country of the anchor case">
+            </div>
+          </div>
+          <div class="grid3" style="margin-top:14px;">
+            <div>
+              <label class="fld">Date entered</label>
+              <input type="date" id="fDate">
+            </div>
+            <div>
+              <label class="fld">Signal source</label>
+              <select id="fSignal">
+                <option value="news">news</option>
+                <option value="report">report</option>
+                <option value="backfill">backfill</option>
+              </select>
+            </div>
+            <div>
+              <label class="fld">Fifteen Weeks ref</label>
+              <input type="text" id="fFW" placeholder="Blank unless in that dataset">
+            </div>
+          </div>
+          <div class="grid3" style="margin-top:14px;">
+            <div>
+              <label class="fld">Programme type <span class="req">*</span></label>
+              <select id="fType">
+                <option value="">Choose</option>
+                <option value="emergency">emergency</option>
+                <option value="transitional">transitional</option>
+                <option value="longrun">longrun</option>
+              </select>
+            </div>
+            <div>
+              <label class="fld">Duration <span class="req">*</span></label>
+              <select id="fDur">
+                <option value="">Choose</option>
+                <option value="u2">under 2 years</option>
+                <option value="2to5">2 to 5 years</option>
+                <option value="5to10">5 to 10 years</option>
+                <option value="o10">over 10 years</option>
+              </select>
+            </div>
+            <div>
+              <label class="fld">Stated purpose</label>
+              <input type="text" id="fPurpose" maxlength="180" placeholder="In the programme's own words">
+            </div>
+          </div>
+        </fieldset>
+
+        <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap;">
+          <span class="eyebrow">The twelve items</span>
+          <span class="spacer"></span>
+          <button class="ghost sm" id="btnExpandAll">Open all</button>
+          <button class="ghost sm" id="btnCollapseAll">Close all</button>
+        </div>
+
+        <div id="itemsHost"></div>
+      </div>
+
+      <div>
+        <div class="live">
+          <h3 id="liveTitle">Live reading</h3>
+          <p class="hint" id="liveSub">Nothing scored yet.</p>
+
+          <svg class="compass" id="compass" viewBox="0 0 420 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Authority against agency recognition">
+            <rect x="20" y="20" width="180" height="180" fill="#f2ede4"/>
+            <rect x="220" y="20" width="180" height="180" fill="#e6ece9"/>
+            <rect x="20" y="220" width="180" height="180" fill="#f4f2ee"/>
+            <rect x="220" y="220" width="180" height="180" fill="#efeae1"/>
+            <g stroke="rgba(0,0,0,0.10)" stroke-width="1">
+              <line x1="110" y1="20" x2="110" y2="400"/><line x1="310" y1="20" x2="310" y2="400"/>
+              <line x1="20" y1="110" x2="400" y2="110"/><line x1="20" y1="310" x2="400" y2="310"/>
+            </g>
+            <g stroke="#143a33" stroke-width="1.4">
+              <line x1="210" y1="20" x2="210" y2="400"/><line x1="20" y1="210" x2="400" y2="210"/>
+            </g>
+            <rect x="20" y="20" width="380" height="380" fill="none" stroke="rgba(0,0,0,0.14)"/>
+            <g font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="#143a33" letter-spacing="0.4">
+              <text x="28" y="36">HARNESSING CONSTRAINT</text>
+              <text x="392" y="36" text-anchor="end">TRANSFERRED</text>
+              <text x="28" y="392">MANAGED DELIVERY</text>
+              <text x="392" y="392" text-anchor="end">DEVOLVED BURDEN</text>
+            </g>
+            <line id="cLine" x1="210" y1="210" x2="210" y2="210" stroke="#143a33" stroke-width="1.6" stroke-dasharray="4 3"/>
+            <circle id="cAbs" cx="210" cy="210" r="8" fill="#ffffff" stroke="#143a33" stroke-width="2" opacity="0"/>
+            <circle id="cRoom" cx="210" cy="210" r="8" fill="#143a33" stroke="#143a33" stroke-width="2" opacity="0"/>
+            <g font-family="'IBM Plex Mono',monospace" font-size="8" fill="#3a3a38">
+              <circle cx="28" cy="419" r="5.5" fill="#143a33" stroke="#143a33" stroke-width="1.5"/>
+              <text x="40" y="422">WITHIN THE ROOM</text>
+              <circle cx="200" cy="419" r="5.5" fill="#ffffff" stroke="#143a33" stroke-width="1.5"/>
+              <text x="212" y="422">ABSOLUTE</text>
+            </g>
+          </svg>
+
+          <div style="margin-top:14px;">
+            <div class="metric"><b>Authority, absolute</b><span class="v dim" id="mAuthAbs">&mdash;</span></div>
+            <div class="metric"><b>Authority, within room</b><span class="v dim" id="mAuthRoom">&mdash;</span></div>
+            <div class="metric"><b>Agency, absolute</b><span class="v dim" id="mAgAbs">&mdash;</span></div>
+            <div class="metric"><b>Agency, within room</b><span class="v dim" id="mAgRoom">&mdash;</span></div>
+            <div class="metric"><b>Continuity</b><span class="v dim" id="mCont">&mdash;</span></div>
+            <div class="metric"><b>Constraint distance</b><span class="v dim" id="mDist">&mdash;</span></div>
+            <div class="metric"><b>Claim gap</b><span class="v dim" id="mGap">&mdash;</span></div>
+            <div class="metric"><b>INS / flagged</b><span class="v dim" id="mCounts">&mdash;</span></div>
+          </div>
+
+          <div class="cov">
+            <div class="covrow">
+              <div class="lab"><span>Authority coverage</span><span id="covAuthTxt">0%</span></div>
+              <div class="covbar"><i id="covAuth"></i><span class="thresh"></span></div>
+            </div>
+            <div class="covrow">
+              <div class="lab"><span>Agency coverage</span><span id="covAgTxt">0%</span></div>
+              <div class="covbar"><i id="covAg"></i><span class="thresh"></span></div>
+            </div>
+            <div class="covrow">
+              <div class="lab"><span>Continuity coverage</span><span id="covContTxt">0%</span></div>
+              <div class="covbar"><i id="covCont"></i><span class="thresh"></span></div>
+            </div>
+            <p class="hint">The mark at 60 per cent is the minimum coverage rule. Below it the axis is not reported.</p>
+          </div>
+
+          <div class="verdictbox" id="quadBox" style="display:none;">
+            <span class="qn" id="quadName"></span>
+            <span id="quadNote"></span>
+          </div>
+
+          <div class="theatre" id="theatreBox" style="display:none;">
+            <span class="tk" id="theatreKind"></span>
+            <span id="theatreTxt"></span>
+          </div>
+
+          <div class="blockers" id="blockers">
+            <b>Not ready to save</b>
+            <ul id="blockerList"></ul>
+          </div>
+
+          <div class="liveactions">
+            <button id="btnSaveEntry">Save entry</button>
+            <button class="ghost" id="btnLogDecision">Log a decision</button>
+            <button class="ghost" id="btnClear">Clear form</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ DATASET ============ -->
+  <div class="panel" id="pData">
+    <h2>Dataset</h2>
+    <div class="statgrid" id="dataStats"></div>
+    <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap; align-items:center;">
+      <input type="text" id="dataFilter" placeholder="Filter by organisation, programme or coder" style="max-width:340px;">
+      <span class="spacer"></span>
+      <button class="ghost sm" id="btnInsReport">INS breakdown</button>
+    </div>
+    <div class="tablewrap"><div id="dataTable"></div></div>
+    <div id="insReport"></div>
+  </div>
+
+  <!-- ============ RELIABILITY ============ -->
+  <div class="panel" id="pRel">
+    <h2>Reliability</h2>
+    <div class="note">
+      <p>A unit is one organisation and anchor programme. An observer is one coder label. Any unit coded by two or more observers enters the calculation. For the drift test, re-score under a modified coder label such as <span class="mono">MT-r2</span> so the same person's second pass counts as a second observer.</p>
+      <p>The statistic is ordinal Krippendorff's alpha, computed per item and never averaged across the codebook. The verdict column uses the bootstrapped fifth percentile rather than the point estimate, which is what section 11 of the codebook commits to.</p>
+    </div>
+    <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:16px;">
+      <label class="fld" style="margin:0;">Bootstrap resamples</label>
+      <select id="relBoot" style="width:auto;">
+        <option value="0">none, point estimate only</option>
+        <option value="1000" selected>1000</option>
+        <option value="5000">5000</option>
+      </select>
+      <button id="btnRunRel">Run reliability</button>
+    </div>
+    <div id="relOut"></div>
+  </div>
+
+  <!-- ============ DECISION LOG ============ -->
+  <div class="panel" id="pLog">
+    <h2>Decision log</h2>
+    <div class="note">
+      <p>One entry per ambiguous or edge case. The precedent field is the point of it: a decision that recurs belongs in the codebook anchors at the next version, not in a note.</p>
+    </div>
+    <fieldset>
+      <legend>New decision</legend>
+      <div class="grid3">
+        <div><label class="fld">Entry reference</label><input type="text" id="dlEntry" placeholder="entry_id or organisation"></div>
+        <div><label class="fld">Item</label><select id="dlItem"></select></div>
+        <div><label class="fld">Date</label><input type="date" id="dlDate"></div>
+      </div>
+      <div class="grid3" style="margin-top:14px;">
+        <div><label class="fld">Candidate level A</label><input type="text" id="dlA" placeholder="e.g. 2"></div>
+        <div><label class="fld">Candidate level B</label><input type="text" id="dlB" placeholder="e.g. 3"></div>
+        <div><label class="fld">Decided</label><input type="text" id="dlDecided" placeholder="e.g. 2"></div>
+      </div>
+      <div style="margin-top:14px;">
+        <label class="fld">Reasoning</label>
+        <textarea id="dlReason" placeholder="Why it was resolved this way."></textarea>
+      </div>
+      <div style="margin-top:14px; display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+        <label style="display:flex; gap:8px; align-items:center; font-size:0.85rem;">
+          <input type="checkbox" id="dlPrecedent" style="width:auto; accent-color:var(--orange);">
+          This sets a precedent and should be folded into the codebook anchors
+        </label>
+        <span class="spacer"></span>
+        <button id="btnAddLog">Add to log</button>
+      </div>
+    </fieldset>
+    <div class="tablewrap"><div id="logTable"></div></div>
+  </div>
+
+  <!-- ============ HELP ============ -->
+  <div class="panel" id="pHelp">
+    <h2>How this works</h2>
+    <div class="note">
+      <p>This is the codebook made executable. The level descriptors on screen are the anchors, so the rubric is in front of you while you score rather than in another tab. The gates in orange are the contestable rules from section 10, and they have to be ticked rather than remembered.</p>
+      <p>The full manual, including the academic warrant for each item and the reliability and content validity procedures, is at <a href="diagnostic-codebook.html">diagnostic-codebook.html</a>. The public self-assessment version of the same twelve questions is at <a href="diagnostic.html">diagnostic.html</a>. Weights and level values are identical across all three, so a score produced here and a score produced there are the same number.</p>
+    </div>
+    <h3 style="margin-top:26px; font-size:1.05rem;">Connecting the CSVs</h3>
+    <div class="note">
+      <p><b>Connect folder</b> asks for one folder and then reads and writes three files inside it: <span class="mono">td_scores.csv</span>, <span class="mono">td_evidence.csv</span> and <span class="mono">td_decision_log.csv</span>. Files that do not exist yet get created. After that, every saved entry writes to all three immediately, so the CSVs are the record and this page is only a way of editing them. Chrome and Edge support this, including on a Chromebook. Safari and Firefox do not.</p>
+      <p>Where the folder route is unavailable, <b>Import CSVs</b> takes the same three files by name and <b>Export CSVs</b> downloads them back. The workflow is identical, with a manual step at each end.</p>
+      <p>Nothing is stored in the browser. Close the tab without saving or exporting and the work is gone, which is deliberate: the CSVs are the only copy, so there is never a question about which version is current.</p>
+    </div>
+    <h3 style="margin-top:26px; font-size:1.05rem;">What gets enforced</h3>
+    <div class="note">
+      <p>Tier 3, the organisation's own narrative, cannot carry level 3 or 4 on any item except Q12, where self-report is the construct. Trade press is not offered as a tier at all.</p>
+      <p>Every scored item needs a tier, a justification long enough to re-derive the level from, and a source. A constraint flag needs the external requirement named.</p>
+      <p>Insufficient evidence is a first-class answer and it never becomes level 1. On Q03 in particular, the absence of a documented refusal is evidence about the record and not about the arrangement.</p>
+    </div>
+    <div class="warnnote">
+      <span class="k">One thing this cannot do</span>
+      <p>It computes the numbers correctly and it cannot tell you whether the level you chose is the right one. That is what the anchors, the gates and the double-coding are for. The reliability tab is the only part of this that can catch a coder drifting, which is why it is worth running at every fifty entries rather than at the end.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ==========================================================================
+   ITEM DEFINITIONS
+   Weights and level values are identical to diagnostic.html so that a score
+   produced here and a score produced there are the same number.
+   ========================================================================== */
+var ITEMS = [
+{
+  code:"Q01", name:"Contract holder", wx:10, wy:0, ws:0,
+  q:"Who is the legal counterparty to the funder?",
+  lv:[
+    {v:-1,   d:"An international entity is the sole legal counterparty. The local organisation appears as a subgrantee, downstream partner or implementing partner, with no contractual relationship to the funder."},
+    {v:-0.3, d:"An international entity holds the contract, and a published consortium or partnership agreement names the local organisation as a party with defined rights: its own budget envelope, a governance seat, a consent requirement on variations, or a stated dispute route."},
+    {v:0.4,  d:"The local or national organisation is the substantive recipient, with an international entity acting as fiscal sponsor, host, fiduciary agent or accredited intermediary."},
+    {v:1,    d:"The local or national organisation is the direct legal counterparty to the funder. No international entity in the contracting chain."}
+  ],
+  boundary:"2 to 3. The test is liability. If the funder could only pursue the international entity for non-performance, cap at level 2 however the partnership is described. Where only a description of the agreement exists rather than the agreement, cap at level 2.",
+  notcount:"The words partner, in partnership with or locally led in narrative text. Memoranda of understanding with no financial terms. Framework agreements that do not attach to the anchor case. Statements of intent to contract directly in future.",
+  gates:[]
+},
+{
+  code:"Q02", name:"Budget discretion", wx:10, wy:0, ws:0,
+  q:"Who authorises a reallocation between budget lines mid-year?",
+  lv:[
+    {v:-1,   d:"Written funder approval is required for any reallocation, or no delegated authority exists anywhere in the chain."},
+    {v:-0.4, d:"The international partner authorises within its own delegated limit and notifies the funder. The local partner requests."},
+    {v:0.5,  d:"The local partner authorises reallocations within a stated and material threshold."},
+    {v:1,    d:"The local partner authorises reallocations without a threshold, within the total award value."}
+  ],
+  boundary:"2 to 3. A threshold has to be a stated figure or percentage and it has to be material. Rule 2 caps this item at level 2 where the threshold is below five per cent of the annual value of the award to that partner.",
+  notcount:"Procurement authorisation thresholds, which are a different construct. The word flexible attached to funding with no stated delegated limit. Authority to spend within a line rather than to move between lines. Emergency variation clauses limited to declared crises.",
+  gates:[{when:[3,4], t:"The stated threshold is at or above five per cent of the annual value of the award to that partner, or there is no threshold at all (rule 2)."}]
+},
+{
+  code:"Q03", name:"Right of refusal", wx:12, wy:0, ws:0,
+  q:"Can the local partner refuse a funder requirement and still have a programme afterwards?",
+  lv:[
+    {v:-1,   d:"A documented instance of a requirement imposed over a recorded objection, or the local partner publicly states it cannot refuse, or the agreement gives the funder unilateral variation rights with no partner consent clause and no dispute route."},
+    {v:-0.5, d:"A right of objection exists on paper, a consent clause, a dispute mechanism or a partner-initiated variation route, and no instance of it being exercised can be found."},
+    {v:0.6,  d:"At least one documented instance of the local partner declining or contesting a funder requirement, with the funding relationship continuing afterwards."},
+    {v:1,    d:"A documented instance in which the requirement itself changed as a result of the local partner's refusal or challenge."}
+  ],
+  boundary:"2 to 3. Level 3 requires both the refusal and the continuation. A refusal followed by the partnership ending is level 1 and belongs in the decision log. A clause permitting refusal is level 2 however strongly worded.",
+  notcount:"Consultation, however extensive. Feedback mechanisms. Participation in design workshops. A partner declining to bid, which is not declining a requirement inside a live relationship. Complaints that produced no traceable response.",
+  gates:[
+    {when:[1], t:"This is a positive documented finding, not an absence of evidence. Refusals are systematically under-reported, so silence here is INS and never level 1."},
+    {when:[3,4], t:"Both the refusal and the continuation of the funding relationship are documented."}
+  ]
+},
+{
+  code:"Q04", name:"Coordination representation", wx:8, wy:0, ws:0,
+  q:"Who represents the programme in the coordination structures that matter?",
+  lv:[
+    {v:-1,   d:"The international partner represents the programme. The local partner does not appear in coordination membership records or minutes."},
+    {v:-0.3, d:"The international partner leads, the local partner attends. Presence is recorded, no role is held."},
+    {v:0.5,  d:"Both are present, and the local partner holds a role or sits in forums the international partner does not: a working group lead, a sub-group chair, a named focal point, or membership of a national platform or government body."},
+    {v:1,    d:"The local partner represents the programme in coordination and briefs the international partner afterwards."}
+  ],
+  boundary:"2 to 3. An attendance list is level 2 evidence at most, and this is the boundary where the whole measurement field has historically drifted upward. Level 3 requires a role named by the convening body.",
+  notcount:"Membership of a cluster mailing list. Attendance at a single meeting. Participation in a consultation convened by the international partner, which is not a coordination structure. Being quoted in a coordination product.",
+  gates:[{when:[3,4], t:"A role named by the convening body was found, or membership of a forum the international partner does not sit in. Record whether the space is invited or claimed, and the working language, in the justification."}]
+},
+{
+  code:"Q05", name:"Government relationships", wx:6, wy:0, ws:10,
+  q:"Who holds the relationships with government and with other funders?",
+  lv:[
+    {v:-1,   d:"The international partner holds government and funder relationships entirely. The local partner does not appear in government-facing records for the programme."},
+    {v:-0.3, d:"The local partner has been introduced and is present in government-facing settings, and the international partner leads them."},
+    {v:0.5,  d:"The local partner holds some named relationships in its own right; the international partner holds the rest."},
+    {v:1,    d:"The local partner holds the government and funder relationships and the international partner is not in the chain."}
+  ],
+  boundary:"2 to 3. An agreement signed on behalf of, or with the local partner named in a schedule, is level 2. Level 3 requires the local entity to be a signatory or a named member in its own right. The coding has to be able to tell an introduction from a handover.",
+  notcount:"Attendance at a government-convened launch. Being thanked in a national document. A relationship held by an individual employed by the international partner, however locally rooted. The construct is which organisation holds it.",
+  gates:[{when:[3,4], t:"The local entity is a signatory or named member in its own right. Search the government side: ministry records, gazettes, national strategy author lists, technical working group membership."}]
+},
+{
+  code:"Q06", name:"Whether a decision stands", wx:8, wy:0, ws:0,
+  q:"When the local partner decides something inside its remit that the international partner dislikes, does the decision stand?",
+  lv:[
+    {v:-1,   d:"A documented instance of a decision inside the local partner's agreed remit being reversed."},
+    {v:-0.4, d:"The decision stood, and a new control appeared afterwards: a pre-approval step, an additional reporting requirement, a capacity concern recorded in a review, or a narrowed remit."},
+    {v:0.5,  d:"The decision stood and the disagreement was conducted openly, recorded in minutes, an evaluation, a management response or a joint statement, with no new control following."},
+    {v:1,    d:"The decision stood and the decision rule itself was revisited, in the direction of clarifying or widening the partner's remit."}
+  ],
+  boundary:"2 to 3. This needs two time points. A control added after an incident is level 2 even where every stated threshold is unchanged, because the construct is whether the authority survived rather than whether the number did.",
+  notcount:"Controls introduced across the whole portfolio for unrelated reasons, such as after a safeguarding review or a regulator intervention. Those are not evidence about this relationship.",
+  gates:[{when:[2,3,4], t:"Two time points were compared, for example successive versions of a partnership manual, delegated authority schedule or SOP. Where only one version exists, this is INS."}]
+},
+{
+  code:"Q07", name:"How blockages get unblocked", wx:0, wy:12, ws:0,
+  q:"What unblocks a stalled procedure or supply chain?",
+  lv:[
+    {v:-1,   d:"Nothing unblocks it. The activity is dropped, or delayed indefinitely, and the delay is absorbed as a result."},
+    {v:-0.2, d:"An undocumented personal relationship unblocks it. It works, it is unfunded, it is unrecorded, and it dies with whoever holds the number."},
+    {v:0.1,  d:"The formal escalation process unblocks it, eventually. Scored barely above zero, deliberately, because the elapsed time is a real cost borne by the people the programme exists to reach."},
+    {v:1,    d:"A relationship route is named, resourced and permitted inside the process documentation. The practical norm has been made official without being made slower."}
+  ],
+  boundary:"3 to 4. Level 4 requires the route named in a process document AND evidence that it is resourced. A named route with no funding is level 3. A funded liaison post with no documented route is level 3. Note that these levels are not a ladder: level 2 sits below level 3 by design.",
+  notcount:"A risk register entry describing supply risk. A statement that the programme is adaptive. Contingency budget lines with no named route. Narrative about staff going the extra mile.",
+  gates:[{when:[4], t:"Both conditions are met: the route is named in a process document, and there is evidence of resourcing such as a budget line or a funded post."}]
+},
+{
+  code:"Q08", name:"Documentation of adaptations", wx:0, wy:12, ws:0,
+  q:"Are the adaptations frontline staff make written down anywhere?",
+  lv:[
+    {v:-1,   d:"Not documented, and the documentary record treats deviation as non-compliance: audit findings, compliance language, or corrective action against adaptation."},
+    {v:-0.4, d:"Not documented, and the existence of adaptations is acknowledged, typically in evaluation interviews or a general statement that staff work around constraints."},
+    {v:0.4,  d:"Documented informally: handover notes, learning briefs, community of practice write-ups, technical notes, staff-authored posts, or an evaluation annex recording the adaptations themselves."},
+    {v:1,    d:"Documented and resourced: an adaptation appears as a budget line, a revised standard operating procedure, a changed specification, or a design revision attributed to frontline staff."}
+  ],
+  boundary:"3 to 4. Level 4 requires money or a formal document change. A learning brief is level 3 however good it is, because when an adaptation gets a budget line something has happened that is difficult to reverse, and that irreversibility is the construct.",
+  notcount:"A statement that the organisation values learning. An adaptive management section in a proposal. A knowledge platform with no content on the anchor case. Adaptations documented by an external researcher and not adopted.",
+  gates:[{when:[4], t:"A budget line, revised SOP or changed specification exists, not only a learning output."}]
+},
+{
+  code:"Q09", name:"Indicator selection", wx:6, wy:6, ws:0,
+  q:"Who chose the indicators the programme reports against?",
+  lv:[
+    {v:-1,   d:"A funder template adopted unchanged. The programme's indicators are the funder's standard set."},
+    {v:-0.4, d:"The international partner drafted the indicator set and reviewed it with the local partner. Consultative process language, no traceable change."},
+    {v:0.5,  d:"Co-designed, with at least one identifiable change traceable to the local partner in the final version."},
+    {v:1,    d:"The local partner proposed the indicator set and the funder accepted it."}
+  ],
+  boundary:"2 to 3. Level 3 requires a traceable change, meaning an indicator in the final version that is not in the funder's standard set and is attributed to the partner. Consultative process language on its own is level 2.",
+  notcount:"Disaggregation added to a standard indicator, which refines the funder's measure rather than replacing it. Indicators the international partner added for its own reporting. Context indicators carrying no target.",
+  gates:[{when:[3,4], t:"The funder's standard indicator set was located and compared, and the comparison is named in the justification."}]
+},
+{
+  code:"Q10", name:"Frontline read on design", wx:0, wy:10, ws:0,
+  q:"When frontline staff say the design is wrong, what happens to that, and how fast?",
+  lv:[
+    {v:-1,   d:"It does not reach the design. No route exists from frontline observation to design document."},
+    {v:-0.3, d:"It is logged as a risk or an issue and monitored. The information is received and the design is not touched."},
+    {v:0.5,  d:"It reached the design at the next revision or the next funding cycle."},
+    {v:1,    d:"It changed the design inside the current cycle."}
+  ],
+  boundary:"2 to 3, then 3 to 4. A risk register entry is level 2 however many quarters it persists. Level 3 requires the design document itself to have changed. Level 4 requires the change inside the cycle in which the observation was raised. Where a design revision is undated, cap at level 3.",
+  notcount:"Feedback and complaints mechanisms aimed at affected populations, which belong to accountability rather than design revision. Staff survey results. A statement that the programme uses adaptive management.",
+  gates:[{when:[4], t:"Dates were checked and the change landed inside the same cycle in which the observation was raised, not in the successor proposal."}]
+},
+{
+  code:"Q11", name:"Continuity of design", wx:0, wy:0, ws:20,
+  q:"Was it designed with an end date and a closure plan, or as a component of something that continues?",
+  lv:[
+    {v:0,    d:"An end date, no closure plan, and no named successor."},
+    {v:0.35, d:"An end date with a closure plan on paper, and the successor is not identified as a specific entity."},
+    {v:0.7,  d:"Designed as a component of a system, a successor named as a specific entity, and the funding for that successor to carry it is uncertain or unstated."},
+    {v:1,    d:"Designed as a component of a system, with the named successor already carrying part of the load."}
+  ],
+  boundary:"2 to 3, then 3 to 4. Rule 3: a named successor is a named entity. Government, communities, local partners and the private sector are categories and score level 2. Level 4 requires evidence the successor already funds, staffs or delivers part of it, from the successor's side where possible.",
+  notcount:"A sustainability section describing hoped-for continuation. An agreement to take something on in future, which is level 3 rather than level 4.",
+  gates:[
+    {when:[3,4], t:"The successor is a named entity, not a category such as government, communities or the private sector (rule 3)."},
+    {when:[4],   t:"There is evidence from the successor side that it already funds, staffs or delivers part of it."}
+  ]
+},
+{
+  code:"Q12", name:"The public claim", wx:0, wy:0, ws:0, claim:true,
+  q:"What does the organisation claim publicly about local ownership?",
+  lv:[
+    {v:0,    d:"Little or nothing said publicly about local ownership or localisation."},
+    {v:0.35, d:"Claims to work in partnership with local organisations."},
+    {v:0.7,  d:"Claims to be locally led."},
+    {v:1,    d:"Claims local ownership, and it is a headline claim: in the strategy title, the chief executive's statement, or as a named strategic pillar with commitments attached."}
+  ],
+  boundary:"Code the strongest claim made in a first, second or third tier source, not the average claim. This is the one item where tier 3 self-report carries any level, because self-report is the construct. This item takes no constraint flag, since nobody is required to make a claim.",
+  notcount:"A general statement that localisation matters to the sector with no claim about the organisation itself. Localisation language in a proposal the organisation has not published. A single staff post, unless published as organisational position.",
+  gates:[]
+}
+];
+
+var AUTH_TOTAL = 0, AG_TOTAL = 0, CONT_TOTAL = 0;
+ITEMS.forEach(function(it){ AUTH_TOTAL += it.wx; AG_TOTAL += it.wy; CONT_TOTAL += it.ws; });
+
+var TIERS = [
+  {v:"D1", label:"D1  Binding or audited instrument, or funder record", maxLevel:4},
+  {v:"D2", label:"D2  Independent third party document", maxLevel:4},
+  {v:"R",  label:"R   The organisation's own narrative", maxLevel:2}
+];
+var CONFS = ["high","medium-high","medium","low"];
+
+var QUADS = {
+  transferred:{n:"Transferred", t:"Authority sits with the local partner and the system can see the adaptations people are making. The rarest of the four. Stress test it against Q03 and Q05, because a position built on good consultation rather than a veto reads identically from here."},
+  harnessing:{n:"Harnessing Constraint", t:"Formal authority sits elsewhere and the system works with what local actors are already doing. Most functioning programmes are here. It can hold for years without anything moving, which is the part worth watching."},
+  managed:{n:"Managed Delivery", t:"Authority retained and local adaptation not visible to the system. Coherent if that is what the organisation says it is. What tends to sit underneath is undocumented workarounds holding things together, which puts operational risk where the compliance reporting is not looking."},
+  devolved:{n:"Devolved Burden", t:"Authority moved on paper and the system still cannot see how the work gets done. Responsibility and compliance load shifted without the recognition or resourcing that would make them survivable. This position often scores well on funder localisation reporting."}
+};
+
+/* ==========================================================================
+   STATE
+   ========================================================================== */
+var state = {};      // itemCode -> {level, tier, conf, just, src, flag, flagReq, gates:{}}
+var scores = [];     // saved entries
+var evidence = [];   // saved evidence rows
+var decisions = [];  // decision log rows
+var handles = {dir:null, scores:null, evidence:null, log:null};
+var dirty = false;
+var editingId = null;
+
+ITEMS.forEach(function(it){
+  state[it.code] = {level:null, tier:"", conf:"", just:"", src:"", flag:false, flagReq:"", gates:{}};
+});
+
+/* ==========================================================================
+   HELPERS
+   ========================================================================== */
+function $(id){ return document.getElementById(id); }
+function el(t,c,x){ var e=document.createElement(t); if(c) e.className=c; if(x!==undefined) e.textContent=x; return e; }
+function toast(msg, bad){
+  var t = $("toast"); t.textContent = msg;
+  t.className = "toast on" + (bad ? " bad" : "");
+  clearTimeout(t._t); t._t = setTimeout(function(){ t.className = "toast" + (bad?" bad":""); }, 3200);
+}
+function todayISO(){
+  var d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+function setDirty(v){
+  dirty = v;
+  var c = $("connState");
+  if(handles.dir){
+    c.textContent = dirty ? "Folder connected, unsaved changes" : "Folder connected";
+    c.className = "conn " + (dirty ? "dirty" : "live");
+  } else {
+    c.textContent = dirty ? "Not connected, unsaved changes" : "Not connected";
+    c.className = "conn" + (dirty ? " dirty" : "");
+  }
+}
+
+/* ---- CSV ---- */
+function csvEscape(v){
+  if(v === null || v === undefined) return "";
+  var s = String(v);
+  if(/[",\n\r]/.test(s)) return '"' + s.replace(/"/g,'""') + '"';
+  return s;
+}
+function toCSV(cols, rows){
+  var out = [cols.join(",")];
+  rows.forEach(function(r){
+    out.push(cols.map(function(c){ return csvEscape(r[c]); }).join(","));
+  });
+  return out.join("\r\n") + "\r\n";
+}
+function parseCSV(text){
+  var rows = [], row = [], cur = "", inQ = false, i = 0;
+  text = text.replace(/^﻿/, "");
+  while(i < text.length){
+    var ch = text[i];
+    if(inQ){
+      if(ch === '"'){
+        if(text[i+1] === '"'){ cur += '"'; i += 2; continue; }
+        inQ = false; i++; continue;
+      }
+      cur += ch; i++; continue;
+    }
+    if(ch === '"'){ inQ = true; i++; continue; }
+    if(ch === ','){ row.push(cur); cur = ""; i++; continue; }
+    if(ch === '\r'){ i++; continue; }
+    if(ch === '\n'){ row.push(cur); rows.push(row); row = []; cur = ""; i++; continue; }
+    cur += ch; i++;
+  }
+  if(cur !== "" || row.length){ row.push(cur); rows.push(row); }
+  if(!rows.length) return [];
+  var head = rows.shift();
+  return rows.filter(function(r){ return r.some(function(c){ return c !== ""; }); })
+             .map(function(r){
+               var o = {};
+               head.forEach(function(h, j){ o[h] = r[j] === undefined ? "" : r[j]; });
+               return o;
+             });
+}
+
+var SCORE_COLS = (function(){
+  var c = ["entry_id","organisation","short_name","programme","country","date_entered","signal_source",
+           "ctx_type","ctx_duration","ctx_purpose"];
+  ITEMS.forEach(function(it){ c.push("TD_" + it.code); });
+  ITEMS.forEach(function(it){ if(!it.claim) c.push("TD_" + it.code + "_flag"); });
+  return c.concat(["authority_abs","authority_room","agency_abs","agency_room","continuity_pct",
+    "coverage_authority_pct","coverage_agency_pct","coverage_continuity_pct",
+    "quadrant_room","quadrant_abs","constraint_distance","claim_value","claim_gap","theatre_test",
+    "n_ins","n_flagged","coding_confidence","fifteen_weeks_ref","coder","note","decision_log_ref",
+    "correction_note","correction_date"]);
+})();
+var EVID_COLS = ["entry_id","item","level","tier","confidence","justification","source","flag"];
+var LOG_COLS  = ["log_id","date","entry_id","item","candidate_level_a","candidate_level_b","decided","reasoning","sets_precedent","folded_into_version"];
+
+/* ==========================================================================
+   SCORING ENGINE  (mirrors diagnostic.html exactly)
+   ========================================================================== */
+function compute(){
+  var xsA=0,xwA=0,xsR=0,xwR=0, ysA=0,ywA=0,ysR=0,ywR=0;
+  var ssA=0,sMin=0,sMax=0,swScored=0, claim=null;
+  var nIns=0, nFlag=0, authFlagW=0;
+
+  ITEMS.forEach(function(it){
+    var st = state[it.code];
+    if(st.level === null){ return; }
+    if(st.level === "INS"){ nIns++; return; }
+    var v = it.lv[st.level-1].v;
+    if(it.claim){ claim = v; return; }
+    var f = !!st.flag;
+    if(f) nFlag++;
+    if(it.wx){
+      xsA += v*it.wx; xwA += it.wx;
+      if(f){ authFlagW += it.wx; } else { xsR += v*it.wx; xwR += it.wx; }
+    }
+    if(it.wy){
+      ysA += v*it.wy; ywA += it.wy;
+      if(!f){ ysR += v*it.wy; ywR += it.wy; }
+    }
+    if(it.ws){
+      ssA += v*it.ws; swScored += it.ws;
+      var lo = it.lv[0].v, hi = it.lv[0].v;
+      it.lv.forEach(function(L){ if(L.v < lo) lo = L.v; if(L.v > hi) hi = L.v; });
+      sMin += lo*it.ws; sMax += hi*it.ws;
+    }
+  });
+
+  var covAuth = AUTH_TOTAL ? Math.round(xwA/AUTH_TOTAL*100) : 0;
+  var covAg   = AG_TOTAL   ? Math.round(ywA/AG_TOTAL*100)   : 0;
+  var covCont = CONT_TOTAL ? Math.round(swScored/CONT_TOTAL*100) : 0;
+
+  var r = {
+    covAuth:covAuth, covAg:covAg, covCont:covCont,
+    nIns:nIns, nFlag:nFlag,
+    authAbs:null, authRoom:null, agAbs:null, agRoom:null, cont:null,
+    dist:null, claim:claim, gap:null, theatre:"", quadRoom:"", quadAbs:"",
+    constraintShare: xwA ? authFlagW/xwA : 0,
+    authFlagShareOfTotal: AUTH_TOTAL ? authFlagW/AUTH_TOTAL : 0
+  };
+
+  if(covAuth >= 60 && xwA > 0){
+    r.authAbs = Math.round(xsA/xwA*100);
+    r.authRoom = xwR > 0 ? Math.round(xsR/xwR*100) : null;
+  }
+  if(covAg >= 60 && ywA > 0){
+    r.agAbs = Math.round(ysA/ywA*100);
+    r.agRoom = ywR > 0 ? Math.round(ysR/ywR*100) : null;
+  }
+  if(covCont >= 60 && sMax > sMin){
+    r.cont = Math.round((ssA - sMin)/(sMax - sMin)*100);
+  }
+
+  // flagged share of an axis above one half suppresses the within-room reading
+  if(r.constraintShare > 0.5) r.authRoom = null;
+
+  var xr = (r.authRoom === null) ? r.authAbs : r.authRoom;
+  var yr = (r.agRoom === null) ? r.agAbs : r.agRoom;
+
+  if(xr !== null && yr !== null){
+    r.quadRoom = quadKey(xr, yr);
+    r.dist = Math.round(Math.sqrt(Math.pow(xr - r.authAbs,2) + Math.pow(yr - r.agAbs,2)));
+  }
+  if(r.authAbs !== null && r.agAbs !== null) r.quadAbs = quadKey(r.authAbs, r.agAbs);
+
+  if(claim !== null && r.authAbs !== null){
+    var authNorm = (r.authAbs + 100)/200;
+    r.gap = +(claim - authNorm).toFixed(2);
+    if(r.gap > 0.28){
+      r.theatre = (r.authFlagShareOfTotal >= 0.25) ? "over-claim-under-constraint" : "theatre";
+    } else if(r.gap < -0.28){
+      r.theatre = "understated";
+    } else {
+      r.theatre = "coherent";
+    }
+  }
+  r.xr = xr; r.yr = yr;
+  return r;
+}
+function quadKey(x,y){
+  return x >= 0 ? (y >= 0 ? "transferred" : "devolved") : (y >= 0 ? "harnessing" : "managed");
+}
+
+/* ==========================================================================
+   VALIDATION
+   ========================================================================== */
+function itemErrors(it){
+  var st = state[it.code], e = [];
+  if(st.level === null) return e;
+  if(st.level === "INS"){
+    return e;   // INS needs nothing else; the point of it is that there is no evidence
+  }
+  if(!st.tier) e.push("Evidence tier is required.");
+  if(st.tier === "R" && st.level >= 3 && !it.claim){
+    e.push("Tier R is the organisation's own narrative and cannot carry level 3 or 4. Q12 is the only exception.");
+  }
+  if(!st.conf) e.push("Coding confidence is required.");
+  var j = (st.just || "").trim();
+  if(j.length < 40) e.push("Justification needs to be long enough for a second coder to re-derive the level. " + j.length + " of 40 characters minimum.");
+  if(!(st.src || "").trim()) e.push("Source is required.");
+  if(st.flag && !(st.flagReq || "").trim()) e.push("A constraint flag needs the external requirement named.");
+  (it.gates || []).forEach(function(g, gi){
+    if(g.when.indexOf(st.level) !== -1 && !st.gates[gi]) e.push("Rule check not confirmed: " + g.t);
+  });
+  return e;
+}
+function entryBlockers(){
+  var b = [];
+  if(!$("fOrg").value.trim()) b.push("Organisation is required.");
+  if(!$("fProg").value.trim()) b.push("Anchor programme is required.");
+  if(!$("fCoder").value.trim()) b.push("Coder is required.");
+  if(!$("fType").value) b.push("Programme type is required.");
+  if(!$("fDur").value) b.push("Duration is required.");
+  var unanswered = ITEMS.filter(function(it){ return state[it.code].level === null; });
+  if(unanswered.length) b.push(unanswered.length + " item" + (unanswered.length===1?"":"s") + " not yet answered: " + unanswered.map(function(i){return i.code;}).join(", ") + ". Use INS where there is no admissible evidence.");
+  ITEMS.forEach(function(it){
+    var e = itemErrors(it);
+    if(e.length) b.push(it.code + ": " + e[0]);
+  });
+  return b;
+}
+
+/* ==========================================================================
+   RENDER ITEMS
+   ========================================================================== */
+function buildItems(){
+  var host = $("itemsHost");
+  host.textContent = "";
+  ITEMS.forEach(function(it, idx){
+    var card = el("div","item"); card.id = "card-" + it.code;
+
+    var head = el("div","head");
+    head.appendChild(el("span","code", it.code));
+    head.appendChild(el("span","nm", it.name));
+    if(it.wx) head.appendChild(el("span","w","Authority " + it.wx));
+    if(it.wy) head.appendChild(el("span","w","Agency " + it.wy));
+    if(it.ws) head.appendChild(el("span","w","Continuity " + it.ws));
+    if(it.claim) head.appendChild(el("span","w","Compared, not scored"));
+    var stateSpan = el("span","state","Not answered"); stateSpan.id = "state-" + it.code;
+    head.appendChild(stateSpan);
+    head.addEventListener("click", function(){ card.classList.toggle("open"); });
+    card.appendChild(head);
+
+    var body = el("div","body");
+    body.appendChild(el("div","qtext", it.q));
+
+    var lvls = el("div","lvls");
+    it.lv.forEach(function(L, li){
+      var lab = el("label","lvl");
+      var inp = document.createElement("input");
+      inp.type = "radio"; inp.name = "lv-" + it.code; inp.value = li+1;
+      inp.addEventListener("change", function(){
+        state[it.code].level = li+1;
+        state[it.code].gates = {};
+        refreshItem(it); refreshLive();
+      });
+      var tx = el("span","lt");
+      var n = el("span","ln","Level " + (li+1) + "   value " + L.v);
+      tx.appendChild(n);
+      tx.appendChild(document.createTextNode(L.d));
+      lab.appendChild(inp); lab.appendChild(tx);
+      lvls.appendChild(lab);
+    });
+    var insLab = el("label","lvl insopt");
+    var insInp = document.createElement("input");
+    insInp.type = "radio"; insInp.name = "lv-" + it.code; insInp.value = "INS";
+    insInp.addEventListener("change", function(){
+      state[it.code].level = "INS";
+      state[it.code].gates = {};
+      refreshItem(it); refreshLive();
+    });
+    var insTx = el("span","lt");
+    insTx.appendChild(el("span","ln","INS   insufficient evidence"));
+    insTx.appendChild(document.createTextNode("No admissible evidence was found. This is not level 1. Level 1 is a positive claim about an arrangement; this records that the public documentary record does not answer the question."));
+    insLab.appendChild(insInp); insLab.appendChild(insTx);
+    lvls.appendChild(insLab);
+    body.appendChild(lvls);
+
+    var rules = el("div","rules");
+    var d1 = document.createElement("details");
+    var s1 = document.createElement("summary"); s1.textContent = "Boundary rule";
+    d1.appendChild(s1); d1.appendChild(el("p",null,it.boundary));
+    rules.appendChild(d1);
+    var d2 = document.createElement("details");
+    var s2 = document.createElement("summary"); s2.textContent = "Does not count";
+    d2.appendChild(s2); d2.appendChild(el("p",null,it.notcount));
+    rules.appendChild(d2);
+    body.appendChild(rules);
+
+    var gatesHost = el("div"); gatesHost.id = "gates-" + it.code;
+    body.appendChild(gatesHost);
+
+    var ev = el("div","evid");
+    var g3 = el("div","grid3");
+
+    var tw = el("div");
+    tw.appendChild(el("label","fld","Evidence tier"));
+    var tsel = document.createElement("select"); tsel.id = "tier-" + it.code;
+    tsel.appendChild(new Option("Choose",""));
+    TIERS.forEach(function(T){ tsel.appendChild(new Option(T.label, T.v)); });
+    tsel.addEventListener("change", function(){
+      state[it.code].tier = tsel.value;
+      if(!state[it.code].conf){
+        var c = $("conf-" + it.code);
+        c.value = (tsel.value === "R") ? "low" : "medium";
+        state[it.code].conf = c.value;
+      }
+      refreshItem(it); refreshLive();
+    });
+    tw.appendChild(tsel);
+    tw.appendChild(el("p","hint","Trade press is not a tier. It locates documents and carries no score."));
+    g3.appendChild(tw);
+
+    var cw = el("div");
+    cw.appendChild(el("label","fld","Coding confidence"));
+    var csel = document.createElement("select"); csel.id = "conf-" + it.code;
+    csel.appendChild(new Option("Choose",""));
+    CONFS.forEach(function(c){ csel.appendChild(new Option(c,c)); });
+    csel.addEventListener("change", function(){ state[it.code].conf = csel.value; refreshItem(it); refreshLive(); });
+    cw.appendChild(csel);
+    g3.appendChild(cw);
+
+    var sw = el("div");
+    sw.appendChild(el("label","fld","Source"));
+    var sin = document.createElement("input"); sin.type = "text"; sin.id = "src-" + it.code;
+    sin.placeholder = "Citation or URL, with access date if web only";
+    sin.addEventListener("input", function(){ state[it.code].src = sin.value; refreshItem(it); refreshLive(); });
+    sw.appendChild(sin);
+    g3.appendChild(sw);
+    ev.appendChild(g3);
+
+    var jw = el("div"); jw.style.marginTop = "14px";
+    var jlabRow = el("div"); jlabRow.style.display = "flex"; jlabRow.style.justifyContent = "space-between";
+    jlabRow.appendChild(el("label","fld","Justification, with the quotation or specific reference"));
+    var cc = el("span","charcount short","0 / 40"); cc.id = "cc-" + it.code;
+    jlabRow.appendChild(cc);
+    jw.appendChild(jlabRow);
+    var jta = document.createElement("textarea"); jta.id = "just-" + it.code;
+    jta.placeholder = "Two to three lines. The test is whether a second coder could re-derive this level from the justification alone, without repeating the research.";
+    jta.addEventListener("input", function(){
+      state[it.code].just = jta.value;
+      var n = jta.value.trim().length;
+      cc.textContent = n + " / 40";
+      cc.className = "charcount" + (n < 40 ? " short" : "");
+      refreshItem(it); refreshLive();
+    });
+    jw.appendChild(jta);
+    ev.appendChild(jw);
+
+    if(!it.claim){
+      var fb = el("label","flagbox2"); fb.id = "flagbox-" + it.code;
+      var fi = document.createElement("input"); fi.type = "checkbox"; fi.id = "flag-" + it.code;
+      var ft = el("span","ft");
+      ft.appendChild(el("span","fk","Constraint flag, defaults to off"));
+      ft.appendChild(document.createTextNode("A tier 1 or tier 2 source documents a specific external requirement making the observed level the only available one. Not a constraint that is likely, customary or reasonable to assume."));
+      var freq = document.createElement("input");
+      freq.type = "text"; freq.id = "flagreq-" + it.code; freq.placeholder = "Name the requirement and its source";
+      freq.style.marginTop = "9px"; freq.style.display = "none";
+      freq.addEventListener("input", function(){ state[it.code].flagReq = freq.value; refreshItem(it); refreshLive(); });
+      fi.addEventListener("change", function(){
+        state[it.code].flag = fi.checked;
+        freq.style.display = fi.checked ? "block" : "none";
+        fb.classList.toggle("on", fi.checked);
+        refreshItem(it); refreshLive();
+      });
+      ft.appendChild(freq);
+      fb.appendChild(fi); fb.appendChild(ft);
+      ev.appendChild(fb);
+    }
+
+    body.appendChild(ev);
+
+    var errBox = el("div","itemerr"); errBox.id = "err-" + it.code;
+    body.appendChild(errBox);
+
+    card.appendChild(body);
+    host.appendChild(card);
+    if(idx === 0) card.classList.add("open");
+  });
+}
+
+function refreshItem(it){
+  var st = state[it.code];
+  var card = $("card-" + it.code);
+  var stateSpan = $("state-" + it.code);
+  var errs = itemErrors(it);
+
+  card.classList.remove("done","ins","err");
+  if(st.level === null){
+    stateSpan.textContent = "Not answered"; stateSpan.className = "state";
+  } else if(st.level === "INS"){
+    stateSpan.textContent = "INS"; stateSpan.className = "state";
+    card.classList.add("ins");
+  } else if(errs.length){
+    stateSpan.textContent = "Level " + st.level + ", incomplete"; stateSpan.className = "state no";
+    card.classList.add("err");
+  } else {
+    stateSpan.textContent = "Level " + st.level + " " + st.tier + (st.flag ? " flagged" : ""); stateSpan.className = "state ok";
+    card.classList.add("done");
+  }
+
+  // gates
+  var gh = $("gates-" + it.code);
+  gh.textContent = "";
+  if(typeof st.level === "number"){
+    (it.gates || []).forEach(function(g, gi){
+      if(g.when.indexOf(st.level) === -1) return;
+      var lab = el("label","gate");
+      var cb = document.createElement("input"); cb.type = "checkbox";
+      cb.checked = !!st.gates[gi];
+      cb.addEventListener("change", function(){ st.gates[gi] = cb.checked; refreshItem(it); refreshLive(); });
+      var tx = el("span","gt");
+      tx.appendChild(el("span","gk","Rule check, required at level " + st.level));
+      tx.appendChild(document.createTextNode(g.t));
+      lab.appendChild(cb); lab.appendChild(tx);
+      gh.appendChild(lab);
+    });
+  }
+
+  // tier options greyed where the level forbids them
+  var tsel = $("tier-" + it.code);
+  Array.prototype.forEach.call(tsel.options, function(o){
+    if(!o.value) return;
+    var T = TIERS.filter(function(t){ return t.v === o.value; })[0];
+    var forbidden = (typeof st.level === "number") && !it.claim && st.level > T.maxLevel;
+    o.disabled = forbidden;
+    o.textContent = T.label + (forbidden ? "   [cannot carry level " + st.level + "]" : "");
+  });
+
+  var eb = $("err-" + it.code);
+  if(errs.length && st.level !== null){
+    eb.textContent = "";
+    eb.appendChild(el("b",null,"Blocking this entry"));
+    var ul = document.createElement("ul");
+    errs.forEach(function(e){ ul.appendChild(el("li",null,e)); });
+    eb.appendChild(ul);
+    eb.classList.add("on");
+  } else {
+    eb.classList.remove("on");
+  }
+}
+
+/* ==========================================================================
+   LIVE PANEL
+   ========================================================================== */
+function refreshLive(){
+  var r = compute();
+  function set(id, val, suffix){
+    var e = $(id);
+    if(val === null || val === undefined){ e.textContent = "–"; e.className = "v dim"; }
+    else { e.textContent = (typeof val === "number" && val > 0 && suffix !== "%" ? "+" : "") + val + (suffix||""); e.className = "v"; }
+  }
+  set("mAuthAbs", r.authAbs); set("mAuthRoom", r.authRoom);
+  set("mAgAbs", r.agAbs);     set("mAgRoom", r.agRoom);
+  var ce = $("mCont");
+  if(r.cont === null){ ce.textContent = "–"; ce.className = "v dim"; } else { ce.textContent = r.cont + " / 100"; ce.className = "v"; }
+  var de = $("mDist");
+  if(r.dist === null){ de.textContent = "–"; de.className = "v dim"; } else { de.textContent = r.dist + " pts"; de.className = "v"; }
+  var ge = $("mGap");
+  if(r.gap === null){ ge.textContent = "–"; ge.className = "v dim"; } else { ge.textContent = (r.gap>0?"+":"") + r.gap.toFixed(2); ge.className = "v"; }
+  $("mCounts").textContent = r.nIns + " INS, " + r.nFlag + " flagged";
+  $("mCounts").className = "v";
+
+  [["covAuth", r.covAuth],["covAg", r.covAg],["covCont", r.covCont]].forEach(function(p){
+    var bar = $(p[0]); bar.style.width = Math.min(p[1],100) + "%";
+    bar.className = p[1] >= 60 ? "" : "low";
+    $(p[0] + "Txt").textContent = p[1] + "%";
+  });
+
+  var abs = $("cAbs"), room = $("cRoom"), line = $("cLine");
+  if(r.authAbs !== null && r.agAbs !== null){
+    var cxA = 210 + (r.authAbs/100)*190, cyA = 210 - (r.agAbs/100)*190;
+    abs.setAttribute("cx", cxA); abs.setAttribute("cy", cyA); abs.setAttribute("opacity", 1);
+    var cxR = 210 + (r.xr/100)*190, cyR = 210 - (r.yr/100)*190;
+    room.setAttribute("cx", cxR); room.setAttribute("cy", cyR); room.setAttribute("opacity", 1);
+    line.setAttribute("x1", cxR); line.setAttribute("y1", cyR);
+    line.setAttribute("x2", cxA); line.setAttribute("y2", cyA);
+  } else {
+    abs.setAttribute("opacity", 0); room.setAttribute("opacity", 0);
+    line.setAttribute("x1",210); line.setAttribute("y1",210); line.setAttribute("x2",210); line.setAttribute("y2",210);
+  }
+
+  var qb = $("quadBox");
+  if(r.quadRoom){
+    qb.style.display = "block";
+    $("quadName").textContent = QUADS[r.quadRoom].n;
+    var note = QUADS[r.quadRoom].t;
+    if(r.quadAbs && r.quadAbs !== r.quadRoom){
+      note += " In absolute terms the same answers put it in " + QUADS[r.quadAbs].n + ". Both readings are true.";
+    }
+    $("quadNote").textContent = note;
+  } else { qb.style.display = "none"; }
+
+  var tb = $("theatreBox");
+  if(r.theatre && r.theatre !== "coherent"){
+    tb.style.display = "block";
+    $("theatreKind").textContent = r.theatre;
+    var txt = "";
+    if(r.theatre === "theatre"){
+      txt = "The claim sits " + r.gap.toFixed(2) + " ahead of the authority reading, and less than a quarter of the authority weight is flagged as externally fixed. Both conditions of the theatre test are met: the claim is ahead of the arrangement, and the arrangement was substantially chosen.";
+    } else if(r.theatre === "over-claim-under-constraint"){
+      txt = "The claim sits " + r.gap.toFixed(2) + " ahead of the authority reading, and a quarter or more of the authority weight is flagged as externally fixed. That is over-claiming under constraint rather than theatre. The second condition of the test is not met.";
+    } else {
+      txt = "The claim sits " + Math.abs(r.gap).toFixed(2) + " behind the authority reading. More authority has moved than the organisation says publicly, which gives up ground in every funding conversation where localisation is assessed, at no internal cost.";
+    }
+    $("theatreTxt").textContent = txt;
+  } else if(r.theatre === "coherent"){
+    tb.style.display = "block";
+    $("theatreKind").textContent = "coherent";
+    $("theatreTxt").textContent = "The claim and the authority reading are within 0.28 of each other. The public position is consistent with what has moved, whichever end of the scale it sits at.";
+  } else { tb.style.display = "none"; }
+
+  var answered = ITEMS.filter(function(it){ return state[it.code].level !== null; }).length;
+  $("liveSub").textContent = answered + " of 12 items answered" + (editingId ? ". Editing " + editingId : "");
+
+  var b = entryBlockers();
+  var box = $("blockers"), list = $("blockerList");
+  list.textContent = "";
+  if(b.length){
+    box.className = "blockers";
+    box.querySelector("b").textContent = "Not ready to save";
+    b.slice(0,7).forEach(function(x){ list.appendChild(el("li",null,x)); });
+    if(b.length > 7) list.appendChild(el("li",null,"and " + (b.length-7) + " more."));
+    $("btnSaveEntry").disabled = true;
+  } else {
+    box.className = "blockers clear";
+    box.querySelector("b").textContent = "Ready to save";
+    list.appendChild(el("li",null,"All twelve items answered, every scored item evidenced, every rule check confirmed."));
+    if(r.covAuth < 60) list.appendChild(el("li",null,"Authority coverage is below 60 per cent, so no authority score will be reported for this entry."));
+    if(r.covAg < 60) list.appendChild(el("li",null,"Agency coverage is below 60 per cent, so no agency score will be reported."));
+    if(r.covCont < 60) list.appendChild(el("li",null,"Continuity coverage is below 60 per cent, so no continuity score will be reported."));
+    $("btnSaveEntry").disabled = false;
+  }
+}
+
+/* ==========================================================================
+   SAVE / LOAD ENTRIES
+   ========================================================================== */
+function lowestConfidence(){
+  var order = {"high":0,"medium-high":1,"medium":2,"low":3};
+  var worst = null;
+  ITEMS.forEach(function(it){
+    var st = state[it.code];
+    if(typeof st.level !== "number") return;
+    if(worst === null || order[st.conf] > order[worst]) worst = st.conf;
+  });
+  return worst || "";
+}
+
+function saveEntry(){
+  var b = entryBlockers();
+  if(b.length){ toast("Cannot save: " + b[0], true); return; }
+  var r = compute();
+  var id = editingId || nextEntryId();
+  var row = {
+    entry_id:id,
+    organisation:$("fOrg").value.trim(),
+    short_name:$("fShort").value.trim(),
+    programme:$("fProg").value.trim(),
+    country:$("fCountry").value.trim(),
+    date_entered:$("fDate").value || todayISO(),
+    signal_source:$("fSignal").value,
+    ctx_type:$("fType").value,
+    ctx_duration:$("fDur").value,
+    ctx_purpose:$("fPurpose").value.trim(),
+    authority_abs: r.authAbs === null ? "" : r.authAbs,
+    authority_room: r.authRoom === null ? "" : r.authRoom,
+    agency_abs: r.agAbs === null ? "" : r.agAbs,
+    agency_room: r.agRoom === null ? "" : r.agRoom,
+    continuity_pct: r.cont === null ? "" : r.cont,
+    coverage_authority_pct:r.covAuth,
+    coverage_agency_pct:r.covAg,
+    coverage_continuity_pct:r.covCont,
+    quadrant_room:r.quadRoom, quadrant_abs:r.quadAbs,
+    constraint_distance: r.dist === null ? "" : r.dist,
+    claim_value: r.claim === null ? "" : r.claim,
+    claim_gap: r.gap === null ? "" : r.gap.toFixed(2),
+    theatre_test:r.theatre,
+    n_ins:r.nIns, n_flagged:r.nFlag,
+    coding_confidence:lowestConfidence(),
+    fifteen_weeks_ref:$("fFW").value.trim(),
+    coder:$("fCoder").value.trim(),
+    note:"", decision_log_ref:"", correction_note:"", correction_date:""
+  };
+  ITEMS.forEach(function(it){
+    var st = state[it.code];
+    row["TD_" + it.code] = st.level === "INS" ? "INS" : st.level;
+    if(!it.claim) row["TD_" + it.code + "_flag"] = st.flag ? 1 : 0;
+  });
+
+  var existing = scores.findIndex(function(s){ return s.entry_id === id; });
+  if(existing >= 0){ scores[existing] = row; } else { scores.push(row); }
+  evidence = evidence.filter(function(e){ return e.entry_id !== id; });
+  ITEMS.forEach(function(it){
+    var st = state[it.code];
+    evidence.push({
+      entry_id:id, item:it.code,
+      level: st.level === "INS" ? "INS" : st.level,
+      tier: st.level === "INS" ? "" : st.tier,
+      confidence: st.level === "INS" ? "" : st.conf,
+      justification: st.just.trim(),
+      source: st.src.trim(),
+      flag: (!it.claim && st.flag) ? 1 : 0
+    });
+  });
+
+  setDirty(true);
+  writeAll().then(function(){
+    toast((existing >= 0 ? "Entry updated: " : "Entry saved: ") + id);
+    editingId = null;
+    clearForm(true);
+    renderData(); renderBadges();
+  });
+}
+function nextEntryId(){
+  var max = 0;
+  scores.forEach(function(s){
+    var m = /(\d+)$/.exec(String(s.entry_id || ""));
+    if(m) max = Math.max(max, parseInt(m[1],10));
+  });
+  return "TD" + String(max+1).padStart(4,"0");
+}
+
+function clearForm(keepMeta){
+  ITEMS.forEach(function(it){
+    state[it.code] = {level:null, tier:"", conf:"", just:"", src:"", flag:false, flagReq:"", gates:{}};
+  });
+  if(!keepMeta){
+    ["fOrg","fShort","fProg","fCountry","fPurpose","fFW"].forEach(function(f){ $(f).value = ""; });
+    $("fType").value = ""; $("fDur").value = "";
+  } else {
+    ["fOrg","fShort","fProg","fCountry","fPurpose","fFW"].forEach(function(f){ $(f).value = ""; });
+    $("fType").value = ""; $("fDur").value = "";
+  }
+  $("fDate").value = todayISO();
+  buildItems();
+  ITEMS.forEach(refreshItem);
+  refreshLive();
+}
+
+function loadEntry(id){
+  var row = scores.filter(function(s){ return s.entry_id === id; })[0];
+  if(!row) return;
+  editingId = id;
+  $("fOrg").value = row.organisation || "";
+  $("fShort").value = row.short_name || "";
+  $("fProg").value = row.programme || "";
+  $("fCountry").value = row.country || "";
+  $("fDate").value = row.date_entered || todayISO();
+  $("fSignal").value = row.signal_source || "news";
+  $("fType").value = row.ctx_type || "";
+  $("fDur").value = row.ctx_duration || "";
+  $("fPurpose").value = row.ctx_purpose || "";
+  $("fFW").value = row.fifteen_weeks_ref || "";
+  $("fCoder").value = row.coder || "";
+
+  buildItems();
+  ITEMS.forEach(function(it){
+    var ev = evidence.filter(function(e){ return e.entry_id === id && e.item === it.code; })[0] || {};
+    var lvRaw = row["TD_" + it.code];
+    var st = state[it.code];
+    if(lvRaw === "INS" || lvRaw === ""){ st.level = (lvRaw === "INS") ? "INS" : null; }
+    else { st.level = parseInt(lvRaw,10) || null; }
+    st.tier = ev.tier || "";
+    st.conf = ev.confidence || "";
+    st.just = ev.justification || "";
+    st.src = ev.source || "";
+    st.flag = String(row["TD_" + it.code + "_flag"] || "0") === "1";
+    st.flagReq = st.flag ? "carried from saved entry" : "";
+    st.gates = {};
+    (it.gates || []).forEach(function(g, gi){
+      if(typeof st.level === "number" && g.when.indexOf(st.level) !== -1) st.gates[gi] = true;
+    });
+    // reflect into DOM
+    if(st.level === "INS"){
+      var ins = document.querySelector('input[name="lv-'+it.code+'"][value="INS"]'); if(ins) ins.checked = true;
+    } else if(st.level){
+      var rb = document.querySelector('input[name="lv-'+it.code+'"][value="'+st.level+'"]'); if(rb) rb.checked = true;
+    }
+    if($("tier-"+it.code)) $("tier-"+it.code).value = st.tier;
+    if($("conf-"+it.code)) $("conf-"+it.code).value = st.conf;
+    if($("just-"+it.code)){
+      $("just-"+it.code).value = st.just;
+      var n = st.just.trim().length;
+      $("cc-"+it.code).textContent = n + " / 40";
+      $("cc-"+it.code).className = "charcount" + (n<40?" short":"");
+    }
+    if($("src-"+it.code)) $("src-"+it.code).value = st.src;
+    if($("flag-"+it.code) && st.flag){
+      $("flag-"+it.code).checked = true;
+      $("flagreq-"+it.code).style.display = "block";
+      $("flagreq-"+it.code).value = st.flagReq;
+      $("flagbox-"+it.code).classList.add("on");
+    }
+    refreshItem(it);
+  });
+  refreshLive();
+  switchTab("pScore");
+  toast("Loaded " + id + " for editing");
+}
+
+/* ==========================================================================
+   FILE WIRING
+   ========================================================================== */
+var FILE_NAMES = {scores:"td_scores.csv", evidence:"td_evidence.csv", log:"td_decision_log.csv"};
+
+async function connectFolder(){
+  if(!("showDirectoryPicker" in window)){
+    toast("This browser does not support folder access. Use Import and Export instead.", true);
+    return;
+  }
+  try{
+    var dir = await window.showDirectoryPicker({mode:"readwrite"});
+    handles.dir = dir;
+    handles.scores = await dir.getFileHandle(FILE_NAMES.scores, {create:true});
+    handles.evidence = await dir.getFileHandle(FILE_NAMES.evidence, {create:true});
+    handles.log = await dir.getFileHandle(FILE_NAMES.log, {create:true});
+    var sTxt = await (await handles.scores.getFile()).text();
+    var eTxt = await (await handles.evidence.getFile()).text();
+    var lTxt = await (await handles.log.getFile()).text();
+    if(sTxt.trim()) scores = parseCSV(sTxt);
+    if(eTxt.trim()) evidence = parseCSV(eTxt);
+    if(lTxt.trim()) decisions = parseCSV(lTxt);
+    setDirty(false);
+    if(!sTxt.trim()) await writeAll();
+    renderData(); renderLog(); renderBadges();
+    toast("Connected. " + scores.length + " entries, " + evidence.length + " evidence rows, " + decisions.length + " log rows.");
+  } catch(err){
+    if(err && err.name === "AbortError") return;
+    toast("Could not connect: " + (err && err.message ? err.message : err), true);
+  }
+}
+
+async function writeHandle(h, text){
+  var w = await h.createWritable();
+  await w.write(text);
+  await w.close();
+}
+async function writeAll(){
+  if(!handles.dir){ return; }
+  try{
+    await writeHandle(handles.scores, toCSV(SCORE_COLS, scores));
+    await writeHandle(handles.evidence, toCSV(EVID_COLS, evidence));
+    await writeHandle(handles.log, toCSV(LOG_COLS, decisions));
+    setDirty(false);
+  } catch(err){
+    toast("Write failed: " + (err && err.message ? err.message : err), true);
+  }
+}
+
+function download(name, text){
+  var blob = new Blob([text], {type:"text/csv;charset=utf-8;"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+}
+function exportAll(){
+  download(FILE_NAMES.scores, toCSV(SCORE_COLS, scores));
+  download(FILE_NAMES.evidence, toCSV(EVID_COLS, evidence));
+  download(FILE_NAMES.log, toCSV(LOG_COLS, decisions));
+  setDirty(false);
+  toast("Three files downloaded.");
+}
+function handleImport(files){
+  var done = 0, total = files.length;
+  Array.prototype.forEach.call(files, function(f){
+    var rd = new FileReader();
+    rd.onload = function(){
+      var rows = parseCSV(rd.result);
+      var n = (f.name || "").toLowerCase();
+      if(n.indexOf("evidence") !== -1) evidence = rows;
+      else if(n.indexOf("decision") !== -1 || n.indexOf("log") !== -1) decisions = rows;
+      else if(n.indexOf("score") !== -1) scores = rows;
+      else if(rows.length && rows[0].item !== undefined) evidence = rows;
+      else if(rows.length && rows[0].log_id !== undefined) decisions = rows;
+      else scores = rows;
+      done++;
+      if(done === total){
+        renderData(); renderLog(); renderBadges();
+        toast("Imported. " + scores.length + " entries, " + evidence.length + " evidence rows, " + decisions.length + " log rows.");
+      }
+    };
+    rd.readAsText(f);
+  });
+}
+
+/* ==========================================================================
+   DATASET TAB
+   ========================================================================== */
+function renderBadges(){
+  $("badgeData").textContent = scores.length;
+  $("badgeLog").textContent = decisions.length;
+}
+function renderData(){
+  var host = $("dataTable");
+  var filter = ($("dataFilter").value || "").toLowerCase();
+  var rows = scores.filter(function(s){
+    if(!filter) return true;
+    return [s.organisation, s.programme, s.coder].join(" ").toLowerCase().indexOf(filter) !== -1;
+  });
+
+  // stats
+  var sg = $("dataStats"); sg.textContent = "";
+  var totalItems = scores.length * ITEMS.length;
+  var totalIns = scores.reduce(function(a,s){ return a + (parseInt(s.n_ins,10) || 0); }, 0);
+  var theatreN = scores.filter(function(s){ return s.theatre_test === "theatre"; }).length;
+  var authOk = scores.filter(function(s){ return (parseInt(s.coverage_authority_pct,10)||0) >= 60; }).length;
+  [[scores.length,"entries"],
+   [totalItems ? Math.round(totalIns/totalItems*100)+"%" : "0%","INS rate"],
+   [authOk,"authority axis reported"],
+   [theatreN,"coded theatre"],
+   [decisions.length,"decisions logged"]].forEach(function(p){
+    var d = el("div","stat");
+    d.appendChild(el("div","n", String(p[0])));
+    d.appendChild(el("div","l", p[1]));
+    sg.appendChild(d);
+  });
+
+  if(!rows.length){
+    host.textContent = "";
+    host.appendChild(el("div","empty", scores.length ? "No entries match that filter." : "No entries yet. Score one on the first tab, or connect a folder containing an existing td_scores.csv."));
+    return;
+  }
+  var t = document.createElement("table");
+  var thead = document.createElement("tr");
+  ["","ID","Organisation","Anchor programme","Coder","Auth abs","Auth room","Agency abs","Cont","Cov A/G/C","Gap","Test","INS","Conf"].forEach(function(h){
+    thead.appendChild(el("th",null,h));
+  });
+  var th = document.createElement("thead"); th.appendChild(thead); t.appendChild(th);
+  var tb = document.createElement("tbody");
+  rows.forEach(function(s){
+    var tr = document.createElement("tr");
+    var tdBtn = document.createElement("td");
+    var b = el("button","ghost sm","Edit");
+    b.addEventListener("click", function(){ loadEntry(s.entry_id); });
+    tdBtn.appendChild(b);
+    var bd = el("button","ghost sm","Del");
+    bd.style.marginLeft = "5px";
+    bd.addEventListener("click", function(){
+      if(!confirm("Delete " + s.entry_id + " and its evidence rows?")) return;
+      scores = scores.filter(function(x){ return x.entry_id !== s.entry_id; });
+      evidence = evidence.filter(function(x){ return x.entry_id !== s.entry_id; });
+      setDirty(true); writeAll().then(function(){ renderData(); renderBadges(); toast("Deleted " + s.entry_id); });
+    });
+    tdBtn.appendChild(bd);
+    tr.appendChild(tdBtn);
+    tr.appendChild(el("td","num", s.entry_id));
+    tr.appendChild(el("td",null, s.organisation));
+    tr.appendChild(el("td",null, s.programme));
+    tr.appendChild(el("td","num", s.coder));
+    tr.appendChild(el("td","num", s.authority_abs === "" ? "–" : s.authority_abs));
+    tr.appendChild(el("td","num", s.authority_room === "" ? "–" : s.authority_room));
+    tr.appendChild(el("td","num", s.agency_abs === "" ? "–" : s.agency_abs));
+    tr.appendChild(el("td","num", s.continuity_pct === "" ? "–" : s.continuity_pct));
+    tr.appendChild(el("td","num", s.coverage_authority_pct + "/" + s.coverage_agency_pct + "/" + s.coverage_continuity_pct));
+    tr.appendChild(el("td","num", s.claim_gap === "" ? "–" : s.claim_gap));
+    var tdT = document.createElement("td");
+    if(s.theatre_test){
+      var cls = s.theatre_test === "theatre" ? "theatre" : (s.theatre_test === "understated" ? "under" : (s.theatre_test === "over-claim-under-constraint" ? "overc" : "coherent"));
+      tdT.appendChild(el("span","pill " + cls, s.theatre_test === "over-claim-under-constraint" ? "over-claim" : s.theatre_test));
+    }
+    tr.appendChild(tdT);
+    tr.appendChild(el("td","num", s.n_ins));
+    tr.appendChild(el("td","num", s.coding_confidence));
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb);
+  host.textContent = "";
+  host.appendChild(t);
+}
+
+function insReport(){
+  var host = $("insReport");
+  host.textContent = "";
+  if(!scores.length){ toast("No entries yet.", true); return; }
+  var wrap = el("div");
+  wrap.style.marginTop = "26px";
+  wrap.appendChild(el("h3",null,"Insufficient evidence by item"));
+  var p = el("p","hint","Rule 1 guarantees that coverage is uneven. This is the shape of what is missing, which the codebook commits to reporting rather than correcting.");
+  wrap.appendChild(p);
+  var t = document.createElement("table");
+  var hr = document.createElement("tr");
+  ["Item","Name","INS count","INS rate","Scored"].forEach(function(h){ hr.appendChild(el("th",null,h)); });
+  var th = document.createElement("thead"); th.appendChild(hr); t.appendChild(th);
+  var tb = document.createElement("tbody");
+  ITEMS.forEach(function(it){
+    var ins = 0, scored = 0;
+    scores.forEach(function(s){
+      var v = s["TD_" + it.code];
+      if(v === "INS") ins++; else if(v !== "" && v !== undefined) scored++;
+    });
+    var tr = document.createElement("tr");
+    tr.appendChild(el("td","num", it.code));
+    tr.appendChild(el("td",null, it.name));
+    tr.appendChild(el("td","num", String(ins)));
+    tr.appendChild(el("td","num", scores.length ? Math.round(ins/scores.length*100) + "%" : "–"));
+    tr.appendChild(el("td","num", String(scored)));
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb);
+  var tw = el("div","tablewrap"); tw.appendChild(t);
+  wrap.appendChild(tw);
+  host.appendChild(wrap);
+}
+
+/* ==========================================================================
+   RELIABILITY:  ordinal Krippendorff's alpha
+   ========================================================================== */
+function ordinalAlpha(units){
+  var use = units.filter(function(u){ return u.length >= 2; });
+  if(!use.length) return {alpha:null, note:"no unit had two or more coders", nUnits:0, nPairs:0};
+  var cats = [1,2,3,4];
+  var o = {};
+  cats.forEach(function(c){ o[c] = {}; cats.forEach(function(k){ o[c][k] = 0; }); });
+  use.forEach(function(u){
+    var m = u.length;
+    for(var i=0;i<m;i++) for(var j=0;j<m;j++) if(i!==j) o[u[i]][u[j]] += 1/(m-1);
+  });
+  var nc = {}, n = 0;
+  cats.forEach(function(c){
+    nc[c] = cats.reduce(function(s,k){ return s + o[c][k]; }, 0);
+    n += nc[c];
+  });
+  var observedCats = cats.filter(function(c){ return nc[c] > 0; });
+  if(observedCats.length < 2) return {alpha:null, note:"only one level was ever used, so alpha is undefined", nUnits:use.length, nPairs:n};
+  if(n < 2) return {alpha:null, note:"too few pairable values", nUnits:use.length, nPairs:n};
+
+  function d2(c,k){
+    var lo = Math.min(c,k), hi = Math.max(c,k), s = 0;
+    for(var g=lo; g<=hi; g++) s += nc[g];
+    s -= (nc[c] + nc[k])/2;
+    return s*s;
+  }
+  var Do = 0, De = 0;
+  cats.forEach(function(c){ cats.forEach(function(k){ Do += o[c][k] * d2(c,k); }); });
+  Do /= n;
+  cats.forEach(function(c){ cats.forEach(function(k){ De += nc[c]*nc[k]*d2(c,k); }); });
+  De /= (n*(n-1));
+  if(De === 0) return {alpha:null, note:"expected disagreement is zero", nUnits:use.length, nPairs:n};
+  return {alpha: 1 - Do/De, note:"", nUnits:use.length, nPairs:n};
+}
+
+function bootstrapLower(units, iters){
+  var use = units.filter(function(u){ return u.length >= 2; });
+  if(use.length < 3 || !iters) return null;
+  var vals = [];
+  for(var b=0;b<iters;b++){
+    var samp = [];
+    for(var i=0;i<use.length;i++) samp.push(use[Math.floor(Math.random()*use.length)]);
+    var a = ordinalAlpha(samp).alpha;
+    if(a !== null && isFinite(a)) vals.push(a);
+  }
+  if(vals.length < 20) return null;
+  vals.sort(function(a,b){ return a-b; });
+  return vals[Math.floor(0.05 * vals.length)];
+}
+
+function quadWeightedKappa(pairs){
+  // pairs: array of [a,b] on 1..4
+  if(pairs.length < 2) return null;
+  var k = 4, obs = [], i, j;
+  for(i=0;i<k;i++){ obs.push(new Array(k).fill(0)); }
+  var ra = new Array(k).fill(0), rb = new Array(k).fill(0);
+  pairs.forEach(function(p){
+    obs[p[0]-1][p[1]-1]++;
+    ra[p[0]-1]++; rb[p[1]-1]++;
+  });
+  var n = pairs.length, num = 0, den = 0;
+  for(i=0;i<k;i++) for(j=0;j<k;j++){
+    var w = Math.pow(i-j,2) / Math.pow(k-1,2);
+    var e = ra[i]*rb[j]/n;
+    num += w * obs[i][j];
+    den += w * e;
+  }
+  if(den === 0) return null;
+  return 1 - num/den;
+}
+
+function unitKey(s){
+  return (String(s.organisation||"").trim().toLowerCase()) + " :: " + (String(s.programme||"").trim().toLowerCase());
+}
+
+function runReliability(){
+  var host = $("relOut");
+  host.textContent = "";
+  if(scores.length < 2){
+    host.appendChild(el("div","empty","Need at least two coded entries, and at least one organisation and anchor programme coded by two different coder labels."));
+    return;
+  }
+  var iters = parseInt($("relBoot").value, 10) || 0;
+
+  // group by unit
+  var byUnit = {};
+  scores.forEach(function(s){
+    var k = unitKey(s);
+    if(!byUnit[k]) byUnit[k] = [];
+    byUnit[k].push(s);
+  });
+  var multi = Object.keys(byUnit).filter(function(k){
+    var coders = {};
+    byUnit[k].forEach(function(s){ coders[String(s.coder||"").trim()] = 1; });
+    return Object.keys(coders).length >= 2;
+  });
+
+  var head = el("div");
+  head.appendChild(el("h3",null,"Result"));
+  var sg = el("div","statgrid");
+  [[Object.keys(byUnit).length,"units in dataset"],
+   [multi.length,"units double coded"],
+   [iters ? iters : "off","bootstrap resamples"]].forEach(function(p){
+    var d = el("div","stat");
+    d.appendChild(el("div","n", String(p[0])));
+    d.appendChild(el("div","l", p[1]));
+    sg.appendChild(d);
+  });
+  head.appendChild(sg);
+  host.appendChild(head);
+
+  if(!multi.length){
+    host.appendChild(el("div","empty","No organisation and anchor programme has been coded by two or more coder labels. Re-score an existing entry under a different coder label, for example MT-r2 for a blind second pass, and the calculation will run."));
+    return;
+  }
+
+  var t = document.createElement("table");
+  var hr = document.createElement("tr");
+  ["Item","Name","Units","Pairs","Ordinal alpha","Boot 5th pct","Weighted kappa","% agree","Verdict"].forEach(function(h){ hr.appendChild(el("th",null,h)); });
+  var th = document.createElement("thead"); th.appendChild(hr); t.appendChild(th);
+  var tb = document.createElement("tbody");
+
+  var summary = {pass:0, tent:0, fail:0, undef:0};
+
+  ITEMS.forEach(function(it){
+    var units = [], pairs = [], agree = 0, agreeN = 0;
+    multi.forEach(function(k){
+      var vals = [];
+      byUnit[k].forEach(function(s){
+        var v = s["TD_" + it.code];
+        if(v === "INS" || v === "" || v === undefined) return;
+        var n = parseInt(v,10);
+        if(n >= 1 && n <= 4) vals.push(n);
+      });
+      if(vals.length >= 2){
+        units.push(vals);
+        if(vals.length === 2) pairs.push([vals[0], vals[1]]);
+        for(var a=0;a<vals.length;a++) for(var b=a+1;b<vals.length;b++){ agreeN++; if(vals[a]===vals[b]) agree++; }
+      }
+    });
+    var res = ordinalAlpha(units);
+    var lower = res.alpha !== null ? bootstrapLower(units, iters) : null;
+    var kap = pairs.length >= 2 ? quadWeightedKappa(pairs) : null;
+
+    var judgeOn = (lower !== null) ? lower : res.alpha;
+    var verdict, vcls;
+    if(res.alpha === null){ verdict = "undefined"; vcls = "coherent"; summary.undef++; }
+    else if(judgeOn >= 0.800){ verdict = "pass"; vcls = "pass"; summary.pass++; }
+    else if(judgeOn >= 0.667){ verdict = "tentative"; vcls = "tent"; summary.tent++; }
+    else { verdict = "fail"; vcls = "fail"; summary.fail++; }
+
+    var tr = document.createElement("tr");
+    tr.appendChild(el("td","num", it.code));
+    tr.appendChild(el("td",null, it.name));
+    tr.appendChild(el("td","num", String(res.nUnits)));
+    tr.appendChild(el("td","num", res.nPairs ? res.nPairs.toFixed(1) : "0"));
+    tr.appendChild(el("td","num", res.alpha === null ? "–" : res.alpha.toFixed(3)));
+    tr.appendChild(el("td","num", lower === null ? "–" : lower.toFixed(3)));
+    tr.appendChild(el("td","num", kap === null ? "–" : kap.toFixed(3)));
+    tr.appendChild(el("td","num", agreeN ? Math.round(agree/agreeN*100) + "%" : "–"));
+    var tdv = document.createElement("td");
+    tdv.appendChild(el("span","pill " + vcls, verdict));
+    if(res.note){ tdv.appendChild(el("div","hint", res.note)); }
+    tr.appendChild(tdv);
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb);
+  var tw = el("div","tablewrap"); tw.appendChild(t);
+  host.appendChild(tw);
+
+  var n = el("div","warnnote");
+  n.appendChild(el("span","k","Reading this table"));
+  n.appendChild(el("p",null,"The verdict uses the bootstrapped fifth percentile where one could be computed, and the point estimate otherwise. Pass means the item clears 0.800 and may carry a public claim. Tentative means it sits between 0.667 and 0.800 and is for internal exploratory use only. Fail means below 0.667 and the item is not used, and is reported as failed."));
+  n.appendChild(el("p",null,"Undefined is not a pass. It means every coder used the same level on every double coded unit, or that no unit had two usable values. With no variation there is nothing for a reliability coefficient to measure, and the honest report is that the item was not tested."));
+  n.appendChild(el("p",null,"Sample size is doing a lot of work in that verdict column, and it is worth understanding before you read a failure as a problem with the item. A point estimate of 0.94 on six double coded units can still produce a fifth percentile below 0.667, because six units is a very wide interval. That is the bootstrap telling you the truth: the item may well be reliable and this amount of data cannot demonstrate it. The codebook specifies fifteen organisations for the transferability test for exactly this reason. Below roughly twelve units, read the point estimate as the signal and treat the verdict as not yet established rather than as failed."));
+  n.appendChild(el("p",null,"Weighted kappa is quadratic and is shown only where a unit has exactly two ratings. It is a familiar comparator, not the decision statistic. Per cent agreement is shown because it is what most people expect to see, and it is the most liberal of the three: it makes no correction for chance."));
+  n.appendChild(el("p",null,"Summary: " + summary.pass + " pass, " + summary.tent + " tentative, " + summary.fail + " fail, " + summary.undef + " undefined. Do not average these. An instrument level average licenses the use of an individual unreliable item, which is the thing the per item rule exists to prevent."));
+  host.appendChild(n);
+}
+
+/* ==========================================================================
+   DECISION LOG
+   ========================================================================== */
+function renderLog(){
+  var host = $("logTable");
+  host.textContent = "";
+  if(!decisions.length){
+    host.appendChild(el("div","empty","Nothing logged yet."));
+    return;
+  }
+  var t = document.createElement("table");
+  var hr = document.createElement("tr");
+  ["ID","Date","Entry","Item","A / B","Decided","Reasoning","Precedent",""].forEach(function(h){ hr.appendChild(el("th",null,h)); });
+  var th = document.createElement("thead"); th.appendChild(hr); t.appendChild(th);
+  var tb = document.createElement("tbody");
+  decisions.slice().reverse().forEach(function(d){
+    var tr = document.createElement("tr");
+    tr.appendChild(el("td","num", d.log_id));
+    tr.appendChild(el("td","num", d.date));
+    tr.appendChild(el("td","num", d.entry_id));
+    tr.appendChild(el("td","num", d.item));
+    tr.appendChild(el("td","num", (d.candidate_level_a||"") + " / " + (d.candidate_level_b||"")));
+    tr.appendChild(el("td","num", d.decided));
+    tr.appendChild(el("td",null, d.reasoning));
+    var tdp = document.createElement("td");
+    if(String(d.sets_precedent) === "1") tdp.appendChild(el("span","pill theatre","precedent"));
+    tr.appendChild(tdp);
+    var tdx = document.createElement("td");
+    var bx = el("button","ghost sm","Del");
+    bx.addEventListener("click", function(){
+      decisions = decisions.filter(function(x){ return x.log_id !== d.log_id; });
+      setDirty(true); writeAll().then(function(){ renderLog(); renderBadges(); });
+    });
+    tdx.appendChild(bx);
+    tr.appendChild(tdx);
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb);
+  host.appendChild(t);
+}
+function addLogEntry(){
+  var reason = $("dlReason").value.trim();
+  if(!reason){ toast("A decision needs its reasoning written down.", true); return; }
+  var max = 0;
+  decisions.forEach(function(d){
+    var m = /(\d+)$/.exec(String(d.log_id||""));
+    if(m) max = Math.max(max, parseInt(m[1],10));
+  });
+  decisions.push({
+    log_id:"DL" + String(max+1).padStart(3,"0"),
+    date:$("dlDate").value || todayISO(),
+    entry_id:$("dlEntry").value.trim(),
+    item:$("dlItem").value,
+    candidate_level_a:$("dlA").value.trim(),
+    candidate_level_b:$("dlB").value.trim(),
+    decided:$("dlDecided").value.trim(),
+    reasoning:reason,
+    sets_precedent:$("dlPrecedent").checked ? 1 : 0,
+    folded_into_version:""
+  });
+  setDirty(true);
+  writeAll().then(function(){
+    ["dlEntry","dlA","dlB","dlDecided","dlReason"].forEach(function(f){ $(f).value = ""; });
+    $("dlPrecedent").checked = false;
+    renderLog(); renderBadges();
+    toast("Decision logged.");
+  });
+}
+
+/* ==========================================================================
+   TABS AND WIRING
+   ========================================================================== */
+function switchTab(id){
+  Array.prototype.forEach.call(document.querySelectorAll(".panel"), function(p){ p.classList.toggle("on", p.id === id); });
+  Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(t){ t.classList.toggle("on", t.dataset.panel === id); });
+  if(id === "pData") renderData();
+  if(id === "pLog") renderLog();
+  window.scrollTo({top:0});
+}
+Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(t){
+  t.addEventListener("click", function(){ switchTab(t.dataset.panel); });
+});
+
+$("btnConnect").addEventListener("click", connectFolder);
+$("btnExport").addEventListener("click", exportAll);
+$("btnImport").addEventListener("click", function(){ $("fileImport").click(); });
+$("fileImport").addEventListener("change", function(e){ if(e.target.files.length) handleImport(e.target.files); e.target.value = ""; });
+$("btnSaveEntry").addEventListener("click", saveEntry);
+$("btnClear").addEventListener("click", function(){
+  if(!confirm("Clear the form? Anything not saved is lost.")) return;
+  editingId = null; clearForm(false);
+});
+$("btnLogDecision").addEventListener("click", function(){
+  $("dlEntry").value = editingId || $("fOrg").value.trim();
+  switchTab("pLog");
+});
+$("btnExpandAll").addEventListener("click", function(){
+  Array.prototype.forEach.call(document.querySelectorAll(".item"), function(c){ c.classList.add("open"); });
+});
+$("btnCollapseAll").addEventListener("click", function(){
+  Array.prototype.forEach.call(document.querySelectorAll(".item"), function(c){ c.classList.remove("open"); });
+});
+$("btnRunRel").addEventListener("click", runReliability);
+$("btnInsReport").addEventListener("click", insReport);
+$("dataFilter").addEventListener("input", renderData);
+["fOrg","fProg","fCoder","fType","fDur"].forEach(function(f){
+  $(f).addEventListener("input", refreshLive);
+  $(f).addEventListener("change", refreshLive);
+});
+window.addEventListener("beforeunload", function(e){
+  if(dirty){ e.preventDefault(); e.returnValue = ""; }
+});
+
+/* init */
+ITEMS.forEach(function(it){ $("dlItem").appendChild(new Option(it.code + "  " + it.name, it.code)); });
+$("fDate").value = todayISO();
+$("dlDate").value = todayISO();
+buildItems();
+ITEMS.forEach(refreshItem);
+refreshLive();
+renderData();
+renderLog();
+renderBadges();
+setDirty(false);
+if(!("showDirectoryPicker" in window)){
+  $("btnConnect").disabled = true;
+  $("btnConnect").title = "This browser does not support folder access. Use Import and Export.";
+}
+</script>
+</body>
+</html>
