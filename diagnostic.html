@@ -282,6 +282,19 @@
   .method b{color:var(--ink);}
   .method .note{display:block; margin-top:5px; color:#4a4a48;}
 
+  /* ---------- Corrections ---------- */
+  .corrections{
+    margin-top:34px; padding:24px 26px;
+    background:#ffffff; border:1px solid var(--line); border-left:3px solid #e47b12;
+    max-width:78ch;
+  }
+  .corrections .label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.07em;
+    text-transform:uppercase; color:var(--brown); display:block; margin-bottom:10px;
+  }
+  .corrections p{font-size:0.9rem; color:#2b2b28; margin:0 0 11px;}
+  .corrections p:last-child{margin-bottom:0;}
+
   /* ---------- Footer ---------- */
     .mt-offer{
     margin-top:34px; padding:26px 28px;
@@ -330,7 +343,7 @@
       <li><a href="research.html">Research</a></li>
       <li><a href="index.html#advisory">Advisory</a></li>
       <li><a href="diagnostic.html" class="current">Diagnostic</a></li>
-      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="diagnostic-codebook.html">Codebook</a></li>
       <li><a href="faq.html">Questions</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
@@ -341,7 +354,7 @@
         <li><a href="research.html">Research</a></li>
         <li><a href="index.html#advisory">Advisory</a></li>
         <li><a href="diagnostic.html">Diagnostic</a></li>
-        <li><a href="index.html#approach">Approach</a></li>
+        <li><a href="diagnostic-codebook.html">Codebook</a></li>
         <li><a href="faq.html">Questions</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
@@ -354,7 +367,7 @@
     <p class="eyebrow">Transition Diagnostic</p>
     <h1>How much of the room are you using?</h1>
     <p>Twelve questions about one programme. Every question has a box to tick if the answer is fixed by someone other than you. What comes out is two positions on the same plot: where the programme sits inside the room it actually controls, and where it sits in absolute terms. The distance between them is the constraint. Roughly twelve minutes.</p>
-    <p class="caveat">This is a thinking tool, not a validated instrument. The weightings are mine and they are arguable. Nothing is stored, nothing is sent anywhere, and refreshing the page clears it.</p>
+    <p class="caveat">This is a thinking tool, not a validated instrument. The weightings are mine and they are arguable. Nothing is stored, nothing is sent anywhere, and refreshing the page clears it. The written coding manual behind it, including what each level means and where the sources come from, is at <a href="diagnostic-codebook.html" style="color:#c9a877;">the codebook</a>.</p>
   </div>
 </header>
 
@@ -518,7 +531,7 @@
         <div class="mt-offer">
           <p class="mt-offer-lead">This is a thinking tool. It reads what you tell it.</p>
           <p>A Transition Exposure Review reads your actual documents: grant agreements, partner contracts, the operating model, the risk register. It tells you which of the constraints you have just flagged are real and which are habits.</p>
-          <p class="mt-offer-terms">Two weeks. &pound;1,200. Written findings and a ninety-minute session.</p>
+          <p class="mt-offer-terms">Two weeks. Fixed fee. Written findings and a ninety-minute session.</p>
           <div class="mt-offer-links">
             <a href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
             <a href="research.html">Read the 2026 study</a>
@@ -554,6 +567,13 @@
       <div class="method"><b>15. Most Significant Change (Davies and Dart, 2005).</b> Structured collection and selection of participant narratives.<span class="note">Surfaces things no indicator was watching for, which is exactly what you want early. I have also seen it arrive at the end of a process as a box of quotes decorating findings that were settled months earlier. The method did not do that. The timing did.</span></div>
     </div>
     <p style="font-size:0.9rem;color:#4a4a48;margin-top:22px;max-width:74ch;">Read together, the centre of gravity across all fifteen is funding directness and organisational capacity measured against an external template, mostly assessed before the handover happens. Very little of it asks whether a local actor can say no, and almost none of it separates a constraint the programme chose from one it inherited. That second absence is where the weighting here departs from the field.</p>
+
+    <div class="corrections">
+      <span class="label">Correction, August 2026</span>
+      <p>An earlier version of the notes on question twelve attributed the phrase localisation theatre to Mulder. I checked that attribution while writing the coding manual and it does not hold up. No source using the phrase exists, and no author matching the attribution could be identified. The attribution is withdrawn.</p>
+      <p>The phrase is mine. What it is built on is set out in the notes on question twelve, and at more length in <a href="diagnostic-codebook.html">the codebook</a>. There is a real and useful paper by Femke Mulder from 2023 on how local actors manage the contradictory legitimacy requirements of externally driven localisation, which is a different argument and is cited in its own right.</p>
+      <p>Two smaller corrections in the same place. Roepstorff (2020) is real and correctly dated and does not use the words performance or staging, so the paraphrase has been rewritten to match what she actually argues. Boateng (2021) has been given his initials and his argument restated in his terms rather than mine.</p>
+    </div>
   </div>
 </section>
 
@@ -565,6 +585,7 @@
     <div class="contact-grid">
       <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
       <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+      <a class="chip" href="diagnostic-codebook.html">Codebook</a>
       <a class="chip" href="faq.html">Questions</a>
       <a class="chip" href="index.html">Homepage</a>
     </div>
@@ -623,6 +644,7 @@ var Q = [
     ["Yes, and the requirement changed as a result",1]],
  notes:[
   "The heaviest weighting here, at 12. This is the working definition of ownership I use and I have not found a better one. Almost nothing in the sector measures it directly. The policy influence dimension in NEAR's framework comes closest, and Shifting the Power named the gap without closing it.",
+  "Hirschman's exit and voice is the frame I use for this, with one adjustment. His exit is a dissatisfied member leaving for a competitor. Here exit means giving up the funding, and there is usually no competitor, so voice carries the whole load. Where voice is also expensive, what you get is quiescence, and quiescence gets written up as good partnership.",
   "I have been on the wrong side of this. I have written the email that made a requirement sound non-negotiable when it was only inconvenient to change, because renegotiating it would have cost me a fortnight I did not have.",
   "Refusals leave traces. An amended logframe, an awkward thread, a deadline that moved. If the traces are hard to find, that is worth sitting with before you answer."
  ],
@@ -667,6 +689,7 @@ var Q = [
     ["It stands, and the decision rule itself gets revisited",1]],
  notes:[
   "Weighted 8. This is where trust sits, and it belongs on the authority axis rather than in a category of its own. Authority handed to a partner you do not fully trust comes back inside about a year, and it almost never comes back as a withdrawal of authority. It comes back as a new sign-off step added after an incident, or a reporting requirement that was not there before.",
+  "Bromley and Powell have the cleanest name for this. The delegation is fully implemented and the link between it and any actual discretion goes opaque, because control accumulates around it rather than replacing it.",
   "I have added the sign-off step. It felt proportionate at the time and it was still a reversal."
  ],
  caseFlag:"Hypothetical",
@@ -682,6 +705,7 @@ var Q = [
  notes:[
   "Weighted 12, the heaviest on the agency axis, and the options here are deliberately not a ladder. The informal call scores below the formal process, and the formal process scores barely above zero.",
   "The call is what keeps programmes running. It is also unfunded, unrecorded, and it dies with whoever holds the number. The top answer is not more formality. It is the relationship route being treated as infrastructure: named, resourced, and permitted to exist inside the process document rather than underneath it.",
+  "Lipsky is the source for why this matters. The routines and devices frontline staff invent to cope become the policy that actually gets delivered. Olivier de Sardan's practical norms give it the sharper edge: these are real regulations that govern behaviour, and they are neither official nor publicly avowable, which is why nothing writes them down.",
   "Outcome Harvesting is one of the few methods that can register this as causation at all. Capacity assessments tend to score it as a control weakness."
  ],
  caseFlag:"Documented",
@@ -696,6 +720,7 @@ var Q = [
     ["Yes, and some are funded as line items",1]],
  notes:[
   "Weighted 12. The gap between what the manual says and what people actually do is where the operating model lives. Most Significant Change and Outcome Harvesting can surface it. No compliance framework I have used has a field to record it, which is part of why it stays where it is.",
+  "Scott's word for what is happening here is legibility. What the system can see is what it can support, and the simplifications that make something legible tend to erase the particularity it depends on.",
   "When an adaptation gets a budget line, something has happened that is hard to reverse. The organisation has written down that its design was wrong and the person doing the work was right. I have watched that change a relationship permanently, in both directions."
  ],
  caseFlag:"Hypothetical",
@@ -724,7 +749,8 @@ var Q = [
     ["It changed the design inside the current cycle",1]],
  notes:[
   "Weighted 10, and deliberately about speed rather than sentiment. Most systems can receive the information. The question is whether it arrives while the design can still change, or after the next proposal has been submitted.",
-  "This is the ratio in its clearest form. A programme with almost no latitude that still turns a frontline observation into a change inside the cycle is using everything it has."
+  "This is the ratio in its clearest form. A programme with almost no latitude that still turns a frontline observation into a change inside the cycle is using everything it has.",
+  "Honig's evidence sits underneath this one. Across more than fourteen thousand projects, autonomy beats top-down control precisely where the environment is unpredictable and the outputs are hard to measure, which describes most of the situations where this question gets asked."
  ],
  caseFlag:"Hypothetical",
  caseText:"Community health workers report that the recommended follow-up interval does not fit the market day cycle, so attendance clusters on the wrong days and the no-show rate looks like a demand problem. The observation is logged as a risk and monitored for four quarters. The interval eventually changes, because the next funding round rewrote the protocol anyway."
@@ -739,6 +765,7 @@ var Q = [
  notes:[
   "Weighted 20 and reported on its own, away from the two axes. This replaces the withdrawal survivability question I used in the first version, which punished emergency response for being time-bound and rewarded long programmes for having had longer.",
   "The question is not how long it lasts. An eighteen month response scoring high on continuity is fine and slightly unusual. A twelve year programme scoring low is the finding, and it is why the result reads this against the programme type you set at the top rather than against a single line.",
+  "A named successor means a named entity. Government, communities and the private sector are categories, and the sustainability paragraph that names a category is the single most common artefact in this whole literature.",
   "Borrowed directly from Global Fund transition readiness assessments, which ask before the step-down rather than after."
  ],
  caseFlag:"Documented",
@@ -753,10 +780,12 @@ var Q = [
     ["That it is locally owned, and this is a headline claim",1]],
  notes:[
   "This scores nothing on either axis. It gets compared against the authority reading to produce a distance, and it cannot be gamed in either direction. Claiming more moves the distance one way, transferring less moves it the other.",
-  "Following Mulder, that distance is what I mean by localisation theatre. A programme that claims little and transfers little is coherent. A programme claiming a great deal while transferring little is running a distance that partners can see from where they are standing, usually well before a donor can."
+  "That distance is what I call localisation theatre. The term is mine. What it stands on is other people's work, and the load-bearing part of it is organisational rather than sectoral. Meyer and Rowan established in 1977 that organisations adopt formal commitments to secure legitimacy and resources rather than for technical reasons, and that this decouples what an organisation says from what it does. Bromley and Powell separate the two versions of that: a commitment adopted and not implemented, and a commitment implemented thoroughly whose link to any outcome is opaque. Brunsson's point is that talk, decisions and actions are separable outputs, so an organisation facing inconsistent demands can satisfy some constituencies with talk while acting to satisfy others. None of them wrote about localisation. All three describe the mechanism exactly.",
+  "On the sector side, Roepstorff argues that the localisation agenda rests on an under-theorised and instrumental idea of the local which leaves the power asymmetries of the system untouched. Boateng argues that international agencies delegitimised African humanitarian knowledge and norms, and proposes restoration rather than localisation as the alternative. Betts, Easton-Calabria and Pincock document refugee-led organisations acting as first responders while less than nought point two per cent of humanitarian funding reaches grassroots organisations. I am putting a name to a distance those arguments already describe.",
+  "A programme that claims little and transfers little is coherent. A programme claiming a great deal while transferring little is running a distance that partners can see from where they are standing, usually well before a donor can. The one thing I would add, and it is in the codebook as a rule, is that a large claim sitting on top of genuine external constraint is over-claiming rather than theatre. Theatre requires that the retained authority was a choice."
  ],
  caseFlag:"Documented",
- caseText:"Roepstorff (2020) describes localisation as performance, the staging of participation without a shift in power. Boateng (2021) argues that localisation without epistemic redistribution reproduces the same hierarchies under new labels. I cited both in a piece I wrote after the ISPO congress in Stockholm, and I was describing programmes I was managing at the time."
+ caseText:"Roepstorff (2020) calls for critical reflection on the localisation agenda, arguing that its instrumental construction of the local reproduces a technical framing and leaves the underlying power asymmetries in place. Boateng, O.A. (2021) argues that localisation as conventionally defined has eroded rather than strengthened African humanitarian systems, and that restoration, meaning self-determination and decolonised knowledge production, is the alternative. Khoury and Scott (2024) put the practitioner version of the same argument more bluntly, that localisation as practised deepens international dominance rather than shifting power. I cited work in this area in a piece I wrote after the ISPO congress in Stockholm, and I was describing programmes I was managing at the time."
 }
 ];
 
@@ -1022,10 +1051,21 @@ function score(){
 
   var xNorm = (Xabs+100)/200;
   var gap = claim - xNorm;
+  var xRoomNorm = (xr+100)/200;
+  var gapRoom = claim - xRoomNorm;
+  var authFlagWeight = 0, authTotalWeight = 0;
+  Q.forEach(function(item,i){
+    if(item.w.x){ authTotalWeight += item.w.x; if(flags[i]) authFlagWeight += item.w.x; }
+  });
+  var constraintShare = authTotalWeight>0 ? (authFlagWeight/authTotalWeight) : 0;
   var tb = document.getElementById("theatreBox");
   if(gap > 0.28){
     tb.style.display = "block";
-    document.getElementById("theatreText").textContent = "The public claim about local ownership sits well ahead of the authority reading. That distance is what Mulder calls localisation theatre. The thing about it is that partners can see it from where they are standing, usually earlier than donors can. It closes from either end, and choosing which end is the actual decision.";
+    if(constraintShare >= 0.25){
+      document.getElementById("theatreText").textContent = "The public claim sits well ahead of the authority reading, and a quarter or more of the authority weight is flagged as fixed by someone other than this programme. That combination is over-claiming under constraint rather than what I call localisation theatre. The claim is still ahead of what has moved, and the reason it is ahead is at least partly not yours. Inside the room you do control the distance is " + gapRoom.toFixed(2) + ", which is the number to argue about internally.";
+    } else {
+      document.getElementById("theatreText").textContent = "The public claim about local ownership sits well ahead of the authority reading, and almost none of the authority weight is flagged as fixed by anyone else. That is what I call localisation theatre, and the term is mine rather than borrowed: a claim held out in front of an arrangement that was substantially chosen. The thing about it is that partners can see it from where they are standing, usually earlier than donors can. It closes from either end, and choosing which end is the actual decision.";
+    }
   } else if(gap < -0.28){
     tb.style.display = "block";
     document.getElementById("theatreText").textContent = "The programme is transferring more authority than it says publicly. That is an honest position, and it gives up ground in every funding conversation where localisation is being assessed, at no internal cost. Understatement is not always modesty. Sometimes it is nobody having written it down.";
