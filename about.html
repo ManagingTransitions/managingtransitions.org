@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Managing Transitions | Matt Thomson</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://managingtransitions.org/about.html">
+<meta name="description" content="PhD research on the politics of localisation, field experience across East and West Africa, and where Matt Thomson stands on ownership and power in aid.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Managing Transitions">
+<meta property="og:title" content="About | Managing Transitions">
+<meta property="og:description" content="PhD research on the politics of localisation, field experience across East and West Africa, and where Matt Thomson stands on ownership and power in aid.">
+<meta property="og:url" content="https://managingtransitions.org/about.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23143a33'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23e47b12'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000; --pine:#143a33; --brown:#392c23; --amber:#e47b12; --paper:#ffffff;
+  --line:rgba(0,0,0,0.13); --line-on-dark:rgba(244,239,230,0.2);
+  --cream:#f4efe6; --ink-soft:#2a2a27; --muted:#5c5c58; --max:1120px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+::selection{background:var(--amber); color:#fff;}
+a{color:inherit;} img{max-width:100%;}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+.narrow{max-width:760px;}
+:focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
+h1,h2,h3,h4{font-weight:800; margin:0; letter-spacing:-0.02em; color:var(--ink);}
+.eyebrow{font-size:0.74rem; font-weight:600; letter-spacing:0.11em; text-transform:uppercase; color:var(--brown);}
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.in{opacity:1; transform:none;}
+@media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
+
+nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
+.brand{font-weight:800; font-size:0.94rem; letter-spacing:-0.01em; text-decoration:none; color:var(--ink);}
+.brand em{font-style:normal; color:var(--amber);}
+.navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+.navlinks a{position:relative; font-size:0.87rem; font-weight:500; text-decoration:none; color:var(--ink-soft); padding-bottom:3px;}
+.navlinks a::after{content:""; position:absolute; left:0; bottom:0; width:100%; height:1.5px; background:var(--amber); transform:scaleX(0); transform-origin:left; transition:transform .22s ease;}
+.navlinks a:hover{color:var(--ink);}
+.navlinks a:hover::after,.navlinks a.current::after{transform:scaleX(1);}
+.navlinks a.current{color:var(--ink);}
+.mobnav{display:none; position:relative;}
+.mobnav summary{list-style:none; cursor:pointer; font-size:0.78rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink); border:1px solid var(--line); padding:8px 14px; border-radius:2px;}
+.mobnav summary::-webkit-details-marker{display:none;}
+.mobnav[open] summary{border-color:var(--amber);}
+.mobnav ul{position:absolute; right:0; top:calc(100% + 8px); min-width:200px; margin:0; padding:6px 0; list-style:none; background:var(--paper); border:1px solid var(--line);}
+.mobnav li a{display:block; padding:11px 18px; font-size:0.92rem; text-decoration:none; color:var(--ink-soft);}
+.mobnav li a:hover{background:#f3f1ec; color:var(--ink);}
+@media (max-width:860px){ .navlinks{display:none;} .mobnav{display:block;} }
+
+.tlink{display:inline-block; font-weight:600; font-size:0.92rem; text-decoration:none; color:var(--ink); border-bottom:2px solid var(--amber); padding-bottom:2px;}
+.tlink:hover{color:var(--amber);}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:14px 24px; font-size:0.85rem; font-weight:600; letter-spacing:0.02em; text-decoration:none; border-radius:2px; border:1.5px solid transparent;}
+.btn-amber{background:var(--amber); color:#fff;}
+.btn-amber:hover{background:var(--ink); color:#fff;}
+
+header.page-head{background:var(--pine); color:var(--cream); padding:80px 0 56px;}
+header.page-head .eyebrow{color:#a7c2ba; margin-bottom:16px;}
+header.page-head h1{font-size:clamp(2.4rem,5.6vw,3.8rem); color:#fff; line-height:1.02; max-width:16ch;}
+header.page-head p{max-width:56ch; font-size:1.05rem; color:#d7e3df; margin:20px 0 0;}
+
+section{padding:72px 0; border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.section-head{max-width:640px; margin-bottom:26px;}
+.section-head h2{font-size:clamp(1.4rem,2.8vw,1.9rem); margin-top:8px;}
+p{font-size:1.02rem; color:var(--ink-soft); margin:0 0 1.1em;}
+
+/* Philosophy: wide single column, off-left */
+.phil p{font-size:1.1rem; line-height:1.72; max-width:66ch;}
+
+/* research split */
+.res-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:52px; margin-top:8px;}
+.res-grid strong{color:var(--pine);}
+.term-list{margin-top:8px;}
+.term-row{padding:12px 0; border-bottom:1px solid var(--line); font-size:0.92rem;}
+.term-row b{color:var(--ink);}
+@media (max-width:820px){ .res-grid{grid-template-columns:1fr; gap:24px;} }
+
+/* lineage */
+.lineage-item{padding:14px 0; border-bottom:1px solid var(--line); font-size:0.96rem; max-width:70ch;}
+.lineage-item:last-child{border-bottom:none;}
+.lineage-item b{color:var(--ink);}
+
+/* reading, two uneven columns via css columns for natural asymmetry */
+.reading-cols{column-count:2; column-gap:44px; margin-top:6px;}
+.reading-item{break-inside:avoid; padding:0 0 22px; font-size:0.94rem; max-width:52ch;}
+.reading-item b{color:var(--ink); display:block; margin-bottom:2px;}
+.reading-item .auth{color:#8a8a86; font-size:0.86rem;}
+@media (max-width:760px){ .reading-cols{column-count:1;} }
+
+/* field note */
+.field-note{border-left:3px solid var(--amber); padding-left:28px; max-width:68ch;}
+.field-note .quote{font-weight:700; font-style:italic; font-size:1.12rem; color:var(--pine); margin:16px 0;}
+
+/* fact pair, asymmetric */
+.fact-pair{display:grid; grid-template-columns:1.3fr 1fr; gap:32px; margin-top:8px; align-items:start;}
+.fact-card .label{font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:10px;}
+.fact-card p{font-size:0.94rem;}
+.fact-source{font-size:0.8rem; color:#8a8a86; margin-top:14px;}
+@media (max-width:760px){ .fact-pair{grid-template-columns:1fr;} }
+
+/* credentials, uneven columns */
+.cred-cols{display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px;}
+.cred-col h3{font-size:0.85rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:var(--brown); margin-bottom:18px; padding-bottom:10px; border-bottom:1px solid var(--line);}
+.cred-item{padding:16px 0; border-bottom:1px solid var(--line);}
+.cred-item:last-child{border-bottom:none;}
+.cred-item .role{font-weight:700; font-size:1rem;}
+.cred-item .when{font-size:0.78rem; color:#8a8a86; margin-left:8px; font-weight:400;}
+.cred-item p{margin:6px 0 0; font-size:0.92rem;}
+@media (max-width:820px){ .cred-cols{grid-template-columns:1fr; gap:8px;} }
+
+.speaking-item{padding:16px 0; border-bottom:1px solid var(--line); max-width:74ch;}
+.speaking-item .title{font-weight:700; font-size:1rem;}
+.speaking-item .meta{font-size:0.78rem; color:#8a8a86; margin-top:4px;}
+.speaking-item p{margin:8px 0 0; font-size:0.92rem;}
+.speaking-note{font-size:0.86rem; color:#8a8a86; margin-top:18px;}
+
+footer{background:var(--pine); color:var(--cream); padding:64px 0 32px;}
+footer .eyebrow{color:#a7c2ba;}
+footer h2{color:#fff; font-size:clamp(1.6rem,3.2vw,2.2rem);}
+footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
+.contact-grid{display:flex; flex-wrap:wrap; gap:10px; margin-top:32px;}
+.chip{padding:11px 18px; border:1px solid var(--line-on-dark); text-decoration:none; color:var(--cream); font-size:0.86rem; font-weight:500; border-radius:2px;}
+.chip:hover{border-color:var(--amber); color:var(--amber);}
+.foot-base{margin-top:48px; padding-top:18px; border-top:1px solid var(--line-on-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.76rem; color:#8fa9a2; letter-spacing:0.03em;}
+</style>
+<noscript><style>.reveal{opacity:1 !important; transform:none !important;}</style></noscript>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">MANAGING <em>/</em> TRANSITIONS</a>
+    <ul class="navlinks">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html" class="current">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="story.html">The Story</a></li>
+      <li><a href="diagnostic.html">Diagnostic</a></li>
+      <li><a href="faq.html">Questions</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <details class="mobnav">
+      <summary>Menu</summary>
+      <ul>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="story.html">The Story</a></li>
+        <li><a href="diagnostic.html">Diagnostic</a></li>
+        <li><a href="faq.html">Questions</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </details>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">About</p>
+    <h1>Matt Thomson</h1>
+    <p>Bristol-based. PhD candidate at the University of Bristol, working full time at a UK INGO, building an independent advisory practice on the side.</p>
+  </div>
+</header>
+
+<section class="phil" id="philosophy">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Philosophy</p>
+      <h2>Localisation has to mean something, or it's just paperwork.</h2>
+    </div>
+    <div class="reveal">
+      <p>Too much of what gets called localisation is administrative relocation dressed up as empowerment: the reporting burden moves south, the funding rules stay exactly where they were, and the people doing the actual work absorb the risk without ever holding the budget or the veto.</p>
+      <p>Genuine ownership looks different. It means a local partner can set the agenda rather than only deliver against someone else's logframe. It means they can say no to a donor's terms and the relationship survives it. My research and my field work both start from that distinction, and I don't call something local ownership unless the power actually moved with it, not the paperwork alone.</p>
+      <p>At the same time, I don't treat local actors as passive until a donor grants them power. My doctoral research looks closely at how people find real agency inside rigid systems: adapting imported components, reinterpreting a project's stated goals, quietly building the workaround that keeps a clinic running when the official process can't. I call this harnessing constraint, and it's the other half of the picture. Good localisation design has to build on that existing agency rather than design around it as if it isn't there.</p>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Research</p>
+      <h2>Doctoral research, University of Bristol (SPAIS)</h2>
+    </div>
+    <div class="res-grid reveal">
+      <div>
+        <p>My PhD examines the <strong>politics of localisation</strong> in Sub-Saharan Africa, focused on assistive technology and prosthetics and orthotics networks across East and West Africa. Rather than treating localisation as an ethical promise or a donor checklist, I look at how it functions as <strong>governance in practice</strong>: everyday administrative tasks, funding rules and reporting routines that shape who holds real decision-making power, regardless of what the strategy document says.</p>
+        <p>The research traces this across four levels, from global donors and multilateral agencies, through intermediary NGOs and research hubs, down to frontline clinics and the technicians and patients navigating them day to day. I bridge this with field experience across The Gambia, Uganda, Kenya and Tanzania.</p>
+        <p style="margin-top:26px;"><a class="tlink" href="research.html">Read the 2026 study</a></p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px;">Terms I use</p>
+        <div class="term-list">
+          <div class="term-row"><b>Localisation theatre.</b> Staged participation that satisfies donor compliance while the money and the decisions stay put.</div>
+          <div class="term-row"><b>Governance-in-practice.</b> Localisation as the accumulation of administrative habits that quietly decide who holds power.</div>
+          <div class="term-row"><b>Harnessing constraint.</b> The adaptations local actors make inside donor-imposed limits to keep things running.</div>
+        </div>
+        <p style="margin-top:14px; font-size:0.86rem; color:#8a8a86;">Full definitions on the <a class="tlink" href="faq.html#glossary" style="font-size:inherit;">glossary</a>.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:52px;">
+      <p class="eyebrow reveal" style="margin-bottom:14px;">Building On</p>
+      <div class="reveal">
+        <div class="lineage-item"><b>Anthony Giddens</b>, structuration: the same rules that constrain action are also what enable it, so structure and agency are produced together rather than opposed.</div>
+        <div class="lineage-item"><b>Femke Mulder</b>, on localisation as performance: naming participatory process as staged compliance rather than an actual transfer of power.</div>
+        <div class="lineage-item"><b>Séverine Autesserre</b>, on the meta-relationships that quietly decide which interventions are considered credible, and on finding real hope in the unglamorous, local relationships that international actors usually overlook.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:52px;">
+      <p class="eyebrow reveal" style="margin-bottom:14px;">Reading & Listening</p>
+      <div class="reading-cols reveal">
+        <div class="reading-item"><b>Frontlines of Peace</b><span class="auth">Séverine Autesserre</span>. Already in the lineage above. Worth reading for the cases rather than the theory. The chapter on Idjwi is the clearest argument I know for why outside intervention often works best when it does less.</div>
+        <div class="reading-item"><b>How to Lose a Country</b><span class="auth">Ece Temelkuran</span>. Written from Turkey, on democratic collapse as a sequence of unremarkable procedural steps rather than a single event. The procedural part is what programme design usually fails to see coming.</div>
+        <div class="reading-item"><b>Shadowplay</b><span class="auth">Tim Marshall</span>. I've read most of his geopolitics books. Fun, and more deterministic than they let on. This one is the outlier. He was Sky's diplomatic editor and spent the 1999 Kosovo crisis in Belgrade, so it's first-hand rather than an argument drawn on a map.</div>
+        <div class="reading-item"><b>The Horn</b><span class="auth">International Crisis Group, podcast</span>. Keeps the regional reading current rather than three years out of date.</div>
+        <div class="reading-item"><b>The Timbuktu School for Nomads</b><span class="auth">Nicholas Jubber</span>. Travel writing across the Sahara, read with the usual reservations about the form. Good on the practical knowledge pastoralist life actually runs on, which rarely survives contact with a logframe.</div>
+        <div class="reading-item"><b>AIL Español, B1</b><span class="auth">Classes twice a week</span>. Still slow.</div>
+        <div class="reading-item"><b>Jupiter's Travels</b><span class="auth">Ted Simon</span>. Ted Simon rode a Triumph around the world for four years in the 1970s. All this does is feed the plan to ride from the UK down to South Africa.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow reveal">Field Note</p>
+    <div class="field-note reveal" style="margin-top:14px;">
+      <p>A new prosthetics and orthotics clinic in Bansang, The Gambia, opened with proper ramps and wide doors, exactly what accessible design guidance asks for. The path leading to it was steep, rocky and unpaved. The hospital CEO explained that the funding covered the building itself; the ramps and the clinic were in scope, the path wasn't.</p>
+      <p class="quote">"It wasn't said defensively. It was just a fact."</p>
+      <p>The regional governor's office was sympathetic but realistic: the most likely route to a funded path ran through the British High Commission, the UN, or the EU lobbying central government to release money, to put concrete on a path. That's what governance-in-practice looks like on the ground: not a failure of goodwill, but a question of who gets to decide what counts as in scope.</p>
+    </div>
+
+    <div class="fact-pair reveal" style="margin-top:44px;">
+      <div class="fact-card">
+        <span class="label">The Waste End</span>
+        <p>Once prosthetic components are flagged as clinically expired, British taxpayers pay roughly £369 per tonne to dispose of medical-grade titanium and carbon fibre. Functional hardware becomes waste because the regulatory script says so. Meanwhile a clinician in a Sub-Saharan workshop is scraping together $1,000 to $3,000 for whatever components they can get hold of.</p>
+      </div>
+      <div class="fact-card">
+        <span class="label">The Workaround</span>
+        <p>A pilot in The Gambia ran short of specialised silicone liners. Through the formal route that means a grant amendment, justification forms and a stalled timeline. Instead I phoned a supplier chief executive I had met once at a conference two years earlier. He committed the liners inside a minute, and added a quarter more as a buffer. That call appears in no process document anywhere.</p>
+      </div>
+    </div>
+    <p class="fact-source reveal">Disposal and component figures from a guest lecture at the University of Southampton, March 2026.</p>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Credentials</p>
+      <h2>Operational leadership meets academic depth.</h2>
+    </div>
+    <div class="cred-cols reveal">
+      <div class="cred-col">
+        <h3>Operational Leadership</h3>
+        <div class="cred-item">
+          <div class="role">Community Partnerships & Research Manager, INGO (Global Health & Disability)<span class="when">2022 – present</span></div>
+          <p>Co-manage a multi-year, EU co-financed programme in The Gambia, and lead multi-country transitions across Uganda, Kenya and Tanzania, moving regional grassroots networks from grant dependency to self-sustaining operating models.</p>
+        </div>
+        <div class="cred-item">
+          <div class="role">Strategic Advisor, South West International Development Network<span class="when">ongoing</span></div>
+          <p>Freelance consultancy helping NGOs evaluate their organisational structures and build effective practitioner-researcher partnerships.</p>
+        </div>
+      </div>
+      <div class="cred-col">
+        <h3>Academic Appointments</h3>
+        <div class="cred-item">
+          <div class="role">Postgraduate Researcher & Seminar Tutor (Politics), University of Bristol<span class="when">2024 – present</span></div>
+          <p>School of Sociology, Politics and International Studies (SPAIS), examining power dynamics, capital flows and the politics of localisation.</p>
+        </div>
+        <div class="cred-item">
+          <div class="role">Exceed Research Network (ERN)</div>
+          <p>Contributor partnering with universities, health ministries and NGOs to build the evidence base for prosthetics and orthotics services in low-resource settings.</p>
+        </div>
+        <div class="cred-item">
+          <div class="role">MSc Development & Security (Distinction), University of Bristol<span class="when">2019 – 2020</span></div>
+          <p>Thesis on how small-scale NGOs maximise structural impact through cross-sector partnership design in Uganda.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;">
+      <p class="eyebrow reveal" style="margin-bottom:14px;">Speaking & Public Engagement</p>
+      <div class="reveal">
+        <div class="speaking-item">
+          <div class="title">Television interview, disability rights and advocacy</div>
+          <div class="meta">The Fatu Network, The Gambia · June 2026</div>
+        </div>
+        <div class="speaking-item">
+          <div class="title">Guest lecture, MSc Amputation and Prosthetic Rehabilitation</div>
+          <div class="meta">University of Southampton · March 2026</div>
+          <p>Running prosthetics clinics in low-resource settings, and how clinical decisions get shaped by structures well upstream of the clinic.</p>
+        </div>
+        <div class="speaking-item">
+          <div class="title">Sustainable service provision: device sourcing and local production</div>
+          <div class="meta">Exceed Research Network 10th anniversary · January 2026</div>
+          <p>Recorded presentation, part of a wider series.</p>
+        </div>
+        <div class="speaking-item">
+          <div class="title">Panellist, academic and practice partnerships in international development</div>
+          <div class="meta">SWIDN and University of Bristol · July 2024</div>
+          <p>On what holds practitioner-researcher partnerships together, and where they usually stall.</p>
+        </div>
+        <div class="speaking-item">
+          <div class="title">Assistive technology in low- and middle-income countries</div>
+          <div class="meta">OTWorld, Leipzig · May 2024</div>
+          <p>Side session at the international trade show and world congress. The case for building prosthetics capacity across the sector internationally, rather than concentrating investment at the engineering high end.</p>
+        </div>
+        <p class="speaking-note">Occasional talks in UK schools on international development and disability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="independence">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Independence</p>
+      <h2>Where I stand, declared up front.</h2>
+    </div>
+    <div class="reveal narrow">
+      <p>A Transition Exposure Review does not write the terms of reference for any work that follows it. Where a follow-on piece would be competitively procured, I will say so and declare prior involvement. Review findings are yours to circulate internally or publish.</p>
+      <p>I hold a salaried role at a UK INGO. Any engagement arising from that organisation's relationships is declared before a proposal is written.</p>
+      <p>Research published on this site uses organisations' own public documents. Every organisation named in a study is sent its entry and given four weeks to correct the record before publication.</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Get In Touch</p>
+    <h2>Ready to plan the transition?</h2>
+    <p class="lede">Reach out directly, or book time to talk through your network's transition.</p>
+    <div class="contact-grid">
+      <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+      <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
+      <a class="chip" href="services.html">Services</a>
+      <a class="chip" href="research.html">The 2026 study</a>
+      <a class="chip" href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
+      <a class="chip" href="cv.pdf">CV</a>
+    </div>
+    <div class="foot-base">
+      <span>MANAGING TRANSITIONS &copy; 2026</span>
+      <span>managingtransitions.org</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.1});
+  reveals.forEach(el=>io.observe(el));
+
+  document.addEventListener('click', function(ev){
+    var m = document.querySelector('.mobnav[open]');
+    if(m && !m.contains(ev.target)){ m.removeAttribute('open'); }
+  });
+</script>
+
+</body>
+</html>

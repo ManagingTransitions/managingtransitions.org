@@ -21,175 +21,119 @@
 <meta name="citation_author" content="Thomson, Matt">
 <meta name="citation_publication_date" content="2026/09/22">
 <meta name="citation_pdf_url" content="https://managingtransitions.org/Thomson-2026-Transition-Exposure-UK-INGOs.pdf">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c231f'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23c9a877'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23143a33'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23e47b12'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#000000;
-    --teal:#0c231f;
-    --brown:#392c23;
-    --amber:#e47b12;
-    --sand:#c9a877;
-    --paper:#ffffff;
-    --line: rgba(0,0,0,0.14);
-    --line-on-dark: rgba(255,255,255,0.18);
-    --max: 1080px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{margin:0; background:var(--paper); color:var(--ink);
-    font-family:'Inter', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
-  ::selection{background:var(--sand); color:var(--teal);}
-  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; margin:0; letter-spacing:-0.01em;}
-  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.14em;
-    text-transform:uppercase; color:var(--teal);}
-  a{color:inherit;}
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
-  :focus-visible{outline:2px solid var(--sand); outline-offset:3px;}
-  @keyframes heroUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;} }
+:root{
+  --ink:#000000; --pine:#143a33; --brown:#392c23; --amber:#e47b12; --paper:#ffffff;
+  --line:rgba(0,0,0,0.13); --line-on-dark:rgba(244,239,230,0.2);
+  --cream:#f4efe6; --ink-soft:#2a2a27; --muted:#5c5c58; --max:1120px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+::selection{background:var(--amber); color:#fff;}
+a{color:inherit;} img{max-width:100%;}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+:focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
+h1,h2,h3{font-weight:800; margin:0; letter-spacing:-0.02em; color:var(--ink);}
+.eyebrow{font-size:0.74rem; font-weight:600; letter-spacing:0.11em; text-transform:uppercase; color:var(--brown);}
 
-  nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92);
-    backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
-  nav .wrap{display:flex; align-items:center; justify-content:space-between;
-    padding-top:14px; padding-bottom:14px;}
-  .brand{font-family:'IBM Plex Mono', monospace; font-size:0.85rem; letter-spacing:0.04em;
-    font-weight:500; text-decoration:none;}
-  .brand span{color:var(--teal);}
-  .navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
-  .navlinks a{position:relative; font-size:0.85rem; text-decoration:none; color:var(--brown);
-    font-weight:500; padding-bottom:2px;}
-  .navlinks a::after{content:""; position:absolute; left:0; bottom:-2px; width:100%; height:1px;
-    background:var(--sand); transform:scaleX(0); transform-origin:left; transition:transform .25s ease;}
-  .navlinks a:hover{color:var(--teal);}
-  .navlinks a:hover::after{transform:scaleX(1);}
-  .navlinks a.current{color:var(--teal);}
-  .navlinks a.current::after{transform:scaleX(1);}
-  @media (max-width:860px){ .navlinks{display:none;} }
+nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
+.brand{font-weight:800; font-size:0.94rem; letter-spacing:-0.01em; text-decoration:none; color:var(--ink);}
+.brand em{font-style:normal; color:var(--amber);}
+.navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+.navlinks a{position:relative; font-size:0.87rem; font-weight:500; text-decoration:none; color:var(--ink-soft); padding-bottom:3px;}
+.navlinks a::after{content:""; position:absolute; left:0; bottom:0; width:100%; height:1.5px; background:var(--amber); transform:scaleX(0); transform-origin:left; transition:transform .22s ease;}
+.navlinks a:hover{color:var(--ink);}
+.navlinks a:hover::after,.navlinks a.current::after{transform:scaleX(1);}
+.navlinks a.current{color:var(--ink);}
+@media (max-width:900px){ .navlinks{display:none;} }
 
-  header.page-head{background:var(--teal); color:#f4efe6; padding:70px 0 58px; overflow:hidden;}
-  header.page-head .wrap > *{ animation:heroUp .7s ease both; }
-  header.page-head .eyebrow{color:#a9c2bb; margin-bottom:18px;}
-  header.page-head h1{font-size:clamp(2.6rem, 6vw, 4.2rem); color:#fff; line-height:1.0;}
-  header.page-head .sub{font-family:'Fraunces', serif; font-size:clamp(1.1rem,2.2vw,1.4rem);
-    color:#dbe5e1; margin-top:18px; max-width:640px; line-height:1.35;}
-  header.page-head .byline{font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
-    color:#8ea59c; margin-top:26px; letter-spacing:0.03em;}
+header.page-head{background:var(--pine); color:var(--cream); padding:76px 0 56px;}
+header.page-head .eyebrow{color:#a7c2ba; margin-bottom:16px;}
+header.page-head h1{font-size:clamp(2.6rem,6vw,4.4rem); color:#fff; line-height:0.98;}
+header.page-head .sub{font-size:clamp(1.05rem,2.1vw,1.3rem); color:#d7e3df; margin-top:18px; max-width:640px; line-height:1.35; font-weight:400;}
+header.page-head .byline{font-size:0.82rem; color:#9fb8b1; margin-top:26px; letter-spacing:0.02em;}
 
-  .keynums{background:#f7f5f2; border-bottom:1px solid var(--line); padding:44px 0;}
-  .keynums .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
-    background:var(--line); border:1px solid var(--line);}
-  .keynums .cell{background:#fff; padding:24px 22px;}
-  .keynums .n{font-family:'Fraunces',serif; font-weight:600; font-size:2.3rem; line-height:1; color:var(--teal);}
-  .keynums .n em{font-style:normal; color:var(--amber);}
-  .keynums .l{margin-top:11px; font-size:0.9rem; color:#3a3a38;}
-  @media (max-width:760px){ .keynums .grid{grid-template-columns:1fr;} }
+.scrollteaser{background:var(--brown); padding:16px 0;}
+.scrollteaser a{display:flex; align-items:center; gap:10px; text-decoration:none; color:#f4efe6; font-size:0.9rem; font-weight:500;}
+.scrollteaser a:hover{color:var(--amber);}
+.scrollteaser .arrow{color:var(--amber);}
 
-  .downloads{border-bottom:1px solid var(--line); padding:44px 0;}
-  .dl-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px;}
-  .dl{display:block; padding:20px 22px; border:1px solid var(--line); text-decoration:none;
-    transition:border-color .2s ease, transform .2s ease, background .2s ease;}
-  .dl:hover{border-color:var(--amber); transform:translateY(-2px); background:#fdfaf6;}
-  .dl .k{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.12em;
-    text-transform:uppercase; color:var(--amber);}
-  .dl .t{font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; margin-top:9px; color:var(--ink);}
-  .dl .d{font-size:0.85rem; color:#4a4a48; margin-top:6px;}
-  .licence{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:#6b6b66; margin-top:20px;}
-  .licence a{color:var(--teal);}
-  @media (max-width:760px){ .dl-grid{grid-template-columns:1fr;} }
+.keynums{border-bottom:1px solid var(--line); padding:52px 0;}
+.keynums .row{display:flex; flex-wrap:wrap; gap:40px 56px;}
+.keynums .cell{max-width:280px;}
+.keynums .n{font-weight:900; font-size:2.4rem; line-height:1; color:var(--pine); letter-spacing:-0.02em;}
+.keynums .n em{font-style:normal; color:var(--amber);}
+.keynums .l{margin-top:10px; font-size:0.92rem; color:var(--ink-soft);}
 
-  .reportsec{padding:64px 0 20px;}
+.downloads{border-bottom:1px solid var(--line); padding:44px 0;}
+.dl-row{display:flex; flex-wrap:wrap; gap:0; margin-top:20px; border-top:1px solid var(--line);}
+.dl{flex:1 1 220px; padding:20px 22px 20px 0; text-decoration:none; border-bottom:1px solid var(--line);}
+.dl:hover .t{color:var(--amber);}
+.dl .k{font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber);}
+.dl .t{font-weight:700; font-size:1.02rem; margin-top:8px; color:var(--ink); transition:color .16s ease;}
+.dl .d{font-size:0.85rem; color:var(--muted); margin-top:6px;}
+.licence{font-size:0.85rem; color:var(--muted); margin-top:20px;}
+.licence a{color:var(--pine); font-weight:600;}
 
-  /* ---------- report typography ---------- */
-  .report{max-width:720px; margin:0 auto; padding:0 28px;}
-  .report p{font-size:1.02rem; line-height:1.72; color:#22221f; margin:0 0 1.15em;}
-  .report p.lead-term strong{
-    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.86rem;
-    letter-spacing:0.02em; text-transform:uppercase; color:var(--teal);
-  }
-  .report h2.sec{margin:56px 0 26px; display:flex; align-items:center; gap:16px;}
-  .report h2.sec .secnum{
-    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.82rem;
-    letter-spacing:0.14em; color:var(--amber);
-    border:1px solid var(--line); border-left:2px solid var(--amber);
-    padding:7px 13px; line-height:1;
-  }
-  .report h2.sec::after{content:""; flex:1; height:1px; background:var(--line);}
-  .report h2.annex{
-    margin:72px 0 26px; padding-top:28px; border-top:2px solid var(--teal);
-    display:flex; flex-direction:column; gap:6px;
-  }
-  .report h2.annex .annexkey{
-    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.76rem;
-    letter-spacing:0.14em; text-transform:uppercase; color:var(--amber);
-  }
-  .report h2.annex .annextitle{
-    font-family:'Fraunces', serif; font-weight:600; font-size:1.45rem; color:var(--ink);
-    letter-spacing:-0.01em;
-  }
-  .report hr.rule{border:none; height:1px; background:var(--line); margin:44px 0;}
-  .report .fig{margin:44px 0; padding:0;}
-  .report .fig img{width:100%; height:auto; display:block; border:1px solid var(--line);}
-  .report .fig figcaption{
-    margin-top:12px; font-size:0.85rem; color:#6b6b66; line-height:1.5;
-  }
-  .report .fig .fignum{
-    font-family:'IBM Plex Mono', monospace; font-size:0.75rem; letter-spacing:0.1em;
-    text-transform:uppercase; color:var(--teal); margin-right:8px;
-  }
-  .report ol.checklist{margin:0 0 1.2em; padding-left:1.2em;}
-  .report ol.checklist li{font-size:1.02rem; line-height:1.7; color:#22221f; margin-bottom:0.7em;}
+.reportsec{padding:64px 0 20px;}
+.report{max-width:720px; margin:0 auto; padding:0 28px;}
+.report p{font-size:1.04rem; line-height:1.74; color:#1c1c1a; margin:0 0 1.15em;}
+.report p.lead-term strong{font-weight:700; font-size:0.98rem; color:var(--pine);}
+.report h2.sec{margin:58px 0 26px; display:flex; align-items:baseline; gap:16px;}
+.report h2.sec .secnum{font-weight:800; font-size:1.6rem; color:var(--amber); line-height:1;}
+.report h2.sec::after{content:""; flex:1; height:1px; background:var(--line);}
+.report h2.annex{margin:76px 0 26px; padding-top:30px; border-top:2px solid var(--pine); display:flex; flex-direction:column; gap:6px;}
+.report h2.annex .annexkey{font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--amber);}
+.report h2.annex .annextitle{font-size:1.5rem; font-weight:800; color:var(--ink); letter-spacing:-0.02em;}
+.report hr.rule{border:none; height:1px; background:var(--line); margin:46px 0;}
+.report .fig{margin:46px 0; padding:0;}
+.report .fig img{width:100%; height:auto; display:block; border:1px solid var(--line);}
+.report .fig figcaption{margin-top:12px; font-size:0.86rem; color:var(--muted); line-height:1.5;}
+.report .fig .fignum{font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--pine); margin-right:8px;}
+.report ol.checklist{margin:0 0 1.2em; padding-left:1.2em;}
+.report ol.checklist li{font-size:1.02rem; line-height:1.7; color:#1c1c1a; margin-bottom:0.7em;}
 
-  .tablewrap{margin:34px 0; overflow-x:auto;}
-  table.scores{border-collapse:collapse; width:100%; font-size:0.88rem;}
-  table.scores th{
-    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.7rem;
-    letter-spacing:0.08em; text-transform:uppercase; color:var(--teal);
-    text-align:left; padding:0 10px 9px; border-bottom:1px solid var(--teal);
-    white-space:nowrap;
-  }
-  table.scores th.num, table.scores td.num{text-align:right; font-variant-numeric:tabular-nums;}
-  table.scores td{padding:8px 10px; border-bottom:1px solid var(--line); color:#22221f;}
-  table.scores td.num{font-family:'IBM Plex Mono', monospace; font-size:0.84rem;}
-  table.scores tr.ded td{background:#f4f8f6;}
-  table.scores tr.ded td.org{font-weight:600;}
+.tablewrap{margin:34px 0; overflow-x:auto;}
+table.scores{border-collapse:collapse; width:100%; font-size:0.88rem;}
+table.scores th{font-size:0.7rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--pine); text-align:left; padding:0 10px 9px; border-bottom:1px solid var(--pine); white-space:nowrap;}
+table.scores th.num, table.scores td.num{text-align:right; font-variant-numeric:tabular-nums;}
+table.scores td{padding:9px 10px; border-bottom:1px solid var(--line); color:#1c1c1a;}
+table.scores tr.ded td{background:#f6f4ef;}
+table.scores tr.ded td.org{font-weight:700;}
 
+.rightofreply{border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:52px 0; margin-top:64px;}
+.rightofreply .inner{max-width:720px; margin:0 auto; padding:0 28px;}
+.rightofreply h3{font-size:1.3rem; margin-bottom:14px;}
+.rightofreply p{font-size:0.95rem; color:var(--ink-soft); margin:0 0 12px;}
 
-  .rightofreply{background:#eef1ef; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    padding:52px 0; margin-top:64px;}
-  .rightofreply .inner{max-width:720px; margin:0 auto; padding:0 28px;}
-  .rightofreply h3{font-family:'Fraunces',serif; font-size:1.3rem; margin-bottom:14px;}
-  .rightofreply p{font-size:0.95rem; color:#2b2b28; margin:0 0 12px;}
-
-  footer{background:var(--teal); color:#eef4f1; padding:62px 0 32px;}
-  footer .eyebrow{color:#a9c2bb;}
-  footer h2{color:#fff; font-size:clamp(1.5rem,3vw,2rem);}
-  footer p.lede{color:#c9d8d3; max-width:560px; margin-top:14px;}
-  .contact-grid{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px;}
-  .chip{display:flex; align-items:center; gap:8px; padding:11px 18px;
-    border:1px solid var(--line-on-dark); text-decoration:none; color:#eef4f1; font-size:0.88rem;
-    transition:border-color .18s ease, color .18s ease, transform .18s ease;}
-  .chip:hover{border-color:var(--sand); color:var(--sand); transform:translateY(-2px);}
-  .adviser-note{margin-top:36px; padding-top:20px; border-top:1px solid var(--line-on-dark);
-    font-size:0.85rem; color:#a9c2bb; max-width:640px;}
-  .foot-base{margin-top:34px; padding-top:20px; border-top:1px solid var(--line-on-dark);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8ea59c;}
+footer{background:var(--pine); color:var(--cream); padding:64px 0 32px;}
+footer .eyebrow{color:#a7c2ba;}
+footer h2{color:#fff; font-size:clamp(1.6rem,3.2vw,2.2rem);}
+footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
+.contact-grid{display:flex; flex-wrap:wrap; gap:10px; margin-top:32px;}
+.chip{padding:11px 18px; border:1px solid var(--line-on-dark); text-decoration:none; color:var(--cream); font-size:0.86rem; font-weight:500; border-radius:2px;}
+.chip:hover{border-color:var(--amber); color:var(--amber);}
+.adviser-note{margin-top:36px; padding-top:20px; border-top:1px solid var(--line-on-dark); font-size:0.85rem; color:#9fb8b1; max-width:640px;}
+.foot-base{margin-top:34px; padding-top:20px; border-top:1px solid var(--line-on-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.76rem; color:#8fa9a2; letter-spacing:0.03em;}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="index.html">MANAGING <span>/</span> TRANSITIONS</a>
+    <a class="brand" href="index.html">MANAGING <em>/</em> TRANSITIONS</a>
     <ul class="navlinks">
-      <li><a href="index.html#review">Review</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="research.html" class="current">Research</a></li>
-      <li><a href="index.html#advisory">Advisory</a></li>
+      <li><a href="story.html">The Story</a></li>
       <li><a href="diagnostic.html">Diagnostic</a></li>
-      <li><a href="index.html#approach">Approach</a></li>
-      <li><a href="index.html#philosophy">Philosophy</a></li>
       <li><a href="faq.html">Questions</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
@@ -198,16 +142,22 @@
 
 <header class="page-head">
   <div class="wrap">
-    <p class="eyebrow">Published research &middot; September 2026</p>
+    <p class="eyebrow">Published research · September 2026</p>
     <h1>Fifteen Weeks</h1>
     <p class="sub">What UK international NGOs write down when they hand their work over</p>
-    <p class="byline">Matt Thomson &nbsp;&middot;&nbsp; 23 organisations &nbsp;&middot;&nbsp; 13 codes &nbsp;&middot;&nbsp; coded from published documents &nbsp;&middot;&nbsp; CC BY 4.0</p>
+    <p class="byline">Matt Thomson &nbsp;·&nbsp; 23 organisations &nbsp;·&nbsp; 13 codes &nbsp;·&nbsp; coded from published documents &nbsp;·&nbsp; CC BY 4.0</p>
   </div>
 </header>
 
+<div class="scrollteaser">
+  <div class="wrap">
+    <a href="story.html"><span class="arrow">&rarr;</span> Prefer to scroll through it? There's a shorter, visual version of this report.</a>
+  </div>
+</div>
+
 <section class="keynums">
   <div class="wrap">
-    <div class="grid">
+    <div class="row">
       <div class="cell"><div class="n"><em>5</em> of 23</div><div class="l">put a figure against money moving to partners</div></div>
       <div class="cell"><div class="n"><em>6</em> of 23</div><div class="l">give a handover timetable separate from their redundancy timetable</div></div>
       <div class="cell"><div class="n"><em>4</em> of 23</div><div class="l">state any measure of whether the transition worked</div></div>
@@ -218,7 +168,7 @@
 <section class="downloads">
   <div class="wrap">
     <p class="eyebrow">Download</p>
-    <div class="dl-grid">
+    <div class="dl-row">
       <a class="dl" href="Thomson-2026-Transition-Exposure-UK-INGOs.pdf">
         <div class="k">PDF</div><div class="t">The report</div>
         <div class="d">Full text, three figures, four annexes</div>
@@ -232,7 +182,7 @@
         <div class="d">Every code, its scale, and the rule applied</div>
       </a>
     </div>
-    <p class="licence">Published under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Use it, check it, tell me where I am wrong. &nbsp;&middot;&nbsp; <a href="codebook.html#corrections">Corrections log</a></p>
+    <p class="licence">Published under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Use it, check it, tell me where I am wrong. &nbsp;·&nbsp; <a href="codebook.html#corrections">Corrections log</a></p>
   </div>
 </section>
 
@@ -670,7 +620,7 @@ Corrections after publication will be logged on the same page as the data.</p>
     <h3>Right of reply</h3>
     <p>Every organisation in this study was sent its coded row and given four weeks to correct the record before publication. Corrections received are marked in the dataset.</p>
     <p>If you work for an organisation in the sample and something here is wrong, write to <a href="mailto:matt@managingtransitions.org">matt@managingtransitions.org</a> and it will be corrected on this page with the date of the change.</p>
-    <p style="font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:#6b6b66; margin-top:20px;">
+    <p style="font-size:0.82rem; color:var(--muted); margin-top:20px;">
       Cite as: Thomson, M. (2026) <em>Fifteen Weeks: what UK international NGOs write down when they hand their work over.</em> Managing Transitions, Bristol.
     </p>
   </div>

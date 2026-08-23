@@ -7,39 +7,36 @@
 <title>Outcomes Conversion Engine: Interface Concept</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#000000; --teal:#0c231f; --brown:#392c23; --sand:#c9a877;
-    --paper:#ffffff; --line: rgba(0,0,0,0.14); --line-on-dark: rgba(255,255,255,0.18);
-    --max: 1060px;
+    --ink:#000000; --pine:#143a33; --brown:#392c23; --amber:#e47b12;
+    --paper:#ffffff; --line: rgba(0,0,0,0.14); --line-on-dark: rgba(244,239,230,0.2);
+    --cream:#f4efe6; --ink-soft:#2a2a27; --muted:#5c5c58; --max: 1060px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6;}
-  ::selection{background:var(--sand); color:var(--teal);}
-  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; margin:0; letter-spacing:-0.01em;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; line-height:1.6;}
+  ::selection{background:var(--amber); color:#fff;}
+  h1,h2,h3{font-weight:800; margin:0; letter-spacing:-0.02em;}
   .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
-  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal);}
+  .eyebrow{font-size:0.7rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--brown);}
 
-  .disclaimer{background:#3a1f10; color:#f6ddc0; padding:14px 0; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:0.76rem; letter-spacing:0.02em; border-bottom:3px solid var(--sand);}
+  .disclaimer{background:var(--brown); color:var(--cream); padding:14px 0; text-align:center; font-size:0.78rem; font-weight:500; letter-spacing:0.02em; border-bottom:3px solid var(--amber);}
   .disclaimer strong{color:#fff;}
 
   .back-link-row{background:#fafaf8; border-bottom:1px solid var(--line); padding:8px 0; text-align:center;}
-  .back-link-row a{
-    font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:var(--teal);
-    text-decoration:none; border-bottom:1px solid var(--line);
-  }
-  .back-link-row a:hover{border-color:var(--teal);}
+  .back-link-row a{font-size:0.78rem; font-weight:500; color:var(--pine); text-decoration:none; border-bottom:1px solid var(--line);}
+  .back-link-row a:hover{border-color:var(--pine);}
 
-  header.hero{background:var(--teal); color:#f4efe6; padding:40px 0 34px;}
-  header.hero .eyebrow{color:#a9c2bb; margin-bottom:10px;}
+  header.hero{background:var(--pine); color:var(--cream); padding:40px 0 34px;}
+  header.hero .eyebrow{color:#a7c2ba; margin-bottom:10px;}
   header.hero h1{font-size:clamp(1.6rem, 4vw, 2.2rem); color:#fff;}
-  header.hero p{color:#c9d8d3; margin-top:10px; font-size:0.94rem; max-width:74ch;}
+  header.hero p{color:#d7e3df; margin-top:10px; font-size:0.94rem; max-width:74ch;}
 
   .view-tabs{display:flex; gap:1px; background:var(--line); border:1px solid var(--line); width:fit-content; margin:24px auto 0; flex-wrap:wrap;}
-  .view-tab{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.02em; padding:11px 18px; background:#fafaf8; border:none; cursor:pointer; color:#4a4a48; transition:background .18s ease, color .18s ease;}
-  .view-tab.active{background:var(--teal); color:#fff;}
+  .view-tab{font-size:0.8rem; font-weight:600; letter-spacing:0.01em; padding:11px 18px; background:#fafaf8; border:none; cursor:pointer; color:var(--ink-soft); transition:background .18s ease, color .18s ease;}
+  .view-tab.active{background:var(--pine); color:#fff;}
   .view-panel{display:none;}
   .view-panel.active{display:block;}
 
@@ -48,128 +45,115 @@
   .section-head{margin-bottom:16px;}
   .section-head h2{font-size:clamp(1.1rem, 2.3vw, 1.35rem); margin-top:4px;}
   .section-head .eyebrow{margin-bottom:2px;}
-  .lede{font-size:0.86rem; color:#4a4a48; margin-bottom:16px;}
+  .lede{font-size:0.86rem; color:var(--muted); margin-bottom:16px;}
 
   .country-toggle{display:flex; gap:1px; background:var(--line); border:1px solid var(--line); width:fit-content; margin-bottom:22px;}
-  .country-btn{font-family:'IBM Plex Mono', monospace; font-size:0.74rem; padding:9px 15px; background:#fff; border:none; cursor:pointer; color:#4a4a48; transition:background .18s ease, color .18s ease;}
-  .country-btn.active{background:var(--brown); color:#f4efe6;}
+  .country-btn{font-size:0.76rem; font-weight:600; padding:9px 15px; background:#fff; border:none; cursor:pointer; color:var(--ink-soft); transition:background .18s ease, color .18s ease;}
+  .country-btn.active{background:var(--brown); color:var(--cream);}
 
   .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:8px;}
   .stat-card{background:#fff; padding:18px 16px;}
-  .stat-card .num{font-family:'IBM Plex Mono', monospace; font-size:1.4rem; color:var(--teal); font-weight:500;}
+  .stat-card .num{font-size:1.4rem; color:var(--pine); font-weight:700;}
   .stat-card .label{font-size:0.74rem; color:#6b6b66; margin-top:4px;}
   @media (max-width:720px){ .stat-grid{grid-template-columns:1fr 1fr;} }
   @media (max-width:420px){ .stat-grid{grid-template-columns:1fr;} }
 
-  /* generic filter buttons, reused everywhere */
   .filter-row{display:flex; align-items:center; gap:1px; flex-wrap:wrap; margin-bottom:10px;}
-  .filter-row-label{font-family:'IBM Plex Mono', monospace; font-size:0.66rem; text-transform:uppercase; letter-spacing:0.05em; color:#8a8a86; margin-right:10px; width:78px;}
-  .fbtn{font-family:'IBM Plex Mono', monospace; font-size:0.74rem; padding:8px 13px; background:#fafaf8; border:1px solid var(--line); cursor:pointer; color:#4a4a48; transition:background .18s ease, color .18s ease;}
-  .fbtn.active{background:var(--teal); color:#fff; border-color:var(--teal);}
+  .filter-row-label{font-size:0.68rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:#8a8a86; margin-right:10px; width:78px;}
+  .fbtn{font-size:0.76rem; font-weight:500; padding:8px 13px; background:#fafaf8; border:1px solid var(--line); cursor:pointer; color:var(--ink-soft); border-radius:2px; transition:background .18s ease, color .18s ease;}
+  .fbtn.active{background:var(--pine); color:#fff; border-color:var(--pine);}
 
-  .result-panel{border:1px solid var(--line); padding:20px 22px; margin:18px 0 22px;}
-  .result-title{font-size:0.9rem; font-weight:600; margin-bottom:14px;}
+  .result-panel{border:1px solid var(--line); padding:20px 22px; margin:18px 0 22px; border-radius:2px;}
+  .result-title{font-size:0.9rem; font-weight:700; margin-bottom:14px;}
   .bar-row{display:flex; align-items:center; gap:12px; margin-bottom:9px;}
-  .bar-label{width:170px; font-size:0.78rem; color:#4a4a48; flex-shrink:0;}
-  .bar-track{flex:1; background:#eef1ef; height:18px; position:relative;}
-  .bar-fill{background:var(--teal); height:100%; transition:width .4s ease;}
-  .bar-fill.alt{background:var(--sand);}
-  .bar-value{width:60px; text-align:right; font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:var(--teal);}
-  .big-stat{font-family:'IBM Plex Mono', monospace; font-size:2rem; color:var(--teal); font-weight:500;}
-  .big-stat-label{font-size:0.82rem; color:#4a4a48; margin-top:4px;}
+  .bar-label{width:170px; font-size:0.78rem; color:var(--ink-soft); flex-shrink:0;}
+  .bar-track{flex:1; background:#eef1ef; height:18px; position:relative; border-radius:1px;}
+  .bar-fill{background:var(--pine); height:100%; transition:width .4s ease;}
+  .bar-fill.alt{background:var(--amber);}
+  .bar-value{width:60px; text-align:right; font-size:0.76rem; font-weight:600; color:var(--pine);}
+  .big-stat{font-size:2rem; color:var(--pine); font-weight:800;}
+  .big-stat-label{font-size:0.82rem; color:var(--muted); margin-top:4px;}
 
   table{width:100%; border-collapse:collapse; margin-bottom:22px; font-size:0.84rem;}
-  th{font-family:'IBM Plex Mono', monospace; font-size:0.66rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--teal); text-align:left; padding:9px 8px; border-bottom:2px solid var(--line);}
-  td{padding:9px 8px; border-bottom:1px solid var(--line); color:#2b2b28;}
-  td.center{text-align:center; font-family:'IBM Plex Mono', monospace; font-weight:600;}
+  th{font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--pine); text-align:left; padding:9px 8px; border-bottom:2px solid var(--line);}
+  td{padding:9px 8px; border-bottom:1px solid var(--line); color:var(--ink-soft);}
+  td.center{text-align:center; font-weight:700;}
   td.up{color:#2f5c4d;} td.flat{color:#8a8a86;}
 
-  .note-card{border-left:3px solid var(--sand); padding:14px 18px; background:#fbf7f1; font-size:0.87rem; color:#3a2f22; margin-bottom:20px;}
-  .alert-card{border-left:3px solid var(--brown); padding:14px 18px; background:#fbf7f1; font-size:0.87rem; color:#3a2f22; margin-bottom:20px;}
+  .note-card{border-left:3px solid var(--amber); padding:14px 18px; background:#faf9f6; font-size:0.87rem; color:#332a1f; margin-bottom:20px; border-radius:2px;}
+  .alert-card{border-left:3px solid var(--brown); padding:14px 18px; background:#faf9f6; font-size:0.87rem; color:#332a1f; margin-bottom:20px; border-radius:2px;}
 
   .series-toggles{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
-  .series-chip{display:flex; align-items:center; gap:7px; font-family:'IBM Plex Mono', monospace; font-size:0.74rem; padding:7px 12px; border:1px solid var(--line); cursor:pointer; color:#4a4a48; background:#fff;}
+  .series-chip{display:flex; align-items:center; gap:7px; font-size:0.76rem; font-weight:500; padding:7px 12px; border:1px solid var(--line); cursor:pointer; color:var(--ink-soft); background:#fff; border-radius:2px;}
   .series-chip .dot{width:10px; height:10px; border-radius:50%;}
   .series-chip.off{opacity:0.35;}
   .svg-chart{width:100%; height:auto;}
-  .chart-caption{font-size:0.72rem; color:#8a8a86; font-family:'IBM Plex Mono', monospace; margin:10px 0 24px;}
+  .chart-caption{font-size:0.74rem; color:#8a8a86; margin:10px 0 24px;}
 
-  /* ---------- Results chain ---------- */
   .chain{display:flex; gap:2px; overflow-x:auto; margin-bottom:14px; padding-bottom:4px;}
   .chain-step{flex:1; min-width:150px; background:#fafaf8; border:1px solid var(--line); padding:14px;}
-  .chain-step .tier{font-family:'IBM Plex Mono', monospace; font-size:0.64rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--teal); font-weight:600;}
-  .chain-step h4{font-size:0.88rem; margin-top:6px;}
-  .chain-step p{font-size:0.76rem; color:#4a4a48; margin-top:6px;}
-  .chain-arrow{display:flex; align-items:center; color:var(--sand); font-size:1.1rem; padding:0 2px;}
+  .chain-step .tier{font-size:0.66rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--pine); font-weight:700;}
+  .chain-step h4{font-size:0.88rem; margin-top:6px; font-weight:700;}
+  .chain-step p{font-size:0.78rem; color:var(--muted); margin-top:6px;}
+  .chain-arrow{display:flex; align-items:center; color:var(--amber); font-size:1.1rem; padding:0 2px;}
 
-  /* ---------- Patient record ---------- */
-  .patient-header{border:1px solid var(--line); padding:20px 22px; margin-bottom:20px;}
-  .qual-flag{
-    margin-top:16px; padding-top:14px; border-top:1px dashed var(--line);
-    font-size:0.82rem; color:#5a4636; display:flex; align-items:center; gap:8px;
-  }
-  .qual-dot{width:9px; height:9px; border-radius:50%; background:var(--sand); flex-shrink:0; display:inline-block;}
-  .patient-id{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--teal);}
+  .patient-header{border:1px solid var(--line); padding:20px 22px; margin-bottom:20px; border-radius:2px;}
+  .qual-flag{margin-top:16px; padding-top:14px; border-top:1px dashed var(--line); font-size:0.82rem; color:#5a4636; display:flex; align-items:center; gap:8px;}
+  .qual-dot{width:9px; height:9px; border-radius:50%; background:var(--amber); flex-shrink:0; display:inline-block;}
+  .patient-id{font-size:0.82rem; font-weight:600; color:var(--pine);}
   .patient-demo{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px;}
-  .demo-item .k{font-family:'IBM Plex Mono', monospace; font-size:0.64rem; text-transform:uppercase; letter-spacing:0.04em; color:#8a8a86;}
-  .demo-item .v{font-size:0.88rem; color:#2b2b28; margin-top:3px;}
+  .demo-item .k{font-size:0.66rem; text-transform:uppercase; letter-spacing:0.04em; color:#8a8a86; font-weight:600;}
+  .demo-item .v{font-size:0.88rem; color:var(--ink-soft); margin-top:3px;}
   @media (max-width:700px){ .patient-demo{grid-template-columns:1fr 1fr;} }
 
   .action-row{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 24px;}
-  .action-btn{font-family:'IBM Plex Mono', monospace; font-size:0.74rem; padding:10px 16px; background:var(--teal); color:#fff; border:none; cursor:pointer; transition:transform .15s ease;}
-  .action-btn:hover{transform:translateY(-2px);}
-  .action-btn.ghost{background:#fff; color:var(--teal); border:1px solid var(--line);}
-  .action-panel{display:none; border:1px solid var(--sand); background:#fbf7f1; padding:16px 18px; margin-bottom:22px; font-size:0.86rem; color:#3a2f22;}
+  .action-btn{font-size:0.78rem; font-weight:600; padding:10px 16px; background:var(--pine); color:#fff; border:none; cursor:pointer; border-radius:2px; transition:transform .15s ease, background .15s ease;}
+  .action-btn:hover{background:var(--amber); transform:translateY(-2px);}
+  .action-btn.ghost{background:#fff; color:var(--pine); border:1px solid var(--line);}
+  .action-panel{display:none; border:1px solid var(--amber); background:#faf9f6; padding:16px 18px; margin-bottom:22px; font-size:0.86rem; color:#332a1f; border-radius:2px;}
   .action-panel.open{display:block;}
-  .action-panel label{display:block; font-family:'IBM Plex Mono', monospace; font-size:0.66rem; text-transform:uppercase; color:var(--teal); margin:10px 0 4px;}
-  .action-panel input, .action-panel select{width:100%; padding:8px; border:1px solid var(--line); font-family:'Inter', sans-serif; font-size:0.86rem; background:#fff;}
+  .action-panel label{display:block; font-size:0.68rem; font-weight:600; text-transform:uppercase; color:var(--pine); margin:10px 0 4px;}
+  .action-panel input, .action-panel select{width:100%; padding:8px; border:1px solid var(--line); font-family:inherit; font-size:0.86rem; background:#fff; border-radius:2px;}
   .action-panel .eq5d-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 14px;}
-  .action-panel .confirm{margin-top:12px; font-size:0.8rem; color:var(--teal); font-style:italic;}
+  .action-panel .confirm{margin-top:12px; font-size:0.8rem; color:var(--pine); font-style:italic;}
 
   .eq5d-summary{display:flex; gap:24px; align-items:flex-end; margin-bottom:18px; flex-wrap:wrap;}
-  .eq5d-index{font-family:'IBM Plex Mono', monospace; font-size:1.8rem; color:var(--teal); font-weight:500;}
-  .eq5d-index-label{font-size:0.8rem; color:#4a4a48;}
-  .eq5d-legend{font-size:0.72rem; color:#8a8a86; font-family:'IBM Plex Mono', monospace; margin-bottom:14px;}
-  .score-cell{width:30px; height:26px; display:inline-flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono', monospace; font-size:0.78rem; font-weight:600; border-radius:2px;}
-  .trend-arrow{font-family:'IBM Plex Mono', monospace; font-size:0.72rem;}
+  .eq5d-index{font-size:1.8rem; color:var(--pine); font-weight:800;}
+  .eq5d-index-label{font-size:0.8rem; color:var(--muted);}
+  .eq5d-legend{font-size:0.74rem; color:#8a8a86; margin-bottom:14px;}
+  .score-cell{width:30px; height:26px; display:inline-flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; border-radius:2px;}
+  .trend-arrow{font-size:0.74rem;}
   .trend-up{color:#8a6f56;} .trend-down{color:#2f5c4d;} .trend-flat{color:#8a8a86;}
 
   details.log-details{margin-top:8px;}
-  details.log-details summary{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--teal); cursor:pointer; padding:10px 0;}
+  details.log-details summary{font-size:0.8rem; font-weight:600; color:var(--pine); cursor:pointer; padding:10px 0;}
   .patient-timeline{border-left:2px solid var(--line); margin:16px 0 0 8px;}
   .tl-item{position:relative; padding:0 0 18px 24px;}
   .tl-item:last-child{padding-bottom:0;}
-  .tl-item::before{content:""; position:absolute; left:-6px; top:2px; width:10px; height:10px; border-radius:50%; background:#fff; border:2px solid var(--teal);}
-  .tl-item.alt::before{background:var(--sand); border-color:var(--sand);}
+  .tl-item::before{content:""; position:absolute; left:-6px; top:2px; width:10px; height:10px; border-radius:50%; background:#fff; border:2px solid var(--pine);}
+  .tl-item.alt::before{background:var(--amber); border-color:var(--amber);}
   .tl-item.gap::before{background:#fff; border-color:#8a8a86; border-style:dashed;}
-  .tl-day{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--teal); text-transform:uppercase;}
+  .tl-day{font-size:0.72rem; font-weight:600; color:var(--pine); text-transform:uppercase;}
   .tl-item.gap .tl-day{color:#8a8a86;}
-  .tl-desc{font-size:0.88rem; color:#2b2b28; margin-top:3px;}
-  .tl-tag{display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:0.64rem; text-transform:uppercase; letter-spacing:0.03em; border:1px solid var(--sand); color:#8a6f56; padding:2px 7px; margin-top:5px;}
+  .tl-desc{font-size:0.88rem; color:var(--ink-soft); margin-top:3px;}
+  .tl-tag{display:inline-block; font-size:0.66rem; text-transform:uppercase; letter-spacing:0.03em; border:1px solid var(--amber); color:#8a6f56; padding:2px 7px; margin-top:5px; border-radius:2px;}
 
   .stake-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
   .stake-card{background:#fff; padding:18px;}
-  .stake-card .role{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.03em; color:var(--teal);}
-  .stake-card h4{font-size:0.96rem; margin-top:7px;}
-  .stake-card p{font-size:0.82rem; color:#4a4a48; margin-top:7px;}
+  .stake-card .role{font-size:0.7rem; text-transform:uppercase; letter-spacing:0.03em; color:var(--pine); font-weight:700;}
+  .stake-card h4{font-size:0.96rem; margin-top:7px; font-weight:700;}
+  .stake-card p{font-size:0.82rem; color:var(--muted); margin-top:7px;}
   @media (max-width:820px){ .stake-grid{grid-template-columns:1fr;} }
 
-  footer{background:var(--teal); color:#c9d8d3; padding:30px 0; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:0.72rem;}
+  footer{background:var(--pine); color:#d7e3df; padding:30px 0; text-align:center; font-size:0.74rem;}
 
-  /* ---------- M&E control panel ---------- */
-  .headline-stat{
-    background:var(--teal); color:#fff; padding:24px 26px; margin:20px 0 22px;
-    display:flex; align-items:center; gap:24px; flex-wrap:wrap;
-  }
-  .headline-num{font-family:'IBM Plex Mono', monospace; font-size:2.6rem; font-weight:500; color:var(--sand); flex-shrink:0;}
+  .headline-stat{background:var(--pine); color:#fff; padding:24px 26px; margin:20px 0 22px; display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
+  .headline-num{font-size:2.6rem; font-weight:800; color:var(--amber); flex-shrink:0;}
   .headline-text{font-size:0.92rem; color:#dbe5e1; max-width:56ch;}
 
   .story-row{display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
-  .story-item{background:#fff; padding:16px 18px; font-size:0.86rem; color:#2b2b28;}
-  .story-label{
-    display:block; font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase;
-    letter-spacing:0.05em; margin-bottom:6px; font-weight:600;
-  }
+  .story-item{background:#fff; padding:16px 18px; font-size:0.86rem; color:var(--ink-soft);}
+  .story-label{display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; font-weight:700;}
   .story-win .story-label{color:#2f5c4d;}
   .story-watch .story-label{color:#8a6f56;}
   .story-action .story-label{color:var(--brown);}
@@ -179,37 +163,31 @@
   @media (max-width:760px){ .tile-grid{grid-template-columns:1fr;} }
   .tile{background:#fff; border-left:4px solid var(--line);}
   .tile-good{border-left-color:#2f5c4d;}
-  .tile-watch{border-left-color:var(--sand);}
+  .tile-watch{border-left-color:var(--amber);}
   .tile-bad{border-left-color:var(--brown);}
-  .tile summary{
-    list-style:none; cursor:pointer; padding:16px 18px; display:flex; flex-direction:column; gap:2px;
-  }
+  .tile summary{list-style:none; cursor:pointer; padding:16px 18px; display:flex; flex-direction:column; gap:2px;}
   .tile summary::-webkit-details-marker{display:none;}
-  .tile-label{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em; color:#8a8a86;}
-  .tile-value{font-family:'IBM Plex Mono', monospace; font-size:1.5rem; font-weight:600; color:var(--ink);}
+  .tile-label{font-size:0.7rem; text-transform:uppercase; letter-spacing:0.05em; color:#8a8a86; font-weight:600;}
+  .tile-value{font-size:1.5rem; font-weight:800; color:var(--ink);}
   .tile-arrow{font-size:1rem;}
   .tile-good .tile-arrow{color:#2f5c4d;}
   .tile-bad .tile-arrow, .tile-watch .tile-arrow{color:var(--brown);}
   .tile-note{font-size:0.78rem; color:#6b6b66;}
   .tile-detail{padding:0 18px 18px; font-size:0.86rem; color:#3a3a38;}
   .tile-detail p{margin-top:10px;}
-  .tile-link{display:inline-block; margin-top:8px; font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--teal); text-decoration:underline;}
-  .chart-legend-mini{display:flex; gap:14px; font-size:0.72rem; color:#4a4a48; margin-bottom:6px;}
+  .tile-link{display:inline-block; margin-top:8px; font-size:0.8rem; font-weight:600; color:var(--pine); text-decoration:underline;}
+  .chart-legend-mini{display:flex; gap:14px; font-size:0.74rem; color:var(--muted); margin-bottom:6px;}
   .chart-legend-mini .dot{width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:5px;}
 
   .floating-footer{
     position:fixed; bottom:0; left:0; right:0; z-index:200;
-    background:var(--brown); color:#f4efe6;
+    background:var(--brown); color:var(--cream);
     padding:12px 20px; display:flex; justify-content:space-between; align-items:center; gap:16px;
-    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; flex-wrap:wrap;
-    box-shadow:0 -3px 14px rgba(0,0,0,0.2);
+    font-size:0.8rem; flex-wrap:wrap;
   }
-  .floating-footer a{color:var(--sand); text-decoration:none; border-bottom:1px solid var(--sand);}
-  .floating-footer a:hover{color:#f4efe6; border-color:#f4efe6;}
-  .floating-footer button{
-    background:none; border:1px solid rgba(255,255,255,0.3); color:#f4efe6;
-    width:24px; height:24px; margin-left:12px; cursor:pointer; font-size:0.9rem; line-height:1;
-  }
+  .floating-footer a{color:var(--amber); text-decoration:none; border-bottom:1px solid var(--amber);}
+  .floating-footer a:hover{color:var(--cream); border-color:var(--cream);}
+  .floating-footer button{background:none; border:1px solid rgba(255,255,255,0.3); color:var(--cream); width:24px; height:24px; margin-left:12px; cursor:pointer; font-size:0.9rem; line-height:1;}
   body{padding-bottom:58px;}
 </style>
 </head>
@@ -300,31 +278,31 @@
       </div>
       <p class="lede">Six measures for the region currently selected in the Cross-Filter Explorer: the five EQ-5D dimensions (share of people reporting a problem, lower is better) plus economic activity (share engaged in income-generating work, higher is better). Switch region above and this redraws.</p>
       <div class="series-toggles" id="seriesToggles">
-        <button class="series-chip" data-series="mobility"><span class="dot" style="background:#0c231f;"></span>Mobility, problem rate</button>
+        <button class="series-chip" data-series="mobility"><span class="dot" style="background:#143a33;"></span>Mobility, problem rate</button>
         <button class="series-chip" data-series="selfCare"><span class="dot" style="background:#392c23;"></span>Self-care, problem rate</button>
-        <button class="series-chip" data-series="usualActivities"><span class="dot" style="background:#c9a877;"></span>Usual activities, problem rate</button>
-        <button class="series-chip" data-series="painDiscomfort"><span class="dot dashed" style="background:#0c231f;"></span>Pain / discomfort, problem rate</button>
+        <button class="series-chip" data-series="usualActivities"><span class="dot" style="background:#e47b12;"></span>Usual activities, problem rate</button>
+        <button class="series-chip" data-series="painDiscomfort"><span class="dot dashed" style="background:#143a33;"></span>Pain / discomfort, problem rate</button>
         <button class="series-chip" data-series="anxietyDepression"><span class="dot dashed" style="background:#392c23;"></span>Anxiety / depression, problem rate</button>
-        <button class="series-chip" data-series="economicActivity"><span class="dot dashed" style="background:#c9a877;"></span>Economic activity (higher is better)</button>
+        <button class="series-chip" data-series="economicActivity"><span class="dot dashed" style="background:#e47b12;"></span>Economic activity (higher is better)</button>
       </div>
       <div style="display:flex; gap:8px;">
         <svg width="34" height="200" viewBox="0 0 34 200" style="flex-shrink:0;">
-          <text x="30" y="16" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86" text-anchor="end">60%</text>
-          <text x="30" y="68" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86" text-anchor="end">40%</text>
-          <text x="30" y="120" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86" text-anchor="end">20%</text>
-          <text x="30" y="172" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86" text-anchor="end">0%</text>
+          <text x="30" y="16" font-family="Inter, sans-serif" font-size="9" fill="#8a8a86" text-anchor="end">60%</text>
+          <text x="30" y="68" font-family="Inter, sans-serif" font-size="9" fill="#8a8a86" text-anchor="end">40%</text>
+          <text x="30" y="120" font-family="Inter, sans-serif" font-size="9" fill="#8a8a86" text-anchor="end">20%</text>
+          <text x="30" y="172" font-family="Inter, sans-serif" font-size="9" fill="#8a8a86" text-anchor="end">0%</text>
         </svg>
         <svg class="svg-chart" id="trendSvg" viewBox="0 0 620 200" xmlns="http://www.w3.org/2000/svg" style="flex:1;">
           <line x1="4" y1="10" x2="600" y2="10" stroke="#eef1ef" stroke-width="1"/>
           <line x1="4" y1="62" x2="600" y2="62" stroke="#eef1ef" stroke-width="1"/>
           <line x1="4" y1="114" x2="600" y2="114" stroke="#eef1ef" stroke-width="1"/>
           <line x1="4" y1="166" x2="600" y2="166" stroke="#dedad2" stroke-width="1"/>
-          <text x="4" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P1</text>
-          <text x="122" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P2</text>
-          <text x="240" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P3</text>
-          <text x="358" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P4</text>
-          <text x="476" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P5</text>
-          <text x="580" y="188" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a8a86">P6</text>
+          <text x="4" y="188" font-family="Inter, sans-serif" font-size="9" fill="#8a8a86">P1</text>
+          <text x="122" y="188" font-family="Inter, sans-serif" font-size="9" fill="#8a8a86">P2</text>
+          <text x="240" y="188" font-family="Inter, sans-serif" font-size="9" fill="#8a8a86">P3</text>
+          <text x="358" y="188" font-family="Inter, sans-serif" font-size="9" fill="#8a8a86">P4</text>
+          <text x="476" y="188" font-family="Inter, sans-serif" font-size="9" fill="#8a8a86">P5</text>
+          <text x="580" y="188" font-family="Inter, sans-serif" font-size="9" fill="#8a8a86">P6</text>
         </svg>
       </div>
       <div class="chart-caption" id="trendCaption">Y-axis: share of population reporting a problem on that dimension (0–60%), except economic activity, which is share engaged in income-generating work. Currently showing: system-wide.</div>
@@ -357,7 +335,7 @@
     <section style="padding-top:28px; border-top:none;">
       <div class="section-head">
         <p class="eyebrow">Patient-Level Dashboard</p>
-        <h2>Where the EQ-5D score is coming from, not just what it is.</h2>
+        <h2>Where the EQ-5D score is coming from, and not only what it is.</h2>
       </div>
 
       <div class="patient-header">
@@ -418,10 +396,10 @@
 
       <div class="eq5d-summary">
         <div><div class="eq5d-index">0.69</div><div class="eq5d-index-label">Current EQ-5D-style utility index</div></div>
-        <div><div class="eq5d-index" style="color:var(--sand);">0.58 → 0.69</div><div class="eq5d-index-label">Change since baseline (Jan 2024)</div></div>
+        <div><div class="eq5d-index" style="color:var(--amber);">0.58 → 0.69</div><div class="eq5d-index-label">Change since baseline (Jan 2024)</div></div>
       </div>
 
-      <div class="eq5d-legend">Each dimension scored 1 (no problems) to 5 (extreme problems), lower is better. Shade: green-sand = mild, brown = more severe.</div>
+      <div class="eq5d-legend">Each dimension scored 1 (no problems) to 5 (extreme problems), lower is better. Shade: amber = mild, brown = more severe.</div>
 
       <table>
         <thead>
@@ -467,7 +445,7 @@
 
       <p class="eyebrow" style="color:#8a8a86; margin-bottom:8px;">Example of the reporting layer a person would write periodically, not something the dashboard generates live</p>
       <div class="story-row">
-        <div class="story-item story-win"><span class="story-label">Win</span>Follow-up completion is up 13 points since Period 1, and data completeness is rising with it, so the gain is real, not just better counting.</div>
+        <div class="story-item story-win"><span class="story-label">Win</span>Follow-up completion is up 13 points since Period 1, and data completeness is rising with it, so the gain is real, and not only better counting.</div>
         <div class="story-item story-watch"><span class="story-label">Watch</span>Only 57% of referrals end in a recorded outcome. People are attending; the record-keeping after the visit is where most of the loss happens.</div>
         <div class="story-item story-action"><span class="story-label">Action</span>Prioritise community health worker home visits over SMS reminders next quarter, they cost more per contact but move wellbeing roughly ten times as much.</div>
       </div>
@@ -485,8 +463,8 @@
           </summary>
           <div class="tile-detail">
             <div class="chart-legend-mini">
-              <span><span class="dot" style="background:#0c231f;"></span>30-day</span>
-              <span><span class="dot" style="background:#c9a877;"></span>90-day</span>
+              <span><span class="dot" style="background:#143a33;"></span>30-day</span>
+              <span><span class="dot" style="background:#e47b12;"></span>90-day</span>
             </div>
             <svg id="tileChartFollowup" class="svg-chart" viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg"></svg>
           </div>
@@ -513,8 +491,8 @@
           </summary>
           <div class="tile-detail">
             <div class="chart-legend-mini">
-              <span><span class="dot" style="background:#0c231f;"></span>Full EQ-5D captured</span>
-              <span><span class="dot" style="background:#c9a877;"></span>Duplicate IDs resolved</span>
+              <span><span class="dot" style="background:#143a33;"></span>Full EQ-5D captured</span>
+              <span><span class="dot" style="background:#e47b12;"></span>Duplicate IDs resolved</span>
             </div>
             <svg id="tileChartCompleteness" class="svg-chart" viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg"></svg>
           </div>
@@ -528,8 +506,8 @@
           </summary>
           <div class="tile-detail">
             <div class="chart-legend-mini">
-              <span><span class="dot" style="background:#0c231f;"></span>System-wide average</span>
-              <span><span class="dot" style="background:#c9a877;"></span>Women 65+, rural, out of work</span>
+              <span><span class="dot" style="background:#143a33;"></span>System-wide average</span>
+              <span><span class="dot" style="background:#e47b12;"></span>Women 65+, rural, out of work</span>
             </div>
             <svg id="tileChartCoverage" class="svg-chart" viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg"></svg>
             <a href="#coverageExplorer" class="tile-link">Open the coverage explorer ↓</a>
@@ -544,8 +522,8 @@
           </summary>
           <div class="tile-detail">
             <div class="chart-legend-mini">
-              <span><span class="dot" style="background:#0c231f;"></span>Somalia · Baano (EVC-Plus)</span>
-              <span><span class="dot" style="background:#c9a877;"></span>Somaliland · Shaafi (ZAAD)</span>
+              <span><span class="dot" style="background:#143a33;"></span>Somalia · Baano (EVC-Plus)</span>
+              <span><span class="dot" style="background:#e47b12;"></span>Somaliland · Shaafi (ZAAD)</span>
             </div>
             <svg id="tileChartConvergence" class="svg-chart" viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg"></svg>
           </div>
@@ -559,7 +537,7 @@
           </summary>
           <div class="tile-detail">
             <div class="chart-legend-mini">
-              <span><span class="dot" style="background:#0c231f;"></span>Blended wellbeing index</span>
+              <span><span class="dot" style="background:#143a33;"></span>Blended wellbeing index</span>
             </div>
             <svg id="tileChartWellbeing" class="svg-chart" viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg"></svg>
           </div>
@@ -642,10 +620,10 @@
     <table>
       <thead><tr><th>Dashboard</th><th>Primary audience</th><th>What it would show</th></tr></thead>
       <tbody>
-        <tr><td>Referral &amp; outreach funnel</td><td>Planners, community health workers</td><td>Flagged → contacted → attended → outcome recorded, showing where people drop out of the referral pathway itself, not just the follow-up schedule.</td></tr>
+        <tr><td>Referral &amp; outreach funnel</td><td>Planners, community health workers</td><td>Flagged → contacted → attended → outcome recorded, showing where people drop out of the referral pathway itself, and not only the follow-up schedule.</td></tr>
         <tr><td>Cost per unit of wellbeing change</td><td>Ministry of Health, donors</td><td>Consultation cost against wellbeing change by intervention, a value-for-money view built from data already collected.</td></tr>
         <tr><td>Caseload by health worker or facility</td><td>Individual health workers, district coordinators</td><td>Who is carrying the heaviest follow-up backlog right now, an operational rather than strategic view.</td></tr>
-        <tr><td>Cohort retention curve</td><td>Policy, programme planning</td><td>What share of each registration month is still being followed up at 30/60/90 days, shows whether retention is improving over time, not just its current rate.</td></tr>
+        <tr><td>Cohort retention curve</td><td>Policy, programme planning</td><td>What share of each registration month is still being followed up at 30/60/90 days, shows whether retention is improving over time, and not only its current rate.</td></tr>
       </tbody>
     </table>
   </section>
@@ -778,12 +756,12 @@
 
   /* ---------- Outcomes-over-time, tied to the cross-filter region ---------- */
   const outcomeBase = {
-    mobility:          {vals:[42,38,35,31,28,24], color:'#0c231f', dash:false},
+    mobility:          {vals:[42,38,35,31,28,24], color:'#143a33', dash:false},
     selfCare:          {vals:[22,20,19,18,17,16], color:'#392c23', dash:false},
-    usualActivities:   {vals:[39,36,33,29,26,23], color:'#c9a877', dash:false},
-    painDiscomfort:    {vals:[51,48,46,43,40,37], color:'#0c231f', dash:true},
+    usualActivities:   {vals:[39,36,33,29,26,23], color:'#e47b12', dash:false},
+    painDiscomfort:    {vals:[51,48,46,43,40,37], color:'#143a33', dash:true},
     anxietyDepression: {vals:[35,32,30,27,25,22], color:'#392c23', dash:true},
-    economicActivity:  {vals:[39,41,44,47,50,54], color:'#c9a877', dash:true}
+    economicActivity:  {vals:[39,41,44,47,50,54], color:'#e47b12', dash:true}
   };
   const regionOutcomeMult = {
     all:            {problem:1.0, econ:1.0},
@@ -851,14 +829,14 @@
       const y = top + (1-frac)*(bottom-top);
       const val = min + frac*(max-min);
       svg.appendChild(el('line', {x1:left, y1:y, x2:right, y2:y, stroke: frac===0 ? '#dedad2' : '#eef1ef', 'stroke-width':1}));
-      const t = el('text', {x:left-6, y:y+3, 'font-family':'IBM Plex Mono, monospace', 'font-size':9, fill:'#8a8a86', 'text-anchor':'end'});
+      const t = el('text', {x:left-6, y:y+3, 'font-family':'Inter, sans-serif', 'font-size':9, fill:'#8a8a86', 'text-anchor':'end'});
       t.textContent = fmt(val);
       svg.appendChild(t);
     });
     // x-axis period labels
     const xs = [left, left+(right-left)*0.2, left+(right-left)*0.4, left+(right-left)*0.6, left+(right-left)*0.8, right];
     ['P1','P2','P3','P4','P5','P6'].forEach((lab,i)=>{
-      const t = el('text', {x:xs[i], y:114, 'font-family':'IBM Plex Mono, monospace', 'font-size':9, fill:'#8a8a86', 'text-anchor': i===0 ? 'start' : (i===5 ? 'end' : 'middle')});
+      const t = el('text', {x:xs[i], y:114, 'font-family':'Inter, sans-serif', 'font-size':9, fill:'#8a8a86', 'text-anchor': i===0 ? 'start' : (i===5 ? 'end' : 'middle')});
       t.textContent = lab;
       svg.appendChild(t);
     });
@@ -869,10 +847,10 @@
       const poly = el('polyline', {points, fill:'none', stroke:s.color, 'stroke-width':2.5});
       if(s.dash) poly.setAttribute('stroke-dasharray','6,4');
       svg.appendChild(poly);
-      const startLabel = el('text', {x:xs[0], y:yFor(s.vals[0])-6, 'font-family':'IBM Plex Mono, monospace', 'font-size':10, fill:s.color, 'font-weight':600, 'text-anchor':'start'});
+      const startLabel = el('text', {x:xs[0], y:yFor(s.vals[0])-6, 'font-family':'Inter, sans-serif', 'font-size':10, fill:s.color, 'font-weight':700, 'text-anchor':'start'});
       startLabel.textContent = fmt(s.vals[0]);
       svg.appendChild(startLabel);
-      const endLabel = el('text', {x:xs[5], y:yFor(s.vals[5])-6, 'font-family':'IBM Plex Mono, monospace', 'font-size':10, fill:s.color, 'font-weight':600, 'text-anchor':'end'});
+      const endLabel = el('text', {x:xs[5], y:yFor(s.vals[5])-6, 'font-family':'Inter, sans-serif', 'font-size':10, fill:s.color, 'font-weight':700, 'text-anchor':'end'});
       endLabel.textContent = fmt(s.vals[5]);
       svg.appendChild(endLabel);
     });
@@ -882,27 +860,27 @@
   const idxFmt = v => v.toFixed(2);
 
   drawAxisChart('tileChartFollowup', [
-    {vals:[58,61,65,68,70,71], color:'#0c231f', dash:false},
-    {vals:[42,46,50,53,56,58], color:'#c9a877', dash:false}
+    {vals:[58,61,65,68,70,71], color:'#143a33', dash:false},
+    {vals:[42,46,50,53,56,58], color:'#e47b12', dash:false}
   ], {min:0, max:100, fmt:pctFmt});
 
   drawAxisChart('tileChartCompleteness', [
-    {vals:[61,66,70,74,79,83], color:'#0c231f', dash:false},
-    {vals:[52,58,63,69,74,80], color:'#c9a877', dash:false}
+    {vals:[61,66,70,74,79,83], color:'#143a33', dash:false},
+    {vals:[52,58,63,69,74,80], color:'#e47b12', dash:false}
   ], {min:0, max:100, fmt:pctFmt});
 
   drawAxisChart('tileChartCoverage', [
-    {vals:[55,57,59,61,63,64], color:'#0c231f', dash:false},
-    {vals:[11,12,14,15,17,19], color:'#c9a877', dash:false}
+    {vals:[55,57,59,61,63,64], color:'#143a33', dash:false},
+    {vals:[11,12,14,15,17,19], color:'#e47b12', dash:false}
   ], {min:0, max:100, fmt:pctFmt});
 
   drawAxisChart('tileChartConvergence', [
-    {vals:[0.48,0.51,0.55,0.58,0.61,0.64], color:'#0c231f', dash:false},
-    {vals:[0.55,0.58,0.60,0.62,0.65,0.68], color:'#c9a877', dash:false}
+    {vals:[0.48,0.51,0.55,0.58,0.61,0.64], color:'#143a33', dash:false},
+    {vals:[0.55,0.58,0.60,0.62,0.65,0.68], color:'#e47b12', dash:false}
   ], {min:0.3, max:0.8, fmt:idxFmt});
 
   drawAxisChart('tileChartWellbeing', [
-    {vals:[0.50,0.54,0.58,0.61,0.64,0.67], color:'#0c231f', dash:false}
+    {vals:[0.50,0.54,0.58,0.61,0.64,0.67], color:'#143a33', dash:false}
   ], {min:0.3, max:0.8, fmt:idxFmt});
 
   const eq5d = {
@@ -913,7 +891,7 @@
     'Anxiety / depression':[3,2,3,2,2]
   };
   function scoreColor(v){
-    if(v<=2) return {bg:'rgba(201,168,119,0.35)', fg:'#5a4636'};
+    if(v<=2) return {bg:'rgba(228,123,18,0.28)', fg:'#5a4636'};
     if(v===3) return {bg:'rgba(0,0,0,0.06)', fg:'#4a4a48'};
     return {bg:'rgba(57,44,35,0.75)', fg:'#fff'};
   }

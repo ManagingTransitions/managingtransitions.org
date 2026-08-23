@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fifteen Weeks, scrolled | Managing Transitions</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://managingtransitions.org/story.html">
+<meta name="description" content="The Fifteen Weeks findings, told as a scroll. What 23 UK international NGOs wrote down when they handed their work over, and what they left out.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Managing Transitions">
+<meta property="og:title" content="Fifteen Weeks, scrolled">
+<meta property="og:description" content="The Fifteen Weeks findings, told as a scroll. What 23 UK international NGOs wrote down when they handed their work over, and what they left out.">
+<meta property="og:image" content="https://managingtransitions.org/fig1.png">
+<meta property="og:url" content="https://managingtransitions.org/story.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fifteen Weeks, scrolled">
+<meta name="twitter:description" content="The Fifteen Weeks findings, told as a scroll.">
+<meta name="twitter:image" content="https://managingtransitions.org/fig1.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23143a33'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23e47b12'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000; --pine:#143a33; --brown:#392c23; --amber:#e47b12; --paper:#ffffff;
+  --line:rgba(0,0,0,0.13); --line-on-dark:rgba(244,239,230,0.2);
+  --cream:#f4efe6; --ink-soft:#2a2a27; --muted:#5c5c58; --max:1120px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+::selection{background:var(--amber); color:#fff;}
+h1,h2,h3{font-weight:800; margin:0; letter-spacing:-0.02em;}
+.eyebrow{font-size:0.74rem; font-weight:600; letter-spacing:0.11em; text-transform:uppercase; color:var(--amber);}
+a{color:inherit;}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+:focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
+
+nav{position:sticky; top:0; z-index:80; background:rgba(255,255,255,0.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
+.brand{font-weight:800; font-size:0.94rem; letter-spacing:-0.01em; text-decoration:none; color:var(--ink);}
+.brand em{font-style:normal; color:var(--amber);}
+.navlinks{display:flex; gap:24px; list-style:none; margin:0; padding:0;}
+.navlinks a{position:relative; font-size:0.87rem; font-weight:500; text-decoration:none; color:var(--ink-soft); padding-bottom:3px;}
+.navlinks a::after{content:""; position:absolute; left:0; bottom:0; width:100%; height:1.5px; background:var(--amber); transform:scaleX(0); transform-origin:left; transition:transform .22s ease;}
+.navlinks a:hover{color:var(--ink);}
+.navlinks a:hover::after,.navlinks a.current::after{transform:scaleX(1);}
+.navlinks a.current{color:var(--ink);}
+@media (max-width:900px){ .navlinks{display:none;} }
+
+header.storyhead{background:var(--pine); color:var(--cream); padding:76px 0 64px; overflow:hidden; position:relative;}
+header.storyhead .eyebrow{color:var(--amber); margin-bottom:18px;}
+header.storyhead h1{font-size:clamp(2.6rem, 7vw, 5rem); color:#fff; line-height:0.98;}
+header.storyhead .sub{font-size:clamp(1.05rem,2.1vw,1.3rem); font-weight:400; color:#d7e3df; margin-top:18px; max-width:600px; line-height:1.4;}
+header.storyhead .meta{font-size:0.82rem; color:#9fb8b1; margin-top:26px; letter-spacing:0.02em;}
+.scrollcue{margin-top:46px; display:flex; align-items:center; gap:10px; font-size:0.74rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#9fb8b1;}
+.scrollcue .bar{width:2px; height:32px; background:var(--amber); animation:cue 1.8s ease-in-out infinite;}
+@keyframes cue{ 0%{opacity:.25; transform:translateY(-6px);} 50%{opacity:1;} 100%{opacity:.25; transform:translateY(6px);} }
+
+.storygrid{max-width:1180px; margin:0 auto;}
+.storygrid::after{content:""; display:table; clear:both;}
+.pin-col{float:left; width:50%; position:sticky; top:0; height:100vh; display:flex; align-items:center; justify-content:center; padding:0 28px;}
+.pin-inner{position:relative; width:100%; max-width:440px; aspect-ratio:1/1; background:var(--pine); border:1px solid rgba(255,255,255,0.08); overflow:hidden;}
+.visual-layer{position:absolute; inset:0; opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:30px; text-align:center;}
+.visual-layer.show{opacity:1; transform:translateY(0);}
+.vl-eyebrow{font-size:0.68rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--amber); margin-bottom:16px;}
+.vl-img{width:100%; height:auto; display:block;}
+.vl-caption{font-size:0.72rem; color:#9fb8b1; margin-top:14px; line-height:1.5;}
+.bignum{font-weight:900; font-size:clamp(3.2rem,9vw,5.2rem); color:#fff; line-height:1;}
+.bignum .of{font-size:0.34em; font-weight:600; color:#9fb8b1; margin-left:8px;}
+.bignum .amber{color:var(--amber);}
+.subline{font-size:0.94rem; color:#d7e3df; margin-top:16px; max-width:320px; line-height:1.5;}
+
+.steps-col{float:right; width:50%; padding-top:8vh; padding-bottom:42vh;}
+.step{min-height:78vh; display:flex; flex-direction:column; justify-content:center; padding:7vh 40px 7vh 24px; opacity:0.28; transition:opacity .35s ease;}
+.step.active{opacity:1;}
+.step .stepnum{font-size:0.74rem; font-weight:700; letter-spacing:0.1em; color:var(--amber); margin-bottom:14px;}
+.step h2{font-size:clamp(1.4rem,2.6vw,1.9rem); line-height:1.18; margin-bottom:16px;}
+.step p{font-size:0.99rem; line-height:1.68; color:var(--ink-soft); margin:0 0 1em; max-width:460px;}
+.step .quote{border-left:2px solid var(--amber); padding:2px 0 2px 18px; margin:18px 0; max-width:460px;}
+.step .quote p{font-weight:600; font-style:italic; color:var(--pine); font-size:0.97rem; margin:0;}
+.step .src{font-size:0.74rem; color:#8a8078; margin-top:8px; letter-spacing:0.02em;}
+
+.tl{width:100%; max-width:340px;}
+.tl-track{position:relative; height:4px; background:rgba(255,255,255,0.14); margin:34px 0 0;}
+.tl-fill{position:absolute; left:0; top:0; height:100%; width:0%; background:var(--amber); transition:width 1.4s ease;}
+.tl.on .tl-fill{width:100%;}
+.tl-pt{position:absolute; top:-5px; width:14px; height:14px; border-radius:50%; background:var(--pine); border:2px solid var(--amber);}
+.tl-pt.start{left:-2px;} .tl-pt.end{right:-2px;}
+.tl-lbl{font-size:0.68rem; color:#9fb8b1; display:flex; justify-content:space-between; margin-top:12px; letter-spacing:0.02em;}
+
+.chipgrid{display:flex; flex-wrap:wrap; gap:7px; max-width:380px; justify-content:center;}
+.chip{font-size:0.66rem; font-weight:500; padding:6px 9px; border-radius:2px; border:1px solid rgba(255,255,255,0.16); color:#d7e3df; opacity:0; transform:scale(0.85); transition:opacity .35s ease, transform .35s ease;}
+.chip.on{opacity:1; transform:scale(1);}
+.chip.g-announced{border-color:rgba(228,123,18,0.6);}
+.chip.g-comparison{border-color:rgba(244,239,230,0.45);}
+.chiplegend{display:flex; gap:18px; margin-top:16px; font-size:0.68rem; color:#9fb8b1;}
+.dot{display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:6px;}
+.dot.amber{background:var(--amber);} .dot.cream{background:var(--cream);}
+
+.barset{width:100%; max-width:340px;}
+.barrow{margin-bottom:20px;}
+.barrow .lbl{display:flex; justify-content:space-between; font-size:0.72rem; font-weight:500; color:#d7e3df; margin-bottom:6px;}
+.barrow .track{height:10px; background:rgba(255,255,255,0.1); position:relative; overflow:hidden; border-radius:1px;}
+.barrow .fill{position:absolute; left:0; top:0; height:100%; width:0%; transition:width 1.2s ease;}
+.fill.amber{background:var(--amber);}
+.fill.cream{background:var(--cream);}
+.barset.on .fill{width:var(--w);}
+
+.pairset{width:100%; max-width:360px; display:flex; flex-direction:column; gap:16px;}
+.pair .lbl{font-size:0.68rem; font-weight:600; color:#9fb8b1; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;}
+.pair .row{display:flex; align-items:center; gap:8px; margin-bottom:4px;}
+.pair .row .k{width:80px; font-size:0.66rem; color:#d7e3df;}
+.pair .row .track{flex:1; height:8px; background:rgba(255,255,255,0.1); position:relative; border-radius:1px;}
+.pair .row .fill{position:absolute; left:0; top:0; height:100%; width:0%; transition:width 1.1s ease;}
+.pairset.on .fill{width:var(--w);}
+.pair .row .v{width:28px; text-align:right; font-size:0.66rem; color:#fff;}
+
+.clip{background:var(--cream); color:#141412; padding:20px 22px; max-width:340px; border-left:3px solid var(--amber); text-align:left; font-size:0.82rem; line-height:1.55;}
+.clip .k{font-size:0.66rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:8px;}
+
+.locator{width:100%; max-width:340px; position:relative;}
+.locator svg{width:100%; height:auto; display:block;}
+.loc-lbl{font-size:0.7rem; fill:#d7e3df; font-family:'Inter',sans-serif;}
+.loc-lbl.amber{fill:var(--amber);}
+
+.gauge{width:100%; max-width:300px; text-align:center;}
+.gauge-track{position:relative; height:14px; background:rgba(255,255,255,0.1); margin-top:20px; border-radius:1px;}
+.gauge-fill{position:absolute; left:0; top:0; height:100%; width:0%; background:var(--amber); transition:width 1.3s ease;}
+.gauge.on .gauge-fill{width:77%;}
+.gauge-mark{position:absolute; top:-6px; left:80%; width:2px; height:26px; background:#fff;}
+.gauge-marklbl{position:absolute; top:22px; left:80%; transform:translateX(-50%); font-size:0.64rem; color:#fff;}
+
+@media (max-width:900px){
+  .pin-col{float:none; width:100%; position:sticky; top:0; height:46vh; z-index:5; margin-bottom:-46vh; padding:14px 20px; pointer-events:none;}
+  .pin-inner{max-width:300px; margin:0 auto; pointer-events:auto;}
+  .steps-col{float:none; width:100%; position:relative; z-index:1; background:var(--paper); padding-top:46vh; padding-bottom:8vh;}
+  .step{min-height:auto; padding:5vh 20px;}
+}
+
+.closepanel{border-top:1px solid var(--line); padding:70px 0;}
+.closepanel h2{font-size:clamp(1.7rem,3.4vw,2.4rem); max-width:640px;}
+.closepanel p.lede{font-size:1.02rem; color:var(--ink-soft); max-width:560px; margin-top:16px; line-height:1.6;}
+.closepanel .eyebrow{color:var(--brown);}
+.close-grid{display:flex; flex-wrap:wrap; gap:0; margin-top:36px; border-top:1px solid var(--line);}
+.dl{flex:1 1 220px; padding:22px 24px 22px 0; text-decoration:none; border-bottom:1px solid var(--line);}
+.dl:hover .t{color:var(--amber);}
+.dl .k{font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber);}
+.dl .t{font-weight:700; font-size:1.05rem; margin-top:9px; color:var(--ink); transition:color .16s ease;}
+.dl .d{font-size:0.85rem; color:var(--muted); margin-top:6px;}
+
+footer{background:var(--pine); color:var(--cream); padding:64px 0 32px;}
+footer .eyebrow{color:#a7c2ba;}
+footer h2{color:#fff; font-size:clamp(1.5rem,3vw,2rem);}
+footer p.lede{color:#d7e3df; max-width:560px; margin-top:14px;}
+.contact-grid{display:flex; flex-wrap:wrap; gap:10px; margin-top:32px;}
+.chip2{padding:11px 18px; border:1px solid var(--line-on-dark); text-decoration:none; color:var(--cream); font-size:0.86rem; font-weight:500; border-radius:2px;}
+.chip2:hover{border-color:var(--amber); color:var(--amber);}
+.adviser-note{margin-top:36px; padding-top:20px; border-top:1px solid var(--line-on-dark); font-size:0.85rem; color:#9fb8b1; max-width:640px;}
+.foot-base{margin-top:34px; padding-top:20px; border-top:1px solid var(--line-on-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.76rem; color:#8fa9a2; letter-spacing:0.03em;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">MANAGING <em>/</em> TRANSITIONS</a>
+    <ul class="navlinks">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="story.html" class="current">The Story</a></li>
+      <li><a href="diagnostic.html">Diagnostic</a></li>
+      <li><a href="faq.html">Questions</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="storyhead">
+  <div class="wrap">
+    <p class="eyebrow">Fifteen Weeks · scrolled</p>
+    <h1>What breaks<br>when the funding ends</h1>
+    <p class="sub">Twenty-three UK international NGOs. Thirteen questions. Everything below is quoted from an organisation's own published document. Scroll to go through it.</p>
+    <p class="meta">Matt Thomson &nbsp;·&nbsp; the full report and dataset are linked at the end</p>
+    <div class="scrollcue"><span class="bar"></span> Scroll</div>
+  </div>
+</header>
+
+<div class="storygrid">
+  <div class="pin-col">
+    <div class="pin-inner" id="pin">
+
+      <div class="visual-layer" data-layer="0">
+        <p class="vl-eyebrow">15 September 2025 &rarr; 30 December 2025</p>
+        <div class="tl" id="tl0">
+          <div class="tl-track"><div class="tl-pt start"></div><div class="tl-fill"></div><div class="tl-pt end"></div></div>
+          <div class="tl-lbl"><span>Going concern signed</span><span>Wound up</span></div>
+        </div>
+        <p class="subline">Fifteen weeks between the two. One small assistive technology charity, thirty-five years old.</p>
+      </div>
+
+      <div class="visual-layer" data-layer="1">
+        <p class="vl-eyebrow">The sample</p>
+        <div class="chipgrid" id="chipgrid"></div>
+        <div class="chiplegend"><span><i class="dot amber"></i>restructuring reported</span><span><i class="dot cream"></i>comparison group</span></div>
+      </div>
+
+      <div class="visual-layer" data-layer="2">
+        <p class="vl-eyebrow">Average score, all 23</p>
+        <div class="barset" id="bar2">
+          <div class="barrow"><div class="lbl"><span>Reduction</span><span>57</span></div>
+            <div class="track"><div class="fill amber" style="--w:57%"></div></div></div>
+          <div class="barrow"><div class="lbl"><span>Transfer</span><span>43</span></div>
+            <div class="track"><div class="fill cream" style="--w:43%"></div></div></div>
+        </div>
+        <p class="subline">Fourteen points apart. Real, and too small to be the story.</p>
+      </div>
+
+      <div class="visual-layer" data-layer="3">
+        <div class="bignum"><span class="amber">5</span><span class="of">of 23</span></div>
+        <p class="subline">put a figure against money moving to partners</p>
+      </div>
+
+      <div class="visual-layer" data-layer="4">
+        <div class="bignum"><span class="amber">6</span><span class="of">of 23</span></div>
+        <p class="subline">give a handover timetable separate from their own redundancy timetable</p>
+      </div>
+
+      <div class="visual-layer" data-layer="5">
+        <div class="bignum"><span class="amber">4</span><span class="of">of 23</span></div>
+        <p class="subline">state any measure of whether the transition worked</p>
+      </div>
+
+      <div class="visual-layer" data-layer="6">
+        <p class="vl-eyebrow">Figure 1</p>
+        <img class="vl-img" src="fig1.png" alt="A dedicated transition document is the difference">
+        <p class="vl-caption">Organisations with a document written about the transition, against everyone else</p>
+      </div>
+
+      <div class="visual-layer" data-layer="7">
+        <p class="vl-eyebrow">Comparison group vs. reported group</p>
+        <div class="pairset" id="pair7">
+          <div class="pair"><div class="lbl">Transfer</div>
+            <div class="row"><span class="k">Comparison</span><div class="track"><div class="fill cream" style="--w:60%"></div></div><span class="v">60</span></div>
+            <div class="row"><span class="k">Reported</span><div class="track"><div class="fill amber" style="--w:33%"></div></div><span class="v">33</span></div></div>
+          <div class="pair"><div class="lbl">Residual</div>
+            <div class="row"><span class="k">Comparison</span><div class="track"><div class="fill cream" style="--w:42%"></div></div><span class="v">42</span></div>
+            <div class="row"><span class="k">Reported</span><div class="track"><div class="fill amber" style="--w:33%"></div></div><span class="v">33</span></div></div>
+          <div class="pair"><div class="lbl">Accountability</div>
+            <div class="row"><span class="k">Comparison</span><div class="track"><div class="fill cream" style="--w:38%"></div></div><span class="v">38</span></div>
+            <div class="row"><span class="k">Reported</span><div class="track"><div class="fill amber" style="--w:20%"></div></div><span class="v">20</span></div></div>
+        </div>
+      </div>
+
+      <div class="visual-layer" data-layer="8">
+        <div class="clip"><span class="k">Save the Children International, 2024 trustees' report, emissions section</span>
+        &ldquo;Our emissions intensity is calculated globally on a per-employee basis and totals 3.26 tCO2e/FTE for the reporting period, compared to 2.77 tCO2e/FTE in 2023, which reflects a reduction in headcount by 17% compared to 2023.&rdquo;</div>
+      </div>
+
+      <div class="visual-layer" data-layer="9">
+        <p class="vl-eyebrow">Where the work goes, on paper</p>
+        <div class="locator">
+          <svg viewBox="0 0 300 180">
+            <line x1="70" y1="60" x2="210" y2="120" stroke="#e47b12" stroke-width="1.4" stroke-dasharray="4 3"/>
+            <circle cx="70" cy="60" r="6" fill="#143a33" stroke="#d7e3df" stroke-width="1.5"/>
+            <circle cx="210" cy="120" r="7" fill="#e47b12"/>
+            <text x="70" y="42" class="loc-lbl" text-anchor="middle">LONDON</text>
+            <text x="70" y="80" class="loc-lbl" text-anchor="middle" style="font-size:0.58rem; fill:#9fb8b1;">Amref UK, 20 staff</text>
+            <text x="210" y="106" class="loc-lbl amber" text-anchor="middle">NAIROBI</text>
+            <text x="210" y="140" class="loc-lbl" text-anchor="middle" style="font-size:0.58rem; fill:#9fb8b1;">Amref HQ</text>
+          </svg>
+        </div>
+        <p class="subline">The only organisation that names where its work would go is the one whose centre of gravity already sits outside the UK.</p>
+      </div>
+
+      <div class="visual-layer" data-layer="10">
+        <p class="vl-eyebrow">Reliability check</p>
+        <div class="gauge" id="gauge10">
+          <div class="bignum" style="font-size:2.6rem;">77<span class="of">% agreement</span></div>
+          <div class="gauge-track"><div class="gauge-fill"></div><div class="gauge-mark"></div><div class="gauge-marklbl">80% target</div></div>
+        </div>
+        <p class="subline">The method failed its own test. Reported anyway.</p>
+      </div>
+
+      <div class="visual-layer" data-layer="11">
+        <p class="vl-eyebrow">Fifteen Weeks</p>
+        <p class="subline" style="font-size:1.05rem; color:#fff;">23 organisations. 13 codes. Every score traced to a quotation. Published under CC BY 4.0.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="steps-col" id="steps">
+
+    <div class="step" data-step="0">
+      <p class="stepnum">01</p>
+      <h2>The trustees of Motivation signed off a going concern statement on 15 September 2025.</h2>
+      <p>Free reserves were fine. Staff numbers had grown. The board saw no reason to doubt the charity had a future.</p>
+      <p>Fifteen weeks later, on 30 December 2025, a general meeting on Microsoft Teams resolved to wind the company up. What survives publicly of thirty-five years of wheelchair design work is one sentence on a website and a filing history.</p>
+    </div>
+
+    <div class="step" data-step="1">
+      <p class="stepnum">02</p>
+      <h2>Twenty-three organisations. Two ways in.</h2>
+      <p>Fifteen entered because a restructuring, closure or transition had already been reported. Eight entered as a comparison group, chosen because nothing had been written about them.</p>
+      <p>Every code above zero required a quotation from the organisation's own document. Trade press was used only to find the paperwork, never to score it.</p>
+    </div>
+
+    <div class="step" data-step="2">
+      <p class="stepnum">03</p>
+      <h2>The starting hypothesis was wrong, in a small way.</h2>
+      <p>The expectation going in was that reductions get costed precisely and transfers get described vaguely. Across the sample the gap is real but modest, about fourteen points. Most organisations are thin on both.</p>
+    </div>
+
+    <div class="step" data-step="3">
+      <p class="stepnum">04</p>
+      <h2>Money moving to partners is almost never quantified.</h2>
+      <p>Christian Aid reports forty-five per cent of charitable expenditure shared with partners, up from thirty-seven, with indirect cost recovery split fifty-fifty.</p>
+      <div class="quote"><p>&ldquo;Partners are currently not included in the policy, but we know that some National Organisations have started doing so when required from the donor.&rdquo;</p></div>
+      <p class="src">Plan International, Pledge for Change self-report</p>
+    </div>
+
+    <div class="step" data-step="4">
+      <p class="stepnum">05</p>
+      <h2>Dates for the handover are rarer than dates for the redundancy.</h2>
+      <div class="quote"><p>&ldquo;We have taken a strategic and principled decision to progressively withdraw from UN-OCHA Country-Based Pooled Funds (CBPFs) starting in January 2026 and finishing by the end of 2027.&rdquo;</p></div>
+      <p class="src">Save the Children International</p>
+      <p>A start, an end, two years apart. Almost everywhere else in the sample, the only dates belong to the reduction.</p>
+    </div>
+
+    <div class="step" data-step="5">
+      <p class="stepnum">06</p>
+      <h2>Almost nobody says how they would know if it worked.</h2>
+      <p>Programme indicators are everywhere. A count of children reached says nothing about whether a handover held. Christian Aid is one of the few to commit to checking, by repeating its partner survey in two years.</p>
+    </div>
+
+    <div class="step" data-step="6">
+      <p class="stepnum">07</p>
+      <h2>What predicts detail is not size or budget. It is whether someone wrote a document about the transition.</h2>
+      <p>Organisations with a standalone document about their transition score 83 on transfer specificity. Everyone else scores 31. Same sector, same pressures, different question being answered.</p>
+    </div>
+
+    <div class="step" data-step="7">
+      <p class="stepnum">08</p>
+      <h2>The sample was built from press coverage, and the press coverage was wrong.</h2>
+      <p>Five of the eight comparison organisations turned out to disclose a restructuring nobody had reported. On every measure, they document their handovers better than the organisations that made the news.</p>
+      <div class="quote"><p>&ldquo;Eleven country office transitions, with named successor entities and dated go-live points.&rdquo;</p></div>
+      <p class="src">HelpAge International, entered the study as a control</p>
+    </div>
+
+    <div class="step" data-step="8">
+      <p class="stepnum">09</p>
+      <h2>The clearest number about a restructure can turn up in the least likely paragraph.</h2>
+      <p>Save the Children International's seventeen per cent headcount reduction is narrated in the section on greenhouse gas emissions, because emissions intensity is calculated per employee. Tearfund discloses its £179,000 restructuring cost, down from £1,611,000 the year before, in a note about senior pay.</p>
+      <p>Neither rule was written with a transition in mind. The number surfaces anyway, as a side effect of an instrument built to answer something else.</p>
+    </div>
+
+    <div class="step" data-step="9">
+      <p class="stepnum">10</p>
+      <h2>The best sentence in the whole study is in a going concern note, from an organisation with no reason to write it.</h2>
+      <div class="quote"><p>&ldquo;In the unlikely event of Amref UK no longer operating, any ongoing programmes would be transferred to Amref HQ. and Country Offices ensuring that Amref UK&rsquo;s charitable objects continued to be met.&rdquo;</p></div>
+      <p class="src">Amref Health Africa UK, 2025 trustees' report</p>
+      <p>Amref UK is twenty staff in London, attached to an organisation headquartered in Nairobi. For Amref, a transfer to headquarters moves toward the centre of the organisation, not away from it.</p>
+    </div>
+
+    <div class="step" data-step="10">
+      <p class="stepnum">11</p>
+      <h2>The method was tested against itself, and it failed.</h2>
+      <p>Five organisations were coded twice. The two rounds agreed on 77 per cent of codes, against an 80 per cent threshold set in advance. Most of the disagreement traces to what could be read rather than to two people reading the same sentence differently: a scanned document, the wrong legal entity, a figure sitting in a note the first pass never reached.</p>
+      <p>The failed threshold is reported here rather than quietly adjusted, because adjusting it would be the kind of thing this study is about.</p>
+    </div>
+
+    <div class="step" data-step="11">
+      <p class="stepnum">12</p>
+      <h2>What this measures is not how well the sector hands work over. It is what the sector can say about it, in the places where saying things is required.</h2>
+      <p>The full report has eleven more sections than this scroll does, a working codebook, and everyone in the sample's own row, checkable against their own words. The dataset is free to use.</p>
+    </div>
+
+  </div>
+</div>
+
+<section class="closepanel">
+  <div class="wrap">
+    <p class="eyebrow">Read the rest, or check it yourself</p>
+    <h2>This is the short version. The report shows its working.</h2>
+    <p class="lede">Every score above zero in this study is tied to a quotation from the organisation's own document, with a source and a section reference. The scroll above skips most of it.</p>
+    <div class="close-grid">
+      <a class="dl" href="research.html">
+        <div class="k">Full report</div><div class="t">Read it end to end</div>
+        <div class="d">All twelve sections, four annexes, the full sample table</div>
+      </a>
+      <a class="dl" href="Thomson-2026-Transition-Exposure-UK-INGOs.pdf">
+        <div class="k">PDF</div><div class="t">The printable report</div>
+        <div class="d">Same text, formatted for reading offline</div>
+      </a>
+      <a class="dl" href="transition_exposure_dataset.csv">
+        <div class="k">CSV</div><div class="t">The dataset</div>
+        <div class="d">23 organisations, 13 codes, CC BY 4.0</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="eyebrow">Get In Touch</p>
+    <h2>Argue with it.</h2>
+    <p class="lede">The codebook is contestable and the disagreement is usually the useful part. If your organisation is in the sample and the row is wrong, say so and it gets changed.</p>
+    <div class="contact-grid">
+      <a class="chip2" href="mailto:matt@managingtransitions.org">Email</a>
+      <a class="chip2" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+      <a class="chip2" href="index.html#review">Transition Exposure Review</a>
+      <a class="chip2" href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
+      <a class="chip2" href="https://thomsonmatt.substack.com">Substack</a>
+    </div>
+    <p class="adviser-note">Matt Thomson is an independent adviser working on programme handover and transition, and a doctoral researcher at the University of Bristol. managingtransitions.org</p>
+    <div class="foot-base">
+      <span>MANAGING TRANSITIONS &copy; 2026</span>
+      <span>managingtransitions.org</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var orgs = [
+    ["Christian Aid","announced"],["Plan Intl UK","comparison"],["STIR Education","announced"],
+    ["HelpAge Intl","comparison"],["ActionAid","announced"],["SCI","announced"],
+    ["War Child UK","comparison"],["Islamic Relief","comparison"],["CAFOD","comparison"],
+    ["CARE Intl UK","comparison"],["Amref UK","comparison"],["Save the Children UK","announced"],
+    ["Leonard Cheshire","announced"],["IRC UK","announced"],["Tearfund","announced"],
+    ["Motivation","announced"],["Concern Worldwide","announced"],["Sense","comparison"],
+    ["Oxfam GB","announced"],["World Vision UK","announced"],["VSO","announced"],
+    ["Crown Agents","announced"],["Mercy Corps Europe","announced"]
+  ];
+  var grid = document.getElementById('chipgrid');
+  orgs.forEach(function(o){
+    var d = document.createElement('div');
+    d.className = 'chip g-' + o[1];
+    d.textContent = o[0];
+    grid.appendChild(d);
+  });
+
+  var layers = Array.prototype.slice.call(document.querySelectorAll('.visual-layer'));
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var done = {};
+
+  function activate(idx){
+    idx = String(idx);
+    layers.forEach(function(l){
+      l.classList.toggle('show', l.getAttribute('data-layer') === idx);
+    });
+    steps.forEach(function(s){
+      s.classList.toggle('active', s.getAttribute('data-step') === idx);
+    });
+    if(!done[idx]){
+      done[idx] = true;
+      if(idx === '0'){ document.getElementById('tl0').classList.add('on'); }
+      if(idx === '1'){
+        var chips = grid.querySelectorAll('.chip');
+        chips.forEach(function(c, i){ setTimeout(function(){ c.classList.add('on'); }, i*35); });
+      }
+      if(idx === '2'){ document.getElementById('bar2').classList.add('on'); }
+      if(idx === '7'){ document.getElementById('pair7').classList.add('on'); }
+      if(idx === '10'){ document.getElementById('gauge10').classList.add('on'); }
+    }
+  }
+
+  var lastIdx = -1;
+  function updateActive(){
+    var centre = window.innerHeight / 2;
+    var best = 0, bestDist = Infinity;
+    steps.forEach(function(s, i){
+      var r = s.getBoundingClientRect();
+      var mid = r.top + r.height / 2;
+      var d = Math.abs(mid - centre);
+      if(d < bestDist){ bestDist = d; best = i; }
+    });
+    if(best !== lastIdx){
+      lastIdx = best;
+      activate(steps[best].getAttribute('data-step'));
+    }
+  }
+
+  var ticking = false;
+  function onScroll(){
+    if(!ticking){
+      window.requestAnimationFrame(function(){ updateActive(); ticking = false; });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  updateActive();
+})();
+</script>
+
+</body>
+</html>

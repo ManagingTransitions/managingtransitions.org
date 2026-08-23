@@ -12,201 +12,92 @@
 <meta property="og:title" content="Questions | Managing Transitions">
 <meta property="og:description" content="How a Transition Exposure Review is scoped and priced, what work gets turned down, and the terms used across this site.">
 <meta property="og:url" content="https://managingtransitions.org/faq.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23143a33'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23e47b12'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#000000;
-    --teal:#0c231f;
-    --brown:#392c23;
-    --amber:#e47b12;
-    --sand:#c9a877;
-    --paper:#ffffff;
-    --line: rgba(0,0,0,0.14);
-    --line-on-dark: rgba(255,255,255,0.18);
-    --max: 1080px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  ::selection{background:var(--sand); color:var(--teal);}
-  h1,h2,h3{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    margin:0;
-    letter-spacing:-0.01em;
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--teal);
-  }
-  a{color:inherit;}
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
-  :focus-visible{outline:2px solid var(--sand); outline-offset:3px;}
+:root{
+  --ink:#000000; --pine:#143a33; --brown:#392c23; --amber:#e47b12; --paper:#ffffff;
+  --line:rgba(0,0,0,0.13); --line-on-dark:rgba(244,239,230,0.2);
+  --cream:#f4efe6; --ink-soft:#2a2a27; --muted:#5c5c58; --max:1120px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+::selection{background:var(--amber); color:#fff;}
+a{color:inherit;}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+:focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
+h1,h2,h3{font-weight:800; margin:0; letter-spacing:-0.02em; color:var(--ink);}
+.eyebrow{font-size:0.74rem; font-weight:600; letter-spacing:0.11em; text-transform:uppercase; color:var(--brown);}
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.in{opacity:1; transform:none;}
+@media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
 
-  @keyframes heroUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;} }
+nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
+.brand{font-weight:800; font-size:0.94rem; letter-spacing:-0.01em; text-decoration:none; color:var(--ink);}
+.brand em{font-style:normal; color:var(--amber);}
+.navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+.navlinks a{position:relative; font-size:0.87rem; font-weight:500; text-decoration:none; color:var(--ink-soft); padding-bottom:3px;}
+.navlinks a::after{content:""; position:absolute; left:0; bottom:0; width:100%; height:1.5px; background:var(--amber); transform:scaleX(0); transform-origin:left; transition:transform .22s ease;}
+.navlinks a:hover{color:var(--ink);}
+.navlinks a:hover::after,.navlinks a.current::after{transform:scaleX(1);}
+.navlinks a.current{color:var(--ink);}
+@media (max-width:900px){ .navlinks{display:none;} }
 
-  /* ---------- NAV ---------- */
-  nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(255,255,255,0.92);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  nav .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    padding-top:14px; padding-bottom:14px;
-  }
-  .brand{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.85rem;
-    letter-spacing:0.04em;
-    font-weight:500;
-    text-decoration:none;
-  }
-  .brand span{color:var(--teal);}
-  .navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
-  .navlinks li{position:relative;}
-  .navlinks a{
-    position:relative;
-    font-size:0.85rem; text-decoration:none; color:var(--brown);
-    font-weight:500; padding-bottom:2px;
-  }
-  .navlinks a::after{
-    content:""; position:absolute; left:0; bottom:-2px; width:100%; height:1px;
-    background:var(--sand); transform:scaleX(0); transform-origin:left;
-    transition:transform .25s ease;
-  }
-  .navlinks a:hover{color:var(--teal);}
-  .navlinks a:hover::after{transform:scaleX(1);}
-  .navlinks a.current{color:var(--teal);}
-  .navlinks a.current::after{transform:scaleX(1);}
-  @media (max-width:760px){ .navlinks{display:none;} }
+header.page-head{background:var(--pine); color:var(--cream); padding:70px 0 54px;}
+header.page-head .eyebrow{color:#a7c2ba; margin-bottom:16px;}
+header.page-head h1{font-size:clamp(2.1rem, 4.8vw, 3.2rem); color:#fff; line-height:1.05;}
+header.page-head p.lede{max-width:580px; font-size:1.05rem; color:#d7e3df; margin-top:20px; font-weight:400;}
 
-  /* ---------- PAGE HEAD ---------- */
-  header.page-head{
-    background:var(--teal);
-    color:#f4efe6;
-    padding:66px 0 54px;
-    overflow:hidden;
-  }
-  header.page-head .wrap > *{ animation:heroUp .7s ease both; }
-  header.page-head .wrap > *:nth-child(1){animation-delay:.02s;}
-  header.page-head .wrap > *:nth-child(2){animation-delay:.10s;}
-  header.page-head .wrap > *:nth-child(3){animation-delay:.18s;}
-  header.page-head .eyebrow{color:#a9c2bb; margin-bottom:16px;}
-  header.page-head h1{
-    font-size:clamp(2.1rem, 4.8vw, 3.2rem);
-    color:#ffffff;
-    line-height:1.05;
-  }
-  header.page-head p.lede{
-    max-width:580px;
-    font-size:1.05rem;
-    color:#dbe5e1;
-    margin-top:20px;
-  }
+section{padding:72px 0;}
+.section-head{max-width:640px; margin-bottom:30px;}
+.section-head h2{font-size:clamp(1.4rem, 2.8vw, 1.9rem); margin-top:12px;}
+.section-head p{font-size:0.96rem; color:var(--muted); margin-top:14px;}
 
-  /* ---------- SECTION shells ---------- */
-  section{padding:76px 0;}
-  .section-head{max-width:640px; margin-bottom:32px;}
-  .section-head .eyebrow{margin-bottom:0;}
-  .section-head h2{font-size:clamp(1.5rem, 3vw, 2rem); margin-top:12px;}
-  .section-head p{font-size:0.96rem; color:#4a4a48; margin-top:14px;}
-  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
-  .reveal.in{opacity:1; transform:none;}
-  @media (prefers-reduced-motion: reduce){
-    .reveal{opacity:1; transform:none; transition:none;}
-    header.page-head .wrap > *{animation:none; opacity:1; transform:none;}
-  }
+.faq{border-top:1px solid var(--line);}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-item summary{list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto; gap:20px; align-items:start; padding:22px 0;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-q{font-weight:700; font-size:1.06rem; line-height:1.35; color:var(--ink); max-width:60ch;}
+.faq-item summary:hover .faq-q{color:var(--pine);}
+.faq-item summary::after{content:"+"; font-weight:700; font-size:1.2rem; line-height:1.3; color:var(--amber);}
+.faq-item[open] summary::after{content:"\2212";}
+.faq-a{padding:2px 0 28px; max-width:66ch;}
+.faq-a p{margin:0 0 14px; font-size:0.98rem; color:var(--ink-soft);}
+.faq-a p:last-child{margin-bottom:0;}
 
-  /* ---------- FAQ ---------- */
-  .faq{border-top:1px solid var(--line);}
-  .faq-item{border-bottom:1px solid var(--line);}
-  .faq-item summary{
-    list-style:none;
-    cursor:pointer;
-    display:grid; grid-template-columns:1fr auto; gap:20px; align-items:start;
-    padding:22px 0;
-  }
-  .faq-item summary::-webkit-details-marker{display:none;}
-  .faq-q{
-    font-family:'Fraunces', serif; font-weight:600;
-    font-size:1.08rem; line-height:1.32; color:var(--ink);
-    max-width:60ch;
-  }
-  .faq-item summary:hover .faq-q{color:var(--teal);}
-  .faq-item summary::after{
-    content:"+";
-    font-family:'IBM Plex Mono', monospace;
-    font-size:1.15rem; line-height:1.32; color:var(--teal);
-  }
-  .faq-item[open] summary::after{content:"\2212";}
-  .faq-a{padding:2px 0 28px; max-width:66ch;}
-  .faq-a p{margin:0 0 14px; font-size:0.98rem; color:#2b2b28;}
-  .faq-a p:last-child{margin-bottom:0;}
+.glossary{border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.glossary-list{border-top:1px solid var(--line);}
+.glossary-item{padding:20px 0; border-bottom:1px solid var(--line);}
+.glossary-term{font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--pine);}
+.glossary-def{margin-top:8px; font-size:0.95rem; color:var(--ink-soft); max-width:70ch;}
+.glossary-note{font-size:0.86rem; color:#8a8a86; margin-top:24px;}
+.glossary-note a{color:var(--pine); font-weight:600;}
 
-  /* ---------- Glossary ---------- */
-  .glossary{background:#eef1ef; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-  .glossary-list{border-top:1px solid var(--line);}
-  .glossary-item{padding:20px 0; border-bottom:1px solid var(--line);}
-  .glossary-term{
-    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
-    text-transform:uppercase; letter-spacing:0.05em; color:var(--teal); font-weight:500;
-  }
-  .glossary-def{margin-top:8px; font-size:0.95rem; color:#2b2b28; max-width:70ch;}
-  .glossary-note{
-    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
-    color:#6b6b66; margin-top:24px;
-  }
-  .glossary-note a{color:var(--teal);}
-
-  /* ---------- Contact / footer ---------- */
-  footer{background:var(--teal); color:#eef4f1; padding:66px 0 34px;}
-  footer .eyebrow{color:#a9c2bb;}
-  footer h2{color:#fff; font-size:clamp(1.6rem,3.2vw,2.2rem);}
-  footer p.lede{color:#c9d8d3; max-width:520px; margin-top:14px;}
-  .contact-grid{display:flex; flex-wrap:wrap; gap:12px; margin-top:36px;}
-  .chip{
-    display:flex; align-items:center; gap:8px;
-    padding:11px 18px;
-    border:1px solid var(--line-on-dark);
-    text-decoration:none; color:#eef4f1;
-    font-size:0.88rem;
-    transition:border-color .18s ease, color .18s ease, transform .18s ease;
-  }
-  .chip:hover{border-color:var(--sand); color:var(--sand); transform:translateY(-2px);}
-  .foot-base{
-    margin-top:58px; padding-top:20px; border-top:1px solid var(--line-on-dark);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8ea59c;
-  }
+footer{background:var(--pine); color:var(--cream); padding:64px 0 32px;}
+footer .eyebrow{color:#a7c2ba;}
+footer h2{color:#fff; font-size:clamp(1.6rem,3.2vw,2.2rem);}
+footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
+.contact-grid{display:flex; flex-wrap:wrap; gap:10px; margin-top:32px;}
+.chip{padding:11px 18px; border:1px solid var(--line-on-dark); text-decoration:none; color:var(--cream); font-size:0.86rem; font-weight:500; border-radius:2px;}
+.chip:hover{border-color:var(--amber); color:var(--amber);}
+.foot-base{margin-top:48px; padding-top:18px; border-top:1px solid var(--line-on-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.76rem; color:#8fa9a2; letter-spacing:0.03em;}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="index.html">MANAGING <span>/</span> TRANSITIONS</a>
+    <a class="brand" href="index.html">MANAGING <em>/</em> TRANSITIONS</a>
     <ul class="navlinks">
-      <li><a href="index.html#review">Review</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="research.html">Research</a></li>
-      <li><a href="index.html#advisory">Advisory</a></li>
+      <li><a href="story.html">The Story</a></li>
       <li><a href="diagnostic.html">Diagnostic</a></li>
-      <li><a href="index.html#approach">Approach</a></li>
-      <li><a href="index.html#philosophy">Philosophy</a></li>
-      <li><a href="index.html#credentials">Credentials</a></li>
       <li><a href="faq.html" class="current">Questions</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
@@ -306,7 +197,7 @@
         <summary><span class="faq-q">How do you scope a piece of work, and how is it priced?</span></summary>
         <div class="faq-a">
           <p>A first conversation, free, to work out whether there is anything here.</p>
-          <p>If there is, a Transition Exposure Review at a fixed fee. Two weeks, written findings and a ninety-minute session, £1,200 for a single country or programme and £2,400 for a portfolio of three or more. That gives us both a real basis for deciding what comes next.</p>
+          <p>If there is, a Transition Exposure Review at a fixed fee. Two weeks, written findings and a ninety-minute session. The fee depends on whether we are looking at one country or a portfolio, and I will give you the number in that first conversation rather than have you work it out from a page. It is small enough that it is usually a decision one person can make.</p>
           <p>Larger pieces are quoted against the deliverable and the date, agreed before work starts. If it turns out bigger than we scoped, we work that out together as it happens. Nothing gets billed that we haven't agreed first.</p>
         </div>
       </details>
@@ -358,7 +249,7 @@
       </div>
     </div>
 
-    <p class="glossary-note reveal">Where these come from, and the research behind them, is set out on the <a href="index.html#research">Research</a> section of the homepage.</p>
+    <p class="glossary-note reveal">Where these come from, and the research behind them, is set out on <a href="about.html#research">About</a>.</p>
   </div>
 </section>
 

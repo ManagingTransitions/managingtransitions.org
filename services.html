@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Managing Transitions | Matt Thomson</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://managingtransitions.org/services.html">
+<meta name="description" content="Four advisory lines: aid-dependency exit design, outcomes and evidence architecture, governance advisory, and political economy analysis. How the work is scoped and run.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Managing Transitions">
+<meta property="og:title" content="Services | Managing Transitions">
+<meta property="og:description" content="Four advisory lines, and how the work is scoped and run, from inception to delivery.">
+<meta property="og:url" content="https://managingtransitions.org/services.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23143a33'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23e47b12'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000; --pine:#143a33; --brown:#392c23; --amber:#e47b12; --paper:#ffffff;
+  --line:rgba(0,0,0,0.13); --line-on-dark:rgba(244,239,230,0.2);
+  --cream:#f4efe6; --ink-soft:#2a2a27; --muted:#5c5c58; --max:1120px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+::selection{background:var(--amber); color:#fff;}
+a{color:inherit;} img{max-width:100%;}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+:focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
+h1,h2,h3,h4{font-weight:800; margin:0; letter-spacing:-0.02em; color:var(--ink);}
+.eyebrow{font-size:0.74rem; font-weight:600; letter-spacing:0.11em; text-transform:uppercase; color:var(--brown);}
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.in{opacity:1; transform:none;}
+@media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
+
+nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
+.brand{font-weight:800; font-size:0.94rem; letter-spacing:-0.01em; text-decoration:none; color:var(--ink);}
+.brand em{font-style:normal; color:var(--amber);}
+.navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+.navlinks a{position:relative; font-size:0.87rem; font-weight:500; text-decoration:none; color:var(--ink-soft); padding-bottom:3px;}
+.navlinks a::after{content:""; position:absolute; left:0; bottom:0; width:100%; height:1.5px; background:var(--amber); transform:scaleX(0); transform-origin:left; transition:transform .22s ease;}
+.navlinks a:hover{color:var(--ink);}
+.navlinks a:hover::after,.navlinks a.current::after{transform:scaleX(1);}
+.navlinks a.current{color:var(--ink);}
+.mobnav{display:none; position:relative;}
+.mobnav summary{list-style:none; cursor:pointer; font-size:0.78rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink); border:1px solid var(--line); padding:8px 14px; border-radius:2px;}
+.mobnav summary::-webkit-details-marker{display:none;}
+.mobnav[open] summary{border-color:var(--amber);}
+.mobnav ul{position:absolute; right:0; top:calc(100% + 8px); min-width:200px; margin:0; padding:6px 0; list-style:none; background:var(--paper); border:1px solid var(--line);}
+.mobnav li a{display:block; padding:11px 18px; font-size:0.92rem; text-decoration:none; color:var(--ink-soft);}
+.mobnav li a:hover{background:#f3f1ec; color:var(--ink);}
+@media (max-width:860px){ .navlinks{display:none;} .mobnav{display:block;} }
+
+.tlink{display:inline-block; font-weight:600; font-size:0.92rem; text-decoration:none; color:var(--ink); border-bottom:2px solid var(--amber); padding-bottom:2px;}
+.tlink:hover{color:var(--amber);}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:14px 24px; font-size:0.85rem; font-weight:600; letter-spacing:0.02em; text-decoration:none; border-radius:2px; border:1.5px solid transparent;}
+.btn-amber{background:var(--amber); color:#fff;}
+.btn-amber:hover{background:#fff; color:var(--pine);}
+
+header.page-head{background:var(--pine); color:var(--cream); padding:80px 0 56px;}
+header.page-head .eyebrow{color:#a7c2ba; margin-bottom:16px;}
+header.page-head h1{font-size:clamp(2.4rem,5.6vw,3.8rem); color:#fff; line-height:1.02; max-width:16ch;}
+header.page-head p{max-width:56ch; font-size:1.05rem; color:#d7e3df; margin:20px 0 0;}
+
+section{padding:0;}
+.svc-block{padding:64px 0; border-bottom:1px solid var(--line); display:grid; grid-template-columns:120px 1fr; gap:36px;}
+.svc-block:nth-child(even){grid-template-columns:1fr 120px;}
+.svc-block:nth-child(even) .svc-num{order:2; text-align:right;}
+.svc-block:nth-child(even) .svc-body{order:1;}
+.svc-num{font-size:clamp(2.6rem,5vw,3.6rem); font-weight:900; color:var(--pine); line-height:1;}
+.svc-body .code{font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber);}
+.svc-body h2{font-size:clamp(1.4rem,2.8vw,1.9rem); margin-top:8px;}
+.svc-body p{font-size:1.02rem; color:var(--ink-soft); margin-top:14px; max-width:64ch;}
+@media (max-width:700px){
+  .svc-block, .svc-block:nth-child(even){grid-template-columns:1fr; gap:10px;}
+  .svc-block:nth-child(even) .svc-num, .svc-block:nth-child(even) .svc-body{order:initial; text-align:left;}
+}
+
+.approach{padding:76px 0; border-bottom:1px solid var(--line);}
+.section-head{max-width:640px; margin-bottom:8px;}
+.section-head h2{font-size:clamp(1.4rem,2.8vw,1.9rem); margin-top:8px;}
+.section-head p{font-size:0.98rem; color:var(--muted); margin-top:14px;}
+.step-list{margin-top:40px;}
+.step-row{display:flex; gap:28px; padding:26px 0; border-top:1px solid var(--line);}
+.step-row:last-child{border-bottom:1px solid var(--line);}
+.step-row .num{font-size:0.85rem; font-weight:700; color:var(--amber); min-width:28px; padding-top:4px;}
+.step-row h4{font-size:1.12rem;}
+.step-row p{font-size:0.95rem; color:var(--muted); margin-top:8px; max-width:60ch;}
+.step-row:nth-child(2){margin-left:0;}
+.step-row:nth-child(3){margin-left:40px;}
+.step-row:nth-child(4){margin-left:0;}
+@media (max-width:640px){ .step-row:nth-child(3){margin-left:0;} }
+.approach-note{font-size:0.86rem; color:#8a8a86; margin-top:24px; max-width:70ch;}
+
+.cta{background:var(--pine); color:var(--cream); padding:64px 0;}
+.cta h2{color:#fff; font-size:clamp(1.5rem,3vw,2rem); max-width:26ch;}
+.cta p{color:#d7e3df; margin-top:14px; max-width:50ch;}
+.cta-row{margin-top:26px;}
+
+footer{background:var(--pine); color:var(--cream); padding:64px 0 32px;}
+footer .eyebrow{color:#a7c2ba;}
+footer h2{color:#fff; font-size:clamp(1.6rem,3.2vw,2.2rem);}
+footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
+.contact-grid{display:flex; flex-wrap:wrap; gap:10px; margin-top:32px;}
+.chip{padding:11px 18px; border:1px solid var(--line-on-dark); text-decoration:none; color:var(--cream); font-size:0.86rem; font-weight:500; border-radius:2px;}
+.chip:hover{border-color:var(--amber); color:var(--amber);}
+.foot-base{margin-top:48px; padding-top:18px; border-top:1px solid var(--line-on-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.76rem; color:#8fa9a2; letter-spacing:0.03em;}
+</style>
+<noscript><style>.reveal{opacity:1 !important; transform:none !important;}</style></noscript>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">MANAGING <em>/</em> TRANSITIONS</a>
+    <ul class="navlinks">
+      <li><a href="services.html" class="current">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="story.html">The Story</a></li>
+      <li><a href="diagnostic.html">Diagnostic</a></li>
+      <li><a href="faq.html">Questions</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <details class="mobnav">
+      <summary>Menu</summary>
+      <ul>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="story.html">The Story</a></li>
+        <li><a href="diagnostic.html">Diagnostic</a></li>
+        <li><a href="faq.html">Questions</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </details>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Services</p>
+    <h1>Four ways in, one method.</h1>
+    <p>Advisory work on programme handover, outcomes evidence, governance and political economy, all drawing on the same field experience and the same doctoral research.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="svc-block reveal" id="exit-design">
+    <div class="svc-num">01</div>
+    <div class="svc-body">
+      <div class="code">Exit Design</div>
+      <h2>Aid-Dependency Exit Design</h2>
+      <p>Designing the handover frameworks that move regional NGO and health networks off multi-year donor grants and into locally owned, self-sustaining operating models, without breaking the service in the process. This comes out of ongoing work leading multi-country transitions across Uganda, Kenya and Tanzania.</p>
+    </div>
+  </div>
+
+  <div class="svc-block reveal" id="outcomes">
+    <div class="svc-num">02</div>
+    <div class="svc-body">
+      <div class="code">Outcomes</div>
+      <h2>Outcomes & Evidence Architecture</h2>
+      <p>Turning activity data (consults, sessions, distributions) into longitudinal outcome evidence donors can rely on, at both the individual and population level. Drawn from monitoring and evaluation work for EU-funded health and rehabilitation programmes, plus independent outcomes-design engagements for health platforms operating in fragile or divided systems.</p>
+    </div>
+  </div>
+
+  <div class="svc-block reveal" id="governance">
+    <div class="svc-num">03</div>
+    <div class="svc-body">
+      <div class="code">Governance</div>
+      <h2>Organisational & Governance Advisory</h2>
+      <p>Independent evaluation of NGO structures, board governance and practitioner-researcher partnerships. Delivered as a strategic advisor to the South West International Development Network, working directly with secretariat staff, boards and member organisations.</p>
+    </div>
+  </div>
+
+  <div class="svc-block reveal" id="political-economy">
+    <div class="svc-num">04</div>
+    <div class="svc-body">
+      <div class="code">Political Economy</div>
+      <h2>Political Economy & Localisation Analysis</h2>
+      <p>Rapid political economy and governance-risk analysis for programmes operating across fragile, parallel or non-state systems. Grounded in doctoral research into how localisation functions on the ground, not how it reads in a policy paper.</p>
+    </div>
+  </div>
+</div>
+
+<section class="approach" id="approach">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">How I Work</p>
+      <h2>A structured process, from inception to delivery.</h2>
+    </div>
+    <div class="step-list reveal">
+      <div class="step-row">
+        <div class="num">01</div>
+        <div><h4>Inception & desk review</h4><p>Kickoff briefing, review of existing strategy and reporting documents, and interview guides built for each stakeholder tier.</p></div>
+      </div>
+      <div class="step-row">
+        <div class="num">02</div>
+        <div><h4>Consultation & data gathering</h4><p>Semi-structured interviews across the organisation, from board members to frontline partners, alongside a systems audit of internal processes.</p></div>
+      </div>
+      <div class="step-row">
+        <div class="num">03</div>
+        <div><h4>Synthesis</h4><p>Interview evidence triangulated against documentary review, so every finding is verified from more than one angle before it's written up.</p></div>
+      </div>
+      <div class="step-row">
+        <div class="num">04</div>
+        <div><h4>Delivery</h4><p>A full report plus a short, non-technical summary suitable for a board briefing or donor audience.</p></div>
+      </div>
+    </div>
+    <p class="approach-note">Typical engagements run 12 to 20 working days, scoped and quoted before work begins, across anything from a few weeks for a rapid strategic briefing to several months for a longer transition. How scoping works, and what it costs, is set out in the <a class="tlink" href="faq.html" style="font-size:inherit;">questions</a>.</p>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap reveal">
+    <h2>Start with the Transition Exposure Review.</h2>
+    <p>Two weeks, fixed fee, no day rate. Written findings and a structured ninety-minute session.</p>
+    <div class="cta-row"><a class="btn btn-amber" href="index.html#review">See the offer</a></div>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Get In Touch</p>
+    <h2>Ready to plan the transition?</h2>
+    <p class="lede">Reach out directly, or book time to talk through your network's transition.</p>
+    <div class="contact-grid">
+      <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+      <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
+      <a class="chip" href="about.html">About</a>
+      <a class="chip" href="research.html">The 2026 study</a>
+      <a class="chip" href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
+      <a class="chip" href="cv.pdf">CV</a>
+    </div>
+    <div class="foot-base">
+      <span>MANAGING TRANSITIONS &copy; 2026</span>
+      <span>managingtransitions.org</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.1});
+  reveals.forEach(el=>io.observe(el));
+
+  document.addEventListener('click', function(ev){
+    var m = document.querySelector('.mobnav[open]');
+    if(m && !m.contains(ev.target)){ m.removeAttribute('open'); }
+  });
+</script>
+
+</body>
+</html>

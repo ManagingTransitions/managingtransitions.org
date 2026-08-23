@@ -12,108 +12,88 @@
 <meta property="og:title" content="Codebook | Fifteen Weeks">
 <meta property="og:description" content="Thirteen codes, four domains, the evidence standard and the reliability result. Published under CC BY 4.0.">
 <meta property="og:url" content="https://managingtransitions.org/codebook.html">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c231f'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23c9a877'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23143a33'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23e47b12'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#000000; --teal:#0c231f; --brown:#392c23; --amber:#e47b12;
-    --sand:#c9a877; --paper:#ffffff; --line: rgba(0,0,0,0.14);
-    --line-on-dark: rgba(255,255,255,0.18); --max:1080px;
+    --ink:#000000; --pine:#143a33; --brown:#392c23; --amber:#e47b12; --paper:#ffffff;
+    --line: rgba(0,0,0,0.14); --line-on-dark: rgba(244,239,230,0.2); --cream:#f4efe6;
+    --ink-soft:#2a2a27; --muted:#5c5c58; --max:1080px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{margin:0; background:var(--paper); color:var(--ink);
-    font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
-  ::selection{background:var(--sand); color:var(--teal);}
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--amber); color:#fff;}
   a{color:inherit;}
   .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
-  :focus-visible{outline:2px solid var(--sand); outline-offset:3px;}
-  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.14em;
-    text-transform:uppercase; color:var(--teal);}
+  :focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
+  .eyebrow{font-size:0.72rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--brown);}
 
-  nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92);
-    backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
-  nav .wrap{display:flex; align-items:center; justify-content:space-between;
-    padding-top:14px; padding-bottom:14px;}
-  .brand{font-family:'IBM Plex Mono',monospace; font-size:0.85rem; letter-spacing:0.04em;
-    font-weight:500; text-decoration:none;}
-  .brand span{color:var(--teal);}
+  nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
+  .brand{font-weight:800; font-size:0.94rem; letter-spacing:-0.01em; text-decoration:none; color:var(--ink);}
+  .brand em{font-style:normal; color:var(--amber);}
   .navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
-  .navlinks a{position:relative; font-size:0.85rem; text-decoration:none; color:var(--brown);
-    font-weight:500; padding-bottom:2px;}
-  .navlinks a::after{content:""; position:absolute; left:0; bottom:-2px; width:100%; height:1px;
-    background:var(--sand); transform:scaleX(0); transform-origin:left; transition:transform .25s ease;}
+  .navlinks a{position:relative; font-size:0.87rem; font-weight:500; text-decoration:none; color:var(--ink-soft); padding-bottom:3px;}
+  .navlinks a::after{content:""; position:absolute; left:0; bottom:0; width:100%; height:1.5px; background:var(--amber); transform:scaleX(0); transform-origin:left; transition:transform .22s ease;}
   .navlinks a:hover::after{transform:scaleX(1);}
-  .navlinks a.current{color:var(--teal);} .navlinks a.current::after{transform:scaleX(1);}
+  .navlinks a.current{color:var(--ink);} .navlinks a.current::after{transform:scaleX(1);}
   @media (max-width:860px){ .navlinks{display:none;} }
 
-  header.page-head{background:var(--teal); color:#f4efe6; padding:64px 0 52px;}
-  header.page-head .eyebrow{color:#a9c2bb; margin-bottom:16px;}
-  header.page-head h1{font-family:'Fraunces',serif; font-weight:600; margin:0;
-    font-size:clamp(2.2rem,5vw,3.4rem); color:#fff; line-height:1.02; letter-spacing:-0.01em;}
-  header.page-head .sub{font-family:'Fraunces',serif; font-size:clamp(1rem,2vw,1.25rem);
-    color:#dbe5e1; margin-top:16px; max-width:620px; line-height:1.35;}
-  header.page-head .byline{font-family:'IBM Plex Mono',monospace; font-size:0.78rem;
-    color:#8ea59c; margin-top:22px;}
+  header.page-head{background:var(--pine); color:var(--cream); padding:64px 0 52px;}
+  header.page-head .eyebrow{color:#a7c2ba; margin-bottom:16px;}
+  header.page-head h1{font-weight:800; margin:0; font-size:clamp(2.2rem,5vw,3.4rem); color:#fff; line-height:1.02; letter-spacing:-0.02em;}
+  header.page-head .sub{font-size:clamp(1rem,2vw,1.2rem); font-weight:400; color:#d7e3df; margin-top:16px; max-width:620px; line-height:1.35;}
+  header.page-head .byline{font-size:0.8rem; color:#9fb8b1; margin-top:22px;}
 
   main{max-width:780px; margin:0 auto; padding:56px 28px 20px;}
-  main h2{font-family:'Fraunces',serif; font-weight:600; font-size:1.5rem;
-    margin:54px 0 16px; padding-top:26px; border-top:2px solid var(--teal); letter-spacing:-0.01em;}
+  main h1,main h2,main h3{font-weight:800; letter-spacing:-0.02em;}
+  main h2{font-size:1.5rem; margin:54px 0 16px; padding-top:26px; border-top:2px solid var(--pine);}
   main h2:first-of-type{margin-top:0;}
-  main h3{font-family:'Fraunces',serif; font-weight:600; font-size:1.12rem; margin:32px 0 12px;}
-  main p{font-size:1rem; line-height:1.7; color:#22221f; margin:0 0 1.1em;}
+  main h3{font-size:1.12rem; margin:32px 0 12px;}
+  main p{font-size:1rem; line-height:1.7; color:#1c1c1a; margin:0 0 1.1em;}
   main ul, main ol{padding-left:1.3em; margin:0 0 1.2em;}
-  main li{font-size:1rem; line-height:1.65; color:#22221f; margin-bottom:0.45em;}
-  main strong{font-weight:600;}
-  main code{font-family:'IBM Plex Mono',monospace; font-size:0.86em;
-    background:#f2f4f3; padding:2px 5px; border:1px solid var(--line);}
+  main li{font-size:1rem; line-height:1.65; color:#1c1c1a; margin-bottom:0.45em;}
+  main strong{font-weight:700;}
+  main code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:0.86em; background:#f2f4f3; padding:2px 5px; border:1px solid var(--line); border-radius:2px;}
   main hr{border:none; height:1px; background:var(--line); margin:44px 0;}
   main table{border-collapse:collapse; width:100%; margin:24px 0; font-size:0.92rem;}
-  main th{font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:0.7rem;
-    letter-spacing:0.08em; text-transform:uppercase; color:var(--teal);
-    text-align:left; padding:0 10px 9px; border-bottom:1px solid var(--teal); vertical-align:bottom;}
-  main td{padding:9px 10px; border-bottom:1px solid var(--line); color:#22221f; vertical-align:top;}
+  main th{font-size:0.7rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--pine); text-align:left; padding:0 10px 9px; border-bottom:1px solid var(--pine); vertical-align:bottom;}
+  main td{padding:9px 10px; border-bottom:1px solid var(--line); color:#1c1c1a; vertical-align:top;}
   main td:first-child{white-space:nowrap;}
   main blockquote{margin:0 0 1.2em; padding-left:20px; border-left:3px solid var(--amber); color:#3d3a35;}
-  .backlink{font-family:'IBM Plex Mono',monospace; font-size:0.82rem; color:var(--teal);
-    text-decoration:none; border-bottom:1px solid var(--sand); padding-bottom:3px;}
-  .backlink:hover{color:var(--amber); border-bottom-color:var(--amber);}
-  .dlrow{display:flex; flex-wrap:wrap; gap:14px; margin:36px 0 8px;}
-  .dlrow a{display:block; padding:16px 20px; border:1px solid var(--line); text-decoration:none;
-    transition:border-color .2s ease, background .2s ease;}
-  .dlrow a:hover{border-color:var(--amber); background:#fdfaf6;}
-  .dlrow .k{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.12em;
-    text-transform:uppercase; color:var(--amber);}
-  .dlrow .t{font-family:'Fraunces',serif; font-weight:600; font-size:0.98rem; margin-top:6px;}
+  .backlink{font-size:0.82rem; font-weight:600; color:var(--pine); text-decoration:none; border-bottom:1px solid var(--amber); padding-bottom:3px;}
+  .backlink:hover{color:var(--amber);}
+  .dlrow{display:flex; flex-wrap:wrap; gap:0; margin:36px 0 8px; border-top:1px solid var(--line);}
+  .dlrow a{flex:1 1 160px; padding:16px 20px 16px 0; text-decoration:none; border-bottom:1px solid var(--line);}
+  .dlrow a:hover .t{color:var(--amber);}
+  .dlrow .k{font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber);}
+  .dlrow .t{font-weight:700; font-size:0.98rem; margin-top:6px; transition:color .16s ease;}
 
-  footer{background:var(--teal); color:#eef4f1; padding:56px 0 30px; margin-top:64px;}
-  footer .eyebrow{color:#a9c2bb;}
-  footer h2{font-family:'Fraunces',serif; font-weight:600; color:#fff;
-    font-size:clamp(1.4rem,3vw,1.9rem); margin:10px 0 0;}
-  footer p{color:#c9d8d3; max-width:560px; margin-top:14px;}
-  .contact-grid{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px;}
-  .chip{display:flex; align-items:center; gap:8px; padding:11px 18px;
-    border:1px solid var(--line-on-dark); text-decoration:none; color:#eef4f1; font-size:0.88rem;
-    transition:border-color .18s ease, color .18s ease, transform .18s ease;}
-  .chip:hover{border-color:var(--sand); color:var(--sand); transform:translateY(-2px);}
-  .foot-base{margin-top:40px; padding-top:20px; border-top:1px solid var(--line-on-dark);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:#8ea59c;}
+  footer{background:var(--pine); color:var(--cream); padding:56px 0 30px; margin-top:64px;}
+  footer .eyebrow{color:#a7c2ba;}
+  footer h2{font-weight:800; color:#fff; font-size:clamp(1.4rem,3vw,1.9rem); margin:10px 0 0;}
+  footer p{color:#d7e3df; max-width:560px; margin-top:14px;}
+  .contact-grid{display:flex; flex-wrap:wrap; gap:10px; margin-top:30px;}
+  .chip{padding:11px 18px; border:1px solid var(--line-on-dark); text-decoration:none; color:var(--cream); font-size:0.86rem; font-weight:500; border-radius:2px;}
+  .chip:hover{border-color:var(--amber); color:var(--amber);}
+  .foot-base{margin-top:40px; padding-top:20px; border-top:1px solid var(--line-on-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.72rem; color:#8fa9a2;}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="index.html">MANAGING <span>/</span> TRANSITIONS</a>
+    <a class="brand" href="index.html">MANAGING <em>/</em> TRANSITIONS</a>
     <ul class="navlinks">
-      <li><a href="index.html#review">Review</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="research.html" class="current">Research</a></li>
-      <li><a href="index.html#advisory">Advisory</a></li>
+      <li><a href="story.html">The Story</a></li>
       <li><a href="diagnostic.html">Diagnostic</a></li>
-      <li><a href="index.html#approach">Approach</a></li>
       <li><a href="faq.html">Questions</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
@@ -122,10 +102,10 @@
 
 <header class="page-head">
   <div class="wrap">
-    <p class="eyebrow">Fifteen Weeks &middot; Open data</p>
+    <p class="eyebrow">Fifteen Weeks · Open data</p>
     <h1>Codebook</h1>
     <p class="sub">Every code, its scale, the evidence standard behind it, and the two rules that suppress scores a permissive reading would allow.</p>
-    <p class="byline">Matt Thomson &middot; September 2026 &middot; CC BY 4.0</p>
+    <p class="byline">Matt Thomson · September 2026 · CC BY 4.0</p>
   </div>
 </header>
 
@@ -167,7 +147,7 @@ other three have twenty-three. A blank means "not established here". A
 zero means "read the document, it is not in there".</p>
 <hr />
 <h2 id="the-thirteen-codes">The thirteen codes</h2>
-<h3 id="domain-a--reduction">Domain A — Reduction</h3>
+<h3 id="domain-a--reduction">Domain A: Reduction</h3>
 <p>What the organisation says is going.</p>
 <table>
 <thead>
@@ -198,7 +178,7 @@ cost or quantified funding loss?</td>
 </tbody>
 </table>
 <p><code>Reduction % = sum(A) / 3 × 100</code></p>
-<h3 id="domain-b--transfer">Domain B — Transfer</h3>
+<h3 id="domain-b--transfer">Domain B: Transfer</h3>
 <p>What the organisation says is moving, to whom, with what, and by
 when.</p>
 <table>
@@ -237,7 +217,7 @@ closure timetable?</td>
 </tbody>
 </table>
 <p><code>Transfer % = sum(B) / 6 × 100</code></p>
-<h3 id="domain-c--residual">Domain C — Residual</h3>
+<h3 id="domain-c--residual">Domain C: Residual</h3>
 <p>What is kept, and what is left behind.</p>
 <table>
 <thead>
@@ -279,7 +259,7 @@ safeguarding policy statement in the governance section scores nothing;
 a statement about what happens to safeguarding responsibility on
 handover scores one.</p>
 <p><code>Residual % = (C1 + C2/6 + C3) / 3 × 100</code></p>
-<h3 id="domain-d--accountability">Domain D — Accountability</h3>
+<h3 id="domain-d--accountability">Domain D: Accountability</h3>
 <p>Whether anyone could tell if it worked.</p>
 <table>
 <thead>
@@ -434,9 +414,9 @@ write down when they hand their work over.</em> Managing Transitions,
 Bristol. Dataset published under CC BY 4.0.</p>
 
 
-  <h2 id="corrections">Corrections log</h2>
+  <h2 id="corrections-log">Corrections log</h2>
 
-<p><strong>Fifteen Weeks</strong> — corrections received and
+<p><strong>Fifteen Weeks.</strong> Corrections received and
 applied.</p>
 <p>Every organisation in the sample was sent its coded row, the evidence
 behind each score, and the quotations attributed to it, four weeks
