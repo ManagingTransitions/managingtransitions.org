@@ -1,6 +1,6 @@
 # Codebook
 
-**Fifteen Weeks: what UK international NGOs write down when they hand their work over**
+**UK INGO Transition Reporting Review 2026: how UK international NGOs report localisation, handover and programme closure**
 Matt Thomson, Managing Transitions, September 2026.
 Published under CC BY 4.0.
 
@@ -156,4 +156,4 @@ Corrections after publication are logged in `CORRECTIONS.md` in this folder and 
 
 ## Citation
 
-Thomson, M. (2026) *Fifteen Weeks: what UK international NGOs write down when they hand their work over.* Managing Transitions, Bristol. Dataset published under CC BY 4.0.
+Thomson, M. (2026) *UK INGO Transition Reporting Review 2026: how UK international NGOs report localisation, handover and programme closure.* Managing Transitions, Bristol. Dataset published under CC BY 4.0.
