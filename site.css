@@ -297,3 +297,10 @@ dl.rel{margin:1.2rem 0 0;}
 dl.rel > div{padding:0.7rem 0; border-top:1px solid var(--line);}
 dl.rel dt{font-family:var(--sans); font-weight:600; font-size:0.95rem; margin:0 0 0.15rem;}
 dl.rel dd{margin:0;}
+.response{padding:0 0 1.5rem; font-family:var(--sans);}
+.response .wrap > *{max-width:var(--measure);}
+.pull{margin:0.5rem 0 0; padding:0.9rem 1.1rem; background:var(--sage); border-left:4px solid var(--pine);}
+.pull blockquote{margin:0; padding:0; border:0;}
+.pull blockquote p{margin:0 0 0.6rem; font-family:var(--serif); font-size:1.2rem; line-height:1.5; color:var(--ink);}
+.pull figcaption{font-size:0.9rem; color:var(--muted);}
+html[data-contrast="high"] .pull{background:#fff; border:2px solid #000;}
