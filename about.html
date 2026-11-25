@@ -78,6 +78,12 @@ section:last-of-type{border-bottom:none;}
 p{font-size:1.02rem; color:var(--ink-soft); margin:0 0 1.1em;}
 
 /* Philosophy: wide single column, off-left */
+.phil-grid{display:grid; grid-template-columns:minmax(0,1fr) 280px; gap:56px; align-items:start;}
+.phil-fig{margin:0;} .phil-fig img{display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-bottom:5px solid var(--amber);}
+.phil-fig figcaption,.about-fig figcaption{font-size:.82rem; line-height:1.45; margin-top:10px;}
+.phil-fig figcaption{color:var(--ink-soft,#444);}
+.about-fig{margin:0;} .about-fig figcaption{color:#d7e3df;}
+@media (max-width:820px){ .phil-grid{grid-template-columns:1fr; gap:32px;} .phil-fig{max-width:300px;} }
 .phil p{font-size:1.1rem; line-height:1.72; max-width:66ch;}
 
 /* research split */
@@ -174,7 +180,7 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
     <h1>Matt Thomson</h1>
     <p>Independent adviser on localisation, handover and aid reform, based in Bath. PhD candidate at the University of Bristol. I also hold a salaried role at a UK INGO, declared below.</p>
    </div>
-   <img class="about-photo" src="/img/matt-about.jpg" width="720" height="900" alt="Matt Thomson standing between stone arches above a wooded valley near Bath" loading="eager">
+   <figure class="about-fig"><img class="about-photo" src="/img/matt-about.jpg" width="720" height="900" alt="Matt Thomson standing between stone arches above a wooded valley " loading="eager"><figcaption>With Dash, just out of shot.</figcaption></figure>
   </div>
 </header>
 
@@ -184,10 +190,13 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
       <p class="eyebrow">Philosophy</p>
       <h2>Localisation has to mean something, or it's just paperwork.</h2>
     </div>
-    <div class="reveal">
+    <div class="phil-grid reveal">
+     <div>
       <p>Too much of what gets called localisation is administrative relocation dressed up as empowerment: the reporting burden moves south, the funding rules stay exactly where they were, and the people doing the actual work absorb the risk without ever holding the budget or the veto.</p>
       <p>Genuine ownership looks different. It means a local partner can set the agenda rather than only deliver against someone else's logframe. It means they can say no to a donor's terms and the relationship survives it. My research and my field work both start from that distinction, and I don't call something local ownership unless the power actually moved with it, not the paperwork alone.</p>
       <p>At the same time, I don't treat local actors as passive until a donor grants them power. My doctoral research looks closely at how people find real agency inside rigid systems: adapting imported components, reinterpreting a project's stated goals, quietly building the workaround that keeps a clinic running when the official process can't. I call this harnessing constraint, and it's the other half of the picture. Good localisation design has to build on that existing agency rather than design around it as if it isn't there.</p>
+     </div>
+     <figure class="phil-fig"><img src="/img/matt-un.jpg" width="640" height="800" alt="Matt Thomson in New York with the Manhattan skyline behind him" loading="lazy"><figcaption>Visiting the UN in New York.</figcaption></figure>
     </div>
   </div>
 </section>
