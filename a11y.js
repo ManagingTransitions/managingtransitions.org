@@ -66,7 +66,7 @@
  '</fieldset>'+
  '<div class="row"><button type="button" id="a11y-reset">Reset all options</button><button type="button" id="a11y-close" class="primary">Close</button></div>'+
  '<p class="sr-status" id="a11y-status" role="status" aria-live="polite"></p>'+
- '<p style="margin:0.4rem 0 0;font-size:0.9rem;"><a href="/accessibility.html">Accessibility statement</a></p>'+
+ '<p style="margin:0.4rem 0 0;font-size:0.9rem;"><a href="/accessibility">Accessibility statement</a></p>'+
 '</form></div>';
     document.body.appendChild(btn);
     document.body.appendChild(panel);

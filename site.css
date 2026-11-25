@@ -282,3 +282,7 @@ body footer .foot-base{margin-bottom:3.5rem;}
 .note{background:var(--sand);}
 html[data-contrast="high"] .abstract,html[data-contrast="high"] .note{background:#fff; border:2px solid #000;}
 .band .note,.on-dark .note{background:transparent;}
+.foot-more{display:flex; flex-wrap:wrap; gap:0.25rem 1.5rem; margin-top:0.4rem; font-family:var(--sans);}
+.foot-more a{display:inline-flex; align-items:center; min-height:44px; font-size:0.95rem; color:#fff; text-decoration:underline; text-underline-offset:0.2em;}
+.lh-role + .lh-role{margin-top:0.15rem;}
+footer nav.foot-more{background:transparent; border:0;}
