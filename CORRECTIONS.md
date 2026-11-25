@@ -24,7 +24,9 @@ Raised by: the organisation.
 
 ## After publication
 
-_No corrections logged yet._
+**DATE_OF_MERGE · Report text, research page · revision to framing only**
+No score, quotation or finding changed. Added an introduction at the top of the page, short titles for sections 1 to 12, and a paragraph at the start of section 12 setting out the minimum a transition statement should contain. The PDF is regenerated from the same text.
+Raised by: the author.
 
 ---
 
