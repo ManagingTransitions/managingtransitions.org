@@ -101,6 +101,13 @@ header.hero .lede{font-size:1.14rem; color:var(--ink-soft); margin-top:26px; max
 .field-strip span:first-child::before{content:"";}
 
 .textured{background-color:var(--deep); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"), repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 14px), linear-gradient(180deg,#123630 0%,#0b241f 100%);}
+/* HERO diagram */
+.hero-grid{display:grid; grid-template-columns:1.25fr 0.75fr; gap:48px; align-items:center;}
+.hero-art{margin:0; justify-self:end; width:100%; max-width:380px;}
+.hero-art svg{display:block; width:100%; height:auto;}
+.hero-art figcaption{font-size:0.76rem; color:var(--muted); margin-top:10px; letter-spacing:0.02em;}
+@media (max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:36px;} .hero-art{justify-self:start; max-width:340px;} }
+
 /* PROOF: one dominant stat, asymmetric two column */
 .proof{color:var(--cream);}
 .proof .eyebrow{color:#a9c1b8;}
@@ -208,7 +215,8 @@ footer p.lede{color:#e3dacd; max-width:520px; margin-top:14px;}
 </nav>
 
 <header class="hero">
-  <div class="wrap">
+  <div class="wrap hero-grid">
+    <div class="hero-main">
     <p class="eyebrow">Matt Thomson · Independent adviser</p>
     <h1>Localisation, transition and aid reform, from someone who has run the programmes.</h1>
     <p class="lede">I'm Matt Thomson. I manage partnerships and programmes across East and West Africa, and I research the politics of localisation at the University of Bristol. Through Managing Transitions I advise INGOs, funders and health networks on what moves, and what breaks, when funding ends.</p>
@@ -219,6 +227,35 @@ footer p.lede{color:#e3dacd; max-width:520px; margin-top:14px;}
     <div class="field-strip">
       <span>The Gambia</span><span>Uganda</span><span>Kenya</span><span>Tanzania</span><span>Tunisia</span>
     </div>
+    </div>
+    <figure class="hero-art">
+      <svg viewBox="0 0 380 470" role="img" aria-labelledby="hd-t hd-d" xmlns="http://www.w3.org/2000/svg">
+        <title id="hd-t">What breaks between a funder-led programme and a partner-run service</title>
+        <desc id="hd-d">A line runs from a funder-led programme at the top to a partner-run service at the bottom. Four points along it mark what usually breaks: banking, compliance, certification and the donor relationship. Employment, safeguarding, assets and records are left behind as liabilities.</desc>
+        <style>
+          .t{font-family:Inter,-apple-system,Segoe UI,Helvetica,Arial,sans-serif;}
+          .small{font-size:11px; letter-spacing:.09em; text-transform:uppercase; font-weight:600;}
+        </style>
+        <text class="t small" x="0" y="14" fill="#392c23">The handover</text>
+        <rect x="0.75" y="28.75" width="340" height="64" rx="2" fill="#faf8f4" stroke="#000" stroke-width="1.5"/>
+        <text class="t" x="16" y="56" font-size="16" font-weight="700" fill="#000">Funder-led programme</text>
+        <text class="t" x="16" y="77" font-size="12.5" fill="#5c5c58">Donor money, INGO systems</text>
+        <line x1="40" y1="93" x2="40" y2="326" stroke="#000" stroke-width="1.5" stroke-dasharray="3 6"/>
+        <g class="t" font-size="14" font-weight="600" fill="#000">
+          <circle cx="40" cy="132" r="7" fill="#e47b12"/><text x="62" y="137">Banking</text>
+          <circle cx="40" cy="180" r="7" fill="#e47b12"/><text x="62" y="185">Compliance</text>
+          <circle cx="40" cy="228" r="7" fill="#e47b12"/><text x="62" y="233">Certification</text>
+          <circle cx="40" cy="276" r="7" fill="#e47b12"/><text x="62" y="281">Donor relationship</text>
+        </g>
+        <rect x="0" y="327" width="340" height="64" rx="2" fill="#0e2b25"/>
+        <text class="t" x="16" y="355" font-size="16" font-weight="700" fill="#fff">Partner-run service</text>
+        <text class="t" x="16" y="376" font-size="12.5" fill="#cfe0d9">Own money, own systems</text>
+        <line x1="0" y1="414" x2="340" y2="414" stroke="#000" stroke-opacity=".25"/>
+        <text class="t small" x="0" y="436" fill="#392c23">Left behind</text>
+        <text class="t" x="0" y="456" font-size="13" fill="#2a2a27">Employment, safeguarding, assets, records</text>
+      </svg>
+      <figcaption>Where a handover usually breaks, and what stays with you.</figcaption>
+    </figure>
   </div>
 </header>
 
