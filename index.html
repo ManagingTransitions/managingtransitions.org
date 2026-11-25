@@ -86,14 +86,18 @@ section{padding:80px 0;}
 /* HERO: asymmetric, headline wide-left, cta block offset below-right */
 header.hero{background:var(--paper); color:var(--ink); padding:88px 0 64px; overflow:hidden; border-bottom:6px solid var(--deep);}
 @keyframes rise{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;} }
-header.hero .wrap > *{animation:rise .7s ease both;}
-header.hero .wrap > *:nth-child(2){animation-delay:.08s;}
-header.hero .wrap > *:nth-child(3){animation-delay:.16s;}
-header.hero .wrap > *:nth-child(4){animation-delay:.24s;}
-header.hero .wrap > *:nth-child(5){animation-delay:.32s;}
+header.hero .hero-text > *{animation:rise .7s ease both;}
+header.hero .hero-text > *:nth-child(2){animation-delay:.08s;}
+header.hero .hero-text > *:nth-child(3){animation-delay:.16s;}
+header.hero .hero-text > *:nth-child(4){animation-delay:.24s;}
+header.hero .hero-text > *:nth-child(5){animation-delay:.32s;}
 header.hero .eyebrow{color:var(--brown); margin-bottom:20px;}
 header.hero h1{font-size:clamp(2.3rem,5.2vw,4rem); color:var(--ink); line-height:1.06; max-width:20ch; font-weight:600;}
 header.hero .lede{font-size:1.14rem; color:var(--ink-soft); margin-top:26px; max-width:56ch;}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:56px; align-items:center;}
+.hero-photo{margin:0; animation:rise .9s .2s ease both;}
+.hero-photo img{display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-bottom:6px solid var(--amber);}
+@media (max-width:820px){ .hero-grid{grid-template-columns:1fr; gap:36px;} .hero-photo{order:-1; max-width:320px;} header.hero{padding-top:48px;} }
 .hero-cta{display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-top:38px;}
 .hero-cta .tlink{color:var(--ink); border-bottom-color:var(--amber);}
 .hero-cta .tlink:hover{color:var(--amber);}
@@ -210,7 +214,8 @@ footer p.lede{color:#e3dacd; max-width:520px; margin-top:14px;}
 </nav>
 
 <header class="hero">
-  <div class="wrap">
+  <div class="wrap hero-grid">
+   <div class="hero-text">
     <p class="eyebrow">Matt Thomson · Independent adviser</p>
     <h1>Localisation, transition and aid reform, from someone who has run the programmes.</h1>
     <p class="lede">I'm Matt Thomson. I manage partnerships and programmes across East and West Africa, and I research the politics of localisation at the University of Bristol. Through Managing Transitions I advise INGOs, funders and health networks on what moves, and what breaks, when funding ends.</p>
@@ -221,6 +226,8 @@ footer p.lede{color:#e3dacd; max-width:520px; margin-top:14px;}
     <div class="field-strip">
       <span>The Gambia</span><span>Uganda</span><span>Kenya</span><span>Tanzania</span><span>Tunisia</span>
     </div>
+   </div>
+   <figure class="hero-photo"><img src="/img/matt-hero.jpg" width="800" height="1000" alt="Matt Thomson, smiling, leaning on a railing by the Hudson with the New York skyline behind" fetchpriority="high"></figure>
   </div>
 </header>
 

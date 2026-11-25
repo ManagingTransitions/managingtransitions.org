@@ -66,6 +66,9 @@ nav .wrap{display:flex; align-items:center; justify-content:space-between; paddi
 header.page-head{background:var(--pine); color:var(--cream); padding:80px 0 56px;}
 header.page-head .eyebrow{color:#a7c2ba; margin-bottom:16px;}
 header.page-head h1{font-size:clamp(2.4rem,5.6vw,3.8rem); color:#fff; line-height:1.02; max-width:16ch;}
+.about-head{display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:48px; align-items:end;}
+.about-photo{display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-bottom:5px solid var(--amber);}
+@media (max-width:760px){ .about-head{grid-template-columns:1fr; gap:28px;} .about-photo{max-width:220px; order:-1;} }
 header.page-head p{max-width:56ch; font-size:1.05rem; color:#d7e3df; margin:20px 0 0;}
 
 section{padding:72px 0; border-bottom:1px solid var(--line);}
@@ -165,10 +168,13 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
 </nav>
 
 <header class="page-head">
-  <div class="wrap">
+  <div class="wrap about-head">
+   <div>
     <p class="eyebrow">About</p>
     <h1>Matt Thomson</h1>
     <p>Independent adviser on localisation, handover and aid reform, based in Bath. PhD candidate at the University of Bristol. I also hold a salaried role at a UK INGO, declared below.</p>
+   </div>
+   <img class="about-photo" src="/img/matt-about.jpg" width="720" height="900" alt="Portrait of Matt Thomson" loading="eager">
   </div>
 </header>
 
