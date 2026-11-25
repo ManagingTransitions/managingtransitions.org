@@ -286,3 +286,10 @@ html[data-contrast="high"] .abstract,html[data-contrast="high"] .note{background
 .foot-more a{display:inline-flex; align-items:center; min-height:44px; font-size:0.95rem; color:#fff; text-decoration:underline; text-underline-offset:0.2em;}
 .lh-role + .lh-role{margin-top:0.15rem;}
 footer nav.foot-more{background:transparent; border:0;}
+.citeas{padding:0.5rem 0 1.5rem; font-family:var(--sans);}
+.citeas .wrap > *{max-width:var(--measure);}
+.citeas .cite-text{font-family:var(--serif); background:var(--sand); border-left:4px solid var(--brown); padding:0.9rem 1.1rem; margin:0.5rem 0 1rem; font-size:1rem;}
+.cite-meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr)); gap:0.6rem 1.5rem; margin:0; font-size:0.9rem;}
+.cite-meta dt{font-weight:600; color:var(--ink);}
+.cite-meta dd{margin:0; color:var(--muted);}
+html[data-contrast="high"] .citeas .cite-text{background:#fff; border:2px solid #000;}
