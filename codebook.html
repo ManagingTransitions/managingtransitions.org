@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Codebook | UK INGO Transition Reporting Review 2026 | Managing Transitions</title>
 <meta name="robots" content="index, follow">
@@ -85,17 +86,19 @@
   .foot-base{margin-top:40px; padding-top:20px; border-top:1px solid var(--line-on-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.72rem; color:#8fa9a2;}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/site.css">
+<script src="/a11y.js"></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to main content</a>
 
-<nav>
+<nav aria-label="Main">
   <div class="wrap">
     <a class="brand" href="/">MATT THOMSON <em>/</em> MANAGING TRANSITIONS</a>
     <ul class="navlinks">
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="research.html" class="current">Research</a></li>
+      <li><a href="research.html" class="current" aria-current="page">Research</a></li>
       <li><a href="story.html">The Story</a></li>
       <li><a href="diagnostic.html">Diagnostic</a></li>
       <li><a href="faq.html">Questions</a></li>
@@ -113,7 +116,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <a class="backlink" href="research.html">&larr; Back to the study</a>
 
   <div class="dlrow">
@@ -153,7 +156,7 @@ zero means "read the document, it is not in there".</p>
 <h2 id="the-thirteen-codes">The thirteen codes</h2>
 <h3 id="domain-a--reduction">Domain A: Reduction</h3>
 <p>What the organisation says is going.</p>
-<table>
+<div class="tablewrap" role="region" aria-label="Scrollable table" tabindex="0"><table>
 <thead>
 <tr class="header">
 <th>Code</th>
@@ -180,12 +183,12 @@ cost or quantified funding loss?</td>
 <td>0 / 1</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><code>Reduction % = sum(A) / 3 × 100</code></p>
 <h3 id="domain-b--transfer">Domain B: Transfer</h3>
 <p>What the organisation says is moving, to whom, with what, and by
 when.</p>
-<table>
+<div class="tablewrap" role="region" aria-label="Scrollable table" tabindex="0"><table>
 <thead>
 <tr class="header">
 <th>Code</th>
@@ -219,11 +222,11 @@ closure timetable?</td>
 <td>0 / 1</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><code>Transfer % = sum(B) / 6 × 100</code></p>
 <h3 id="domain-c--residual">Domain C: Residual</h3>
 <p>What is kept, and what is left behind.</p>
-<table>
+<div class="tablewrap" role="region" aria-label="Scrollable table" tabindex="0"><table>
 <thead>
 <tr class="header">
 <th>Code</th>
@@ -248,7 +251,7 @@ closure timetable?</td>
 <td>0 / 1</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>C2 counts across six liabilities, one point each:</p>
 <ol type="1">
 <li>employment and staff transfer</li>
@@ -265,7 +268,7 @@ handover scores one.</p>
 <p><code>Residual % = (C1 + C2/6 + C3) / 3 × 100</code></p>
 <h3 id="domain-d--accountability">Domain D: Accountability</h3>
 <p>Whether anyone could tell if it worked.</p>
-<table>
+<div class="tablewrap" role="region" aria-label="Scrollable table" tabindex="0"><table>
 <thead>
 <tr class="header">
 <th>Code</th>
@@ -292,7 +295,7 @@ in the transition material?</td>
 <td>0 / 1, blank where no commitment is held</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>General programme indicators score zero on D1. A count of children
 reached says nothing about whether a handover held.</p>
 <p><code>Accountability % = mean of the scored D codes × 100</code></p>
@@ -325,7 +328,7 @@ differently.</p>
 <p>Access, not judgement, is the binding constraint on this method.</p>
 <hr />
 <h2 id="fields-in-the-csv">Fields in the CSV</h2>
-<table>
+<div class="tablewrap" role="region" aria-label="Scrollable table" tabindex="0"><table>
 <thead>
 <tr class="header">
 <th>Field</th>
@@ -380,7 +383,7 @@ record. Blank means no correction received</td>
 <td>Date a correction was applied</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr />
 <h2 id="known-limits">Known limits</h2>
 <p>Three organisations should be revisited rather than relied on:</p>
@@ -463,6 +466,7 @@ with the date.</p>
       <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
       <a class="chip" href="research.html">The study</a>
       <a class="chip" href="/#review">Transition Exposure Review</a>
+      <a class="chip" href="accessibility.html">Accessibility</a>
       <a class="chip" href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
     </div>
     <div class="foot-base">

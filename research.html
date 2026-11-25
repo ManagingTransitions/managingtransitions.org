@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UK INGO Transition Reporting Review 2026 | Managing Transitions</title>
 <meta name="robots" content="index, follow">
@@ -129,17 +130,19 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
 .foot-base{margin-top:34px; padding-top:20px; border-top:1px solid var(--line-on-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.76rem; color:#8fa9a2; letter-spacing:0.03em;}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/site.css">
+<script src="/a11y.js"></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to main content</a>
 
-<nav>
+<nav aria-label="Main">
   <div class="wrap">
     <a class="brand" href="/">MATT THOMSON <em>/</em> MANAGING TRANSITIONS</a>
     <ul class="navlinks">
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="research.html" class="current">Research</a></li>
+      <li><a href="research.html" class="current" aria-current="page">Research</a></li>
       <li><a href="story.html">The Story</a></li>
       <li><a href="diagnostic.html">Diagnostic</a></li>
       <li><a href="faq.html">Questions</a></li>
@@ -147,6 +150,7 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
     </ul>
   </div>
 </nav>
+<main id="main">
 
 <header class="page-head">
   <div class="wrap">
@@ -183,7 +187,7 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
 
 <section class="downloads">
   <div class="wrap">
-<h3 class="sub">Download</h3>    <div class="dl-row">
+<h2 class="sub">Download</h2>    <div class="dl-row">
       <a class="dl" href="Thomson-2026-Transition-Exposure-UK-INGOs.pdf">
         <div class="k">PDF</div><div class="t">The report</div>
         <div class="d">Full text, three figures, four annexes</div>
@@ -259,9 +263,11 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
 <hr class="rule">
 
 <figure class="fig">
-  <img src="fig3.png" alt="What almost nobody writes down">
+  <img src="fig3.png" alt="Bar chart of the share of 23 organisations whose own documents meet each of 13 codes, from 75 per cent for a financial figure given down to 17 per cent for transition success measures. The full list is in the text version below.">
   <figcaption><span class="fignum">Figure 3</span> Share of organisations whose own documents meet each code.</figcaption>
 </figure>
+<details class="textalt"><summary>Figure 3 as text</summary>
+<table><caption class="sr-only">Share of organisations whose documents meet each code, percent</caption><thead><tr><th scope="col">Code</th><th scope="col">Share of 23 organisations</th></tr></thead><tbody><tr><th scope="row">Financial figure given (A2)</th><td>75%</td></tr><tr><th scope="row">Receiving partners identified (B2)</th><td>74%</td></tr><tr><th scope="row">Transferred functions named (B1)</th><td>70%</td></tr><tr><th scope="row">Retained role stated (C1)</th><td>65%</td></tr><tr><th scope="row">Completion date given (A3)</th><td>60%</td></tr><tr><th scope="row">Residual liabilities addressed (C2)</th><td>52%</td></tr><tr><th scope="row">Own commitment referenced (D3)</th><td>40%</td></tr><tr><th scope="row">Headcount quantified (A1)</th><td>35%</td></tr><tr><th scope="row">Review point stated (D2)</th><td>30%</td></tr><tr><th scope="row">Authority split from delivery (C3)</th><td>30%</td></tr><tr><th scope="row">Handover timeline given (B4)</th><td>26%</td></tr><tr><th scope="row">Money to partners quantified (B3)</th><td>22%</td></tr><tr><th scope="row">Transition success measures (D1)</th><td>17%</td></tr></tbody></table></details>
 
 <hr class="rule">
 
@@ -278,9 +284,12 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
 <hr class="rule">
 
 <figure class="fig">
-  <img src="fig1.png" alt="A dedicated transition document is the difference">
+  <img src="fig1.png" alt="Bar chart comparing 5 organisations that published a dedicated transition document with 18 that did not. Average scores: transfer specificity 83 against 31, residual clarity 66 against 28, accountability 87 against 9.">
   <figcaption><span class="fignum">Figure 1</span> Organisations that published a document specifically about transition or partnership, against those reporting only through an annual report or press release.</figcaption>
 </figure>
+<details class="textalt"><summary>Figure 1 as text</summary>
+<table><caption class="sr-only">Mean score by group, percent</caption><thead><tr><th scope="col">Code group</th><th scope="col">Dedicated document (5 organisations)</th><th scope="col">No dedicated document (18 organisations)</th></tr></thead>
+<tbody><tr><th scope="row">Transfer specificity</th><td>83</td><td>31</td></tr><tr><th scope="row">Residual clarity</th><td>66</td><td>28</td></tr><tr><th scope="row">Accountability</th><td>87</td><td>9</td></tr></tbody></table></details>
 
 <hr class="rule">
 
@@ -339,7 +348,7 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
 <hr class="rule">
 
 <figure class="fig">
-  <img src="fig2.png" alt="Every organisation, every code">
+  <img src="fig2.png" alt="Heat map of all 23 organisations against the 13 codes, grouped as reduction, transfer, residual and accountability. Darker cells are more specific. The same scores are in the table in Annex C.">
   <figcaption><span class="fignum">Figure 2</span> Every organisation against every code. Darker is more specific.</figcaption>
 </figure>
 
@@ -642,6 +651,7 @@ Corrections after publication will be logged on the same page as the data.</p>
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <h2>Get in touch</h2>
@@ -650,6 +660,7 @@ Corrections after publication will be logged on the same page as the data.</p>
       <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
       <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
       <a class="chip" href="/#review">Transition Exposure Review</a>
+      <a class="chip" href="accessibility.html">Accessibility</a>
       <a class="chip" href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
       <a class="chip" href="https://thomsonmatt.substack.com">Substack</a>
     </div>

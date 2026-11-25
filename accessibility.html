@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility statement | Matt Thomson, Managing Transitions</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://managingtransitions.org/accessibility.html">
+<meta name="description" content="How this site is built for accessibility, the display and reading options available, known limitations, and how to report a barrier.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Managing Transitions">
+<meta property="og:title" content="Accessibility statement | Managing Transitions">
+<meta property="og:description" content="How this site is built for accessibility, and how to report a barrier.">
+<meta property="og:url" content="https://managingtransitions.org/accessibility.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css">
+<script src="/a11y.js"></script>
+</head>
+<body class="prose">
+<a class="skip" href="#main">Skip to main content</a>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="/">MATT THOMSON <em>/</em> MANAGING TRANSITIONS</a>
+    <ul class="navlinks">
+      <li><a href="services.html" >Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="story.html">The Story</a></li>
+      <li><a href="diagnostic.html">Diagnostic</a></li>
+      <li><a href="faq.html">Questions</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <details class="mobnav">
+      <summary>Menu</summary>
+      <ul>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="story.html">The Story</a></li>
+        <li><a href="diagnostic.html">Diagnostic</a></li>
+        <li><a href="faq.html">Questions</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </details>
+  </div>
+</nav>
+<main id="main">
+<header class="page-head"><div class="wrap">
+<h1>Accessibility statement</h1>
+<p>I want this site to work for everyone, including the disabled people, practitioners and researchers whose work it is about. This page says what I have done, what I have not, and how to tell me about a problem.</p>
+<p class="meta-line">Last reviewed 25 November 2026. Self-assessed, not independently audited.</p>
+</div></header>
+
+<div class="paper">
+<h2>Standard I am working to</h2>
+<p>I am working to WCAG 2.2 level AA, and to level AAA for text contrast and reading comfort where that is practical. I have not had the site audited by an outside accessibility specialist. Where this page says something is done, I have checked it with automated testing and by hand. Where it says something is not done, that is the current position.</p>
+
+<h2>What is built in</h2>
+<ul>
+<li><b>Structure.</b> Each page has one main heading, headings in order, a skip link, and landmark regions for navigation, main content and footer. Links say where they go. Downloads say what file type they are.</li>
+<li><b>Contrast.</b> Body text is black or dark brown on an off-white page, above 9:1. Light text on the dark green and brown bands is above 10:1. The orange is only used as a button fill with black text (7:1), never for small text.</li>
+<li><b>Links and focus.</b> Links are always underlined, so colour is never the only cue. Keyboard focus shows a thick black outline with a light and orange halo that is visible on light and dark backgrounds.</li>
+<li><b>Reading.</b> Body text is 18px or larger, set in rem units so it follows your browser's text size. Line length is about 65 characters. Text reflows to a single column at 320px wide and up to 400% zoom without sideways scrolling.</li>
+<li><b>Controls.</b> Buttons and navigation links are at least 44px high. Apart from the Story page, there are no animations, no autoplaying media and nothing that moves or flashes. The site respects your device's reduced-motion and increased-contrast settings.</li>
+<li><b>Images and charts.</b> Photographs have descriptive alternative text and captions. Each chart has a written description, and its numbers are given in text beside it or in a table.</li>
+<li><b>Print.</b> A print stylesheet removes navigation and the dark bands, and writes out link addresses.</li>
+</ul>
+
+<h2>Display and reading options</h2>
+<p>The button at the bottom left of every page ("Display and reading options") opens a panel with these settings. They are saved in your browser only and are not sent anywhere.</p>
+<ul>
+<li>Text size: default, large, larger, largest.</li>
+<li>Typeface: standard, or Atkinson Hyperlegible, a typeface designed by the Braille Institute for low-vision readers. Choosing it loads the font from Google Fonts. Otherwise nothing is requested.</li>
+<li>Contrast: standard, or high contrast in black and white.</li>
+<li>Page background: default, cream, soft grey or pale blue. These tints are for readers who find a plain white page tiring. They are reader-chosen options and not part of the site's branding.</li>
+<li>Wider line, letter and word spacing.</li>
+<li>Highlight all links.</li>
+<li>A reading guide that dims everything except the line you are on, following the pointer, touch or keyboard focus.</li>
+<li>Read the page aloud, with pause, stop and three speeds, using your device's built-in voice.</li>
+</ul>
+<p>These options sit alongside your browser's zoom, reader mode and your own screen reader, which should also work on every page.</p>
+
+<h2>Known limitations</h2>
+<ul>
+<li><b>The Story page</b> (<a href="story.html">The Story</a>) tells the study's findings as a scroll-driven sequence with moving graphics. I have not tested it with every assistive technology. The same findings are on the <a href="research.html">Research</a> page as ordinary text, tables and figures, and that is the version to use if the Story page is hard to follow.</li>
+<li><b>The Transition Diagnostic</b> is an interactive tool. It is built from standard form controls and works with a keyboard, but I have not tested it with every screen reader. If it does not work for you, <a href="mailto:matt@managingtransitions.org">email me</a> and I will go through the same questions with you.</li>
+<li><b>Third-party content.</b> The Substack subscribe box and the booking calendar are hosted by other companies, and I cannot change how accessible they are. You can always email me instead.</li>
+<li><b>PDF documents.</b> The study report and CV are PDFs. I have not checked that they are fully tagged for screen readers. The study's content is on the Research page as web text, and I can send the CV in another format on request.</li>
+<li><b>Charts as images.</b> The charts are images with text alternatives. They are not interactive, and their colours were not originally chosen with colour-vision deficiency in mind. Every value is also given in text.</li>
+<li><b>Screen reader testing.</b> I have tested with automated tools and the keyboard. I have not yet tested every page with NVDA, JAWS, VoiceOver and TalkBack. If you use one and find a problem, please tell me.</li>
+</ul>
+
+<h2>Tell me about a barrier</h2>
+<p>If something on this site is hard to use, or you need content in another format (large print, plain text, an audio version, or a different file type), email <a href="mailto:matt@managingtransitions.org">matt@managingtransitions.org</a>. Say which page and what happened, and which device, browser or assistive technology you were using if you know. I will reply, and where something is a barrier I will fix it or give you the content another way.</p>
+</div>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p class="lede">Tell me what you are working on. If I am the wrong person, I will say so and point you to someone better.</p>
+    <div class="contact-grid">
+      <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+      <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
+      <a class="chip" href="about.html">About</a>
+      <a class="chip" href="research.html">The 2026 study</a>
+      <a class="chip" href="accessibility.html">Accessibility</a>
+      <a class="chip" href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
+      <a class="chip" href="cv.pdf">CV (PDF)</a>
+    </div>
+    <div class="foot-base">
+      <span>MANAGING TRANSITIONS &copy; 2026</span>
+      <span>managingtransitions.org</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.1});
+  reveals.forEach(el=>io.observe(el));
+
+  document.addEventListener('click', function(ev){
+    var m = document.querySelector('.mobnav[open]');
+    if(m && !m.contains(ev.target)){ m.removeAttribute('open'); }
+  });
+</script>
+
+</body>
+</html>
