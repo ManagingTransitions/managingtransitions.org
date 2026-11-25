@@ -1,0 +1,26 @@
+/* Shared muted theme: off-white paper, black type, serif headlines, dark green textured bands.
+   Loaded after each page's own styles so it overrides the older green-heavy look. */
+:root{--paper:#faf8f4; --deep:#0e2b25; --mist:#eef2ef; --serif:'Source Serif 4',Georgia,'Times New Roman',serif;}
+body{background:var(--paper);}
+h1,h2{font-family:var(--serif); font-weight:600; letter-spacing:-0.005em;}
+
+/* Page headers go light, like the homepage hero */
+body header.page-head{background:var(--paper); color:var(--ink); border-bottom:6px solid var(--deep);}
+body header.page-head .eyebrow{color:var(--brown);}
+body header.page-head h1{color:var(--ink);}
+body header.page-head p,
+body header.page-head .sub,
+body header.page-head .lede,
+body header.page-head .byline,
+body header.page-head .caveat{color:var(--ink-soft);}
+body header.page-head a{color:var(--ink); border-bottom-color:var(--amber);}
+body .about-fig figcaption{color:var(--ink-soft);}
+
+/* Dark bands: textured very dark green */
+.textured,
+body footer,
+body .cta,
+body header.storyhead{
+  background-color:var(--deep);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"), repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 14px), linear-gradient(180deg,#123630 0%,#0b241f 100%);
+}
