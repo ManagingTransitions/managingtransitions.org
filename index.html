@@ -3,21 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Managing Transitions | Programme handover and aid-dependency exits | Matt Thomson</title>
+<title>Matt Thomson | Independent adviser on localisation, transition and aid reform | Managing Transitions</title>
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://managingtransitions.org/">
-<meta name="description" content="Independent advisory on programme handover, aid-dependency exits and outcomes systems. Transition Exposure Reviews for INGOs, funders and health networks.">
+<meta name="description" content="Matt Thomson advises INGOs, funders and health networks on localisation, programme handover and aid-dependency exits, drawing on field programme management in East and West Africa and PhD research at the University of Bristol.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Managing Transitions">
-<meta property="og:title" content="Managing Transitions | Matt Thomson">
-<meta property="og:description" content="When the funding ends, what actually breaks? Independent advisory on programme handover and aid-dependency exits.">
+<meta property="og:title" content="Matt Thomson | Localisation, transition and aid reform">
+<meta property="og:description" content="Independent advice on localisation, programme handover and aid-dependency exits, from a practitioner and researcher who has run the programmes.">
 <meta property="og:image" content="https://managingtransitions.org/fig1.png">
 <meta property="og:url" content="https://managingtransitions.org/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Managing Transitions | Matt Thomson">
-<meta name="twitter:description" content="When the funding ends, what actually breaks? Independent advisory on programme handover and aid-dependency exits.">
+<meta name="twitter:title" content="Matt Thomson | Localisation, transition and aid reform">
+<meta name="twitter:description" content="Independent advice on localisation, programme handover and aid-dependency exits, from a practitioner and researcher who has run the programmes.">
 <meta name="twitter:image" content="https://managingtransitions.org/fig1.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23143a33'/%3E%3Cpath d='M7 23V9h3l6 9 6-9h3v14h-3v-9l-6 9-6-9v9z' fill='%23e47b12'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Person","@id":"https://managingtransitions.org/#matt","name":"Matt Thomson","jobTitle":"Independent adviser on localisation, transition and aid reform","url":"https://managingtransitions.org/","sameAs":["https://www.linkedin.com/in/matt-thomson-8548b9198","https://thomsonmatt.substack.com"],"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Bristol"},{"@type":"CollegeOrUniversity","name":"Oxford Brookes University"}],"knowsAbout":["localisation","programme handover","aid dependency","governance","political economy of aid","assistive technology systems"]},
+{"@type":"ProfessionalService","@id":"https://managingtransitions.org/#practice","name":"Managing Transitions","url":"https://managingtransitions.org/","founder":{"@id":"https://managingtransitions.org/#matt"},"areaServed":"Worldwide","serviceType":["Aid-dependency exit design","Outcomes and evidence architecture","Organisational and governance advisory","Political economy and localisation analysis"]}
+]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -83,8 +89,8 @@ header.hero .wrap > *:nth-child(3){animation-delay:.16s;}
 header.hero .wrap > *:nth-child(4){animation-delay:.24s;}
 header.hero .wrap > *:nth-child(5){animation-delay:.32s;}
 header.hero .eyebrow{color:#a7c2ba; margin-bottom:20px;}
-header.hero h1{font-size:clamp(2.7rem,6.6vw,4.9rem); color:#fff; line-height:0.98; max-width:14ch;}
-header.hero .lede{font-size:1.14rem; color:#d7e3df; margin-top:26px; max-width:46ch;}
+header.hero h1{font-size:clamp(2.4rem,5.4vw,4.2rem); color:#fff; line-height:1.02; max-width:19ch;}
+header.hero .lede{font-size:1.14rem; color:#d7e3df; margin-top:26px; max-width:56ch;}
 .hero-cta{display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-top:38px;}
 .hero-cta .tlink{color:var(--cream); border-bottom-color:var(--amber);}
 .hero-cta .tlink:hover{color:var(--amber);}
@@ -108,11 +114,20 @@ header.hero .lede{font-size:1.14rem; color:#d7e3df; margin-top:26px; max-width:4
 .svc-row{display:grid; grid-template-columns:64px 1fr auto; gap:22px; align-items:baseline; padding:24px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); transition:padding-left .18s ease, background .18s ease;}
 .svc-row:hover{padding-left:10px; background:#faf9f6;}
 .svc-num{font-weight:700; font-size:0.85rem; color:var(--amber);}
-.svc-name{font-size:1.18rem; font-weight:700;}
-.svc-desc{font-size:0.92rem; color:var(--muted); font-weight:400; margin-top:4px;}
+.svc-name{display:block; font-size:1.18rem; font-weight:700;}
+.svc-desc{display:block; font-size:0.92rem; color:var(--muted); font-weight:400; margin-top:4px;}
 .svc-arrow{font-size:1.1rem; color:var(--muted); transition:transform .18s ease, color .18s ease;}
 .svc-row:hover .svc-arrow{transform:translateX(4px); color:var(--amber);}
 @media (max-width:640px){ .svc-row{grid-template-columns:40px 1fr; } .svc-arrow{display:none;} }
+
+/* WHO: three short columns */
+.who-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:34px;}
+.who-col{border-top:2px solid var(--ink); padding-top:16px;}
+.who-col h3{font-size:1.02rem; margin-bottom:10px;}
+.who-col p{font-size:0.94rem; color:var(--ink-soft); margin:0;}
+.who-foot{margin-top:30px; display:flex; flex-wrap:wrap; gap:10px 26px; align-items:baseline;}
+.who-foot small{font-size:0.84rem; color:var(--muted); max-width:62ch;}
+@media (max-width:820px){ .who-grid{grid-template-columns:1fr; gap:26px;} }
 
 /* PHILOSOPHY: single wide paragraph, off-centre */
 .phil p{font-size:1.12rem; line-height:1.7; color:var(--ink-soft); max-width:62ch;}
@@ -160,7 +175,7 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="index.html">MANAGING <em>/</em> TRANSITIONS</a>
+    <a class="brand" href="index.html">MATT THOMSON <em>/</em> MANAGING TRANSITIONS</a>
     <ul class="navlinks">
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
@@ -187,18 +202,51 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">Managing Transitions · Matt Thomson</p>
-    <h1>When the funding ends, what actually breaks?</h1>
-    <p class="lede">I work out which parts of a programme can transfer to partners within twelve months, and what liability stays behind after handover.</p>
+    <p class="eyebrow">Matt Thomson · Independent adviser</p>
+    <h1>Localisation, transition and aid reform, from someone who has run the programmes.</h1>
+    <p class="lede">I'm Matt Thomson. I manage partnerships and programmes across East and West Africa, and I research the politics of localisation at the University of Bristol. Through Managing Transitions I advise INGOs, funders and health networks on what moves, and what breaks, when funding ends.</p>
     <div class="hero-cta">
-      <a class="btn btn-amber" href="#review">Book a call</a>
-      <a class="tlink" href="services.html">See how I work &rarr;</a>
+      <a class="btn btn-amber" href="#advisory">How I can help</a>
+      <a class="tlink" href="research.html">Read the 2026 study &rarr;</a>
     </div>
     <div class="field-strip">
       <span>The Gambia</span><span>Uganda</span><span>Kenya</span><span>Tanzania</span><span>Tunisia</span>
     </div>
   </div>
 </header>
+
+<section id="advisory">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Where I can help</p>
+      <h2>Four kinds of problem I work on.</h2>
+      <p>Managing Transitions is the practice. Each line below is something I can take on as a short advisory piece, a review or a retained piece of work.</p>
+    </div>
+    <div class="svc-list reveal">
+      <a class="svc-row" href="services.html#exit-design">
+        <span class="svc-num">01</span>
+        <span><span class="svc-name">Aid-dependency exit design</span><span class="svc-desc">You are handing a programme or network to partners. I work out what can transfer, in what order, and what you remain liable for.</span></span>
+        <span class="svc-arrow">&rarr;</span>
+      </a>
+      <a class="svc-row" href="services.html#outcomes">
+        <span class="svc-num">02</span>
+        <span><span class="svc-name">Outcomes & evidence architecture</span><span class="svc-desc">Turn activity data into outcomes a donor will still trust after you have left.</span></span>
+        <span class="svc-arrow">&rarr;</span>
+      </a>
+      <a class="svc-row" href="services.html#governance">
+        <span class="svc-num">03</span>
+        <span><span class="svc-name">Organisational & governance advisory</span><span class="svc-desc">An independent read of structures, boards and partnerships when roles and power are shifting.</span></span>
+        <span class="svc-arrow">&rarr;</span>
+      </a>
+      <a class="svc-row" href="services.html#political-economy">
+        <span class="svc-num">04</span>
+        <span><span class="svc-name">Political economy & localisation analysis</span><span class="svc-desc">Who really holds the decisions and the money in a partnership, and what that means for your plan.</span></span>
+        <span class="svc-arrow">&rarr;</span>
+      </a>
+    </div>
+    <p class="reveal" style="margin-top:26px; font-size:0.95rem; color:var(--muted); max-width:70ch;">I also take associate and research-partner work with consultancies, universities and funders, and short fixed-term pieces. <a class="tlink" href="services.html#associate">See how that works</a></p>
+  </div>
+</section>
 
 <section class="proof" id="evidence">
   <div class="wrap">
@@ -220,33 +268,30 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
   </div>
 </section>
 
-<section id="advisory">
+<section class="who" id="who">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">Advisory</p>
-      <h2>Four ways in.</h2>
+      <p class="eyebrow">Why me</p>
+      <h2>Practitioner and researcher, in the same week.</h2>
     </div>
-    <div class="svc-list reveal">
-      <a class="svc-row" href="services.html#exit-design">
-        <span class="svc-num">01</span>
-        <span><span class="svc-name">Aid-dependency exit design</span><span class="svc-desc">Handover frameworks that move networks off donor grants without breaking delivery.</span></span>
-        <span class="svc-arrow">&rarr;</span>
-      </a>
-      <a class="svc-row" href="services.html#outcomes">
-        <span class="svc-num">02</span>
-        <span><span class="svc-name">Outcomes & evidence architecture</span><span class="svc-desc">Turning activity data into longitudinal outcomes a donor can rely on.</span></span>
-        <span class="svc-arrow">&rarr;</span>
-      </a>
-      <a class="svc-row" href="services.html#governance">
-        <span class="svc-num">03</span>
-        <span><span class="svc-name">Organisational & governance advisory</span><span class="svc-desc">Independent evaluation of structures, boards and practitioner-researcher partnerships.</span></span>
-        <span class="svc-arrow">&rarr;</span>
-      </a>
-      <a class="svc-row" href="services.html#political-economy">
-        <span class="svc-num">04</span>
-        <span><span class="svc-name">Political economy & localisation analysis</span><span class="svc-desc">Rapid governance-risk analysis for fragile and parallel systems.</span></span>
-        <span class="svc-arrow">&rarr;</span>
-      </a>
+    <div class="who-grid reveal">
+      <div class="who-col">
+        <h3>Practitioner</h3>
+        <p>Since 2022 I have worked at a UK INGO, co-managing a multi-year EU co-financed programme in The Gambia and leading partner portfolios across Uganda, Kenya and Tanzania, including moving grassroots networks towards locally run models.</p>
+      </div>
+      <div class="who-col">
+        <h3>Researcher</h3>
+        <p>PhD candidate in Politics at the University of Bristol, on how power, expertise and money move through the aid system. MSc in Development and Security (Distinction). Contributor to the Exceed Research Network on prosthetics and orthotics services.</p>
+      </div>
+      <div class="who-col">
+        <h3>Network</h3>
+        <p>Member-trustee of the South West International Development Network, and guest lecturer on the University of Southampton's MSc in Amputation and Prosthetic Rehabilitation.</p>
+      </div>
+    </div>
+    <div class="who-foot reveal">
+      <a class="tlink" href="about.html">Full background</a>
+      <a class="tlink" href="cv.pdf">Download my CV</a>
+      <small>I also hold a salaried role at a UK INGO. How I keep that separate from this work is set out on the <a href="about.html#independence" style="text-decoration:underline;">about page</a>.</small>
     </div>
   </div>
 </section>
@@ -308,8 +353,8 @@ footer p.lede{color:#d7e3df; max-width:520px; margin-top:14px;}
 <footer id="contact">
   <div class="wrap">
     <p class="eyebrow">Get In Touch</p>
-    <h2>Ready to plan the transition?</h2>
-    <p class="lede">Reach out directly, or book time to talk through your network's transition.</p>
+    <h2>Have a handover, a bid or a research question?</h2>
+    <p class="lede">Tell me what you are working on. If I am the wrong person, I will say so and point you to someone better.</p>
     <div class="contact-grid">
       <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
       <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
