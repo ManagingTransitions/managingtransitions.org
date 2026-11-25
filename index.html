@@ -28,162 +28,123 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#000000; --pine:#143a33; --brown:#392c23; --amber:#e47b12; --paper:#faf8f4; --deep:#0e2b25; --mist:#eef2ef; --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
-  --line:rgba(0,0,0,0.14); --line-on-dark:rgba(244,239,230,0.2);
-  --cream:#f4efe6; --ink-soft:#2a2a27; --muted:#5c5c58; --max:1120px;
+  --ink:#000; --pine:#143a33; --brown:#392c23; --amber:#e47b12; --paper:#faf8f4; --deep:#0e2b25; --cream:#f4efe6;
+  --ink-soft:#2a2a27; --muted:#5c5c58; --line:rgba(0,0,0,0.14); --line-on-dark:rgba(244,239,230,0.22);
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --max:1080px;
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--serif); font-size:1.08rem; line-height:1.68; -webkit-font-smoothing:antialiased;}
 ::selection{background:var(--amber); color:#fff;}
 a{color:inherit;} img{max-width:100%;}
 .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
 :focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
-h1,h2,h3,h4{font-weight:800; margin:0; letter-spacing:-0.02em; color:var(--ink);}
-h1,h2{font-family:var(--serif); font-weight:600; letter-spacing:-0.015em;}
-.eyebrow{font-size:0.74rem; font-weight:600; letter-spacing:0.11em; text-transform:uppercase; color:var(--brown);}
-.reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
-.reveal.in{opacity:1; transform:none;}
-@media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
+h1,h2,h3{font-family:var(--serif); font-weight:600; margin:0; color:var(--ink); letter-spacing:-0.01em;}
+p{margin:0 0 1em;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
 
-nav{position:sticky; top:0; z-index:50; background:rgba(250,248,244,0.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+nav{position:sticky; top:0; z-index:50; background:rgba(250,248,244,0.96); border-bottom:1px solid var(--line); font-family:var(--sans);}
 nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
 .brand{font-weight:800; font-size:0.94rem; letter-spacing:-0.01em; text-decoration:none; color:var(--ink);}
 .brand em{font-style:normal; color:var(--amber);}
 .navlinks{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
-.navlinks a{position:relative; font-size:0.87rem; font-weight:500; text-decoration:none; color:var(--ink-soft); padding-bottom:3px;}
-.navlinks a::after{content:""; position:absolute; left:0; bottom:0; width:100%; height:1.5px; background:var(--amber); transform:scaleX(0); transform-origin:left; transition:transform .22s ease;}
-.navlinks a:hover{color:var(--ink);}
-.navlinks a:hover::after,.navlinks a.current::after{transform:scaleX(1);}
-.navlinks a.current{color:var(--ink);}
+.navlinks a{font-size:0.87rem; font-weight:500; text-decoration:none; color:var(--ink-soft);}
+.navlinks a:hover{text-decoration:underline; text-underline-offset:4px;}
 .mobnav{display:none; position:relative;}
-.mobnav summary{list-style:none; cursor:pointer; font-size:0.78rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink); border:1px solid var(--line); padding:8px 14px; border-radius:2px;}
+.mobnav summary{list-style:none; cursor:pointer; font-size:0.78rem; font-weight:600; color:var(--ink); border:1px solid var(--line); padding:8px 14px; border-radius:2px;}
 .mobnav summary::-webkit-details-marker{display:none;}
-.mobnav[open] summary{border-color:var(--amber);}
 .mobnav ul{position:absolute; right:0; top:calc(100% + 8px); min-width:200px; margin:0; padding:6px 0; list-style:none; background:var(--paper); border:1px solid var(--line);}
 .mobnav li a{display:block; padding:11px 18px; font-size:0.92rem; text-decoration:none; color:var(--ink-soft);}
-.mobnav li a:hover{background:#f3f1ec; color:var(--ink);}
+.mobnav li a:hover{background:#f1ede5;}
 @media (max-width:860px){ .navlinks{display:none;} .mobnav{display:block;} }
 
-.btn{display:inline-flex; align-items:center; gap:8px; padding:14px 24px; font-size:0.85rem; font-weight:600; letter-spacing:0.02em; text-decoration:none; border-radius:2px; border:1.5px solid transparent; transition:transform .16s ease, background .16s ease, color .16s ease, border-color .16s ease;}
-.btn-amber{background:var(--amber); color:#fff;}
-.btn-amber:hover{background:var(--ink); color:#fff; transform:translateY(-2px);}
-.btn-ghost-light{border-color:var(--line-on-dark); color:var(--cream);}
-.btn-ghost-light:hover{border-color:var(--amber); color:var(--amber);}
-.btn-ghost{border-color:var(--ink); color:var(--ink);}
-.btn-ghost:hover{border-color:var(--amber); color:var(--amber);}
-.tlink{display:inline-block; font-weight:600; font-size:0.92rem; text-decoration:none; color:var(--ink); border-bottom:2px solid var(--amber); padding-bottom:2px; transition:color .16s ease;}
-.tlink:hover{color:var(--amber);}
+.btn{display:inline-block; padding:13px 24px; font-family:var(--sans); font-size:0.92rem; font-weight:600; text-decoration:none; border-radius:2px; background:var(--amber); color:#fff;}
+.btn:hover{background:var(--ink);}
+.link{font-family:var(--sans); font-size:0.94rem; font-weight:500; color:var(--ink); text-decoration:underline; text-underline-offset:4px;}
+.link:hover{color:var(--amber);}
 
-section{padding:80px 0;}
-.section-head{max-width:640px;}
-.section-head h2{font-size:clamp(1.5rem,3vw,2.15rem); margin-top:10px;}
-.section-head p{font-size:0.98rem; color:var(--muted); margin-top:14px; max-width:62ch;}
+/* hero */
+.hero{padding:76px 0 64px;}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(0,1fr); gap:64px; align-items:center;}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem); line-height:1.1; max-width:19ch;}
+.hero .lede{font-size:1.2rem; color:var(--ink-soft); margin:26px 0 0; max-width:34em;}
+.hero-cta{display:flex; align-items:center; gap:26px; flex-wrap:wrap; margin-top:32px;}
+.hero .where{font-family:var(--sans); font-size:0.84rem; color:var(--muted); margin:34px 0 0;}
+.hero-photo{margin:0;}
+.hero-photo img{display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover;}
+.hero-photo figcaption{font-family:var(--sans); font-size:0.8rem; line-height:1.45; color:var(--muted); margin-top:10px;}
+@media (max-width:820px){ .hero{padding:36px 0 44px;} .hero-grid{grid-template-columns:1fr; gap:30px;} .hero-photo{order:-1; max-width:300px;} }
 
-/* HERO: asymmetric, headline wide-left, cta block offset below-right */
-header.hero{background:var(--paper); color:var(--ink); padding:88px 0 64px; overflow:hidden; border-bottom:6px solid var(--deep);}
-@keyframes rise{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;} }
-header.hero .hero-text > *{animation:rise .7s ease both;}
-header.hero .hero-text > *:nth-child(2){animation-delay:.08s;}
-header.hero .hero-text > *:nth-child(3){animation-delay:.16s;}
-header.hero .hero-text > *:nth-child(4){animation-delay:.24s;}
-header.hero .hero-text > *:nth-child(5){animation-delay:.32s;}
-header.hero .eyebrow{color:var(--brown); margin-bottom:20px;}
-header.hero h1{font-size:clamp(2.3rem,5.2vw,4rem); color:var(--ink); line-height:1.06; max-width:20ch; font-weight:600;}
-header.hero .lede{font-size:1.14rem; color:var(--ink-soft); margin-top:26px; max-width:56ch;}
-.hero-grid{display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:56px; align-items:center;}
-.hero-photo{margin:0; animation:rise .9s .2s ease both;}
-.hero-photo figcaption{font-size:.82rem; line-height:1.45; color:var(--ink-soft); margin-top:12px; max-width:34ch;}
-.hero-photo img{display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-bottom:6px solid var(--amber);}
-@media (max-width:820px){ .hero-grid{grid-template-columns:1fr; gap:36px;} .hero-photo{order:-1; max-width:320px;} header.hero{padding-top:48px;} }
-.hero-cta{display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-top:38px;}
-.hero-cta .tlink{color:var(--ink); border-bottom-color:var(--amber);}
-.hero-cta .tlink:hover{color:var(--amber);}
-.field-strip{margin-top:56px; max-width:700px; border-top:1px solid var(--line); padding-top:16px; display:flex; flex-wrap:wrap; gap:8px 20px;}
-.field-strip span{font-size:0.8rem; color:var(--muted);}
-.field-strip span::before{content:"·  "; color:#a09a90;}
-.field-strip span:first-child::before{content:"";}
+/* what I do: heading left, list right */
+.what{padding:56px 0 80px; border-top:1px solid var(--line);}
+.split{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); gap:64px;}
+.split h2{font-size:1.9rem; line-height:1.15;}
+.what-list a.item{display:block; text-decoration:none; padding:0 0 26px;}
+.what-list h3{font-size:1.28rem; text-decoration:underline; text-decoration-color:rgba(0,0,0,.25); text-underline-offset:5px;}
+.what-list a.item:hover h3{text-decoration-color:var(--amber);}
+.what-list p.d{margin:6px 0 0; color:var(--ink-soft); max-width:36em;}
+.what-list .more{margin-top:8px; color:var(--ink-soft); max-width:36em;}
+@media (max-width:820px){ .split{grid-template-columns:1fr; gap:22px;} }
 
-.textured{background-color:var(--deep); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"), repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 14px), linear-gradient(180deg,#123630 0%,#0b241f 100%);}
-/* PROOF: one dominant stat, asymmetric two column */
-.proof{color:var(--cream);}
-.proof .eyebrow{color:#a9c1b8;}
-.proof h2{color:#fff;}
-.proof-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:end; margin-top:36px;}
-.proof-num{font-family:var(--serif); font-size:clamp(4.5rem,11vw,7.5rem); font-weight:600; line-height:0.85; color:#fff; letter-spacing:-0.03em;}
-.proof-num span{color:var(--amber);}
-.proof-num-label{margin-top:14px; font-size:1.02rem; color:#d6e2dd; max-width:26ch;}
-.proof-side p{font-size:1.02rem; color:#d6e2dd; margin:0 0 14px;}
-.proof .tlink{color:#fff;}
-.proof .tlink:hover{color:var(--amber);}
-.proof-side p:last-of-type{margin-bottom:22px;}
-@media (max-width:820px){ .proof-grid{grid-template-columns:1fr; gap:26px;} }
+/* study band */
+.study{padding:60px 0 64px;}
+.study .narrow{max-width:40em;}
+.study h2{font-size:1.9rem; color:#fff; margin-bottom:18px;}
+.study p{color:#e6eeea;}
+.study .link{color:#fff; margin-right:22px;}
+.study .link:hover{color:var(--amber);}
 
-/* WHAT I DO: numbered index list, no cards */
-.svc-list{border-top:1px solid var(--line); margin-top:8px;}
-.svc-row{display:grid; grid-template-columns:64px 1fr auto; gap:22px; align-items:baseline; padding:24px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); transition:padding-left .18s ease, background .18s ease;}
-.svc-row:hover{padding-left:10px; background:#f1ede5;}
-.svc-num{font-weight:700; font-size:0.85rem; color:var(--brown);}
-.svc-name{display:block; font-size:1.18rem; font-weight:700;}
-.svc-desc{display:block; font-size:0.92rem; color:var(--muted); font-weight:400; margin-top:4px;}
-.svc-arrow{font-size:1.1rem; color:var(--muted); transition:transform .18s ease, color .18s ease;}
-.svc-row:hover .svc-arrow{transform:translateX(4px); color:var(--amber);}
-@media (max-width:640px){ .svc-row{grid-template-columns:40px 1fr; } .svc-arrow{display:none;} }
+/* background and philosophy: long single column */
+.bg{padding:96px 0 28px;}
+.narrow{max-width:40em;}
+.bg h2,.phil h2{font-size:1.9rem; margin-bottom:18px;}
+.bg .links{font-family:var(--sans); margin-top:6px;}
+.bg .links .link{margin-right:22px;}
+.bg .decl{font-size:0.95rem; color:var(--muted); margin-top:26px;}
+.phil{padding:36px 0 104px;}
+.phil p.big{font-size:1.32rem; line-height:1.6; color:var(--ink);}
 
-/* WHO: three short columns */
-.who{background:var(--mist);}
-.who-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:34px;}
-.who-col{border-top:3px solid var(--deep); padding-top:16px;}
-.who-col h3{font-size:1.02rem; margin-bottom:10px;}
-.who-col p{font-size:0.94rem; color:var(--ink-soft); margin:0;}
-.who-foot{margin-top:30px; display:flex; flex-wrap:wrap; gap:10px 26px; align-items:baseline;}
-.who-foot small{font-size:0.84rem; color:var(--muted); max-width:62ch;}
-@media (max-width:820px){ .who-grid{grid-template-columns:1fr; gap:26px;} }
+/* review */
+.review{background:var(--brown); color:var(--cream); padding:72px 0 76px;}
+.review h2{color:#fff; font-size:1.9rem;}
+.review .terms{font-family:var(--sans); font-size:0.95rem; color:#e9d9c6; margin:8px 0 0;}
+.review-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:56px; margin-top:30px;}
+.review p{color:#eadfd2;}
+.review ul{margin:0 0 1em; padding-left:1.2em; color:#eadfd2;}
+.review li{margin-bottom:6px;}
+@media (max-width:820px){ .review-grid{grid-template-columns:1fr; gap:10px;} }
 
-/* PHILOSOPHY: single wide paragraph, off-centre */
-.phil p{font-size:1.12rem; line-height:1.7; color:var(--ink-soft); max-width:62ch;}
-
-/* REVIEW band */
-.review{background:var(--brown); color:var(--cream);}
-.review .eyebrow{color:#d9c9b8;}
-.review h2{color:#fff; font-size:clamp(1.6rem,3.2vw,2.3rem);}
-.review .terms{font-size:0.86rem; font-weight:600; letter-spacing:0.04em; color:var(--amber); margin-top:14px; text-transform:uppercase;}
-.review-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:60px; margin-top:38px;}
-.review-grid p{font-size:1rem; color:#eadfd2;}
-.review-list{list-style:none; margin:20px 0 0; padding:0;}
-.review-list li{position:relative; padding:12px 0 12px 24px; border-bottom:1px solid var(--line-on-dark); font-size:0.95rem; color:#eadfd2;}
-.review-list li::before{content:"→"; position:absolute; left:0; color:var(--amber);}
-.review-side p{font-size:0.94rem; color:#d9c9b8; margin:0 0 20px;}
-@media (max-width:820px){ .review-grid{grid-template-columns:1fr; gap:30px;} }
-
-/* WRITING / substack */
-.writing-list{border-top:1px solid var(--line); margin-top:20px;}
-.writing-item{display:grid; grid-template-columns:180px 1fr; gap:24px; align-items:start; padding:24px 0; border-bottom:1px solid var(--line);}
+/* writing */
+.writing{padding:72px 0 56px;}
+.writing h2{font-size:1.9rem;}
+.writing-list{margin-top:18px; max-width:760px;}
+.writing-item{display:grid; grid-template-columns:170px 1fr; gap:22px; align-items:start; padding:20px 0; border-top:1px solid var(--line);}
 .writing-item.no-image{grid-template-columns:1fr;}
-.writing-thumb{display:block; width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:2px; background:#eee;}
-.writing-title{display:inline-block; font-weight:700; font-size:1.08rem; line-height:1.3; color:var(--ink); text-decoration:none; border-bottom:2px solid transparent; transition:color .18s ease, border-color .18s ease;}
-.writing-title:hover{color:var(--amber); border-bottom-color:var(--amber);}
-.writing-body .when{display:block; margin-top:7px; font-size:0.76rem; color:#8a8a86; letter-spacing:0.03em;}
-.writing-body .excerpt{margin:10px 0 0; font-size:0.92rem; color:var(--muted); max-width:64ch;}
-.writing-status{font-size:0.9rem; color:var(--muted); padding:18px 0;}
-.writing-status a{color:var(--ink); font-weight:600; text-decoration:underline;}
-.writing-sub{margin-top:26px; max-width:480px;}
-.writing-sub iframe{width:100%; border:1px solid var(--line); border-radius:2px; background:var(--paper);}
-@media (max-width:640px){ .writing-item{grid-template-columns:1fr; gap:14px;} }
+.writing-thumb{display:block; width:100%; aspect-ratio:16/9; object-fit:cover; background:#eee;}
+.writing-title{font-family:var(--serif); font-weight:600; font-size:1.15rem; line-height:1.3; color:var(--ink); text-decoration:underline; text-decoration-color:rgba(0,0,0,.25); text-underline-offset:4px;}
+.writing-title:hover{text-decoration-color:var(--amber);}
+.writing-body .when{display:block; margin-top:5px; font-family:var(--sans); font-size:0.78rem; color:#8a8a86;}
+.writing-body .excerpt{margin:8px 0 0; font-size:0.97rem; color:var(--muted);}
+.writing-status{font-family:var(--sans); font-size:0.92rem; color:var(--muted); padding:16px 0;}
+.writing-status a{color:var(--ink); text-decoration:underline;}
+.writing-sub{margin-top:22px; max-width:480px;}
+.writing-sub iframe{width:100%; border:1px solid var(--line); background:var(--paper);}
+@media (max-width:640px){ .writing-item{grid-template-columns:1fr; gap:12px;} }
 
-footer{color:var(--cream); padding:64px 0 32px;}
-footer .eyebrow{color:#cfc4b6;}
-footer h2{color:#fff; font-size:clamp(1.6rem,3.2vw,2.2rem);}
-footer p.lede{color:#e3dacd; max-width:520px; margin-top:14px;}
-.contact-grid{display:flex; flex-wrap:wrap; gap:10px; margin-top:32px;}
-.chip{padding:11px 18px; border:1px solid var(--line-on-dark); text-decoration:none; color:var(--cream); font-size:0.86rem; font-weight:500; border-radius:2px; transition:border-color .16s ease, color .16s ease;}
-.chip:hover{border-color:var(--amber); color:var(--amber);}
-.foot-base{margin-top:48px; padding-top:18px; border-top:1px solid var(--line-on-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.76rem; color:#a79d90; letter-spacing:0.03em;}
+footer{color:var(--cream); padding:56px 0 30px;}
+footer h2{color:#fff; font-size:1.9rem;}
+footer p.lede{color:#e3dacd; max-width:30em; margin-top:12px;}
+.contact-links{display:flex; flex-wrap:wrap; gap:8px 26px; margin-top:22px; font-family:var(--sans); font-size:0.92rem;}
+.contact-links a{color:var(--cream); text-decoration:underline; text-underline-offset:4px;}
+.contact-links a:hover{color:var(--amber);}
+.foot-base{margin-top:40px; padding-top:16px; border-top:1px solid var(--line-on-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:var(--sans); font-size:0.76rem; color:#a79d90;}
 </style>
-<noscript><style>.reveal{opacity:1 !important; transform:none !important;}</style></noscript>
+<link rel="stylesheet" href="/theme.css">
 </head>
 <body>
 
@@ -213,155 +174,98 @@ footer p.lede{color:#e3dacd; max-width:520px; margin-top:14px;}
     </details>
   </div>
 </nav>
-
 <header class="hero">
   <div class="wrap hero-grid">
-   <div class="hero-text">
-    <p class="eyebrow">Matt Thomson · Independent adviser</p>
-    <h1>Localisation, transition and aid reform, from someone who has run the programmes.</h1>
-    <p class="lede">I'm Matt Thomson. I manage partnerships and programmes across East and West Africa, and I research the politics of localisation at the University of Bristol. Through Managing Transitions I advise INGOs, funders and health networks on what moves, and what breaks, when funding ends.</p>
-    <div class="hero-cta">
-      <a class="btn btn-amber" href="#advisory">How I can help</a>
-      <a class="tlink" href="research.html">Read the 2026 study &rarr;</a>
+    <div>
+      <h1>Advice on handing over aid programmes, from someone who has run them</h1>
+      <p class="lede">I'm Matt Thomson. I manage partnerships and programmes across East and West Africa, and I'm doing a PhD at the University of Bristol on the politics of localisation. Through Managing Transitions I advise INGOs, funders and health networks on what can safely transfer when funding ends, and what can't.</p>
+      <div class="hero-cta">
+        <a class="btn" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+        <a class="link" href="#what">What I do</a>
+        <a class="link" href="research.html">Read the 2026 study</a>
+      </div>
+      <p class="where">Programmes in The Gambia, Uganda, Kenya and Tanzania.</p>
     </div>
-    <div class="field-strip">
-      <span>The Gambia</span><span>Uganda</span><span>Kenya</span><span>Tanzania</span><span>Tunisia</span>
-    </div>
-   </div>
-   <figure class="hero-photo"><img src="/img/matt-hero.jpg" width="800" height="1000" alt="Matt Thomson in New York with the Manhattan skyline behind him" fetchpriority="high"><figcaption>Visiting the UN in New York.</figcaption></figure>
+    <figure class="hero-photo"><img src="/img/matt-hero.jpg" width="800" height="1000" alt="Matt Thomson in New York with the Manhattan skyline behind him" fetchpriority="high"><figcaption>Visiting the UN in New York.</figcaption></figure>
   </div>
 </header>
 
-<section id="advisory">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Where I can help</p>
-      <h2>Four kinds of problem I work on.</h2>
-      <p>Managing Transitions is the practice. Each line below is something I can take on as a short advisory piece, a review or a retained piece of work.</p>
-    </div>
-    <div class="svc-list reveal">
-      <a class="svc-row" href="services.html#exit-design">
-        <span class="svc-num">01</span>
-        <span><span class="svc-name">Aid-dependency exit design</span><span class="svc-desc">You are handing a programme or network to partners. I work out what can transfer, in what order, and what you remain liable for.</span></span>
-        <span class="svc-arrow">&rarr;</span>
-      </a>
-      <a class="svc-row" href="services.html#outcomes">
-        <span class="svc-num">02</span>
-        <span><span class="svc-name">Outcomes & evidence architecture</span><span class="svc-desc">Turn activity data into outcomes a donor will still trust after you have left.</span></span>
-        <span class="svc-arrow">&rarr;</span>
-      </a>
-      <a class="svc-row" href="services.html#governance">
-        <span class="svc-num">03</span>
-        <span><span class="svc-name">Organisational & governance advisory</span><span class="svc-desc">An independent read of structures, boards and partnerships when roles and power are shifting.</span></span>
-        <span class="svc-arrow">&rarr;</span>
-      </a>
-      <a class="svc-row" href="services.html#political-economy">
-        <span class="svc-num">04</span>
-        <span><span class="svc-name">Political economy & localisation analysis</span><span class="svc-desc">Who really holds the decisions and the money in a partnership, and what that means for your plan.</span></span>
-        <span class="svc-arrow">&rarr;</span>
-      </a>
-    </div>
-    <p class="reveal" style="margin-top:26px; font-size:0.95rem; color:var(--muted); max-width:70ch;">I also take associate and research-partner work with consultancies, universities and funders, and short fixed-term pieces. <a class="tlink" href="services.html#associate">See how that works</a></p>
-  </div>
-</section>
-
-<section class="proof textured" id="evidence">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">From the UK INGO Transition Reporting Review 2026</p>
-      <h2>What 23 UK international NGOs actually commit to when they hand work over.</h2>
-    </div>
-    <div class="proof-grid reveal">
-      <div>
-        <div class="proof-num"><span>5</span> of 23</div>
-        <p class="proof-num-label">put a figure against money moving to partners.</p>
-      </div>
-      <div class="proof-side">
-        <p>Six gave a handover timetable separate from their own redundancy process. Four said how anyone would know if the transition worked.</p>
-        <p>Coded from each organisation's own published documents. Every score traced to a quotation.</p>
-        <a class="tlink" href="research.html">Read the study</a> &nbsp; <a class="tlink" href="story.html">Or scroll through it</a>
-      </div>
+<section class="what" id="what">
+  <div class="wrap split">
+    <h2>What I do</h2>
+    <div class="what-list">
+      <p style="margin-bottom:26px;">Managing Transitions is my advisory practice. The work usually takes one of four forms, as a short piece of advice, a review or a retained engagement.</p>
+      <a class="item" href="services.html#exit-design"><h3>Aid-dependency exit design</h3><p class="d">You're handing a programme or network to partners. I work out what can transfer, in what order, and what you stay liable for.</p></a>
+      <a class="item" href="services.html#outcomes"><h3>Outcomes and evidence architecture</h3><p class="d">Turning activity data into outcomes a donor will still trust after you've left.</p></a>
+      <a class="item" href="services.html#governance"><h3>Organisational and governance advisory</h3><p class="d">An independent read of structures, boards and partnerships while roles and power are changing hands.</p></a>
+      <a class="item" href="services.html#political-economy"><h3>Political economy and localisation analysis</h3><p class="d">Who holds the decisions and the money in a partnership, and what that means for your plan.</p></a>
+      <p class="more">I also take associate and research-partner work with consultancies, universities and funders, and short fixed-term pieces. <a class="link" href="services.html#associate">How that works</a></p>
     </div>
   </div>
 </section>
 
-<section class="who" id="who">
+<section class="study textured" id="evidence">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Why me</p>
-      <h2>Practitioner and researcher, in the same week.</h2>
+    <div class="narrow">
+      <h2>What UK NGOs say about handovers</h2>
+      <p>For the 2026 UK INGO Transition Reporting Review I read what 23 UK international NGOs have published about handing programmes over. Five put a figure against money moving to partners. Six gave a handover timetable separate from their own redundancy process. Four said how anyone would know if the transition worked. Every score traces back to a quotation from the organisation's own documents.</p>
+      <a class="link" href="research.html">Read the study</a><a class="link" href="story.html">Scroll through it</a>
     </div>
-    <div class="who-grid reveal">
-      <div class="who-col">
-        <h3>Practitioner</h3>
-        <p>Since 2022 I have worked at a UK INGO, co-managing a multi-year EU co-financed programme in The Gambia and leading partner portfolios across Uganda, Kenya and Tanzania, including moving grassroots networks towards locally run models.</p>
-      </div>
-      <div class="who-col">
-        <h3>Researcher</h3>
-        <p>PhD candidate in Politics at the University of Bristol, on how power, expertise and money move through the aid system. MSc in Development and Security (Distinction). Contributor to the Exceed Research Network on prosthetics and orthotics services.</p>
-      </div>
-      <div class="who-col">
-        <h3>Network</h3>
-        <p>Member-trustee of the South West International Development Network, and guest lecturer on the University of Southampton's MSc in Amputation and Prosthetic Rehabilitation.</p>
-      </div>
-    </div>
-    <div class="who-foot reveal">
-      <a class="tlink" href="about.html">Full background</a>
-      <a class="tlink" href="cv.pdf">Download my CV</a>
-      <small>I also hold a salaried role at a UK INGO. How I keep that separate from this work is set out on the <a href="about.html#independence" style="text-decoration:underline;">about page</a>.</small>
+  </div>
+</section>
+
+<section class="bg" id="who">
+  <div class="wrap">
+    <div class="narrow">
+      <h2>Background</h2>
+      <p>Since 2022 I've worked at a UK INGO, co-managing a multi-year EU co-financed programme in The Gambia and leading partner portfolios in Uganda, Kenya and Tanzania, including moving grassroots networks towards locally run models.</p>
+      <p>I'm a PhD candidate in Politics at the University of Bristol, researching how power, expertise and money move through the aid system, and I hold an MSc in Development and Security (Distinction). I contribute to the Exceed Research Network on prosthetics and orthotics services, I'm a member-trustee of the South West International Development Network, and I guest lecture on the University of Southampton's MSc in Amputation and Prosthetic Rehabilitation.</p>
+      <p class="links"><a class="link" href="about.html">Full background</a><a class="link" href="cv.pdf">Download my CV</a></p>
+      <p class="decl">I also hold a salaried role at a UK INGO. How I keep that separate from this work is on the <a class="link" style="font-size:inherit;" href="about.html#independence">About page</a>.</p>
     </div>
   </div>
 </section>
 
 <section class="phil" id="philosophy">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Philosophy</p>
-      <h2>Localisation has to mean something, or it's just paperwork.</h2>
-    </div>
-    <div class="reveal" style="margin-top:22px;">
-      <p>Too much of what gets called localisation is administrative relocation dressed up as empowerment. The reporting burden moves south. The funding rules and the veto stay exactly where they were. I don't call something local ownership unless the power moved with the paperwork, and I don't treat local actors as passive until a donor grants them some.</p>
-      <a class="tlink" href="about.html#philosophy">Read the longer version</a>
+    <div class="narrow">
+      <h2>What I mean by localisation</h2>
+      <p class="big">Too much of what gets called localisation is administrative relocation dressed up as empowerment. The reporting burden moves south while the funding rules and the veto stay where they were. I only call something local ownership if the power moved with the paperwork, and I don't treat local actors as passive until a donor grants them some.</p>
+      <a class="link" href="about.html#philosophy">The longer version</a>
     </div>
   </div>
 </section>
 
 <section class="review" id="review">
   <div class="wrap">
-    <div class="section-head reveal" style="max-width:720px;">
-      <p class="eyebrow">The Engagement</p>
-      <h2>Transition Exposure Review</h2>
-      <p class="terms">Two weeks · Fixed fee · No day rate</p>
-    </div>
-    <div class="review-grid reveal">
+    <h2>Transition Exposure Review</h2>
+    <p class="terms">Two weeks, fixed fee, no day rate.</p>
+    <div class="review-grid">
       <div>
-        <p>You are closing an office, consolidating into hubs, or handing a programme to partners. The reduction is planned. The transfer usually is not.</p>
-        <ul class="review-list">
-          <li>Which functions can transfer within twelve months, and which cannot</li>
-          <li>The single points of failure that sit with you: banking, compliance, certification, the donor relationship</li>
-          <li>Residual liability after handover: employment, safeguarding, registration, assets, records</li>
-          <li>What a funder would need to see before accepting the plan</li>
-          <li>A costed sequence</li>
+        <p>If you're closing an office, consolidating into hubs or handing a programme to partners, the reduction is usually planned and the transfer usually isn't. The review sets out:</p>
+        <ul>
+          <li>which functions can transfer within twelve months, and which cannot</li>
+          <li>the single points of failure that sit with you: banking, compliance, certification, the donor relationship</li>
+          <li>residual liability after handover: employment, safeguarding, registration, assets, records</li>
+          <li>what a funder would need to see before accepting the plan</li>
+          <li>a costed sequence</li>
         </ul>
       </div>
-      <div class="review-side">
-        <p>Every organisation is at a different point in this, so the shape of a review gets worked out in a first conversation, not picked off a list. If a review isn't the right thing, I'll say so on the call and you'll have lost half an hour.</p>
-        <a class="btn btn-amber" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+      <div>
+        <p>The shape of a review gets worked out in a first conversation. If a review isn't the right thing for you, I'll say so on the call and you'll have lost half an hour.</p>
+        <a class="btn" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="writing">
+<section class="writing" id="writing">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Writing</p>
-      <h2>Recent posts, pulled live from Substack.</h2>
-    </div>
-    <div class="writing-list reveal" id="writing-list">
+    <h2>Writing</h2>
+    <div class="writing-list" id="writing-list">
       <div class="writing-status">Loading recent posts.</div>
     </div>
-    <div class="writing-sub reveal">
+    <div class="writing-sub">
       <iframe src="https://thomsonmatt.substack.com/embed" height="150" frameborder="0" scrolling="no" loading="lazy" title="Subscribe on Substack"></iframe>
     </div>
   </div>
@@ -369,33 +273,25 @@ footer p.lede{color:#e3dacd; max-width:520px; margin-top:14px;}
 
 <footer id="contact" class="textured">
   <div class="wrap">
-    <p class="eyebrow">Get In Touch</p>
-    <h2>Have a handover, a bid or a research question?</h2>
-    <p class="lede">Tell me what you are working on. If I am the wrong person, I will say so and point you to someone better.</p>
-    <div class="contact-grid">
-      <a class="chip" href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
-      <a class="chip" href="mailto:matt@managingtransitions.org">Email</a>
-      <a class="chip" href="about.html">About</a>
-      <a class="chip" href="services.html">Services</a>
-      <a class="chip" href="research.html">The 2026 study</a>
-      <a class="chip" href="faq.html">Questions</a>
-      <a class="chip" href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
-      <a class="chip" href="cv.pdf">CV</a>
+    <h2>Get in touch</h2>
+    <p class="lede">Tell me what you're working on. If I'm the wrong person, I'll say so and point you to someone better.</p>
+    <div class="contact-links">
+      <a href="https://calendar.app.google/qhL6M6Pir6UbJyEa7">Book a call</a>
+      <a href="mailto:matt@managingtransitions.org">Email</a>
+      <a href="https://www.linkedin.com/in/matt-thomson-8548b9198">LinkedIn</a>
+      <a href="cv.pdf">CV</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="faq.html">Questions</a>
     </div>
     <div class="foot-base">
-      <span>MANAGING TRANSITIONS &copy; 2026</span>
+      <span>Managing Transitions &copy; 2026</span>
       <span>managingtransitions.org</span>
     </div>
   </div>
 </footer>
 
 <script>
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:0.12});
-  reveals.forEach(el=>io.observe(el));
-
   document.addEventListener('click', function(ev){
     var m = document.querySelector('.mobnav[open]');
     if(m && !m.contains(ev.target)){ m.removeAttribute('open'); }
